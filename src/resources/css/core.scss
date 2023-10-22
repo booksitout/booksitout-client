@@ -1,0 +1,54 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "./customBootstrap";
+
+a {
+	text-decoration: none;
+	color: black;
+
+	&:hover {
+		color: var(--primary-color);
+	}
+}
+
+.a-secondary {
+	text-decoration: none;
+	@extend .text-secondary ;
+
+	&:hover {
+		color: var(--primary-color) !important;
+	}
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.not-clickable {
+    pointer-events: none;
+	cursor: not-allowed;
+}
+
+.force-1-line {
+	white-space: nowrap;
+}
+
+.state-active {
+	filter: brightness(70%) saturate(90%);
+}
+
+.bottom-btn-container {
+	@extend .row;
+	@extend .justify-content-center;
+	margin-top: 3rem;
+}
+
+.bottom-btn {
+	@extend .col-12;
+	@extend .col-md-7;
+
+	max-width: 100%;
+
+	margin-bottom: 0.5rem;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
