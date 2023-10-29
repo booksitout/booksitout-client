@@ -1,7 +1,11 @@
-# Dependencies
+# Note
+Backend for booksitout is unlisted to protect intellectual properties.
 
+# Backend Overview
+- Spring
+
+# Frontend Overview
 ## designs
-
 -   boostrap
 -   react-boostrap
 -   chart.js
@@ -10,7 +14,6 @@
 -   react-hot-toast
 
 ## utilities
-
 -   react-router-dom
 -   html-react-parser
 -   axios
@@ -18,6 +21,5 @@
 -   typescript
 
 ## devops
-
 -   gh-pages
 -   react-pages
