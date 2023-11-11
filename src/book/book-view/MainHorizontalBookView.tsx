@@ -72,7 +72,7 @@ const MainContainer = styled.div.attrs({
 	justify-content: center;
 	align-items: center;
 
-	padding-top: 25px;
+	padding-top: 60px;
 	padding-bottom: 75px;
 	
 	@media screen and (min-width: ${breakpoints.sm}) {
@@ -80,8 +80,18 @@ const MainContainer = styled.div.attrs({
 		padding-bottom: 125px;
 	}
 
+	@media screen and (min-width: ${breakpoints.smmd}) {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
 	@media screen and (min-width: ${breakpoints.md}) {
-		padding-top: 0px;
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	@media screen and (min-width: ${breakpoints.mdlg}) {
+		padding-top: 30px;
 		padding-bottom: 50px;
 	}
 
@@ -124,6 +134,9 @@ const ButtonContainer = styled.div.attrs({
 
 const BookCover = styled.img.attrs({
 	className: 'img-fluid rounded border',
-})``
+})`
+		width: 80%;
+		margin-left: 10%;
+`
 
 export default MainHorizontalBookView

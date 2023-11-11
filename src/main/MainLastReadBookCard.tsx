@@ -31,7 +31,7 @@ const MainLastReadBookCard = ({ lastBook }) => {
 
 const CardContainer = styled(Card)`
 	height: 100%;
-	min-height: 320px;
+	min-height: 400px;
 
 	@media screen and (min-width: ${breakpoints.md}) {
 		min-height: 380px;

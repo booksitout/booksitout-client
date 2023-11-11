@@ -4,12 +4,13 @@ import CommunityRoutePopularBookCard from './CommunityRoutePopularBookCard';
 import CommunityRoutePostCard from './CommunityRoutePostCard'
 import { BsPeopleFill as CommunityIcon } from 'react-icons/bs'
 import RouteTitle from '../../common/RouteTitle';
+import RouteContainer from '../../common/RouteContainer';
 
 const CommunityRoute = () => {
 	document.title = '커뮤니티 | 책잇아웃'
 
 	return (
-		<div className='container-fluid' style={{ maxWidth: '1920px', overflowX: 'hidden', overflowY: 'hidden' }}>
+		<RouteContainer>
 			<RouteTitle icon={<CommunityIcon />} title={'커뮤니티'} />
 
 			<div className='row row-eq-height'>
@@ -31,7 +32,7 @@ const CommunityRoute = () => {
 
 				<div className='mb-5' />
 			</div>
-		</div>
+		</RouteContainer>
 	)
 }
 
