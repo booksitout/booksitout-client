@@ -16,7 +16,7 @@ const Container = styled.div.attrs({
 })``
 
 const Icon = styled.h1.attrs({
-	className: `text-book ms-3 me-3`,
+	className: `text-book ms-3 me-3 pt-1`,
 })``
 
 const Title = styled.h1.attrs({
