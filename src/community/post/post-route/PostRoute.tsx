@@ -39,7 +39,7 @@ const PostRoute = () => {
 
 			<div>
 				{pagedPost.content.length === 0 ? (
-					<NoContent />
+					<NoContent mt={100} />
 				) : (
 					pagedPost.content.map((post) => {
 						return <PostRoutePost post={post} />

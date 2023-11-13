@@ -7,7 +7,9 @@ const breakpoints = {
     xl: '1200px',
     xxl: '1400px',
     xxxl: '1600px',
-    xxxxl: '1800px'
+    xxxxl: '1800px',
+    xxxxxl: '2000px',
+    xxxxxxl: '2200px',
 }
 
 export default breakpoints

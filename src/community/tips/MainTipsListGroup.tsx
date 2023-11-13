@@ -3,10 +3,10 @@ import Error from '../../common/Error'
 import { ListGroup } from 'react-bootstrap'
 import booksitoutIcon from '../../common/icons/booksitoutIcon';
 
-const MainTipsListGroup = ({postList}) => {
+const MainTipsListGroup = ({ postList }) => {
 
-    if (postList == null) return <Error/>
-    if (postList.length === 0) return <NoContent message='아직 꿀팁이 없어요' />
+	if (postList == null) return <Error />
+	if (postList.length === 0) return <NoContent message='아직 꿀팁이 없어요' />
 
     return (
 		<ListGroup className='d-flex'>
@@ -25,9 +25,12 @@ const MainTipsListGroup = ({postList}) => {
 									</div>
 
 									<div className='col-12 col-lg-3'>
-										<p className='text-secondary text-end mt-2 mt-md-0 mb-0'>{`${post.createdDate.split('-')[0].slice(2)}년  ${
-											post.createdDate.split('-')[1]
-										}월`}</p>
+										{
+											post.createdDate != null &&
+											<p className='text-secondary text-end mt-2 mt-md-0 mb-0'>
+												{`${post.createdDate.split('-')[0].slice(2)}년  ${post.createdDate.split('-')[1]}월`}
+											</p>
+										}
 									</div>
 								</div>
 							</a>

@@ -21,6 +21,16 @@ const RouteContainer = styled.div.attrs({
 		padding-left: 15%;
 		padding-right: 15%;
 	}
+
+	@media screen and (min-width: ${breakpoints.xxxxxl}) {
+		padding-left: 20%;
+		padding-right: 20%;
+	}
+
+	@media screen and (min-width: ${breakpoints.xxxxxxl}) {
+		padding-left: 25%;
+		padding-right: 25%;
+	}
 `
 
 RouteContainer.defaultProps = {

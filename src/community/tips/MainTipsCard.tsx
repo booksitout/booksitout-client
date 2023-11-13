@@ -30,17 +30,7 @@ const MainTipsCard = () => {
 		<TipsContainer href="/introduction/tips/all">
 			<TipsCard>
 				<Card.Body>
-					<CardTitle
-						icon={
-							<img
-								src={logo}
-								alt=""
-								className="img-fluid rounded me-2 mt-0 mt-md-1"
-								style={{ width: '40px', height: '40px' }}
-							/>
-						}
-						title="책잇아웃 꿀팁"
-					/>
+					<CardTitle icon={<img src={logo} alt="" className="img-fluid rounded me-2 mt-0 mt-md-1" style={{ width: '40px', height: '40px' }}/>} title="책잇아웃 꿀팁"/>
 
 					{initialFetch ? (
 						<></>

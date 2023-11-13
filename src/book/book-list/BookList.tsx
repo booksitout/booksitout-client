@@ -66,7 +66,7 @@ const BookList = ({ range, rangeDetail }) => {
 				}
 			}, 100)
 
-			getBookList(rangeApi(), 0, fetchSize)
+			getBookList(rangeApi(), 1, fetchSize)
 				.then(pageList => {
 					if (pageList == null) return
 

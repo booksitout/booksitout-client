@@ -1,9 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { BsFire as FireIcon } from 'react-icons/bs'
-
 import { PostType } from './PostType'
-
 import PostListGroup from './PostListGroup'
 import AddButton from '../../common/AddButton'
 import Error from '../../common/Error';
@@ -21,7 +19,6 @@ const PostPopular = () => {
 
     const [popularPost, setPopularPost] = React.useState<PostType[]>([])
 	React.useEffect(() => {
-
 		booksitoutServer
 			.get('/v4/forum/post?sort=popular&size=5')
 			.then(res => setPopularPost(res.data.content))
@@ -30,10 +27,10 @@ const PostPopular = () => {
 	}, [])
 
 	return (
-		<Card className="h-100" style={{ minHeight: '480px' }}>
-			<AddButton color="book" onClick={() => navigate('/add/post')} />
+		<a href="/community/post/all/popular" className="text-decoration-none text-black">
+			<Card className="h-100" style={{ minHeight: '480px' }}>
+				<AddButton color="book" onClick={() => navigate('/add/post')} />
 
-			<a href="/community/post/all/popular" className="text-decoration-none text-black">
 				<Card.Body>
 					<CardTitle icon={<FireIcon />} title={'지금 인기있는 게시글'} />
 
@@ -53,8 +50,8 @@ const PostPopular = () => {
 
 					<AllButton url="/community/post/all/popular" />
 				</Card.Body>
-			</a>
-		</Card>
+			</Card>
+		</a>
 	)
 }
 

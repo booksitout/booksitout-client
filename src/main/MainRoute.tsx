@@ -144,7 +144,7 @@ const Container = styled.div.attrs({
 })``
 
 const BookCardContainer = styled.div.attrs({
-	className: 'col-12 col-md-6 col-xl-4 mb-3',
+	className: 'col-12 col-md-6 col-xxl-4 mb-3',
 })``
 
 const CommunityCardContainer = styled.div.attrs({

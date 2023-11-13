@@ -148,3 +148,12 @@
 .pb-6 {
     padding-bottom: 5em;
 }
+
+@media (min-width: 1400px) {
+    .col-xxl-4 {
+        width: 33.33333%; /* As 4 out of 12 columns is 1/3 of the container width */
+        float: left;
+        padding: 0.5rem; /* Optional: For some spacing around the column */
+        box-sizing: border-box; /* To include padding in the width */
+    }
+}

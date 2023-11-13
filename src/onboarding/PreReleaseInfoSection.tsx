@@ -32,6 +32,7 @@ const Container = styled.div.attrs({
     background-color: #d1e7de;
 
     padding: 30px;
+    padding-top: 40px;
 
     text-align: center;
 `;

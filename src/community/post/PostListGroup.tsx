@@ -8,7 +8,7 @@ import booksitoutIcon from '../../common/icons/booksitoutIcon';
 
 const PostListGroup = ({postList, col1='col-12 col-md-8', col2='col-12 col-md-4'}) => {
 
-    if (postList == null) return <Error/>
+	if (postList == null) return <Error />
     if (postList.length === 0) return <NoContent message='게시글이 없어요' />
 
     return (
