@@ -53,7 +53,7 @@ const GiveupHorizontalBookView = ({ book, link, bookList, setBookList }) => {
 						className="w-100"
 						onClick={e => {
 							e.preventDefault()
-							handleUngiveupBook(book.bookId)
+							handleUngiveupBook(book.id)
 						}}
 					>
 						다시 읽기
@@ -69,7 +69,7 @@ const GiveupHorizontalBookView = ({ book, link, bookList, setBookList }) => {
 							const confirm = window.confirm('정말 이 책을 삭제할까요?')
 
 							if (confirm) {
-								deleteBook(book.bookId).then(success => {
+								deleteBook(book.id).then(success => {
 									if (success) {
 										toast.success('책을 삭제했어요')
 										setBookList(bookList.filter(b => b.bookId !== book.bookId))
