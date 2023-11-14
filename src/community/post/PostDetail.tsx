@@ -84,7 +84,7 @@ const PostDetailSummaryCard = ({ post, isMyPost, commentList }) => {
 
 		if (confirm) {
 			booksitoutServer
-				.delete(`/v4/forum/post/${post.postId}`)
+				.delete(`/v4/forum/post/${post.id}`)
 				.then((res) => {
 					if (res.status.toString().startsWith('2')) {
 						toast.success('게시글을 지웠어요')
@@ -224,7 +224,7 @@ const PostDetailContentCard = ({post, setPost, isLogin}) => {
 
 				<div className='row justify-content-center'>
 					<div className='col-6 col-md-3 p-1' onClick={() => {
-						post.userLikeScore === 1 ? deletePostLike(post.postId, 1) : addPostLike(post.postId, 1, post.userLikeScore)
+						post.userLikeScore === 1 ? deletePostLike(post.id, 1) : addPostLike(post.id, 1, post.userLikeScore)
 					}}>
 						<Badge
 							bg='book'
@@ -235,7 +235,7 @@ const PostDetailContentCard = ({post, setPost, isLogin}) => {
 					</div>
 
 					<div className='col-6 col-md-3 p-1' onClick={() => {
-						post.userLikeScore === -1 ? deletePostLike(post.postId, -1) : addPostLike(post.postId, -1, post.userLikeScore)
+						post.userLikeScore === -1 ? deletePostLike(post.id, -1) : addPostLike(post.id, -1, post.userLikeScore)
 					}}>
 						<Badge
 							bg='danger'

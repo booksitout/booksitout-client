@@ -190,7 +190,7 @@ const BookCardList = ({ bookList, range, setBookList }) => {
 												className="w-100"
 												onClick={e => {
 													e.preventDefault()
-													handleGiveupBook(book.bookId)
+													handleGiveupBook(book.id)
 												}}
 											>
 												포기하기

@@ -16,7 +16,7 @@ export interface PostType {
 }
 
 export interface CommentType {
-    commentId: number;
+    id: number;
     content: string;
 
     likeCount: number;

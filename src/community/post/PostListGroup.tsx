@@ -16,7 +16,7 @@ const PostListGroup = ({postList, col1='col-12 col-md-8', col2='col-12 col-md-4'
 			{postList.map((post) => {
 				return (
 					<ListGroup.Item as='li' className='d-flex w-100 pe-0'>
-						<a href={`/community/post/${post.postId}`} className='text-decoration-none w-100'>
+						<a href={`/community/post/${post.id}`} className='text-decoration-none w-100'>
 							<div className='row w-100'>
 								<div className={`${col1}`}>
 									<div className='clamp-1-line'>

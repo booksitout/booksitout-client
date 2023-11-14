@@ -19,7 +19,7 @@ const PostRoutePost = ({post}) => {
 		<Card style={{ height: '210px' }} className='mb-4 h-100'>
 			<Card.Body className='row'>
 				<div className='col-12 col-md-8'>
-					<a href={`/community/post/${post.postId}`} className={isHovered ? 'text-book' : ''}>
+					<a href={`/community/post/${post.id}`} className={isHovered ? 'text-book' : ''}>
 						<div className='d-flex'>
 							<h3 className='clamp-1-line'>{post.title}</h3>
 							<h4 className='text-book ps-2'>[{post.commentCount}]</h4>
@@ -32,7 +32,7 @@ const PostRoutePost = ({post}) => {
 
 					<div className='row mt-2 justify-content-end align-items-end'>
 						<a
-							href={`/community/post/${post.postId}`}
+							href={`/community/post/${post.id}`}
 							className='col-6 col-md-7 col-xl-8'
 							onMouseEnter={handleMouseEnter}
 							onMouseLeave={handleMouseLeave}>
