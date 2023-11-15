@@ -19,11 +19,7 @@ const LibraryRoute = () => {
 
 			<Row>
 				<CardContainer>
-					<LibrarySearchCard />
-				</CardContainer>
-
-				<CardContainer>
-					<LibraryRouteRegionCard />
+					<LibraryRouteMembershipCard />
 				</CardContainer>
 
 				<CardContainer>
@@ -31,7 +27,11 @@ const LibraryRoute = () => {
 				</CardContainer>
 
 				<CardContainer>
-					<LibraryRouteMembershipCard />
+					<LibrarySearchCard />
+				</CardContainer>
+
+				<CardContainer>
+					<LibraryRouteRegionCard />
 				</CardContainer>
 			</Row>
 		</RouteContainer>

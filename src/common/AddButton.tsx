@@ -10,7 +10,7 @@ const AddButton = ({ size = 35, color = 'book', onClick = () => {}, right = '15p
 		top: ${top};
 		right: ${right};
 
-		z-index: 10;
+		z-index: 4;
 	`
 
 	const addButtonStyle = {

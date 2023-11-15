@@ -111,7 +111,7 @@ const LibraryNearCard = ({ col = 'col-12 col-md-6', moreButton=true, size=6, mt=
 							<NoContent message="2km 내에 도서관이 없어요" move={-80} />
 						) : (
 							<div className={`row row-eq-height mt-${mt}`}>
-								{nearLibraryList.map(library => {
+								{nearLibraryList.slice(0, 6).map(library => {
 									return (
 										<div className="col-12 col-md-6 h-100">
 											<SimpleLibraryCard library={library} />

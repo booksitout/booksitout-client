@@ -45,7 +45,7 @@ const MainHorizontalBookView = ({ book, link = '' }) => {
 
 			<ButtonContainer>
 				<div className="col-6 mt-md-2">
-					<Button variant="book-danger" className="w-100" onClick={() => handleGiveupBook(book.bookId)}>
+					<Button variant="book-danger" className="w-100" onClick={() => handleGiveupBook(book.id)}>
 						포기하기
 					</Button>
 				</div>

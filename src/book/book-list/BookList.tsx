@@ -123,7 +123,7 @@ const BookCardList = ({ bookList, range, setBookList }) => {
 			giveUpBook(bookId).then((success) => {
 				if (success) {
 					toast.success('책을 포기했어요. 마음이 바뀌시면 언제든지 다시 시작하실 수 있어요!')
-					setBookList(bookList.filter((b) => b.bookId !== bookId))
+					setBookList(bookList.filter((b) => b.id !== bookId))
 				} else {
 					toast.error('오류가 났어요 다시 시도해 주세요')
 				}

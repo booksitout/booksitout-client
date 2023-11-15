@@ -13,7 +13,7 @@ const GiveupHorizontalBookView = ({ book, link, bookList, setBookList }) => {
 			unGiveUpBook(bookId).then(success => {
 				if (success) {
 					toast.success('이제 책을 다시 읽을 수 있어요')
-					setBookList(bookList.filter(b => b.bookId !== bookId))
+					setBookList(bookList.filter(b => b.id !== bookId))
 				} else {
 					toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요')
 				}
@@ -72,7 +72,7 @@ const GiveupHorizontalBookView = ({ book, link, bookList, setBookList }) => {
 								deleteBook(book.id).then(success => {
 									if (success) {
 										toast.success('책을 삭제했어요')
-										setBookList(bookList.filter(b => b.bookId !== book.bookId))
+										setBookList(bookList.filter(b => b.id !== book.id))
 									} else {
 										toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요')
 									}

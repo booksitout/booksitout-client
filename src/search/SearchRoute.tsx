@@ -15,6 +15,7 @@ import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import ScrollToTop from '../common/topnav/ScrollToTop'
 import BooksitoutSearchResultCard from './BooksitoutSearchResultCard'
+import RouteContainer from '../common/RouteContainer'
 
 const SearchRoute = () => {
 	const { query } = useParams()
@@ -36,7 +37,7 @@ const SearchRoute = () => {
 	}, [query])
 
 	return (
-		<div className='container-xl mt-5'>
+		<RouteContainer>
 			<ScrollToTop />
 			<LibraryDetailModal />
 
@@ -53,7 +54,7 @@ const SearchRoute = () => {
 			<SubscriptionSearchResult query={query} />
 			<OnlineUsedSearchResult onlineUsedList={onlineUsedList} />
 			<OfflineUsedSearchResult offlineUsedList={offlineUsedList} />
-		</div>
+		</RouteContainer>
 	)
 }
 

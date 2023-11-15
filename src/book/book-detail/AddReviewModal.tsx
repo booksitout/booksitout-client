@@ -16,7 +16,7 @@ const AddReviewModal = ({ isModalOpen, setIsModalOpen, book, setBook }) => {
 			return
 		}
 
-		addReview(book.bookId, review).then((success) => {
+		addReview(book.id, review).then((success) => {
 			if (success) {
 				setBook({ ...book, review: review })
 				setIsModalOpen(false)

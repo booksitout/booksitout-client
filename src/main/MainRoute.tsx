@@ -148,7 +148,7 @@ const BookCardContainer = styled.div.attrs({
 })``
 
 const CommunityCardContainer = styled.div.attrs({
-	className: 'col-12 col-xl-6 mb-3',
+	className: 'col-12 col-xxl-6 mb-3',
 })``
 
 export default MainRoute

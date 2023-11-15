@@ -15,7 +15,7 @@ const AddSummaryModal = ({ isModalOpen, setIsModalOpen, book, setBook }) => {
 			return
 		}
 
-		addSummary(book.bookId, summary).then((success) => {
+		addSummary(book.id, summary).then((success) => {
 			if (!success) return
 
 			setBook({ ...book, summary: summary })

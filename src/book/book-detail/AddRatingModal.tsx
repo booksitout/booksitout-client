@@ -13,7 +13,7 @@ const AddRatingModal = ({ isModalOpen, setIsModalOpen, book, setBook }) => {
 			toast.error('별점을 선택해 주세요')
 		}
 
-		addRating(book.bookId, rating).then((success) => {
+		addRating(book.id, rating).then((success) => {
 			if (success) {
 				setBook({ ...book, rating: rating })
 				toast.success('별점을 추가했어요')
