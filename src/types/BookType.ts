@@ -13,6 +13,8 @@ export interface BookType {
 	publicationYear?: number;
 	link: BookLinkType;
 	category: string;
+
+	doneYear?: number;
 }
 
 export interface BookLinkType {

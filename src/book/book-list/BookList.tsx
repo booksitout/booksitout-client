@@ -16,6 +16,10 @@ import BookListLoading from './BookListLoading'
 import styled from 'styled-components';
 import GiveupHorizontalBookView from '../book-view/GiveupHorizontalBookView'
 
+interface BooksByYear {
+    [year: number]: BookUserType[];
+}
+
 const BookList = ({ range, rangeDetail }) => {
 	const isLogin = useSelector((state: RootState) => state.user.isLogin)
 
@@ -48,6 +52,28 @@ const BookList = ({ range, rangeDetail }) => {
 	const [maxPage, setMaxPage] = React.useState(0)
 
 	const [bookList, setBookList] = React.useState<BookUserType[]>([])
+	const [bookListByYear, setBookListByYear] = React.useState<BooksByYear>({})
+	React.useEffect(() => {
+		if (rangeApi().toUpperCase() === 'DONE') {
+			setBookListByYear(groupBooksByYear(bookList, bookListByYear));
+		}
+	}, [bookList, bookListByYear]);
+	
+	const groupBooksByYear = (books: BookUserType[], existingGroups: BooksByYear): BooksByYear => {
+		const currentYear = new Date().getFullYear()
+		const existingBookId = existingGroups ? Object.values(existingGroups).flat().map(book => book.id) : [];
+
+		return books.reduce((acc: BooksByYear, book: BookUserType) => {
+			const year = book.doneYear ?? currentYear;
+
+			if (!existingBookId.includes(book.id)) {
+				acc[year] = acc[year] || [];
+				acc[year].push(book);
+			}
+
+			return acc;
+		}, existingGroups);
+	};
 
 	React.useEffect(() => {
 		document.title = `${
@@ -110,12 +136,19 @@ const BookList = ({ range, rangeDetail }) => {
 			loader={<InfiniteScrollLoading />}
 			className="overflow-hidden"
 		>
-			<BookCardList bookList={bookList} range={range} setBookList={setBookList} />
+			<BookCardList bookList={bookList} range={range} setBookList={setBookList} bookListByYear={bookListByYear} />
 		</InfiniteScroll>
 	)
 }
 
-const BookCardList = ({ bookList, range, setBookList }) => {
+interface BookCardListProps {
+	bookList: BookUserType[]
+	bookListByYear: BooksByYear
+	range: string
+	setBookList: (bookList: BookUserType[]) => void
+}
+
+const BookCardList: React.FC<BookCardListProps> = ({ bookList, bookListByYear, range, setBookList }) => {
 	const handleGiveupBook = (bookId) => {
 		const confirm = window.confirm('책을 포기할까요?')
 
@@ -132,14 +165,26 @@ const BookCardList = ({ bookList, range, setBookList }) => {
 	}
 
 	if (range === 'done') {
+		const sortedYears = Object.keys(bookListByYear)
+				.map(Number)
+				.sort((a, b) => b - a)
+
 		return (
 			<BookListContainer>
-				{bookList.map(book => {
+				{sortedYears.map(year => {
+					const books = bookListByYear[year];
+
 					return (
-						<BookContainer>
-							<DoneHorizontalBookView book={book} />
-						</BookContainer>
-					)
+						<>
+							<h3 className={`text-start pb-3 ms-2 ${sortedYears[0] !== year && 'pt-5'}`}>{year}년</h3>
+
+							{books.map(book => (
+								<BookContainer key={book.id}>
+									<DoneHorizontalBookView book={book} />
+								</BookContainer>
+							))}
+						</>
+					);
 				})}
 			</BookListContainer>
 		)

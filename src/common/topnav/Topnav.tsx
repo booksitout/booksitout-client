@@ -106,17 +106,24 @@ const Topnav = () => {
 				<Container fluid style={{ zIndex: '1000' }}>
 					<TopnavLogo />
 
-					<button className="d-lg-none ms-auto me-3 navbar-toggler">
+					<button className="d-lg-none ms-auto me-3 navbar-toggler mt-1" style={{ height: '35px', paddingTop: '2.5px' }}>
 						<booksitoutIcon.topnavSearch
 							className={`h2 m-0 button-hover ${showSearchBar ? 'text-black' : 'text-secondary'}`}
 							onClick={handleSearchClick}
 						/>
 					</button>
 
-					<Navbar.Toggle onClick={toggleNavbar} />
+					<Navbar.Toggle onClick={toggleNavbar} style={{ height: '35px', paddingTop: '2.5px' }} className='mt-1' />
 
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<TopnavSmallDropdown isLogin={isLogin} handleLogout={handleLogout} />
+
+						<button className="ms-auto me-3 navbar-toggler mt-1" style={{ height: '35px', paddingTop: '2.5px' }}>
+							<booksitoutIcon.topnavSearch
+								className={`h2 m-0 button-hover ${showSearchBar ? 'text-black' : 'text-secondary'}`}
+								onClick={handleSearchClick}
+							/>
+						</button>
 
 						<span className="d-none d-lg-inline">
 							<TopnavSmallSearchBar isLogin={isLogin} autoFocus={autoFocus} />

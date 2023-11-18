@@ -27,7 +27,7 @@ const RouteContainer = styled.div.attrs({
 		padding-right: 20%;
 	}
 
-	@media screen and (min-width: ${breakpoints.xxxxxxl}) {
+	@media screen and (min-width: ${breakpoints.ultraWide}) {
 		padding-left: 25%;
 		padding-right: 25%;
 	}

@@ -10,6 +10,7 @@ const breakpoints = {
     xxxxl: '1800px',
     xxxxxl: '2000px',
     xxxxxxl: '2200px',
+    ultraWide: '3000px',
 }
 
 export default breakpoints

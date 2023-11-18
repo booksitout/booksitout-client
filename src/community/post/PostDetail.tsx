@@ -108,7 +108,7 @@ const PostDetailSummaryCard = ({ post, isMyPost, commentList }) => {
 					<div className='col-3 col-md-2 text-end'>
 						{isMyPost ? (
 							<>
-								<a href={`/community/post/edit/${post.postId}`} className='text-decoration-none text-black'>
+								<a href={`/community/post/edit/${post.id}`} className='text-decoration-none text-black'>
 									<Button variant='warning' className='mb-1 mb-md-0 me-md-1'>
 										수정
 									</Button>

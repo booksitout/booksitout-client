@@ -4,10 +4,11 @@ import utils from '../functions/utils'
 import { faqData } from './faqData';
 import RouteTitle from '../common/RouteTitle';
 import booksitoutIcon from '../common/icons/booksitoutIcon';
+import RouteContainer from '../common/RouteContainer';
 
 const FaqRoute = () => {
 	return (
-		<div className="container-xl mt-5 mb-5">
+		<RouteContainer>
 			<RouteTitle icon={<booksitoutIcon.faq />} title={'자주 묻는 질문'} />
 
 			{faqData.map(faq => {
@@ -41,7 +42,7 @@ const FaqRoute = () => {
 					</a>
 				</div>
 			</div>
-		</div>
+		</RouteContainer>
 	)
 }
 

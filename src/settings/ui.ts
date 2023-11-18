@@ -14,7 +14,7 @@ const uiSettings = {
 	},
 
 	topnav: {
-		collapse: 'lg',
+		collapse: 'md',
 		link: [
 			{
 				id: 1,
