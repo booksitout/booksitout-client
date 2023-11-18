@@ -44,7 +44,7 @@ const BookList = ({ range, rangeDetail }) => {
 			? `포기한 책이 없어요`
 			: `텅 비어 있어요`,
 	).toString()
-	const fetchSize = 24
+	const fetchSize = 36
 
 	const [loading, setLoading] = React.useState(true)
 	const [error, setError] = React.useState(false)
@@ -53,11 +53,6 @@ const BookList = ({ range, rangeDetail }) => {
 
 	const [bookList, setBookList] = React.useState<BookUserType[]>([])
 	const [bookListByYear, setBookListByYear] = React.useState<BooksByYear>({})
-	React.useEffect(() => {
-		if (rangeApi().toUpperCase() === 'DONE') {
-			setBookListByYear(groupBooksByYear(bookList, bookListByYear));
-		}
-	}, [bookList, bookListByYear]);
 	
 	const groupBooksByYear = (books: BookUserType[], existingGroups: BooksByYear): BooksByYear => {
 		const currentYear = new Date().getFullYear()
@@ -97,6 +92,11 @@ const BookList = ({ range, rangeDetail }) => {
 					if (pageList == null) return
 
 					setBookList(pageList.content)
+
+					if (rangeApi().toUpperCase() === 'DONE') {
+						setBookListByYear(groupBooksByYear(pageList.content, bookListByYear));
+					}
+
 					setMaxPage(pageList.totalPages - 1)
 				})
 				.catch(() => {
@@ -110,6 +110,10 @@ const BookList = ({ range, rangeDetail }) => {
 		getBookList(rangeApi(), currentPage + 1, fetchSize)
 			.then(pageList => {
 				setBookList([...bookList, ...pageList.content])
+
+				if (rangeApi().toUpperCase() === 'DONE') {
+					setBookListByYear(groupBooksByYear([...bookList, ...pageList.content], bookListByYear));
+				}
 			})
 			.finally(() => {
 				setCurrentPage(currentPage + 1)
