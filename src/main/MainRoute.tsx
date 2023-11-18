@@ -88,11 +88,7 @@ const MainRoute = () => {
 
 					<Container style={{ opacity: isLogin ? 1.0 : 0.3, pointerEvents: isLogin ? 'auto' : 'none' }}>
 						<BookCardContainer>
-							{isLogin && !lastBookLoading ? (
-								<MainLastReadBookCard lastBook={lastBook} />
-							) : (
-								<MainLastReadBookCardLoading />
-							)}
+							<MainLastReadBookCard lastBook={lastBook} loading={!isLogin || lastBookLoading}/>
 						</BookCardContainer>
 
 						<BookCardContainer>

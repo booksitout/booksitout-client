@@ -7,14 +7,18 @@ import CardTitle from '../common/CardTitle';
 import { BsBookHalf as BookIcon } from 'react-icons/bs'
 import styled from 'styled-components';
 import breakpoints from '../common/breakpoints';
+import MainLastReadBookCardLoading from './MainLastReadBookCardLoading';
 
-const MainLastReadBookCard = ({ lastBook }) => {
+const MainLastReadBookCard = ({ lastBook, loading }) => {
 	return (
 		<CardContainer>
 			<Card.Body>
 				<CardTitle icon={<BookIcon />} title={'마지막으로 읽은 책'} mb={0} />
 
-				{lastBook === undefined ? (
+				{loading ?
+					<MainLastReadBookCardLoading />
+				:
+				lastBook === undefined ? (
 					<Error />
 				) : lastBook == null ? (
 					<NoContent message={messages.book.lastBook.noContent} move={30} />

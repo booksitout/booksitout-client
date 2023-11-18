@@ -26,22 +26,20 @@ const MainHorizontalBookView = ({ book, link = '' }) => {
 	}
 
 	return (
-		<Container>
-			<a href={link} className="text-black">
-				<MainContainer>
-					<ImageContainer>
-						<BookCover src={book.cover === '' ? defaultBookCover : book.cover} alt="" />
-					</ImageContainer>
+		<>
+			<MainContainer href={link}>
+				<ImageContainer>
+					<BookCover src={book.cover === '' ? defaultBookCover : book.cover} alt="" />
+				</ImageContainer>
 
-					<div className="col-8 text-center">
-						<h4 className="clamp-1-line">{book.title}</h4>
-						<h6 className="text-muted clamp-1-line">
-							{book.author == null || book.author === '' ? '-' : book.author}
-						</h6>
-						<PageProgressBar book={book} />
-					</div>
-				</MainContainer>
-			</a>
+				<div className="col-8 text-center">
+					<h4 className="clamp-1-line">{book.title}</h4>
+					<h6 className="text-muted clamp-1-line">
+						{book.author == null || book.author === '' ? '-' : book.author}
+					</h6>
+					<PageProgressBar book={book} />
+				</div>
+			</MainContainer>
 
 			<ButtonContainer>
 				<div className="col-6 mt-md-2">
@@ -58,49 +56,52 @@ const MainHorizontalBookView = ({ book, link = '' }) => {
 					</a>
 				</div>
 			</ButtonContainer>
-		</Container>
+		</>
 	)
 }
 
-const Container = styled.div`
-	height: 100%;
-`
-
-const MainContainer = styled.div.attrs({
+const MainContainer = styled.a.attrs({
 	className: 'row row-eq-height',
 })`
+	color: black;
+
 	justify-content: center;
 	align-items: center;
 
-	padding-top: 60px;
+	height: 85%;
+	padding-top: 25px;
 	padding-bottom: 75px;
-	
+
 	@media screen and (min-width: ${breakpoints.sm}) {
 		padding-top: 75px;
 		padding-bottom: 125px;
 	}
 
 	@media screen and (min-width: ${breakpoints.smmd}) {
-		padding-top: 50px;
-		padding-bottom: 50px;
+		padding-top: 100px;
+		padding-bottom: 150px;
 	}
 
 	@media screen and (min-width: ${breakpoints.md}) {
+		height: 50%;
 		padding-top: 50px;
 		padding-bottom: 50px;
 	}
 
 	@media screen and (min-width: ${breakpoints.mdlg}) {
+		height: 75%;
 		padding-top: 30px;
 		padding-bottom: 50px;
 	}
-
+	
 	@media screen and (min-width: ${breakpoints.lg}) {
+		height: 85%;
 		padding-top: 25px;
 		padding-bottom: 75px;
 	}
-
+	
 	@media screen and (min-width: ${breakpoints.xl}) {
+		height: 65%;
 		padding-top: 20px;
 		padding-bottom: 0px;
 	}
@@ -109,7 +110,7 @@ const MainContainer = styled.div.attrs({
 const ImageContainer = styled.div.attrs({
 	className: 'col-4 text-center',
 })`
-	max-height: 150px;
+	height: 150px;
 	display: flex;
 	align-items: center;
 
@@ -135,8 +136,8 @@ const ButtonContainer = styled.div.attrs({
 const BookCover = styled.img.attrs({
 	className: 'img-fluid rounded border',
 })`
-		width: 80%;
-		margin-left: 10%;
+	width: 80%;
+	margin-left: 10%;
 `
 
 export default MainHorizontalBookView
