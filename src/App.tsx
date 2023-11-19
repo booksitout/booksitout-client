@@ -61,7 +61,7 @@ import LibraryRegionRoute, { loader as libraryRegionLoader } from './library/reg
 
 import MembershipDetail from './library/membership/MembershipDetail'
 import MembershipRoute from './library/membership/MembershipRoute'
-import MembershipAddForm from './library/membership/add/MembershipAddForm'
+import AddMembershipRoute from './library/membership/add/AddMembershipRoute'
 import MembershipEditRoute, {loader as membershipEditLoader} from './library/membership/edit/MembershipEditRoute'
 
 import PwaRoute from './pwa/PwaRoute'
@@ -125,11 +125,7 @@ const router = createBrowserRouter(
 			<Route path="/community/survey/edit/:surveyId" element={<></>} />
 
 			<Route path="/community/gathering/:type" element={<GatheringRoute />} loader={gatheringRouteLoader} />
-			<Route
-				path="/community/gathering/detail/:id"
-				element={<GatheringDetail />}
-				loader={gatheringDetailLoader}
-			/>
+			<Route path="/community/gathering/detail/:id" element={<GatheringDetail />} loader={gatheringDetailLoader}/>
 			<Route path="/community/gathering/edit/:id" element={<></>} />
 			<Route path="/community/gathering/join/:id" element={<GatheringJoinForm />} loader={gatheringJoinLoader} />
 
@@ -166,7 +162,7 @@ const router = createBrowserRouter(
 			<Route path="/add" element={<AddRoute />}>
 				<Route path="book/:method" element={<AddBookRoute />} />
 				<Route path=":type" element={<AddCommunityRoute />} />
-				<Route path="membership/:method" element={<MembershipAddForm />} />
+				<Route path="membership/:method" element={<AddMembershipRoute />} />
 			</Route>
 
 			<Route path="/suggestion" element={<SuggestionRoute />} />

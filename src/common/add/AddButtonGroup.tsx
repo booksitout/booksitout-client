@@ -1,8 +1,12 @@
 import React from 'react'
-import { ButtonGroup, Card, ToggleButton } from 'react-bootstrap'
+import { ButtonGroup, ToggleButton } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-const AddButtonGroup = ({ type }) => {
+interface Props {
+	type: string
+}
+
+const AddButtonGroup: React.FC<Props> = ({ type }) => {
 	const navigate = useNavigate()
 
 	return (
