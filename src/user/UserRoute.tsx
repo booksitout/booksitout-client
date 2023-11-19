@@ -9,6 +9,7 @@ import urls from '../settings/urls'
 import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import { booksitoutServer } from '../functions/axios'
+import RouteContainer from '../common/RouteContainer'
 
 interface LoaderData {
 	user: PublicUserType;
@@ -37,7 +38,7 @@ const UserRoute = () => {
 	const { user, bookList, postList } = useLoaderData() as LoaderData
 
 	return (
-		<div className='container-xl pb-4'>
+		<RouteContainer>
 			<RouteTitle icon={<booksitoutIcon.user />} title={'유저 정보'} />
 
 			<UserProfileCard user={user} />
@@ -48,7 +49,7 @@ const UserRoute = () => {
 
 			<UserCommunityCard postList={postList} nickName={nickName} />
 			<div className='mb-4' />
-		</div>
+		</RouteContainer>
 	)
 }
 

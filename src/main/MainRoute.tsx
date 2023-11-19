@@ -71,7 +71,7 @@ const MainRoute = () => {
 		<RouteContainer>
 			<Row>
 				<PreReleaseInfoSection />
-				<div className="mb-3" />
+				<div className="mb-2" />
 
 				{isLogin ? <MainAlert /> : <MainIntroductionSection />}
 				<div className="mb-3" />

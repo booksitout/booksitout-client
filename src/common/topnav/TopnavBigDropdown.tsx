@@ -19,7 +19,7 @@ const TopnavBigDropdown = ({ isLogin, handleLogout }) => {
 					}
 					alt=""
 					className="img-fluid rounded"
-					style={{ width: '30px', height: '30px' }}
+					style={{ width: '30px', height: '30px', marginTop: '2px' }}
 				/>
 			}
 			align="end"

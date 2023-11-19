@@ -3,11 +3,10 @@ import SettingsLinkCard from "./SettingsLinkCard"
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import styled from 'styled-components';
 import RouteContainer from "../common/RouteContainer";
-import { Container } from "react-bootstrap";
 
 const SettingsRoute = () => {
 	return (
-		<Container>
+		<RouteContainer>
 			<div className="row row-eq-height justify-content-start">
 				<RouteTitle icon={<booksitoutIcon.settings />} title={'설정'} />
 
@@ -43,7 +42,7 @@ const SettingsRoute = () => {
 					/>
 				</SettingsCardContainer>
 			</div>
-		</Container>
+		</RouteContainer>
 	)
 }
 

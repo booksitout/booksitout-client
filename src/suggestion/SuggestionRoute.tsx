@@ -45,7 +45,7 @@ const SuggestionRoute = () => {
 	}
 
 	return (
-		<Container>
+		<RouteContainer>
 			<RouteTitle
 				icon={<booksitoutIcon.suggestion />}
 				title={'제안 / 피드백'}
@@ -87,7 +87,7 @@ const SuggestionRoute = () => {
 					</Card.Body>
 				</FormCard>
 			</FormContainer>
-		</Container>
+		</RouteContainer>
 	)
 }
 
