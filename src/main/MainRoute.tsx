@@ -11,7 +11,6 @@ import MainReadingTimeCard from './MainReadingTimeCard';
 import MainSummaryStatisticsCard from './MainSummaryStatisticsCard';
 import MainGoalCard from './MainGoalCard';
 import GatheringSummaryCard from '../community/summaryCard/GatheringSummaryCard';
-import MainLastReadBookCardLoading from './MainLastReadBookCardLoading';
 import MainLibraryMembershipCard from './MainLibraryMembershipCard';
 import { GoalType } from '../goal/GoalType'
 import { StatisticsType } from '../types/StatisticsType';
@@ -70,6 +69,7 @@ const MainRoute = () => {
 	return (
 		<RouteContainer>
 			<Row>
+				<div className="mt-2" />
 				<PreReleaseInfoSection />
 				<div className="mb-2" />
 
