@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import booksitoutLogo from '../../images/logo.png'
 
 import TipsListGroup from './TipsListGroup'
+import RouteContainer from '../../common/RouteContainer'
 
 const TipsRoute = () => {
 	const { range } = useParams()
@@ -13,7 +14,7 @@ const TipsRoute = () => {
 	}, [])
 
     return (
-		<div className='container-xl'>
+		<RouteContainer>
 			<Card style={{ minHeight: '200px' }} className='mb-4'>
 				<Card.Body>
 					<div className='d-flex align-items-center mb-2'>
@@ -66,7 +67,7 @@ const TipsRoute = () => {
 			</Card>
 
 			<TipsListGroup range={range} />
-		</div>
+		</RouteContainer>
 	)
 }
 
