@@ -10,7 +10,7 @@ import breakpoints from '../common/breakpoints';
 const MainGoalCard = ({ goal, loading }) => {
 	return (
 		<Card className="h-100" style={{ minHeight: '380px' }}>
-			<Card.Body className="h-100 mb-5">
+			<Card.Body className="h-100">
 				<a href="/goal" className="text-black h-100">
 					<CardTitle
 						icon={<booksitoutIcon.goal />}
@@ -22,10 +22,10 @@ const MainGoalCard = ({ goal, loading }) => {
 						<GoalContainer>
 							<Goal goal={goal} loading={true} />
 						</GoalContainer>
+					) : goal === undefined ? (
+						<Error />
 					) : goal == null ? (
 						<NoContent message={`${new Date().getFullYear()}년 목표가 없어요`} move={30} />
-					) : goal === undefined ? (
-						<Error move={40} />
 					) : (
 						<GoalContainer>
 							<Goal goal={goal} loading={false} />
@@ -38,9 +38,10 @@ const MainGoalCard = ({ goal, loading }) => {
 }
 
 const GoalContainer = styled.div.attrs({
-	className: 'h-100 d-flex align-items-center',
+	className: 'd-flex align-items-center',
 })`
 	transform: translateY(-10px);
+	height: 85%;
 	
 	@media screen and (min-width: ${breakpoints.md}) {
 		transform: translateY(-25px);

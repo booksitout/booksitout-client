@@ -62,17 +62,31 @@ const MainContainer = styled.div.attrs({
 		padding-bottom: 125px;
 	}
 
+	@media screen and (min-width: ${breakpoints.smmd}) {
+		padding-top: 100px;
+		padding-bottom: 150px;
+	}
+
 	@media screen and (min-width: ${breakpoints.md}) {
-		padding-top: 0px;
+		height: 50%;
+		padding-top: 50px;
 		padding-bottom: 50px;
 	}
 
+	@media screen and (min-width: ${breakpoints.mdlg}) {
+		height: 75%;
+		padding-top: 30px;
+		padding-bottom: 50px;
+	}
+	
 	@media screen and (min-width: ${breakpoints.lg}) {
+		height: 85%;
 		padding-top: 25px;
 		padding-bottom: 75px;
 	}
-
+	
 	@media screen and (min-width: ${breakpoints.xl}) {
+		height: 65%;
 		padding-top: 20px;
 		padding-bottom: 0px;
 	}

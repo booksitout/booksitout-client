@@ -48,7 +48,7 @@ const SearchRoute = () => {
 			</Alert>
 
 			<MyBookSearchResult query={query} />
-			<BooksitoutSearchResultCard query={query} />
+			{/* <BooksitoutSearchResultCard query={query} /> */}
 			<LibrarySearchResult query={query} />
 			<OnlineLibrarySearchResult query={query} />
 			<SubscriptionSearchResult query={query} />

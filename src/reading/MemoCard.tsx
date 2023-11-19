@@ -6,6 +6,7 @@ import { addMemo } from '../functions/memo'
 import messages from '../settings/messages'
 import uiSettings from '../settings/ui';
 import EditorForm from '../common/editor/EditorForm'
+import parse from 'html-react-parser';
 
 const MemoCard = ({ book, memoList, setMemoList, setSelectedMemo, setIsModalOpen }) => {
 	const [page, setPage] = React.useState<number>(book.currentPage)
@@ -25,7 +26,7 @@ const MemoCard = ({ book, memoList, setMemoList, setSelectedMemo, setIsModalOpen
 			page: page === 0 ? null : page,
 		}
 
-		addMemo(memo, book.bookId).then((isSuccess) => {
+		addMemo(memo, book.id).then((isSuccess) => {
 			if (isSuccess) {
 				toast.success('메모를 추가했어요')
 				setMemoList([...memoList, memo])
@@ -55,8 +56,10 @@ const MemoCard = ({ book, memoList, setMemoList, setSelectedMemo, setIsModalOpen
 											setIsModalOpen(true)
 											setSelectedMemo(memo)
 										}}>
-										<Card.Header>{memo.page}P</Card.Header>
-										<Card.Body className='d-flex align-items-center justify-content-center'>{memo.content}</Card.Body>
+										{
+											memo.page != null && <Card.Header>{memo.page}</Card.Header>
+										}
+										<Card.Body className='d-flex align-items-center justify-content-center'>{parse(memo.content)}</Card.Body>
 									</Card>
 								</div>
 							)

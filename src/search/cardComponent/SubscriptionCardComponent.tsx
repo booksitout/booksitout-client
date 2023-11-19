@@ -18,7 +18,7 @@ const SubscriptionCardComponent = ({ book }) => {
 					<Card.Body>
 						<div className='row h-100 justify-content-center'>
 							<div className='col-3 d-flex align-items-center'>
-								<img src={book.cover === '' || book.cover == null ? defaultBookCover : book.cover} alt='' className='img-fluid w-100' />
+								<img src={book.cover === '' || book.cover == null ? defaultBookCover : book.cover} alt='' className='img-fluid w-100 rounded' />
 							</div>
 
 							<div className='col-9'>

@@ -15,11 +15,10 @@ const MainLastReadBookCard = ({ lastBook, loading }) => {
 			<Card.Body>
 				<CardTitle icon={<BookIcon />} title={'마지막으로 읽은 책'} mb={0} />
 
-				{loading ?
+				{loading ? 
 					<MainLastReadBookCardLoading />
-				:
-				lastBook === undefined ? (
-					<Error />
+					: lastBook === undefined ? (
+						<Error mt={15} />
 				) : lastBook == null ? (
 					<NoContent message={messages.book.lastBook.noContent} move={30} />
 				) : (

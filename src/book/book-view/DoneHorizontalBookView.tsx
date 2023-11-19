@@ -20,7 +20,7 @@ const DoneHorizontalBookView = ({ book }) => {
 
 					<div className="text-center mt-2">
 						<h5 className="clamp-1-line">{book.title}</h5>
-						<h6 className="text-secondary">{book.author}</h6>
+						<h6 className="text-secondary clamp-1-line">{book.author.replaceAll("^", ", ")}</h6>
 					</div>
 
 					<div className="row justify-content-center w-100" style={{ position: 'absolute', bottom: '0px' }}>
@@ -46,7 +46,6 @@ const DoneHorizontalBookView = ({ book }) => {
 }
 
 const HorizontalBookDoneViewContainer = styled.a`
-	min-height: 350px;
 	overflow-y: hidden;
 `
 

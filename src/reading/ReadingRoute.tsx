@@ -69,7 +69,7 @@ const ReadingRoute = () => {
 						navigate(`/reading/${book.id}`)
 					}
 
-					getMemoListOfBook(book.bookId).then(memos => setMemoList(memos))
+					getMemoListOfBook(book.id).then(memos => setMemoList(memos))
 					setBook(book)
 				}
 			})

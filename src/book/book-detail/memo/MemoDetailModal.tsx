@@ -41,14 +41,14 @@ const MemoDetailModal = ({ isModalOpen, setIsModalOpen, memo, setMemo, memoList,
 		const confirm = window.confirm('메모를 지울까요?')
 		if (!confirm) return
 
-		deleteMemo(memo.memoId).then((success) => {
+		deleteMemo(memo.id).then((success) => {
 			if (!success) {
 				toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요')
 				return
 			}
 
 			setIsModalOpen(false)
-			setMemoList(memoList.filter((m) => m.memoId !== memo.memoId))
+			setMemoList(memoList.filter((m) => m.id !== memo.id))
 			toast.success('메모를 지웠어요')
 		})
 	}

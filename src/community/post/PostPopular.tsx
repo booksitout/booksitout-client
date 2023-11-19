@@ -37,7 +37,7 @@ const PostPopular = () => {
 					{loading ? (
 						<PostListGroupLoading col1="col-12 col-md-8 col-xl-6" col2="col-12 col-md-4 col-xl-6" />
 					) : error ? (
-						<Error move={0} mt={90} />
+						<Error />
 					) : (
 						<PostListGroup
 							postList={popularPost}

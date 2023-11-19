@@ -10,7 +10,7 @@ const OnlineUsedSearchResult = ({ onlineUsedList }) => {
 	if (onlineUsedList === undefined) {
 		return (
 			<BookSearchResultLoading
-				label="중고온라인"
+				label="중고 온라인"
 				labelComponent={<UsedOnlineLabel />}
 				CardComponent={UsedSearchPlaceholder}
 			/>
