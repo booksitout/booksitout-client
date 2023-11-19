@@ -17,7 +17,7 @@ const PostPopular = () => {
 	const [loading, setLoading] = React.useState(true)
 	const [error, setError] = React.useState(false)
 
-    const [popularPost, setPopularPost] = React.useState<PostType[]>([])
+	const [popularPost, setPopularPost] = React.useState<PostType[]>([])
 	React.useEffect(() => {
 		booksitoutServer
 			.get('/v4/forum/post?sort=popular&size=5')
@@ -27,10 +27,10 @@ const PostPopular = () => {
 	}, [])
 
 	return (
-		<a href="/community/post/all/popular" className="text-decoration-none text-black">
-			<Card className="h-100" style={{ minHeight: '480px' }}>
-				<AddButton color="book" onClick={() => navigate('/add/post')} />
+		<Card className="h-100" style={{ minHeight: '480px' }}>
+			<AddButton color="book" onClick={() => navigate('/add/post')} />
 
+			<a href="/community/post/all/popular" className="text-decoration-none text-black">
 				<Card.Body>
 					<CardTitle icon={<FireIcon />} title={'지금 인기있는 게시글'} />
 
@@ -50,8 +50,8 @@ const PostPopular = () => {
 
 					<AllButton url="/community/post/all/popular" />
 				</Card.Body>
-			</Card>
-		</a>
+			</a>
+		</Card>
 	)
 }
 
