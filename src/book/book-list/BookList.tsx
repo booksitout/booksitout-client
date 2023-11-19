@@ -137,7 +137,7 @@ const BookList = ({ range, rangeDetail }) => {
 			dataLength={bookList.length}
 			next={getNextPage}
 			hasMore={currentPage < maxPage}
-			loader={<InfiniteScrollLoading />}
+			loader={<BookListLoading range={range} mt={false} />}
 			className="overflow-hidden"
 		>
 			<BookCardList bookList={bookList} range={range} setBookList={setBookList} bookListByYear={bookListByYear} />
