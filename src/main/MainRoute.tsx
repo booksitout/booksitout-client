@@ -74,12 +74,12 @@ const MainRoute = () => {
 				<div className="mb-2" />
 
 				{isLogin ? <MainAlert /> : <MainIntroductionSection />}
-				<div className="mb-2" />
+				<div className="mb-3" />
 
 				{!isLogin && (
 					<span className="d-md-none">
 						<MainLoginSection />
-						<div className="mb-2" />
+						<div className="mb-3" />
 					</span>
 				)}
 
@@ -140,7 +140,7 @@ const Container = styled.div.attrs({
 })``
 
 const BookCardContainer = styled.div.attrs({
-	className: 'col-12 col-md-6 col-xxl-4 mb-2',
+	className: 'col-12 col-md-6 col-xxl-4 mb-3',
 })``
 
 const CommunityCardContainer = styled.div.attrs({

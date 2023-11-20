@@ -17,7 +17,8 @@ const AddReadingSessionModal = ({ isModalOpen, setIsModalOpen, book, setBook, re
 	const [yearArray, setYearArray] = React.useState<number[]>(Array.from({ length: 5 }, (_, i) => i + (new Date().getFullYear() - 5 + 1)).reverse())
 	const [monthArray, setMonthArray] = React.useState<number[]>([])
 	const [dayArray, setDayArray] = React.useState<number[]>([])
-	
+
+	const [startPage, setStartPage] = React.useState<number | null>()
 	const [endPage, setEndPage] = React.useState<number | null>()
 	const [readTime, setReadTime] = React.useState<number | null>()
 
@@ -69,7 +70,7 @@ const AddReadingSessionModal = ({ isModalOpen, setIsModalOpen, book, setBook, re
 
 		const readingSession = {
 			startDate: `${year}-${(month.toString().length === 1 ? '0' : '') + month}-${(day.toString().length === 1 ? '0' : '') + day}`,
-			startPage: getStartPage(),
+			startPage: startPage ?? getStartPage(),
 			endPage: endPage,
 			readTime: readTime,
 		}
@@ -80,7 +81,7 @@ const AddReadingSessionModal = ({ isModalOpen, setIsModalOpen, book, setBook, re
 					setReadingSessionList([
 						...readingSessionList,
 						{
-							startPage: getStartPage(),
+							startPage: startPage ?? getStartPage(),
 							endPage: endPage,
 							startTime: `${year}-${month}-${day}T`,
 							endTime: `${year}-${month}-${day}T`,
@@ -172,7 +173,14 @@ const AddReadingSessionModal = ({ isModalOpen, setIsModalOpen, book, setBook, re
 					</div>
 
 					<Form.Label>시작 페이지</Form.Label>
-					<Form.Control className="mb-2" type="number" value={getStartPage()} disabled />
+					<Form.Control 
+						className="mb-2"
+						type="number" 
+						inputMode="numeric"
+						pattern="[0-9]*"
+						placeholder={String(getStartPage())}
+						onChange={e => setStartPage(Number(e.target.value))}
+						/>
 
 					<Form.Label>끝 페이지</Form.Label>
 					<Form.Control
