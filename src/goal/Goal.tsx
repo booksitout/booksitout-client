@@ -3,6 +3,7 @@ import goalCompleteIcon from './images/goal-complete.png'
 import { Card, Placeholder } from 'react-bootstrap'
 import Error from '../common/Error';
 import NoContent from '../common/NoContent';
+import styled from 'styled-components';
 
 const Goal = ({ goal, loading = false }) => {
 	return (
@@ -12,22 +13,20 @@ const Goal = ({ goal, loading = false }) => {
 			) : (
 				<>
 					{goal != null && goal.current >= goal.goal && (
-						<div
-							className='row position-absolute opacity-100'
-							style={{ width: '180px', left: '55%', top: '55%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
+						<GoalCompleteContainer>
 							<img src={goalCompleteIcon} className='img-fluid' alt='' />
-
-							<h4 className='mt-2'>목표달성!</h4>
-						</div>
+							<GoalCompleteText>목표달성!</GoalCompleteText>
+						</GoalCompleteContainer>
 					)}
+
 					<div className='row w-100'>
 						{(goal !== null || loading) && (
-							<div className={'col-12 align-self-center' + (goal != null && goal.current >= goal.goal ? ' opacity-25' : '')}>
+							<GoalImageContainer goal={goal}>
 								<img src={goalIcon} alt='' className='img-fluid' style={{ height: '150px' }} />
-							</div>
+							</GoalImageContainer>
 						)}
 
-						<div className={'col-12 align-self-center' + (goal != null && goal.current >= goal.goal ? ' opacity-25' : '')}>
+						<GoalTextContainer goal={goal}>
 							<h1 className='force-1-line p-2'>
 								{loading ? (
 									<Placeholder as={Card.Text} animation='wave'>
@@ -35,7 +34,7 @@ const Goal = ({ goal, loading = false }) => {
 										<Placeholder xs='2' /> 권
 									</Placeholder>
 								) : goal === null ? (
-									<NoContent iconSize={3}/>
+									<NoContent iconSize={3} />
 								) : (
 									<>
 										<span className='text-book' style={{ fontWeight: 'bold' }}>
@@ -45,12 +44,40 @@ const Goal = ({ goal, loading = false }) => {
 									</>
 								)}
 							</h1>
-						</div>
+						</GoalTextContainer>
 					</div>
 				</>
 			)}
 		</div>
 	)
 }
+
+const GoalCompleteContainer = styled.div`
+	width: 180px; 
+	left: 50%; 
+	top: 50%; 
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	position: absolute;
+	opacity: 100;
+`;
+
+const GoalCompleteText = styled.h3`
+	font-weight: bold;
+	margin-top: 10px;
+`;
+
+const GoalImageContainer = styled.div.attrs({
+	className: 'col-12 align-self-center'
+})`
+	opacity: ${({ goal }) => ((goal?.current ?? 1) >= (goal?.goal ?? 0) ? '0.1' : '1.0')}
+`;
+
+const GoalTextContainer = styled.div.attrs({
+	className: 'col-12'
+})`
+	align-self: center;
+	opacity: ${({ goal }) => ((goal?.current ?? 1) >= (goal?.goal ?? 0) ? '0.1' : '1.0')}
+`;
 
 export default Goal
