@@ -125,9 +125,9 @@ const MainRoute = () => {
 							<MainTipsCard />
 						</CommunityCardContainer>
 
-						<CommunityCardContainer>
+						{/* <CommunityCardContainer>
 							<GatheringSummaryCard title="지금 모집중인 독서모임" col="col-12" />
-						</CommunityCardContainer>
+						</CommunityCardContainer> */}
 					</Container>
 				</div>
 			</Row>

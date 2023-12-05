@@ -22,7 +22,7 @@ const TipsRoute = () => {
 						<h2 className='m-0'>책잇아웃 꿀팁</h2>
 					</div>
 
-					<h5 className='text-secondary'>책잇아웃을 더 편리하게 이용하기 위한 꿀팁을 얻어 갈 수 있어요</h5>
+					<h5 className='text-secondary'>책에 관한 여러 꿀팁을 얻어 갈 수 있어요</h5>
 
 					<ButtonGroup className='w-100 mt-4'>
 						<a href='/introduction/tips/all' className='w-100'>

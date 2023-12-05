@@ -22,9 +22,9 @@ const CommunityRoute = () => {
 					<CommunityRoutePostCard />
 				</div>
 
-				<div className='col-12 mb-4'>
+				{/* <div className='col-12 mb-4'>
 					<GatheringSummaryCard />
-				</div>
+				</div> */}
 
 				<div className='col-12 mb-4'>
 					<MainTipsCard />

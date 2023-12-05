@@ -8,7 +8,7 @@ const getBookOfCurrentReadingSession = () => {
 	return axios
 		.get(urls.api.reading.get.currentBook, { headers: apiSettings.headers })
 		.then((res) => {
-			if (res.status === 404) throw new Error()
+			if (res.status === 404 || res.status === 204) throw new Error()
 			return res.data
 		})
 		.catch((e) => {

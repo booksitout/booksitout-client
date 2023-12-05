@@ -1,4 +1,5 @@
 import { Card } from 'react-bootstrap'
+import styled from 'styled-components';
 
 import yes24Icon from '../../resources/images/search/yes24.png'
 import kyoboIcon from '../../resources/images/search/kyobo.jpg'
@@ -12,17 +13,17 @@ const SubscriptionCardComponent = ({ book }) => {
 	if (book == null || book.title === undefined) return <></>
 
 	return (
-		<div className='col-12 col-lg-6 mb-3 mb-lg-0' style={{ height: '225px' }}>
+		<CardContainer>
 			<a href={book.link} target='_blank' className='text-decoration-none text-black' rel='noreferrer'>
 				<Card className='h-100'>
 					<Card.Body>
 						<div className='row h-100 justify-content-center'>
 							<div className='col-3 d-flex align-items-center'>
-								<img src={book.cover === '' || book.cover == null ? defaultBookCover : book.cover} alt='' className='img-fluid w-100 rounded' />
+								<BookCover src={book.cover === '' || book.cover == null ? defaultBookCover : book.cover} alt='' />
 							</div>
 
 							<div className='col-9'>
-								<h5>{book.title.slice(0, 50)}</h5>
+								<h5 className='clamp-1-line'>{book.title}</h5>
 								<h6 className='text-secondary'>{book.author}</h6>
 								<div className='mt-4'>
 									<img
@@ -55,8 +56,18 @@ const SubscriptionCardComponent = ({ book }) => {
 					</Card.Body>
 				</Card>
 			</a>
-		</div>
+		</CardContainer>
 	)
 }
+
+const BookCover = styled.img.attrs({
+	className: "img-fluid rounded"
+})``;
+
+const CardContainer = styled.div.attrs({
+	className: 'col-12 col-lg-6 mb-3 mb-lg-0'
+})`
+	height: 225px;
+`;
 
 export default SubscriptionCardComponent

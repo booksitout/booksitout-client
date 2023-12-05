@@ -17,7 +17,7 @@ const Footer = () => {
 
 				<InfoContainer>
 					<Info>사업자 등록번호 595-64-00704 | 대표 박진겸</Info>
-					<Info>통신판매업 신고번호 2023-서울동작-00000</Info>
+					<Info>통신판매업 신고번호 2023-서울강남-00000</Info>
 					<InfoLink href="/privacy/2023-7-1">개인정보처리방침</InfoLink>
 					<Info>booksitout@gmail.com</Info>
 				</InfoContainer>
