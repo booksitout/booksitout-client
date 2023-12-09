@@ -7,6 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import InfiniteScrollLoading from '../../common/InfiniteScrollLoading'
 import { booksitoutServer } from '../../functions/axios'
 import MainTipsListGroupLoading from './MainTipsListGroupLoading'
+import styled from 'styled-components';
 
 const TipsListGroup = ({ range }) => {
 	const [loading, setLoading] = React.useState(true)
@@ -36,22 +37,22 @@ const TipsListGroup = ({ range }) => {
 
 	if (loading) return <MainTipsListGroupLoading />
 	if (postList == null || error) return <Error mt={100}/>
-	if (postList.length === 0) return <NoContent message='아직 꿀팁이 없어요' move={-30} />
+	if (postList.length === 0) return <NoContent message='아직 꿀팁이 없어요' move={0} mt={50} />
 
 	return (
 		<InfiniteScroll loader={<InfiniteScrollLoading />} next={getNextPage} hasMore={currentPage < totalPages} dataLength={totalPages} className='overflow-hidden'>
 			<div className='row'>
 				{postList.map((post, i) => {
 					return (
-						<a href={`/introduction/tips/detail/${post.id}`} className='mb-3'>
+						<a href={`/tips/detail/${post.id}`} className='mb-3'>
 							<li className='d-flex w-100 pe-0 border p-3 rounded'>
 								<div className='row w-100'>
 									<div className='col-12 col-md-8'>
 										<div className='text-book'>
-											<TimeIcon className='mb-1' /> 약 {post.estimatedReadTime}분
+											<TimeIcon className='mb-1' /> {post.type.displayName}
 										</div>
 
-										<h5>{post.title}</h5>
+										<Title>{post.title}</Title>
 									</div>
 
 									<div className='col-12 col-md-4'>
@@ -68,5 +69,11 @@ const TipsListGroup = ({ range }) => {
 		</InfiniteScroll>
 	)
 }
+
+const Title = styled.h5.attrs({
+	className: 'clamp-1-line'
+})`
+	
+`;
 
 export default TipsListGroup

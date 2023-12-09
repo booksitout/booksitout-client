@@ -1,16 +1,13 @@
 import React from "react"
 import { Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
-
 import parse from 'html-react-parser'
-
 import Tip from "./TipsType"
 import TipsTimeIcon from "./TipsTimeIcon"
-
 import Loading from "../../common/Loading"
 import Error from '../../common/Error'
-
 import { booksitoutServer } from "../../functions/axios"
+import styled from 'styled-components';
 
 const TipsDetail = () => {
     const { id } = useParams()
@@ -36,7 +33,7 @@ const TipsDetail = () => {
     if (error) return <Error />
 
     return (
-		<div className='container-xl'>
+		<TipsDetailContainer>
 			<Card style={{ minHeight: '200px' }} className='mb-4'>
 				<Card.Body>
 					<div className='row'>
@@ -62,8 +59,31 @@ const TipsDetail = () => {
 					<p>{parse(tip?.content ?? '')}</p>
 				</Card.Body>
 			</Card>
-		</div>
+		</TipsDetailContainer>
 	)
 }
+
+const TipsDetailContainer = styled.div.attrs({
+	className: 'container-xl'
+})`
+	b {
+		background-color: #ECECEA;
+		color: #CE5858;
+		padding: 2.5px;
+	}
+
+	.title {
+		margin-top: 20px;
+		text-align: center;
+	}
+
+	.content {
+		
+	}
+
+	hr {
+		margin-bottom: 50px;
+	}
+`;
 
 export default TipsDetail

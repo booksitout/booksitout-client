@@ -10,7 +10,6 @@ import MainLastReadBookCard from './MainLastReadBookCard';
 import MainReadingTimeCard from './MainReadingTimeCard';
 import MainSummaryStatisticsCard from './MainSummaryStatisticsCard';
 import MainGoalCard from './MainGoalCard';
-import GatheringSummaryCard from '../community/summaryCard/GatheringSummaryCard';
 import MainLibraryMembershipCard from './MainLibraryMembershipCard';
 import { GoalType } from '../goal/GoalType'
 import { StatisticsType } from '../types/StatisticsType';
@@ -71,15 +70,15 @@ const MainRoute = () => {
 			<Row>
 				<div className="mt-2" />
 				<PreReleaseInfoSection />
-				<div className="mb-2" />
+				<Margin />
 
 				{isLogin ? <MainAlert /> : <MainIntroductionSection />}
-				<div className="mb-3" />
+				<Margin />
 
 				{!isLogin && (
 					<span className="d-md-none">
 						<MainLoginSection />
-						<div className="mb-3" />
+						<Margin />
 					</span>
 				)}
 
@@ -113,21 +112,17 @@ const MainRoute = () => {
 						)}
 					</Container>
 				</div>
-				<div className="mb-3" />
+				<Margin />
 
 				<div>
 					<Container>
 						<CommunityCardContainer>
-							<PostPopular />
-						</CommunityCardContainer>
-
-						<CommunityCardContainer>
 							<MainTipsCard />
 						</CommunityCardContainer>
 
-						{/* <CommunityCardContainer>
-							<GatheringSummaryCard title="지금 모집중인 독서모임" col="col-12" />
-						</CommunityCardContainer> */}
+						<CommunityCardContainer>
+							<PostPopular />
+						</CommunityCardContainer>
 					</Container>
 				</div>
 			</Row>
@@ -146,5 +141,9 @@ const BookCardContainer = styled.div.attrs({
 const CommunityCardContainer = styled.div.attrs({
 	className: 'col-12 col-xxl-6 mb-3',
 })``
+
+const Margin = styled.div.attrs({
+	className: 'mb-3'
+})``;
 
 export default MainRoute

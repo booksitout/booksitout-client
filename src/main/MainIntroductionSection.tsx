@@ -6,7 +6,6 @@ import { Button } from 'react-bootstrap';
 
 const MainIntroductionSection = () => {
 	const head = ['독서생활,', '이제는 더 간편하게.']
-	const subHead = ['나만의 디지털 서재를 만들어, 내 독서활동을 관리해요.', '독서활동을 기록하고 통계로 볼 수 있어요.']
 
 	return (
 		<div className="container">
@@ -18,14 +17,8 @@ const MainIntroductionSection = () => {
 						})}
 					</Head>
 
-					<SubHead>
-						{subHead.map(h => {
-							return <SubHeadText>{h}</SubHeadText>
-						})}
-					</SubHead>
-
 					<ButtonContainer href="/introduction">
-						<MoreButton variant="book">더 자세히 알아보기</MoreButton>
+						<MoreButton variant="book">자세히 알아보기</MoreButton>
 					</ButtonContainer>
 				</Content>
 

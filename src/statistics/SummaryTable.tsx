@@ -35,13 +35,13 @@ const SummaryTable = ({ statistics, loading = false  }) => {
 			value: (statistics) => `${statistics.yearStatistics.averageStar != null && statistics.yearStatistics.averageStar.toFixed(1)}점`,
 		},
 		{
-			id: 2,
+			id: 5,
 			icon: longestDayIcon,
 			name: '최대 독서 시간',
 			value: (statistics) => `${statistics.dayStatistics.mostReadTime != null && statistics.dayStatistics.mostReadTime}분`,
 		},
 		{
-			id: 2,
+			id: 6,
 			icon: pageIcon,
 			name: '총 읽은 페이지',
 			value: (statistics) =>
@@ -50,7 +50,7 @@ const SummaryTable = ({ statistics, loading = false  }) => {
 	]
 
 	return (
-		<table className='table table-hover'>
+		<table className='table table-hover mb-0'>
 			<tbody>
 				{statisticsData.map((stat) => {
 					return (

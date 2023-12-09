@@ -25,40 +25,40 @@ const TipsRoute = () => {
 					<h5 className='text-secondary'>책에 관한 여러 꿀팁을 얻어 갈 수 있어요</h5>
 
 					<ButtonGroup className='w-100 mt-4'>
-						<a href='/introduction/tips/all' className='w-100'>
+						<a href='/tips/all' className='w-100'>
 							<ToggleButton variant={range === 'all' ? 'book' : 'light'} type='radio' className='w-100' value='all'>
 								전체
 							</ToggleButton>
 						</a>
 
-						<a href='/introduction/tips/native' className='w-100'>
-							<ToggleButton variant={range === 'native' ? 'book' : 'light'} type='radio' className='w-100' value='native'>
-								책잇아웃 내
+						<a href='/tips/library' className='w-100'>
+							<ToggleButton variant={range === 'library' ? 'book' : 'light'} type='radio' className='w-100' value='native'>
+								도서관
 							</ToggleButton>
 						</a>
 
-						<a href='/introduction/tips/integration' className='w-100'>
-							<ToggleButton variant={range === 'integration' ? 'book' : 'light'} type='radio' className='w-100' value='integration'>
-								연동
+						<a href='/tips/bookstore' className='w-100'>
+							<ToggleButton variant={range === 'bookstore' ? 'book' : 'light'} type='radio' className='w-100' value='integration'>
+								책 구입
 							</ToggleButton>
 						</a>
 					</ButtonGroup>
 
 					<ButtonGroup className='w-100 mt-1'>
-						<a href='/introduction/tips/library' className='w-100'>
-							<ToggleButton variant={range === 'library' ? 'book' : 'light'} type='radio' className='w-100' value='library'>
-								도서관
+						<a href='/tips/booksitout' className='w-100'>
+							<ToggleButton variant={range === 'booksitout' ? 'book' : 'light'} type='radio' className='w-100' value='library'>
+								책잇아웃 사용법
 							</ToggleButton>
 						</a>
 
-						<a href='/introduction/tips/search' className='w-100'>
-							<ToggleButton variant={range === 'search' ? 'book' : 'light'} type='radio' className='w-100' value='search'>
-								검색
+						<a href='/tips/reading' className='w-100'>
+							<ToggleButton variant={range === 'reading' ? 'book' : 'light'} type='radio' className='w-100' value='search'>
+								독서법
 							</ToggleButton>
 						</a>
 
-						<a href='/introduction/tips/forum' className='w-100 force-1-line'>
-							<ToggleButton variant={range === 'forum' ? 'book' : 'light'} type='radio' className='w-100' value='forum'>
+						<a href='/tips/community' className='w-100 force-1-line'>
+							<ToggleButton variant={range === 'community' ? 'book' : 'light'} type='radio' className='w-100' value='forum'>
 								커뮤니티
 							</ToggleButton>
 						</a>

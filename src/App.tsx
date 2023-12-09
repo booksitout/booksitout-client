@@ -82,8 +82,9 @@ const router = createBrowserRouter(
 
 			<Route path="/introduction" element={<IntroductionRoute />} />
 			<Route path="introduction/features" element={<FeatureRoute />} />
-			<Route path="introduction/tips/:range" element={<TipsRoute />} />
-			<Route path="introduction/tips/detail/:id" element={<TipsDetail />} />
+			
+			<Route path="tips/:range" element={<TipsRoute />} />
+			<Route path="tips/detail/:id" element={<TipsDetail />} />
 
 			<Route path="/faq" element={<FaqRoute />} />
 

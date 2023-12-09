@@ -27,7 +27,7 @@ const MainTipsCard = () => {
 	}, [])
 
 	return (
-		<TipsContainer href="/introduction/tips/all">
+		<TipsContainer href="/tips/all">
 			<TipsCard>
 				<Card.Body>
 					<CardTitle icon={<img src={logo} alt="" className="img-fluid rounded me-2 mt-0 mt-md-1" style={{ width: '40px', height: '40px' }}/>} title="책잇아웃 꿀팁"/>
@@ -43,7 +43,7 @@ const MainTipsCard = () => {
 					)}
 					<div className="d-inline-block pb-4" />
 
-					<AllButton url="/introduction/tips/all" />
+					<AllButton url="tips/all" />
 				</Card.Body>
 			</TipsCard>
 		</TipsContainer>

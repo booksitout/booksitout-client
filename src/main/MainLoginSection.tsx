@@ -1,13 +1,13 @@
-import React from 'react'
 import styled from 'styled-components'
 import relaxImage from '../info/relax.svg'
 import { oAuthList } from '../user/oauthConfig'
 import breakpoints from '../common/breakpoints'
 import { Card } from 'react-bootstrap'
+import RouteContainer from '../common/RouteContainer'
 
 const MainLoginSection = () => {
     return (
-		<div className="container">
+		<RouteContainer>
 			<LoginCard>
 				<ImageContainer>
 					<Image src={relaxImage} />
@@ -32,7 +32,7 @@ const MainLoginSection = () => {
 					</LoginButtonContainer>
 				</Content>
 			</LoginCard>
-		</div>
+		</RouteContainer>
 	)
 }
 
