@@ -1,5 +1,5 @@
 import axios from 'axios'
-import urls from '../settings/urls'
+import urls from '../components/settings/urls'
 import utils from './utils'
 
 import aladin from '../resources/images/search/aladin.png'

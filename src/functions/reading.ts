@@ -1,8 +1,8 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import urls from '../settings/urls'
-import apiSettings from '../settings/api'
-import messages from '../settings/messages'
+import urls from '../components/settings/urls'
+import apiSettings from '../components/settings/api'
+import messages from '../components/settings/messages'
 
 const getBookOfCurrentReadingSession = () => {
 	return axios

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import urls from '../settings/urls'
-import apiSettings from '../settings/api'
+import urls from '../components/settings/urls'
+import apiSettings from '../components/settings/api'
 import utils from './utils'
 
 const getReadTime = (duration) => {

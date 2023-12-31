@@ -1,4 +1,4 @@
-import urls from '../settings/urls'
+import urls from '../components/settings/urls'
 import utils from './utils'
 
 const QNA_ALL_API_URL = `${urls.api.base}/v1/qna/all`

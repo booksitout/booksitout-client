@@ -1,74 +1,73 @@
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
+import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
 
-import Root from './common/Root'
-import MainRoute from './main/MainRoute'
-import NotFound from './common/NotFound'
-import ErrorPage from './common/ErrorPage'
+import Root from './components/common/Root'
+import MainRoute from './components/main/MainRoute'
+import NotFound from './components/common/NotFound'
+import ErrorPage from './components/common/ErrorPage'
 
-import AdminRoute from './admin/AdminRoute'
+import IntroductionRoute from './components/info/IntroductionRoute'
+import FaqRoute from './components/info/FaqRoute'
+import FeatureRoute from './components/info/FeatureRoute'
+import TipsRoute from './components/community/tips/TipsRoute'
+import TipsDetail from './components/community/tips/TipsDetail'
 
-import IntroductionRoute from './info/IntroductionRoute'
-import FaqRoute from './info/FaqRoute'
-import FeatureRoute from './info/FeatureRoute'
-import TipsRoute from './community/tips/TipsRoute'
-import TipsDetail from './community/tips/TipsDetail'
+import LoginRoute from './components/user/LoginRoute'
+import OAuth from './components/user/OAuth'
 
-import LoginRoute from './user/LoginRoute'
-import OAuth from './user/OAuth'
-import JoinRoute from './user/JoinRoute'
+import SettingsRoute from './components/settings/SettingsRoute'
+import SearchLibrarySettings from './components/settings/SearchLibrarySettings'
+import SearchSettings from './components/settings/SearchSettings'
+import CommunitySettings from './components/settings/CommunitySettings'
+import NotificationSettings from './components/settings/noti/NotificationSettings'
+import PersonalInfoSettings from './components/settings/PersonalInfoSettings'
 
-import SettingsRoute from './settings/SettingsRoute'
-import SearchLibrarySettings from './settings/SearchLibrarySettings'
-import SearchSettings from './settings/SearchSettings'
-import CommunitySettings from './settings/CommunitySettings'
-import NotificationSettings from './settings/noti/NotificationSettings'
-import PersonalInfoSettings from './settings/PersonalInfoSettings'
+import BookRoute from './components/book/BookRoute'
+import BookDetail from './components/book/book-detail/BookDetail'
+import AddBookRoute from './components/book/book-form/AddBookRoute'
+import EditBookForm from './components/book/book-form/EditBookForm'
 
-import BookRoute from './book/BookRoute'
-import BookDetail from './book/book-detail/BookDetail'
-import AddBookRoute from './book/book-form/AddBookRoute'
-import EditBookForm from './book/book-form/EditBookForm'
+import ReadingRoute from './components/reading/ReadingRoute'
+import ReadingNoId from './components/reading/ReadingNoId'
 
-import ReadingRoute from './reading/ReadingRoute'
-import ReadingNoId from './reading/ReadingNoId'
+import StatisticsRoute from './components/statistics/StatisticsRoute'
+import GoalRoute from './components/goal/goalRoute/GoalRoute'
 
-import StatisticsRoute from './statistics/StatisticsRoute'
-import GoalRoute from './goal/goalRoute/GoalRoute'
+import SearchRoute from './components/search/SearchRoute'
 
-import SearchRoute from './search/SearchRoute'
+import CommunityRoute from './components/community/community-main/CommunityRoute'
+import AddCommunityRoute from './components/community/AddCommunityRoute'
 
-import CommunityRoute from './community/community-main/CommunityRoute'
-import AddCommunityRoute from './community/AddCommunityRoute'
+import PostRoute, {loader as postRouteLoader} from './components/community/post/post-route/PostRoute'
+import PostDetail from './components/community/post/PostDetail'
+import EditPostForm from './components/community/post/EditPostForm'
 
-import PostRoute, { loader as postRouteLoader } from './community/post/post-route/PostRoute'
-import PostDetail from './community/post/PostDetail'
-import EditPostForm from './community/post/EditPostForm'
+import GatheringRoute, {loader as gatheringRouteLoader} from './components/community/gathering/GatheringRoute'
+import GatheringDetail, {loader as gatheringDetailLoader} from './components/community/gathering/GatheringDetail'
+import GatheringJoinForm, {loader as gatheringJoinLoader} from './components/community/gathering/GatheringJoinForm'
 
-import GatheringRoute, {loader as gatheringRouteLoader} from './community/gathering/GatheringRoute'
-import GatheringDetail, {loader as gatheringDetailLoader} from './community/gathering/GatheringDetail'
-import GatheringJoinForm, { loader as gatheringJoinLoader } from './community/gathering/GatheringJoinForm'
+import UserRoute, {loader as userRouteLoader} from './components/user/UserRoute'
+import UserPostList, {loader as userPostListLoader} from './components/user/UserPostList'
+import UserBookList, {loader as userBookListLoader} from './components/user/UserBookList'
 
-import UserRoute, { loader as userRouteLoader } from './user/UserRoute'
-import UserPostList, {loader as userPostListLoader} from './user/UserPostList'
-import UserBookList, { loader as userBookListLoader } from './user/UserBookList'
+import BookInfoRoute, {loader as bookInfoRouteLoader} from './components/bookInfo/BookInfoRoute'
 
-import BookInfoRoute, { loader as bookInfoRouteLoader } from './bookInfo/BookInfoRoute'
+import LibraryRoute from './components/library/route/LibraryRoute'
+import LibraryDetail, {loader as libraryDetailLoader} from './components/library/detail/LibraryDetail'
+import LibraryNearRoute from './components/library/near/LibraryNearRoute'
+import LibraryRegionRoute, {loader as libraryRegionLoader} from './components/library/region/LibraryRegionRoute'
 
-import LibraryRoute from './library/route/LibraryRoute'
-import LibraryDetail, {loader as libraryDetailLoader} from './library/detail/LibraryDetail'
-import LibraryNearRoute from './library/near/LibraryNearRoute'
-import LibraryRegionRoute, { loader as libraryRegionLoader } from './library/region/LibraryRegionRoute'
+import MembershipDetail from './components/library/membership/MembershipDetail'
+import MembershipRoute from './components/library/membership/MembershipRoute'
+import AddMembershipRoute from './components/library/membership/add/AddMembershipRoute'
+import MembershipEditRoute, {
+	loader as membershipEditLoader
+} from './components/library/membership/edit/MembershipEditRoute'
 
-import MembershipDetail from './library/membership/MembershipDetail'
-import MembershipRoute from './library/membership/MembershipRoute'
-import AddMembershipRoute from './library/membership/add/AddMembershipRoute'
-import MembershipEditRoute, {loader as membershipEditLoader} from './library/membership/edit/MembershipEditRoute'
-
-import PwaRoute from './pwa/PwaRoute'
-import AddRoute from './common/add/AddRoute'
-import SuggestionRoute from './suggestion/SuggestionRoute'
-import PrivacyRoute from './privacy/PrivacyRoute'
-import PrivacyByDate from './privacy/PrivacyByDate'
+import PwaRoute from './components/pwa/PwaRoute'
+import AddRoute from './components/common/add/AddRoute'
+import PrivacyRoute from './components/privacy/PrivacyRoute'
+import PrivacyByDate from './components/privacy/PrivacyByDate'
+import UserProfileRedirectRoute from './components/user/UserProfileRedirectRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -77,12 +76,11 @@ const router = createBrowserRouter(
 
 			<Route path="/" element={<MainRoute />} />
 
-			<Route path="/admin" element={<AdminRoute />} />
 			<Route path="/pwa" element={<PwaRoute />} />
 
 			<Route path="/introduction" element={<IntroductionRoute />} />
 			<Route path="introduction/features" element={<FeatureRoute />} />
-			
+
 			<Route path="tips/:range" element={<TipsRoute />} />
 			<Route path="tips/detail/:id" element={<TipsDetail />} />
 
@@ -90,7 +88,6 @@ const router = createBrowserRouter(
 
 			<Route path="/login" element={<LoginRoute />} />
 			<Route path="/login/oauth/:provider" element={<OAuth />} />
-			<Route path="/join" element={<JoinRoute />} />
 
 			<Route path="/settings" element={<SettingsRoute />} />
 			<Route path="/settings/search" element={<SearchSettings />} />
@@ -134,6 +131,7 @@ const router = createBrowserRouter(
 			<Route path="/book/info/:isbn/related-posts" element={<></>} />
 			<Route path="/book/info/:isbn/covers" element={<></>} />
 
+			<Route path="/user/redirect" element={<UserProfileRedirectRoute />} />
 			<Route path="/user/:nickName" element={<UserRoute />} loader={userRouteLoader} />
 			<Route path="/user/:nickName/books" element={<UserBookList />} loader={userBookListLoader} />
 			<Route path="/user/:nickName/posts" element={<UserPostList />} loader={userPostListLoader} />
@@ -154,9 +152,7 @@ const router = createBrowserRouter(
 
 			<Route path="/library/membership/all" element={<MembershipRoute />} />
 			<Route path="/library/membership/:id" element={<MembershipDetail />} />
-			<Route
-				path="/library/membership/edit/:id"
-				element={<MembershipEditRoute />}
+			<Route path="/library/membership/edit/:id" element={<MembershipEditRoute />}
 				loader={membershipEditLoader}
 			/>
 
@@ -165,8 +161,6 @@ const router = createBrowserRouter(
 				<Route path=":type" element={<AddCommunityRoute />} />
 				<Route path="membership/:method" element={<AddMembershipRoute />} />
 			</Route>
-
-			<Route path="/suggestion" element={<SuggestionRoute />} />
 
 			<Route path="/privacy" element={<PrivacyRoute />} />
 			<Route path="/privacy/:date" element={<PrivacyByDate />} />
