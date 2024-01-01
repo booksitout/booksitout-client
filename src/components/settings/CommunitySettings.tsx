@@ -7,8 +7,6 @@ import SettingsCard from "./SettingsCard"
 import { MdPeopleAlt as ProfileIcon } from 'react-icons/md'
 import { BsFillPatchCheckFill as PaidIcon, BsFillImageFill as ImageIcon } from 'react-icons/bs'
 import { useDropzone } from "react-dropzone"
-import urls from "./urls"
-import axios from "axios"
 import utils from "../../functions/utils"
 
 import Loading from "../common/Loading"

@@ -1,24 +1,28 @@
-import axios from 'axios'
 import urls from '../components/settings/urls'
-import apiSettings from '../components/settings/api'
-import utils from './utils'
+import { booksitoutServer } from '../config/axios'
 
 const getReadTime = (duration) => {
-	return axios.get(urls.api.statistics.get.readTime(duration), { headers: { Authorization: utils.getToken() } }).then((res) => res.data)
+	return booksitoutServer
+		.get(urls.api.statistics.get.readTime(duration))
+		.then((res) => res.data)
 }
 
 const getStatisticsSummary = (year) => {
-	return axios
-		.get(urls.api.statistics.get.summary(year), { headers: { Authorization: utils.getToken() } })
+	return booksitoutServer
+		.get(urls.api.statistics.get.summary(year))
 		.then((res) => res)
 }
 
 const getLangaugeStatistics = () => {
-	return axios.get(urls.api.statistics.get.language, { headers: apiSettings.headers }).then((res) => res.data)
+	return booksitoutServer
+	.get(urls.api.statistics.get.language)
+	.then((res) => res.data)
 }
 
 const getCategoryStatistics = () => {
-	return axios.get(urls.api.statistics.get.category, { headers: apiSettings.headers }).then((res) => res.data)
+	return booksitoutServer
+	.get(urls.api.statistics.get.category)
+	.then((res) => res.data)
 }
 
 export { getReadTime, getStatisticsSummary, getLangaugeStatistics, getCategoryStatistics }

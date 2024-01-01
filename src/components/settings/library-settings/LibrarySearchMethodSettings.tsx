@@ -1,11 +1,11 @@
 import React from "react"
-import axios from "axios"
 import toast from "react-hot-toast"
 import utils from "../../../functions/utils"
 import messages from "../messages"
 import { ButtonGroup, ToggleButton } from "react-bootstrap"
 import urls from "../urls"
 import SettingsCard from "../SettingsCard"
+import { booksitoutServer } from "../../../config/axios"
 
 const LibrarySearchMethodSettings = () => {
 	const [currentApiKey, setCurrentApiKey] = React.useState(localStorage.getItem('library-search-method') || 'REGION')
@@ -29,11 +29,10 @@ const LibrarySearchMethodSettings = () => {
 			return
 		}
 
-		axios
+		booksitoutServer
 			.put(
 				`${urls.api.base}/v3/search/settings/offline-library/search-method`,
 				{ method: apiKey },
-				{ headers: { Authorization: utils.getToken() } }
 			)
 			.then((res) => {
 				if (res.status === 200) {

@@ -1,13 +1,13 @@
 import React from "react"
 import { Card, Form } from "react-bootstrap"
 import { LibraryType } from "../../../types/LibraryType"
-import axios from "axios"
 import LibraryLoadingPlaceholder from "../../library/LibraryLoadingPlaceholder"
 import NoContent from "../../common/NoContent"
 import toast from "react-hot-toast"
 
 import { AiFillCheckCircle as CheckIcon } from 'react-icons/ai'
 import urls from "../urls"
+import { booksitoutServer } from "../../../config/axios"
 
 const LibrarySearchSettingsSearchCard = ({ setShow, setSelectedLibrary, searchResult, setSearchResult }) => {
 	const [error, setError] = React.useState(false)
@@ -27,7 +27,7 @@ const LibrarySearchSettingsSearchCard = ({ setShow, setSelectedLibrary, searchRe
 
 		const typingTimer = setTimeout(() => {
 			if (query !== '') {
-				axios
+				booksitoutServer
 					.get(`${urls.api.base}/v3/search/library/available-library/${query}`)
 					.then((res) => setSearchResult(res.data))
 					.catch(() => setError(true))

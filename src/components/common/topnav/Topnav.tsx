@@ -1,7 +1,7 @@
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Container, Navbar, Nav, Card, Form } from 'react-bootstrap'
+import { Container, Navbar, Nav, Card } from 'react-bootstrap'
 import user from '../../user/user'
 import messages from '../../settings/messages'
 import uiSettings from '../../settings/ui'

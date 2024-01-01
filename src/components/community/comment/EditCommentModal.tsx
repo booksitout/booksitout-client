@@ -1,9 +1,9 @@
 import React from "react"
-import axios from "axios"
 import { Button, Form, Modal } from "react-bootstrap"
 import toast from "react-hot-toast"
 import urls from "../../settings/urls"
 import utils from "../../../functions/utils"
+import { booksitoutServer } from "../../../config/axios"
 
 const EditCommentModal = ({show, setShow, comment, commentList, setCommentList}) => {
 
@@ -26,8 +26,8 @@ const EditCommentModal = ({show, setShow, comment, commentList, setCommentList})
 			content: content,
 		}
 
-		axios
-			.put(`${urls.api.base}/v4/forum/comment/${comment.commentId}`, commentEditRequest, { headers: { Authorization: utils.getToken() } })
+		booksitoutServer
+			.put(`${urls.api.base}/v4/forum/comment/${comment.commentId}`, commentEditRequest)
 			.then((res) => {
 				if (res.status.toString().startsWith('2')) {
 					setCommentList(commentList.map((c) => (c.commentId === comment.commentId ? { ...c, content: content } : c)))

@@ -1,16 +1,18 @@
-import axios from "axios"
 import urls from "../settings/urls"
 import { useLoaderData, useSearchParams } from 'react-router-dom'
 import PostRoutePost from "../community/post/post-route/PostRoutePost"
 import { PostType } from "../community/post/PostType"
 import { Pagination } from "react-bootstrap"
 import { PageType } from "../../types/PageType"
+import { booksitoutServer } from "../../config/axios"
 
 export async function loader({ params, request }) {
 	const nickName = params.nickName
     const page = request.url.contains('?') ? request.url.split('?')[1].split('=')[1] : 1
 
-	return axios.get(`${urls.api.base}/v4/forum/post/by-name/paged?name=${nickName}&page=${page}`).then((res) => res.data)
+	return booksitoutServer
+		.get(`${urls.api.base}/v4/forum/post/by-name/paged?name=${nickName}&page=${page}`)
+		.then((res) => res.data)
 }
 
 const UserPostList = () => {

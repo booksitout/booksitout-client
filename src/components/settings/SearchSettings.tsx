@@ -5,28 +5,27 @@ import toast from 'react-hot-toast'
 import messages from './messages'
 import '../../resources/css/button.css'
 
-import axios from 'axios'
-import urls from './urls'
-import utils from '../../functions/utils'
-
 import SettingsLinkCard from './SettingsLinkCard'
 import AddRemoveSearchSettings from './library-settings/AddRemoveSearchSettings'
 import RouteContainer from '../common/RouteContainer'
 import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
+import { booksitoutServer } from '../../config/axios'
 
 const SearchSettings = () => {
 	React.useEffect(() => {
-		axios.get(`${urls.api.base}/v3/search/settings/search-range/all`, { headers: { Authorization: utils.getToken() } }).then((res) => {
-			localStorage.setItem('search-library-region-api', res.data.region)
-			localStorage.setItem('search-library-region-detail-api', res.data.regionDetail)
-			localStorage.setItem('search-my-book-range', res.data.myBookSearchRange)
-			localStorage.setItem('search-library-online-api', res.data.libraryOnlineSearchRange)
-			localStorage.setItem('search-subscription-api', res.data.subscriptionSearchRange)
-			localStorage.setItem('search-used-online-api', res.data.usedOnlineSearchRange)
-			localStorage.setItem('search-used-offline-api', res.data.usedOfflineSearchRange)
-			localStorage.setItem('library-search-method', res.data.librarySearchMethod)
-		})
+		booksitoutServer
+			.get(`/v3/search/settings/search-range/all`)
+			.then((res) => {
+				localStorage.setItem('search-library-region-api', res.data.region)
+				localStorage.setItem('search-library-region-detail-api', res.data.regionDetail)
+				localStorage.setItem('search-my-book-range', res.data.myBookSearchRange)
+				localStorage.setItem('search-library-online-api', res.data.libraryOnlineSearchRange)
+				localStorage.setItem('search-subscription-api', res.data.subscriptionSearchRange)
+				localStorage.setItem('search-used-online-api', res.data.usedOnlineSearchRange)
+				localStorage.setItem('search-used-offline-api', res.data.usedOfflineSearchRange)
+				localStorage.setItem('library-search-method', res.data.librarySearchMethod)
+			})
 	}, [])
 
 	return (

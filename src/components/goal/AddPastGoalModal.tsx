@@ -3,36 +3,38 @@ import { Modal, Form, Button } from 'react-bootstrap'
 import toast from 'react-hot-toast'
 import { addGoal } from './goalFunctions'
 import goalMessage from './goalMessage'
+import useInput from "../../hooks/useInput";
+import useInputSelect from "../../hooks/useInputSelect";
 
 const AddPastGoalModal = ({ isModalOpen, setIsModalOpen, goalList, setGoalList }) => {
-	const [goalYear, setGoalYear] = React.useState(0)
-	const [goal, setGoal] = React.useState(0)
+	const goalYearInput = useInputSelect(0)
+	const goalInput = useInput(0)
 
 	const handleAddPastGoal = (e) => {
 		e.preventDefault()
 
-		if (Number(goal) === 0) {
+		if (Number(goalInput.value) === 0) {
 			toast.error(goalMessage.add.fail.null)
 			document.getElementById('goal-input')!!.focus()
 			return
 		}
 
-		const isGoalAlreadyPresent = typeof goalList.find((g) => Number(g.year) === Number(goalYear)) != 'undefined'
+		const isGoalAlreadyPresent = typeof goalList.find((g) => Number(g.year) === Number(goalYearInput.value)) != 'undefined'
 		if (isGoalAlreadyPresent) {
 			toast.error(goalMessage.add.fail.alreadyPresent)
 			return
 		}
 
-		addGoal(goalYear, goal).then((success) => {
+		addGoal(goalYearInput.value, goalInput.value).then((success) => {
 			if (success) {
-				toast.success(goalMessage.add.success.past(goalYear))
+				toast.success(goalMessage.add.success.past(goalYearInput))
 				setIsModalOpen(false)
 				setGoalList([
 					...goalList,
 					{
-						year: goalYear,
+						year: goalYearInput.value,
 						current: 0,
-						goal: goal,
+						goal: goalInput.value,
 					},
 				])
 			}
@@ -43,7 +45,7 @@ const AddPastGoalModal = ({ isModalOpen, setIsModalOpen, goalList, setGoalList }
 		const year = Array.from({ length: 20 }, (_, i) => new Date().getFullYear() - 20 + i)
 			.filter((inputGoal) => !goalList.map((g) => g.year).includes(inputGoal))
 			.reverse()[0]
-		setGoalYear(year)
+		goalYearInput.set(year)
 	}, [goalList, isModalOpen])
 
 	return (
@@ -55,7 +57,7 @@ const AddPastGoalModal = ({ isModalOpen, setIsModalOpen, goalList, setGoalList }
 			<Modal.Body>
 				<Form>
 					<Form.Label>추가할 년도</Form.Label>
-					<Form.Select className='mb-3' onChange={(e) => setGoalYear(Number(e.target.value))}>
+					<Form.Select className='mb-3' {...goalYearInput}>
 						{Array.from({ length: 20 }, (_, i) => new Date().getFullYear() - 20 + i)
 							.filter((inputGoal) => !goalList.map((g) => g.year).includes(inputGoal))
 							.reverse()
@@ -71,9 +73,9 @@ const AddPastGoalModal = ({ isModalOpen, setIsModalOpen, goalList, setGoalList }
 						inputMode='numeric'
 						pattern='[0-9]*'
 						autoFocus
-						onChange={(e) => setGoal(Number(e.target.value))}
 						className='mb-3'
 						id='goal-input'
+						{...goalInput}
 					/>
 
 					<p className='text-muted text-center'>20년 이상 전의 목표는 추가할 수 없어요</p>

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import urls from '../components/settings/urls'
 import utils from './utils'
 
@@ -16,6 +15,7 @@ import gyeonggiEducationLibrary from '../resources/images/search/gyeonggi-educat
 import gyeonggiLibrary from '../resources/images/search/gyeonggi-library.png'
 import gwanghwamunLibrary from '../resources/images/search/gwanghwamun-library.jpg'
 import seoulCongressLibrary from '../resources/images/search/seoul-congress-library.png'
+import { booksitoutServer } from '../config/axios'
 
 const isKeyPresent = {
 	libraryOnline: (apiKey: string) => {
@@ -181,8 +181,8 @@ const search = {
 	api: {
 		search: {
 			myBook: (query: string) => {
-				return axios
-					.get(urls.api.search.myBook(query), { headers: { Authorization: utils.getToken() } })
+				return booksitoutServer
+					.get(urls.api.search.myBook(query))
 					.then((res) => res.data)
 					.catch(() => {
 						return null
@@ -190,13 +190,13 @@ const search = {
 			},
 
 			used: (query: string, includeOnline: string, includeOffline: string) => {
-				return axios
+				return booksitoutServer
 					.get(urls.api.search.used(query, includeOnline, includeOffline))
 					.then((res) => res.data)
 			},
 
 			library: (query: string, region: string, regionDetail: string) => {
-				return axios
+				return booksitoutServer
 					.get(urls.api.search.libraryByRegion(query, region, regionDetail))
 					.then((res) => res.data)
 					.catch(() => {
@@ -205,14 +205,14 @@ const search = {
 			},
 
 			libraryOnline: (query: string, include: string) => {
-				return axios
+				return booksitoutServer
 					.get(urls.api.search.libraryOnline(query, include))
 					.then((res) => res.data)
 					.catch(() => { return null })
 			},
 
 			subscription: (query: string, include: string) => {
-				return axios
+				return booksitoutServer
 					.get(urls.api.search.subscription(query, include))
 					.then((res) => res.data)
 					.catch(() => {
@@ -224,8 +224,8 @@ const search = {
 		settings: {
 			myBook: {
 				changeSearchRange: (range: string) => {
-					return axios
-						.put(urls.api.search.settings.myBook.changeRange(), { range: range }, { headers: { Authorization: utils.getToken() } })
+					return booksitoutServer
+						.put(urls.api.search.settings.myBook.changeRange(), { range: range })
 						.then((res) => {
 							return res.status
 						})
@@ -237,7 +237,7 @@ const search = {
 
 			library: {
 				changeRegion: (region: string | null, regionDetail: string | null) => {
-					return axios
+					return booksitoutServer
 						.put(
 							urls.api.search.settings.changeRegion(),
 							{ region: region, regionDetail: regionDetail },
@@ -252,8 +252,8 @@ const search = {
 				},
 
 				deleteRegion: () => {
-					return axios
-						.delete(urls.api.search.settings.changeRegion(), { headers: { Authorization: utils.getToken() } })
+					return booksitoutServer
+						.delete(urls.api.search.settings.changeRegion())
 						.then((res) => {
 							return res.status
 						})
@@ -265,8 +265,8 @@ const search = {
 
 			libraryOnline: {
 				changeSearchRange: (range: string) => {
-					return axios
-						.put(urls.api.search.settings.libraryOnline.searchRange(), { range: range }, { headers: { Authorization: utils.getToken() } })
+					return booksitoutServer
+						.put(urls.api.search.settings.libraryOnline.searchRange(), { range: range })
 						.then((res) => {
 							return res.status
 						})
@@ -278,8 +278,8 @@ const search = {
 
 			subscription: {
 				changeSearchRange: (range: string) => {
-					return axios
-						.put(urls.api.search.settings.subscription.searchRange(), { range: range }, { headers: { Authorization: utils.getToken() } })
+					return booksitoutServer
+						.put(urls.api.search.settings.subscription.searchRange(), { range: range })
 						.then((res) => {
 							return res.status
 						})
@@ -291,8 +291,8 @@ const search = {
 
 			usedOnline: {
 				changeSearchRange: (range: string) => {
-					return axios
-						.put(urls.api.search.settings.usedOnline.searchRange(), { range: range }, { headers: { Authorization: utils.getToken() } })
+					return booksitoutServer
+						.put(urls.api.search.settings.usedOnline.searchRange(), { range: range })
 						.then((res) => {
 							return res.status
 						})
@@ -304,8 +304,8 @@ const search = {
 
 			usedOffline: {
 				changeSearchRange: (range: string) => {
-					return axios
-						.put(urls.api.search.settings.usedOffline.searchRange(), { range: range }, { headers: { Authorization: utils.getToken() } })
+					return booksitoutServer
+						.put(urls.api.search.settings.usedOffline.searchRange(), { range: range })
 						.then((res) => {
 							return res.status
 						})

@@ -2,13 +2,13 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useQuery } from '../../hooks/useQuery'
-import axios from 'axios'
 import toast from 'react-hot-toast'
 import urls from '../settings/urls'
 import { checkIsLogin, loginToken } from '../../redux/userSlice'
 import messages from '../settings/messages'
 import Loading from '../common/Loading'
 import utils from '../../functions/utils'
+import { booksitoutServer } from '../../config/axios'
 
 const OAuth = () => {
 	const { provider } = useParams()
@@ -21,7 +21,7 @@ const OAuth = () => {
 		const code = query.get('code')
 		const additional = query.get(provider?.toUpperCase() === 'NAVER' ? 'state' : provider?.toUpperCase() === 'GOOGLE' ? 'scope' : 'none')
 
-		axios
+		booksitoutServer
 			.get(urls.api.user.login.oauth.get(provider!.toUpperCase())!.api(code, additional))
 			.then((res) => {
 				if (res.status !== 200) throw new Error()
@@ -46,16 +46,18 @@ const OAuth = () => {
 				dispatch(checkIsLogin())	
 				navigate('/')
 
-				axios.get(`${urls.api.base}/v3/search/settings/search-range/all`, { headers: { Authorization: userData.data.token } }).then((res) => {
-					localStorage.setItem('search-library-region-api', res.data.region)
-					localStorage.setItem('search-library-region-detail-api', res.data.regionDetail)
-					localStorage.setItem('search-my-book-range', res.data.myBookSearchRange)
-					localStorage.setItem('search-library-online-api', res.data.libraryOnlineSearchRange)
-					localStorage.setItem('search-subscription-api', res.data.subscriptionSearchRange)
-					localStorage.setItem('search-used-online-api', res.data.usedOnlineSearchRange)
-					localStorage.setItem('search-used-offline-api', res.data.usedOfflineSearchRange)
-					localStorage.setItem('library-search-method', res.data.librarySearchMethod)
-				})
+				booksitoutServer
+					.get(`${urls.api.base}/v3/search/settings/search-range/all`)
+					.then((res) => {
+						localStorage.setItem('search-library-region-api', res.data.region)
+						localStorage.setItem('search-library-region-detail-api', res.data.regionDetail)
+						localStorage.setItem('search-my-book-range', res.data.myBookSearchRange)
+						localStorage.setItem('search-library-online-api', res.data.libraryOnlineSearchRange)
+						localStorage.setItem('search-subscription-api', res.data.subscriptionSearchRange)
+						localStorage.setItem('search-used-online-api', res.data.usedOnlineSearchRange)
+						localStorage.setItem('search-used-offline-api', res.data.usedOfflineSearchRange)
+						localStorage.setItem('library-search-method', res.data.librarySearchMethod)
+					})
 			})
 	}, [dispatch, navigate, query, provider])
 

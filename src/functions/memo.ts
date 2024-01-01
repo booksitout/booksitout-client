@@ -1,14 +1,15 @@
-import axios from 'axios'
 import urls from '../components/settings/urls'
-import utils from './utils'
+import { booksitoutServer } from '../config/axios'
 
 const getMemoListOfBook = (bookId) => {
-	return axios.get(urls.api.memo.get.all(bookId), { headers: { Authorization: utils.getToken() } }).then((res) => res.data)
+	return booksitoutServer
+		.get(urls.api.memo.get.all(bookId))
+		.then((res) => res.data)
 }
 
 const addMemo = (memo, bookId) => {
-	return axios
-		.post(urls.api.memo.add(bookId), memo, { headers: { Authorization: utils.getToken() } })
+	return booksitoutServer
+		.post(urls.api.memo.add(bookId), memo)
 		.then((res) => {
 			return res.status
 		})
@@ -21,14 +22,14 @@ const addMemo = (memo, bookId) => {
 }
 
 const editMemo = (editedMemo) => {
-	return axios
-		.put(urls.api.memo.edit(editedMemo.memoId), editMemo, { headers: { Authorization: utils.getToken() } })
+	return booksitoutServer
+		.put(urls.api.memo.edit(editedMemo.memoId), editMemo)
 		.then((res) => res.status.toString().startsWith('2'))
 }
 
 const deleteMemo = (memoId) => {
-	return axios
-		.delete(urls.api.memo.delete(memoId), { headers: { Authorization: utils.getToken() } })
+	return booksitoutServer
+		.delete(urls.api.memo.delete(memoId))
 		.then((res) => res.status.toString().startsWith('2'))
 }
 

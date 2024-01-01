@@ -1,4 +1,4 @@
-import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
 
 import Root from './components/common/Root'
 import MainRoute from './components/main/MainRoute'
@@ -37,31 +37,29 @@ import SearchRoute from './components/search/SearchRoute'
 import CommunityRoute from './components/community/community-main/CommunityRoute'
 import AddCommunityRoute from './components/community/AddCommunityRoute'
 
-import PostRoute, {loader as postRouteLoader} from './components/community/post/post-route/PostRoute'
+import PostRoute, { loader as postRouteLoader } from './components/community/post/post-route/PostRoute'
 import PostDetail from './components/community/post/PostDetail'
 import EditPostForm from './components/community/post/EditPostForm'
 
 import GatheringRoute, {loader as gatheringRouteLoader} from './components/community/gathering/GatheringRoute'
 import GatheringDetail, {loader as gatheringDetailLoader} from './components/community/gathering/GatheringDetail'
-import GatheringJoinForm, {loader as gatheringJoinLoader} from './components/community/gathering/GatheringJoinForm'
+import GatheringJoinForm, { loader as gatheringJoinLoader } from './components/community/gathering/GatheringJoinForm'
 
-import UserRoute, {loader as userRouteLoader} from './components/user/UserRoute'
+import UserRoute, { loader as userRouteLoader } from './components/user/UserRoute'
 import UserPostList, {loader as userPostListLoader} from './components/user/UserPostList'
-import UserBookList, {loader as userBookListLoader} from './components/user/UserBookList'
+import UserBookList, { loader as userBookListLoader } from './components/user/UserBookList'
 
-import BookInfoRoute, {loader as bookInfoRouteLoader} from './components/bookInfo/BookInfoRoute'
+import BookInfoRoute, { loader as bookInfoRouteLoader } from './components/bookInfo/BookInfoRoute'
 
 import LibraryRoute from './components/library/route/LibraryRoute'
 import LibraryDetail, {loader as libraryDetailLoader} from './components/library/detail/LibraryDetail'
 import LibraryNearRoute from './components/library/near/LibraryNearRoute'
-import LibraryRegionRoute, {loader as libraryRegionLoader} from './components/library/region/LibraryRegionRoute'
+import LibraryRegionRoute, { loader as libraryRegionLoader } from './components/library/region/LibraryRegionRoute'
 
 import MembershipDetail from './components/library/membership/MembershipDetail'
 import MembershipRoute from './components/library/membership/MembershipRoute'
 import AddMembershipRoute from './components/library/membership/add/AddMembershipRoute'
-import MembershipEditRoute, {
-	loader as membershipEditLoader
-} from './components/library/membership/edit/MembershipEditRoute'
+import MembershipEditRoute, {loader as membershipEditLoader} from './components/library/membership/edit/MembershipEditRoute'
 
 import PwaRoute from './components/pwa/PwaRoute'
 import AddRoute from './components/common/add/AddRoute'
