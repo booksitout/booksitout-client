@@ -7,6 +7,7 @@ import SubscriptionComponent from '../cardComponent/SubscriptionCardComponent'
 import SubscriptionSearchLoading from '../placeholder/SubscriptionSearchLoading'
 import SearchResultInitialFetch from '../placeholder/SearchResultInitialFetch'
 import BookSearchResultLoading from '../BookSearchResultLoading'
+import { booksitoutServer } from '../../../config/axios'
 
 const SubscriptionSearchResult = ({query}) => {
 	const [loading, setLoading] = React.useState<boolean>(true)
@@ -14,19 +15,20 @@ const SubscriptionSearchResult = ({query}) => {
 
 	const [subscriptionList, setSubscriptionBookList] = React.useState<SubscriptionBook[]>([])
     React.useEffect(() => {
-		// setInitialFetch(true)
 		setLoading(true)
 
 		setTimeout(() => {
 			setInitialFetch(false)
 		}, 300)
 
-        search.local.settings.subscription.isConfigured() &&
-			search.api.search.subscription(query || '', search.local.settings.subscription.api()).then((result) => setSubscriptionBookList(result))
-			.finally(() => {
-				setLoading(false)
-				setInitialFetch(false)
-			})
+		booksitoutServer
+					.get(`/v2/search/subscription?query=${query}&include=${search.local.settings.subscription.api()}`)
+					.then((res) => setSubscriptionBookList(res.data))
+					.catch(() => null)
+					.finally(() => {
+						setLoading(false)
+						setInitialFetch(false)
+					})
     }, [query])
 
 	if (initialFetch) {
@@ -51,7 +53,7 @@ const SubscriptionSearchResult = ({query}) => {
 			labelComponent={<SubscriptionLabel />}
 			bookList={subscriptionList}
 			CardComponent={SubscriptionComponent}
-			isConfigured={search.local.settings.subscription.isConfigured()}
+			isConfigured={true}
 		/>
 	)
 }

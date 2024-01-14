@@ -1,6 +1,5 @@
 import toast from 'react-hot-toast'
 import urls from '../components/settings/urls'
-import apiSettings from '../components/settings/api'
 import messages from '../components/settings/messages'
 import { booksitoutServer } from '../config/axios'
 

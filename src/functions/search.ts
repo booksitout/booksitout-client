@@ -146,7 +146,7 @@ const search = {
 					return localStorage.getItem('search-subscription-display') ?? ''
 				},
 				api: () => {
-					return localStorage.getItem('search-subscription-api') ?? ''
+					return localStorage.getItem('search-subscription-api') ?? 'KYOBO,RIDI,YES24,MILLIE'
 				},
 			},
 

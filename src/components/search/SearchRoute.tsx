@@ -14,7 +14,6 @@ import OfflineUsedSearchResult from './searchResult/OfflineUsedSearchResult'
 import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import ScrollToTop from '../common/topnav/ScrollToTop'
-import BooksitoutSearchResultCard from './BooksitoutSearchResultCard'
 import RouteContainer from '../common/RouteContainer'
 
 const SearchRoute = () => {
@@ -26,7 +25,8 @@ const SearchRoute = () => {
 		document.title = `검색 : ${query} | 책잇아웃`;
 
 		(search.local.settings.usedOnline.isConfigured() || search.local.settings.usedOffline.isConfigured()) &&
-			search.api.search.used(query || '', search.local.settings.usedOnline.api(), search.local.settings.usedOffline.api()).then((result) => {
+			search.api.search.used(query || '', search.local.settings.usedOnline.api(), search.local.settings.usedOffline.api())
+			.then((result) => {
 				setOnlineUsedBookList(result.online)
 				setOfflineUsedBookList(result.offline)
 			})
