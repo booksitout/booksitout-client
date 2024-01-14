@@ -6,3 +6,5 @@ class ApiUrls {
 		static GET_PUBLIC: string = 'v4/user/public'
 	}
 }
+
+export default ApiUrls
