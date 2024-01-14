@@ -81,7 +81,7 @@ const StatisticsSummaryContainer = styled.div.attrs({
 })``
 
 const BookSummaryContainer = styled.div.attrs({
-	className: 'col-12 col-xxl-4 mb-4',
+	className: 'col-12 col-xxl-4 mb-4 p-0',
 })``
 
 const StatisticsCardContainer = styled.div.attrs({

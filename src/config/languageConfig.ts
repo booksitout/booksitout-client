@@ -102,7 +102,7 @@ const languageConfigMap = new Map([
 ])
 
 const languageConfig = (language: string) => {
-    return languageConfigMap.get(language) ?? languageConfigMap.get('KOREAN')
+    return languageConfigMap.get(language.toUpperCase()) ?? languageConfigMap.get('KOREAN')
 }
 
 export default languageConfig

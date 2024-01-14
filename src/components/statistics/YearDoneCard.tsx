@@ -8,14 +8,14 @@ const YearDoneCard = () => {
 
     React.useEffect(() => {
         booksitoutServer
-			.get(`v5/book/done/${new Date().getFullYear()}?size=100`)
+			.get(`v5/book/done/${new Date().getFullYear()}?size=60`)
 			.then(res => setDoneBookList(res.data.content))
     }, [])
 
     return (
 		<Card style={{ minHeight: '200px', overflow: 'hidden', backgroundColor: 'rgb(223, 210, 192)' }}>
 			<Card.Body>
-				<div className="text-center">
+				<div className="text-start">
 					{doneBookList === undefined ? (
 						<></>
 					) : (

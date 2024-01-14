@@ -55,7 +55,7 @@ const PieChart: React.FC<PieChartProps> = ({ labels, data, background, size = 20
 				{
 					data: data,
 					backgroundColor: background.map(c =>
-						createGradient(chart.ctx, chart.chartArea, c[0], c[1] ?? c[0], c[2] ?? null),
+						createGradient(chart.ctx, chart.chartArea, c[0] ?? '#000000', c[1] ?? c[0] ?? '#000000', c[2] ?? null),
 					),
 				},
 			],
