@@ -12,8 +12,11 @@ const RouteTitle = ({ icon, title, subTitle = '' }) => {
 }
 
 const Container = styled.div.attrs({
-	className: 'd-flex flex-wrap mb-3',
-})``
+	className: 'd-flex flex-wrap',
+})`
+	margin-top: 1rem;
+	margin-bottom: 1.2rem;
+`
 
 const Icon = styled.h1.attrs({
 	className: `text-book ms-3 me-3 pt-1`,
