@@ -72,8 +72,8 @@ const HorizontalBookView = ({
 				</div>
 
 				<div className="mt-3 text-center">
-					<h5 style={{ overflow: 'hidden', height: '50px' }} className={book.title.length <= 7 ? 'pt-2' : ''}>
-						{book.title}
+					<h5 className='pt-2 clamp-1-line'>
+						{book.title == null || book.title === '' ? '-' : book.title}
 					</h5>
 
 					<h6 className="text-muted mb-md-0" style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>

@@ -22,7 +22,7 @@ import NotificationSettings from './components/settings/noti/NotificationSetting
 import PersonalInfoSettings from './components/settings/PersonalInfoSettings'
 
 import BookRoute from './components/book/BookRoute'
-import BookDetail from './components/book/book-detail/BookDetail'
+import BookDetailRoute from './components/book/book-detail/BookDetailRoute'
 import AddBookRoute from './components/book/book-form/AddBookRoute'
 import EditBookForm from './components/book/book-form/EditBookForm'
 
@@ -96,7 +96,7 @@ const router = createBrowserRouter(
 
 			<Route path="/book/:range" element={<BookRoute />} errorElement={<ErrorPage />} />
 			<Route path="/book/:range/:rangeDetail" element={<BookRoute />} errorElement={<ErrorPage />} />
-			<Route path="/book/detail/:id" element={<BookDetail />} errorElement={<ErrorPage />} />
+			<Route path="/book/detail/:id" element={<BookDetailRoute />} errorElement={<ErrorPage />} />
 			<Route path="/book/edit/:id" element={<EditBookForm />} errorElement={<ErrorPage />} />
 
 			<Route path="/reading" element={<ReadingNoId />} />

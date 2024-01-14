@@ -49,7 +49,7 @@ const ReadingSessionDetailModal = ({
 	}, [year, month, day])
 
 	const isReadingSessionManuallyAdded = (time) => {
-		if (time.substring(readingSession.endTime.indexOf('T') + 1).match('00:00:00') == null) {
+		if (time[3] === 0 && time[4] === 0 && time[5] === 0) {
 			return false
 		} else {
 			return true
@@ -57,10 +57,9 @@ const ReadingSessionDetailModal = ({
 	}
 	
 	const getDate = (time) => {
-		const timeString = time.substring(0, time.indexOf('T'))
-		const year = timeString.substring(0, timeString.indexOf('-'))
-		const month = timeString.substring(timeString.indexOf('-') + 1, timeString.lastIndexOf('-'))
-		const day = timeString.substring(timeString.lastIndexOf('-') + 1)
+		const year = time[0]
+		const month = time[1]
+		const day = time[2]
 
 		return [year, month, day]
 	}
@@ -382,34 +381,15 @@ const ReadingSessionInfo = ({ readingSession }) => {
 		<>
 			<h5 className='mb-3'>
 				🗓️{' '}
-				{readingSession.endTime.substring(readingSession.endTime.indexOf('T') + 1).match('00:00:00') == null
-					? readingSession.startTime
-							.replace('-', '년 ')
-							.replace('-', '월 ')
-							.replace('T', '일 ')
-							.replace(':', '시 ')
-							.replace(':', '분 ')
-							.substring(0, 21)
-					: readingSession.startTime
-							.replace('-', '년 ')
-							.replace('-', '월 ')
-							.replace('T', '일 ')
-							.replace(':', '시 ')
-							.replace(':', '분 ')
-							.substring(0, 14)}
-				{readingSession.endTime.substring(readingSession.endTime.indexOf('T') + 1).match('00:00:00') == null ? ' 부터' : ''}
+				{readingSession.endTime[3] === 0 && readingSession.endTime[4] === 0 && readingSession.endTime[5] === 0
+					? `${readingSession.endTime[0]}년 ${readingSession.endTime[1]}월 ${readingSession.endTime[2]}일 ${readingSession.endTime[3]}시 ${readingSession.endTime[4]}분 ${readingSession.endTime[5]}초 까지`
+					: `${readingSession.endTime[0]}년 ${readingSession.endTime[1]}월 ${readingSession.endTime[2]}일 ${readingSession.endTime[3]}시 ${readingSession.endTime[4]}분 ${readingSession.endTime[5]}초`}{' '}까지
+				{readingSession.endTime[3] === 0 && readingSession.endTime[4] === 0 && readingSession.endTime[5] === 0 ? ' 부터' : ''}
 			</h5>
-			{readingSession.endTime.substring(readingSession.endTime.indexOf('T') + 1).match('00:00:00') == null && (
+			{readingSession.endTime[3] === 0 && readingSession.endTime[4] === 0 && readingSession.endTime[5] === 0 == null && (
 				<h5 className='mb-3'>
 					🗓️{' '}
-					{readingSession.endTime
-						.replace('-', '년 ')
-						.replace('-', '월 ')
-						.replace('T', '일 ')
-						.replace(':', '시 ')
-						.replace(':', '분 ')
-						.substring(0, 21)}{' '}
-					까지
+					{`${readingSession.endTime[0]}년 ${readingSession.endTime[1]}월 ${readingSession.endTime[2]}일 ${readingSession.endTime[3]}시 ${readingSession.endTime[4]}분 ${readingSession.endTime[5]}초`}{' '}까지
 				</h5>
 			)}
 

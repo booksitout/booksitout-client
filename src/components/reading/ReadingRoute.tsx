@@ -20,6 +20,7 @@ import { RootState } from '../../redux/store'
 import { BookUserType } from '../../types/BookType'
 import { MemoType } from '../../types/MemoType'
 import RouteContainer from '../common/RouteContainer'
+import styled from 'styled-components';
 
 const ReadingRoute = () => {
 	const { id } = useParams()
@@ -79,8 +80,13 @@ const ReadingRoute = () => {
 			})
 	}, [dispatch, id, navigate])
 
+	if (initialFetch) return <></>
+	if (isLoading) return <Loading />
+	if (isError) return <Error />
+	if (book == null) return <></>
+
 	return (
-		<RouteContainer>
+		<Container>
 			<EndReadingSessionModal
 				isShowingModal={isEndReadingSessionModalOpen}
 				setIsShowingModal={setIsEndReadingSessionModalOpen}
@@ -94,88 +100,93 @@ const ReadingRoute = () => {
 				memoList={memoList}
 				setMemoList={setMemoList}
 			/>
+				{/* <BookDetailButton onClick={() => { navigate(`/book/detail/${id}`) }}>
+					책 상세 페이지로
+				</BookDetailButton> */}
 
-			{initialFetch ? (
-				<></>
-			) : isLoading ? (
-				<Loading />
-			) : isError ? (
-				<Error />
-			) : (
-				book != null && (
-					<div className="row justify-content-center text-center">
-						<div className="col-6 col-md-4 col-xl-4">
-							<img
-								src={book.cover == null || book.cover === '' ? defaultBookCover : book.cover}
-								alt=""
-								className={`img-fluid rounded w-100 ${
-									book.cover == null || book.cover === '' ? '' : 'border'
-								}`}
-							/>
-							<Button
-								variant="secondary"
-								className="w-100 mt-3"
-								onClick={() => {
-									navigate(`/book/detail/${id}`)
-								}}
-							>
-								책 상세 페이지로
-							</Button>
-						</div>
+				<BookContainer>
+					<div className="col-4 text-end">
+						<BookCover src={book.cover == null || book.cover === '' ? defaultBookCover : book.cover} alt="" className={`${book.cover == null || book.cover === '' ? '' : 'border'}`} />
+					</div>
 
-						<div className="col-12 col-md-8 col-xl-8 mt-5 mb-5">
-							<div className="mb-5">
-								<h2>{book.title}</h2>
-								<h4 className="text-muted">{book.author}</h4>
+					<div className="col-8 text-center align-self-center">
+						<h2>{book.title}</h2>
+						<h4 className="text-muted">{book.author}</h4>
+					</div>
 
-								<div className="row justify-content-center">
-									<div className="col-11 col-md-9">
-										<PageProgressBar book={book} />
-									</div>
-								</div>
-							</div>
-
-							<Timer />
-
-							<div className="row justify-content-center mb-4 mt-4">
-								<div className="col-6 col-lg-4">
-									<Button
-										variant="book"
-										className="w-100"
-										onClick={() => showEndReadingSessionModal()}
-									>
-										독서 끝내기
-									</Button>
-								</div>
-
-								<div className="col-6 col-lg-4">
-									<Button
-										variant={isTimerOn ? 'outline-danger' : 'outline-book'}
-										className="w-100"
-										onClick={() => dispatch(toggleTimer())}
-									>
-										{isTimerOn ? '잠시 정지' : '다시 시작'}
-									</Button>
-								</div>
-							</div>
-
-							<div className="row justify-content-center mb-4">
-								<div className="col-12 col-lg-10 mt-3">
-									<MemoCard
-										book={book}
-										memoList={memoList}
-										setMemoList={setMemoList}
-										setSelectedMemo={setSelectedMemo}
-										setIsModalOpen={setIsMemoDetailModalOpen}
-									/>
-								</div>
-							</div>
+					<div className="row justify-content-center mt-5">
+						<div className="col-11 col-md-9">
+							<PageProgressBar book={book} />
 						</div>
 					</div>
-				)
-			)}
-		</RouteContainer>
+				</BookContainer>
+				<Mb/>
+
+				<Timer />
+
+				<div className="row justify-content-center mt-4">
+					<div className="col-6 col-lg-4">
+						<Button
+						variant="book"
+							className="w-100"
+							onClick={() => showEndReadingSessionModal()}
+						>
+							독서 끝내기
+						</Button>
+					</div>
+
+					<div className="col-6 col-lg-4">
+						<Button
+							variant={isTimerOn ? 'outline-danger' : 'outline-book'}
+							className="w-100"
+							onClick={() => dispatch(toggleTimer())}
+						>
+							{isTimerOn ? '잠시 정지' : '다시 시작'}
+						</Button>
+					</div>
+				</div>
+				<Mb/>
+
+				<div className="row justify-content-center">
+					<div className="col-12 col-lg-10 mt-3">
+						<MemoCard
+							book={book}
+							memoList={memoList}
+							setMemoList={setMemoList}
+							setSelectedMemo={setSelectedMemo}
+							setIsModalOpen={setIsMemoDetailModalOpen}
+						/>
+					</div>
+				</div>
+				<Mb />
+		</Container>
 	)
 }
+
+const Container = styled.div.attrs({
+	className: 'row justify-content-center text-center'
+})`
+	padding-left: 20%;
+	padding-right: 20%;
+`;
+
+const BookContainer = styled.div.attrs({
+	className: 'row justify-content-center text-center mt-5'
+})``;
+
+const Mb = styled.div.attrs({
+	className: 'mb-5'
+})``;
+
+const BookCover = styled.img.attrs({
+	className: `img-fluid rounded`
+})`
+	width: 100px;
+`;
+
+const BookDetailButton = styled(Button).attrs({
+	className: `w-100 mt-3`,
+	variant: 'secondary'
+})``;
 
 export default ReadingRoute

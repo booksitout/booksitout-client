@@ -31,7 +31,7 @@ import categoryConfig from '../../../config/categoryConfig'
 import BookCover from './BookCover'
 import breakpoints from '../../common/breakpoints'
 
-const BookDetail = () => {
+const BookDetailRoute = () => {
 	const { id } = useParams()
 
 	const [loading, setLoading] = React.useState(true)
@@ -567,4 +567,4 @@ const ReadingSessionList = ({ readingSessionList, book, setIsReadingSessionModal
 	)
 }
 
-export default BookDetail
+export default BookDetailRoute
