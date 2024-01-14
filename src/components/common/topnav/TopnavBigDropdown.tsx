@@ -38,7 +38,7 @@ const TopnavBigDropdown = ({ isLogin, handleLogout }) => {
 					<NavDropdown.Divider />
 
 					<NavDropdown.Item href="/login">
-						<booksitoutIcon.login className="text-book me-2 mb-1" /> 로그인 / 회원가입
+						<booksitoutIcon.login className="text-book me-2 mb-1" /> 로그인 + 회원가입
 					</NavDropdown.Item>
 				</>
 			) : (

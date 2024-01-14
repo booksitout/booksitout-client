@@ -56,7 +56,7 @@ const MainLogin = () => {
 								<img
 									style={{ width: '50px' }}
 									className={
-										'img-fluid ms-1 me-1 ms-md-3 me-md-3 rounded ' +
+										'img-fluid ms-2 me-2 ms-md-3 me-md-3 rounded ' +
 										(!oauth.active && 'opacity-50')
 									}
 									src={oauth.image}
@@ -97,6 +97,7 @@ const Title = styled.h1`
 `;
 
 const ImageContainer = styled.div`
+	min-height: 150px;
 	justify-content: center;
 	text-align: center;
 `
@@ -111,6 +112,7 @@ const LogoImage = styled.img.attrs({
 const Image = styled.img.attrs({
 	className: '',
 })`
+	height: 100%;
 	width: 40%;
 `
 
