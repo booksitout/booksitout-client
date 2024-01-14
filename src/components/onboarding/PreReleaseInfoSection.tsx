@@ -10,7 +10,7 @@ const PreReleaseInfoSection = () => {
                 <Title>책잇아웃은 아직 정식 출시전이에요</Title>
 
                 <Content>
-                    2024년 1월에 출시 예정이니 잠시만 기다려 주세요!
+                    2024년 하반기에 출시 예정이니 잠시만 기다려 주세요!
                 </Content>
 
                 <a href="https://docs.google.com/forms/d/1Lzt2Uf_jlajP2wN0isL7TPSAOuadbOgpNQfBLy_IRbc/viewform" target='_blank' rel="noreferrer">
