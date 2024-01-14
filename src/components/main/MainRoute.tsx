@@ -49,7 +49,10 @@ const MainRoute = () => {
 
 			booksitoutServer
 				.get(`v1/statistics/read-time/${7}`)
-				.then(res => setReadTime(res.data))
+				.then(res => {
+					console.log(res.data)
+					setReadTime(res.data)
+				})
 				.catch(() => setReadTime(undefined)),
 
 			booksitoutServer

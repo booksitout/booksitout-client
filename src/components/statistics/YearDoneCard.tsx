@@ -7,8 +7,9 @@ const YearDoneCard = () => {
     const [doneBookList, setDoneBookList] = React.useState<BookType[]>([])
 
     React.useEffect(() => {
-        booksitoutServer.get(`v5/book/done/${new Date().getFullYear()}?size=100`).then(res => setDoneBookList(res.data))
-
+        booksitoutServer
+			.get(`v5/book/done/${new Date().getFullYear()}?size=100`)
+			.then(res => setDoneBookList(res.data.content))
     }, [])
 
     return (

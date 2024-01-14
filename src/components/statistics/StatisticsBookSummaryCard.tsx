@@ -14,11 +14,13 @@ const StatisticsBookSummaryCard = () => {
 	const [consecutiveReading, setConsecutiveReading] = React.useState(0)
 	const [currentReading, setCurrentReading] = React.useState(0)
 	React.useEffect(() => {
-		booksitoutServer.get(`v5/statistics/current`).then(res => {
-			setConsecutiveReading(res.data.consecutiveReading)
-			setCurrentReading(res.data.currentReading)
-		})
-		.finally(() => setLoading(false))
+		booksitoutServer
+			.get(`v5/statistics/current`)
+			.then(res => {
+				setConsecutiveReading(res.data.consecutiveReading)
+				setCurrentReading(res.data.currentReading)
+			})
+			.finally(() => setLoading(false))
 	}, [])
 
     return (
