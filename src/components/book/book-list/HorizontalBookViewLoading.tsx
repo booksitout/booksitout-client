@@ -10,18 +10,18 @@ const HorizontalBookViewLoading = () => {
 					<img id="book-cover" className={`img-fluid rounded `} src={loadingBookCover} alt="" />
 				</div>
 
-				<div className="mt-3 text-center mb-4">
+				<div className="mt-3 text-center">
 					<Placeholder as={Card.Text} animation="glow" className="mb-0">
-						<h5 style={{ overflow: 'hidden', height: '50px' }}>
-							<Placeholder xs={8} />
+						<h5 style={{ overflow: 'hidden', height: '30px' }}>
+							<Placeholder xs={9} />
 						</h5>
 
-						<h6 className="text-muted mb-md-0" style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
+						<h6 className="text-muted mb-md-0" style={{ whiteSpace: 'nowrap', overflow: 'hidden', height: '27.5px'}}>
 							<Placeholder xs={5} />
 						</h6>
 					</Placeholder>
 
-					<Placeholder as={Card.Text} animation="glow" className="mb-0">
+					<Placeholder as={Card.Text} animation="glow" className="mb-0" style={{height: '35px'}}>
 						<div className="row align-items-center mt-2">
 							<div className="col-12 col-md-6 col-xl-7">
 								<Placeholder xs={12} />
