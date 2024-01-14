@@ -23,7 +23,7 @@ const OnlineUsedSearchResult = ({ onlineUsedList }) => {
 			labelComponent={<UsedOnlineLabel />}
 			bookList={onlineUsedList}
 			CardComponent={UsedBookComponent}
-			isConfigured={search.local.settings.usedOnline.isConfigured()}
+			isConfigured={true}
 		/>
 	)
 }

@@ -15,6 +15,7 @@ import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import ScrollToTop from '../common/topnav/ScrollToTop'
 import RouteContainer from '../common/RouteContainer'
+import { booksitoutServer } from '../../config/axios'
 
 const SearchRoute = () => {
 	const { query } = useParams()
@@ -24,11 +25,11 @@ const SearchRoute = () => {
 	React.useEffect(() => {
 		document.title = `검색 : ${query} | 책잇아웃`;
 
-		(search.local.settings.usedOnline.isConfigured() || search.local.settings.usedOffline.isConfigured()) &&
-			search.api.search.used(query || '', search.local.settings.usedOnline.api(), search.local.settings.usedOffline.api())
-			.then((result) => {
-				setOnlineUsedBookList(result.online)
-				setOfflineUsedBookList(result.offline)
+		booksitoutServer
+			.get(`/v2/search/used?query=${query}&include-online=${search.local.settings.usedOnline.api()}&include-offline=${search.local.settings.usedOffline.api()}`)
+			.then((res) => {
+				setOnlineUsedBookList(res.data.online)
+				setOfflineUsedBookList(res.data.offline)
 			})
 			.catch(() => {
 				setOnlineUsedBookList(null)

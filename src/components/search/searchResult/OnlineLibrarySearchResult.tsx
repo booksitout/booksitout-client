@@ -6,6 +6,7 @@ import LibraryOnlineCardComponent from '../cardComponent/LibraryOnlineCardCompon
 import OnlineLibrarySearchLoading from '../placeholder/OnlineLibrarySearchLoading'
 import SearchResultInitialFetch from '../placeholder/SearchResultInitialFetch'
 import BookSearchResultLoading from '../BookSearchResultLoading'
+import { booksitoutServer } from '../../../config/axios'
 
 const OnlineLibrarySearchResult = ({query}) => {
 	const [loading, setLoading] = React.useState(true)
@@ -20,10 +21,10 @@ const OnlineLibrarySearchResult = ({query}) => {
 			setInitialFetch(false)
 		}, 300)
 
-		search.local.settings.onlineLibrary.isConfigured() &&
-			search.api.search
-				.libraryOnline(query || '', search.local.settings.onlineLibrary.api())
-				.then((result) => setOnlineLibraryBookList(result))
+		booksitoutServer
+				.get(`/v2/search/library/online?query=${query}&include=${search.local.settings.onlineLibrary.api()}`)
+				.then((res) => setOnlineLibraryBookList(res.data))
+				.catch(() => { return null })
 				.finally(() => {
 					setLoading(false)
 					setInitialFetch(false)
@@ -52,7 +53,7 @@ const OnlineLibrarySearchResult = ({query}) => {
 			labelComponent={<LibraryOnlineLabel />}
 			bookList={onlineLibraryList}
 			CardComponent={LibraryOnlineCardComponent}
-			isConfigured={search.local.settings.onlineLibrary.isConfigured()}
+			isConfigured={true}
 		/>
 	)
 }
