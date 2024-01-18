@@ -86,20 +86,21 @@ const ReadingRoute = () => {
 	if (book == null) return <></>
 
 	return (
-		<Container>
-			<EndReadingSessionModal
-				isShowingModal={isEndReadingSessionModalOpen}
-				setIsShowingModal={setIsEndReadingSessionModalOpen}
-				book={book}
-			/>
-			<MemoDetailModal
-				isModalOpen={isMemoDetailModalOpen}
-				setIsModalOpen={setIsMemoDetailModalOpen}
-				memo={selectedMemo}
-				setMemo={setSelectedMemo}
-				memoList={memoList}
-				setMemoList={setMemoList}
-			/>
+		<RouteContainer>
+			<Container>
+				<EndReadingSessionModal
+					isShowingModal={isEndReadingSessionModalOpen}
+					setIsShowingModal={setIsEndReadingSessionModalOpen}
+					book={book}
+				/>
+				<MemoDetailModal
+					isModalOpen={isMemoDetailModalOpen}
+					setIsModalOpen={setIsMemoDetailModalOpen}
+					memo={selectedMemo}
+					setMemo={setSelectedMemo}
+					memoList={memoList}
+					setMemoList={setMemoList}
+				/>
 				{/* <BookDetailButton onClick={() => { navigate(`/book/detail/${id}`) }}>
 					책 상세 페이지로
 				</BookDetailButton> */}
@@ -120,14 +121,14 @@ const ReadingRoute = () => {
 						</div>
 					</div>
 				</BookContainer>
-				<Mb/>
+				<Mb />
 
 				<Timer />
 
 				<div className="row justify-content-center mt-4">
 					<div className="col-6 col-lg-4">
 						<Button
-						variant="book"
+							variant="book"
 							className="w-100"
 							onClick={() => showEndReadingSessionModal()}
 						>
@@ -145,7 +146,7 @@ const ReadingRoute = () => {
 						</Button>
 					</div>
 				</div>
-				<Mb/>
+				<Mb />
 
 				<div className="row justify-content-center">
 					<div className="col-12 col-lg-10 mt-3">
@@ -159,20 +160,22 @@ const ReadingRoute = () => {
 					</div>
 				</div>
 				<Mb />
-		</Container>
+			</Container>
+		</RouteContainer>
 	)
 }
 
-const Container = styled.div.attrs({
-	className: 'row justify-content-center text-center'
-})`
-	padding-left: 20%;
-	padding-right: 20%;
+const Container = styled.div`
+	max-width: 1000px;
+	text-align: center;
 `;
 
 const BookContainer = styled.div.attrs({
-	className: 'row justify-content-center text-center mt-5'
-})``;
+	className: 'row mt-5'
+})`
+	justify-content: center;
+	text-align: center;
+`;
 
 const Mb = styled.div.attrs({
 	className: 'mb-5'

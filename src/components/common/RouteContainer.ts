@@ -4,6 +4,8 @@ import breakpoints from './breakpoints';
 const RouteContainer = styled.div.attrs({
 	className: 'container-fluid',
 })`
+	justify-content: center;
+
 	overflow-x: hidden;
 	overflow-y: hidden;
 
