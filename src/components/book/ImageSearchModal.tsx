@@ -1,10 +1,11 @@
 import React from 'react'
 import { Modal, Card, Button } from 'react-bootstrap'
 import checkIcon from '../../resources/images/common/check.png'
-import urls from '../settings/urls'
 import uiSettings from '../settings/ui';
 import NoContent from '../common/NoContent'
 import { ImageSearchResult } from '../../types/SearchType';
+import { booksitoutServer } from '../../config/axios';
+import toast from 'react-hot-toast';
 
 const ImageSearchModal = ({ showModal, setShowModal, setCover, title, author }) => {
 	const coverImageStyle = { width: '100%', objectPosition: 'center' }
@@ -33,10 +34,9 @@ const ImageSearchModal = ({ showModal, setShowModal, setCover, title, author }) 
 		}, 500)
 
 		if (showModal) {
-			fetch(`${urls.api.base}/v3/search/image/google/separate-title-author?title=${title}&author=${author}`)
-				.then((res) => {
-					return res.json()
-				})
+			booksitoutServer
+				.get(`/v3/search/image/google/separate-title-author?title=${title}&author=${author}`)
+				.then((res) => res.data)
 				.then((data) => {
 					let index = 0
 					setImageSearchResult(
@@ -46,7 +46,7 @@ const ImageSearchModal = ({ showModal, setShowModal, setCover, title, author }) 
 					)
 				})
 				.catch((e) => {
-					// toast.error(`오류가 났어요. 잠시 후 다시 시도해 주세요 : ${e}`)
+					toast.error(`오류가 났어요. 잠시 후 다시 시도해 주세요 : ${e}`)
 				})
 				.finally(() => {
 					setLoading(false)

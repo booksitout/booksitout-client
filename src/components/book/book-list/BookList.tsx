@@ -58,7 +58,9 @@ const BookList = ({ range, rangeDetail }) => {
 		const existingBookId = existingGroups ? Object.values(existingGroups).flat().map(book => book.id) : [];
 
 		return books.reduce((acc: BooksByYear, book: BookUserType) => {
-			const year = book.doneYear ?? currentYear;
+			if (!book.doneYear) return acc;
+
+			const year = book.doneYear;
 
 			if (!existingBookId.includes(book.id)) {
 				acc[year] = acc[year] || [];
@@ -186,7 +188,8 @@ const BookCardList: React.FC<BookCardListProps> = ({ bookList, bookListByYear, r
 						<>
 							<h3 className={`text-start pb-3 ms-2 ${sortedYears[0] !== year && 'pt-5'}`}>{year}년</h3>
 
-							{books.map(book => (
+							{books
+							.map(book => (
 								<BookContainer key={book.id}>
 									<DoneHorizontalBookView book={book} />
 								</BookContainer>
