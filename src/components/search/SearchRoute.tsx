@@ -16,10 +16,14 @@ import booksitoutIcon from '../common/icons/booksitoutIcon';
 import ScrollToTop from '../common/topnav/ScrollToTop'
 import RouteContainer from '../common/RouteContainer'
 import { booksitoutServer } from '../../config/axios'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
 
 const SearchRoute = () => {
 	const { query } = useParams()
-	
+
+	const isLogin = useSelector((state: RootState) => state.user.isLogin)
+
 	const [onlineUsedList, setOnlineUsedBookList] = React.useState<BookType.UsedBook[] | undefined | null>(undefined)
 	const [offlineUsedList, setOfflineUsedBookList] = React.useState<BookType.UsedBook[] | undefined | null>(undefined)
 	React.useEffect(() => {
@@ -48,7 +52,7 @@ const SearchRoute = () => {
 				클릭하면 책을 볼 수 있는 곳으로 이동해요
 			</Alert>
 
-			<MyBookSearchResult query={query} />
+			{isLogin && <MyBookSearchResult query={query} />}
 			{/* <BooksitoutSearchResultCard query={query} /> */}
 			<SubscriptionSearchResult query={query} />
 			<OnlineLibrarySearchResult query={query} />
