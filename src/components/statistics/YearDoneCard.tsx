@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { booksitoutServer } from '../../config/axios'
 import { BookType } from '../../types/BookType'
+import styled from 'styled-components';
 
 const YearDoneCard = () => {
     const [doneBookList, setDoneBookList] = React.useState<BookType[]>([])
@@ -13,9 +14,9 @@ const YearDoneCard = () => {
     }, [])
 
     return (
-		<Card style={{ minHeight: '200px', overflow: 'hidden', backgroundColor: 'rgb(223, 210, 192)' }}>
+		<Container>
 			<Card.Body>
-				<div className="text-start">
+				<BookCoverContainer>
 					{doneBookList === undefined ? (
 						<></>
 					) : (
@@ -24,20 +25,35 @@ const YearDoneCard = () => {
 							.map(book => {
 								return (
 									<a href={`/book/detail/${book.id}`}>
-										<img
-											src={book.cover}
-											alt=""
-											style={{ width: '60px', height: '80px' }}
-											className="rounded mb-2"
-										/>
+										<Image src={book.cover} alt="" />
 									</a>
 								)
 							})
 					)}
-				</div>
+				</BookCoverContainer>
 			</Card.Body>
-		</Card>
+		</Container>
 	)
 }
+
+const Container = styled(Card)`
+	min-height: 200px;
+	overflow: hidden;
+	background-color: rgb(223, 210, 192);
+`;	
+
+const BookCoverContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+`;
+
+const Image = styled.img.attrs({
+	className: 'rounded mb-2',
+})`
+	width: 60px;
+	height: 80px;
+`;
 
 export default YearDoneCard
