@@ -21,7 +21,7 @@ const MembershipEditRoute = () => {
 		<div className='container-xl mb-5'>
 			<ScrollToTop />
 
-			<RouteTitle icon={<booksitoutIcon.membership />} title={'회원증 수정하기'} />
+			<RouteTitle icon={<booksitoutIcon.membership />} title={'회원증 수정하기'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={null} />
 			<MembershipEditForm membership={membership} />
 		</div>
 	)

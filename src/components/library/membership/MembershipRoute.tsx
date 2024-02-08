@@ -7,7 +7,6 @@ import RouteTitle from '../../common/RouteTitle';
 import { MembershipType } from './MembershipType'
 import MembershipCard from './MembershipCard';
 import MembershipCardLoading from './MembershipCardLoading';
-import { BsFillPersonVcardFill as CardIcon} from 'react-icons/bs'
 import InfiniteScrollLoading from '../../common/InfiniteScrollLoading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import AddButton from '../../common/AddButton';
@@ -15,6 +14,9 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import styled from 'styled-components';
+import { LibraryIcon, libraryRouteButtons } from '../route/libraryRouteConfig';
+import RouteContainer from '../../common/RouteContainer';
+import booksitoutIcon from '../../common/icons/booksitoutIcon';
 
 const MembershipRoute = () => {
 	const navigate = useNavigate()
@@ -40,12 +42,19 @@ const MembershipRoute = () => {
 	}, [page])
 
 	return (
-		<div className="container-xl" style={{ minHeight: '500px' }}>
+		<RouteContainer>
 			<MembershipAddButtonContainer>
-				<AddButton size={40} top="80px" onClick={() => navigate('/add/membership/image')} />
+				<AddButton size={40} top="25px" onClick={() => navigate('/add/membership/image')} />
 			</MembershipAddButtonContainer>
 
-			<RouteTitle icon={<CardIcon />} title={'모든 도서관 회원증'} />
+			<RouteTitle 
+				icon={<booksitoutIcon.membership />} 
+				title={'회원증'} 
+				subTitle={null} 
+				currentKey={'membership'} 
+				buttons={libraryRouteButtons} 
+				rightUi={undefined} 
+			/>
 
 			{!isLogin ? (
 				<NoContent message="회원증을 관리하기 위해서는 로그인 해 주세요" mt={60} />
@@ -80,13 +89,14 @@ const MembershipRoute = () => {
 					)
 				})
 			)}
-		</div>
+		</RouteContainer>
 	)
 }
 
 const MembershipAddButtonContainer = styled.div`
 	position: relative;
-	transform: translateY(-75px)
+	transform: translateY(-75px);
+	z-index: 10;
 `;
 
 export default MembershipRoute

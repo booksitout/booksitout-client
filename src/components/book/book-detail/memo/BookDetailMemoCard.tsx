@@ -11,7 +11,7 @@ const BookDetailMemoCard = ({ memo, setMemoDetailModalOpen, setAddMemoModalOpen,
     const [show, setShow] = React.useState<boolean>(false)
 
 	return (
-		<Card className="mt-3 pb-3" style={{ height: '350px' }}>
+		<Card className="mt-4 pb-3" style={{ height: '350px' }}>
 			<AddButton size={30} color="book" onClick={() => setAddMemoModalOpen(true)} />
 			<MemoAllModal show={show} setShow={setShow} bookId={bookId} />
 

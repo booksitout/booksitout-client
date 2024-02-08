@@ -41,7 +41,14 @@ const StatisticsRoute = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<StatisticsIcon />} title={'독서통계'} />
+			<RouteTitle 
+				icon={<StatisticsIcon />} 
+				title={'독서통계'} 
+				subTitle={'내 독서활동, 한 눈에 볼 수 있어요'} 
+				currentKey={undefined} 
+				buttons={[]} 
+				rightUi={undefined} 
+			/>
 
 			<StatisticsContainer>
 				<StatisticsSummaryContainer>

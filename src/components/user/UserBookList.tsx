@@ -1,4 +1,3 @@
-import urls from "../settings/urls"
 import { useLoaderData, useParams, useSearchParams } from "react-router-dom"
 import { PageType } from "../../types/PageType"
 import SharingBookCard from "./SharingBookCard"
@@ -26,7 +25,14 @@ const UserBookList = () => {
     
     return (
 		<div className="container-xl">
-			<RouteTitle icon={<booksitoutIcon.book />} title={'유저가 공개한 책'} />
+			<RouteTitle 
+				icon={<booksitoutIcon.book />} 
+				title={'유저가 공개한 책'} 
+				subTitle={null} 
+				currentKey={undefined} 
+				buttons={[]} 
+				rightUi={null} 
+			/>
 
 			<div className="row">
 				{pagedPost.content.map(book => {

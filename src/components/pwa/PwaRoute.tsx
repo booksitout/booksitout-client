@@ -8,7 +8,7 @@ import PwaInfoCard from './PwaInfoCard';
 const PwaRoute = () => {
     return (
 		<div className='container-xl'>
-			<RouteTitle icon={<booksitoutIcon.pwa />} title={'앱으로 추가하기'} />
+			<RouteTitle icon={<booksitoutIcon.pwa />} title={'앱으로 추가하기'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			<div className='row justify-content-center'>
 				<div className='col-12 col-md-6'>

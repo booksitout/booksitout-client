@@ -9,7 +9,7 @@ import { Card } from 'react-bootstrap'
 const PrivacyRoute = () => {
     return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.privacy />} title={'책잇아웃의 개인정보처리방침'} />
+			<RouteTitle icon={<booksitoutIcon.privacy />} title={'책잇아웃의 개인정보처리방침'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			<Container>
 				{Array.from(privacyData.entries()).map(([date, content]) => (

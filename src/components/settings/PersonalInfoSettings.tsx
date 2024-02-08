@@ -13,7 +13,7 @@ const PersonalInfoSettings = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.settings />} title={'설정 - 개인 정보 수정'} />
+			<RouteTitle icon={<booksitoutIcon.settings />} title={'설정 - 개인 정보 수정'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={null} />
 
 			<EditPasswordModal show={passwordModalShow} setShow={setPasswordModalShow} />
 			<EditNameModal show={nameModalShow} setShow={setNameModalShow} />

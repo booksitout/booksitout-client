@@ -17,7 +17,6 @@ import OAuth from './components/user/OAuth'
 import SettingsRoute from './components/settings/SettingsRoute'
 import SearchLibrarySettings from './components/settings/SearchLibrarySettings'
 import SearchSettings from './components/settings/SearchSettings'
-import CommunitySettings from './components/settings/CommunitySettings'
 import NotificationSettings from './components/settings/noti/NotificationSettings'
 import PersonalInfoSettings from './components/settings/PersonalInfoSettings'
 
@@ -35,18 +34,8 @@ import GoalRoute from './components/goal/goalRoute/GoalRoute'
 import SearchRoute from './components/search/SearchRoute'
 
 import CommunityRoute from './components/community/community-main/CommunityRoute'
-import AddCommunityRoute from './components/community/AddCommunityRoute'
-
-import PostRoute, { loader as postRouteLoader } from './components/community/post/post-route/PostRoute'
-import PostDetail from './components/community/post/PostDetail'
-import EditPostForm from './components/community/post/EditPostForm'
-
-import GatheringRoute, {loader as gatheringRouteLoader} from './components/community/gathering/GatheringRoute'
-import GatheringDetail, {loader as gatheringDetailLoader} from './components/community/gathering/GatheringDetail'
-import GatheringJoinForm, { loader as gatheringJoinLoader } from './components/community/gathering/GatheringJoinForm'
 
 import UserRoute, { loader as userRouteLoader } from './components/user/UserRoute'
-import UserPostList, {loader as userPostListLoader} from './components/user/UserPostList'
 import UserBookList, { loader as userBookListLoader } from './components/user/UserBookList'
 
 import BookInfoRoute, { loader as bookInfoRouteLoader } from './components/bookInfo/BookInfoRoute'
@@ -91,7 +80,6 @@ const router = createBrowserRouter(
 			<Route path="/settings/search" element={<SearchSettings />} />
 			<Route path="/settings/search/library" element={<SearchLibrarySettings />} />
 			<Route path="/settings/personal-info" element={<PersonalInfoSettings />} />
-			<Route path="/settings/community" element={<CommunitySettings />} />
 			<Route path="/settings/notification" element={<NotificationSettings />} />
 
 			<Route path="/book/:range" element={<BookRoute />} errorElement={<ErrorPage />} />
@@ -108,23 +96,6 @@ const router = createBrowserRouter(
 
 			<Route path="/community" element={<CommunityRoute />} errorElement={<ErrorPage />} />
 
-			<Route path="/community/post/all/:sortBy" element={<PostRoute />} loader={postRouteLoader} />
-			<Route path="/community/post/:postId" element={<PostDetail />} />
-			<Route path="/community/post/edit/:postId" element={<EditPostForm />} />
-
-			<Route path="/community/quiz" element={<></>} />
-			<Route path="/community/quiz/:quizId" element={<></>} />
-			<Route path="/community/quiz/edit/:quizId" element={<></>} />
-
-			<Route path="/community/survey" element={<></>} />
-			<Route path="/community/survey/:surveyId" element={<></>} />
-			<Route path="/community/survey/edit/:surveyId" element={<></>} />
-
-			<Route path="/community/gathering/:type" element={<GatheringRoute />} loader={gatheringRouteLoader} />
-			<Route path="/community/gathering/detail/:id" element={<GatheringDetail />} loader={gatheringDetailLoader}/>
-			<Route path="/community/gathering/edit/:id" element={<></>} />
-			<Route path="/community/gathering/join/:id" element={<GatheringJoinForm />} loader={gatheringJoinLoader} />
-
 			<Route path="/book/info/:isbn" element={<BookInfoRoute />} loader={bookInfoRouteLoader} />
 			<Route path="/book/info/:isbn/related-posts" element={<></>} />
 			<Route path="/book/info/:isbn/covers" element={<></>} />
@@ -132,7 +103,6 @@ const router = createBrowserRouter(
 			<Route path="/user/redirect" element={<UserProfileRedirectRoute />} />
 			<Route path="/user/:nickName" element={<UserRoute />} loader={userRouteLoader} />
 			<Route path="/user/:nickName/books" element={<UserBookList />} loader={userBookListLoader} />
-			<Route path="/user/:nickName/posts" element={<UserPostList />} loader={userPostListLoader} />
 
 			<Route path="/user/:nickName/quizes" element={<></>} />
 			<Route path="/user/:nickName/surveys" element={<></>} />
@@ -141,22 +111,15 @@ const router = createBrowserRouter(
 			<Route path="/library" element={<LibraryRoute />} />
 			<Route path="/library/detail/:id" element={<LibraryDetail />} loader={libraryDetailLoader} />
 			<Route path="/library/near" element={<LibraryNearRoute />} />
-			<Route
-				path="/library/region/:region/:regionDetail"
-				element={<LibraryRegionRoute />}
-				loader={libraryRegionLoader}
-			/>
+			<Route path="/library/region/:region/:regionDetail" element={<LibraryRegionRoute />} loader={libraryRegionLoader} />
 			<Route path="/library/region/:region" element={<LibraryRegionRoute />} loader={libraryRegionLoader} />
 
 			<Route path="/library/membership/all" element={<MembershipRoute />} />
 			<Route path="/library/membership/:id" element={<MembershipDetail />} />
-			<Route path="/library/membership/edit/:id" element={<MembershipEditRoute />}
-				loader={membershipEditLoader}
-			/>
+			<Route path="/library/membership/edit/:id" element={<MembershipEditRoute />} loader={membershipEditLoader} />
 
 			<Route path="/add" element={<AddRoute />}>
 				<Route path="book/:method" element={<AddBookRoute />} />
-				<Route path=":type" element={<AddCommunityRoute />} />
 				<Route path="membership/:method" element={<AddMembershipRoute />} />
 			</Route>
 

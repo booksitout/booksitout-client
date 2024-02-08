@@ -23,7 +23,7 @@ const PrivacyByDate = () => {
 
     return (
 		<Container>
-			<RouteTitle icon={<booksitoutIcon.privacy />} title={'개인정보처리방침'} />
+			<RouteTitle icon={<booksitoutIcon.privacy />} title={'개인정보처리방침'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			{parser(content)}
 		</Container>

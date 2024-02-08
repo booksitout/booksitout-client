@@ -8,7 +8,14 @@ const SettingsRoute = () => {
 	return (
 		<RouteContainer>
 			<div className="row row-eq-height justify-content-start">
-				<RouteTitle icon={<booksitoutIcon.settings />} title={'설정'} />
+				<RouteTitle 
+					icon={<booksitoutIcon.settings />} 
+					title={'설정'} 
+					subTitle={null} 
+					currentKey={undefined} 
+					buttons={[]} 
+					rightUi={null} 
+				/>
 
 				<SettingsCardContainer>
 					<SettingsLinkCard

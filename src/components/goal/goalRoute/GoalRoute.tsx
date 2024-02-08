@@ -76,7 +76,7 @@ const GoalRoute = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.goal />} title={'목표'} />
+			<RouteTitle icon={<booksitoutIcon.goal />} title={'목표'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			{intialFetch ? (
 				<></>

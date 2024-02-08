@@ -108,7 +108,7 @@ const BookEditForm = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.book />} title={'책 수정하기'} />
+			<RouteTitle icon={<booksitoutIcon.book />} title={'책 수정하기'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			<ImageSearchModal
 				showModal={showModal}

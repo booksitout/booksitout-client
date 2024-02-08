@@ -46,11 +46,7 @@ const SearchRoute = () => {
 			<ScrollToTop />
 			<LibraryDetailModal />
 
-			<RouteTitle icon={<booksitoutIcon.search />} title={'검색 결과'} />
-
-			<Alert variant='success' className='text-center'>
-				클릭하면 책을 볼 수 있는 곳으로 이동해요
-			</Alert>
+			<RouteTitle icon={<booksitoutIcon.search />} title={'검색 결과'} subTitle={`클릭하면 책을 볼 수 있는 곳으로 이동해요`} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			{isLogin && <MyBookSearchResult query={query} />}
 			{/* <BooksitoutSearchResultCard query={query} /> */}

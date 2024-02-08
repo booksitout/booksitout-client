@@ -1,18 +1,16 @@
-import React from 'react'
 import defaultBookCover from '../../../images/placeholder/default-book-cover.png'
+import styled from 'styled-components';
 
 const BookCover = ({ book }) => {
 	return (
-		<div className="row justify-content-center">
-			<div className="col-6 col-md-12">
-				<img
-					src={book.cover === '' || book.cover == null ? defaultBookCover : book.cover}
-					alt=""
-					className={`img-fluid rounded  w-100 ${book.cover !== '' && 'border'}`}
-				/>
-			</div>
-		</div>
+		<Image src={book.cover === '' || book.cover == null ? defaultBookCover : book.cover} alt="" />
 	)
 }
+
+const Image = styled.img.attrs({
+	className: 'img-fluid rounded border'
+})`
+	height: 200px;
+`;
 
 export default BookCover

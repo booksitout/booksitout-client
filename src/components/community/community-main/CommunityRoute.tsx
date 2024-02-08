@@ -1,7 +1,5 @@
 import MainTipsCard from '../tips/MainTipsCard';
-import GatheringSummaryCard from '../summaryCard/GatheringSummaryCard';
 import CommunityRoutePopularBookCard from './CommunityRoutePopularBookCard';
-import CommunityRoutePostCard from './CommunityRoutePostCard'
 import { BsPeopleFill as CommunityIcon } from 'react-icons/bs'
 import RouteTitle from '../../common/RouteTitle';
 import RouteContainer from '../../common/RouteContainer';
@@ -11,7 +9,7 @@ const CommunityRoute = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<CommunityIcon />} title={'커뮤니티'} />
+			<RouteTitle icon={<CommunityIcon />} title={'커뮤니티'} subTitle={'책에 관한 다양한 소식과 사람들을 알아갈 수 있어요'} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			<div className='row row-eq-height'>
 				<div className='col-12 col-md-4 mb-4'>
@@ -19,14 +17,6 @@ const CommunityRoute = () => {
 				</div>
 
 				<div className='col-12 col-md-8 mb-4'>
-					<CommunityRoutePostCard />
-				</div>
-
-				{/* <div className='col-12 mb-4'>
-					<GatheringSummaryCard />
-				</div> */}
-
-				<div className='col-12 mb-4'>
 					<MainTipsCard />
 				</div>
 

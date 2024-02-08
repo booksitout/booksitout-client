@@ -26,7 +26,7 @@ const LibraryNearCard = ({ col = 'col-12 col-md-6', moreButton=true, size=6, mt=
 	const getLocation = async () => {
 		const locationResult = await location.getLatitudeAndLongitude()
 
-		if (locationResult == null || locationResult === undefined || locationResult[0] === null || locationResult[1] === null) {
+		if (locationResult == null || locationResult === undefined || locationResult[0] === null || locationResult[0] === undefined || locationResult[1] === null) {
 			setLocationError(true)
 			setLatitude(undefined)
 			setLongitude(undefined)

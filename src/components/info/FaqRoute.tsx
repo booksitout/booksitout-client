@@ -9,7 +9,7 @@ import RouteContainer from '../common/RouteContainer';
 const FaqRoute = () => {
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.faq />} title={'자주 묻는 질문'} />
+			<RouteTitle icon={<booksitoutIcon.faq />} title={'자주 묻는 질문'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			{faqData.map(faq => {
 				return (

@@ -75,7 +75,7 @@ const FeatureRoute = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.feature />} title={'책잇아웃 모든 기능 보기'} />
+			<RouteTitle icon={<booksitoutIcon.feature />} title={'책잇아웃 모든 기능 보기'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
 
 			<div className="row">
 				{features.map(feature => {

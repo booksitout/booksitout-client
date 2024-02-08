@@ -1,7 +1,7 @@
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Card, Button, ProgressBar } from 'react-bootstrap'
+import { Card, Button, ProgressBar, Row, Modal } from 'react-bootstrap'
 import Loading from '../../common/Loading'
 import NoContent from '../../common/NoContent'
 import BookInfoIcon from '../book-info/BookInfoIcon'
@@ -30,6 +30,9 @@ import booksitoutIcon from '../../common/icons/booksitoutIcon';
 import categoryConfig from '../../../config/categoryConfig'
 import BookCover from './BookCover'
 import breakpoints from '../../common/breakpoints'
+import styled from 'styled-components';
+import { BsBookHalf as ReadButton } from "react-icons/bs";
+import DetailButton from '../../common/DetailButton'
 
 const BookDetailRoute = () => {
 	const { id } = useParams()
@@ -41,6 +44,8 @@ const BookDetailRoute = () => {
 	const [memo, setMemo] = React.useState(null)
 	const [readingSession, setReadingSession] = React.useState<ReadingSessionType[]>([])
 
+	const [isBookDoneReading, setIsBookDoneReading] = React.useState<boolean>(false)
+
 	React.useEffect(() => {
 		setTimeout(() => {
 			setInitialFetch(false)
@@ -50,6 +55,7 @@ const BookDetailRoute = () => {
 			getBook(id).then((book) => {
 				document.title = `${book.title} | 책잇아웃`
 				setBook(book)
+				setIsBookDoneReading((book?.currentPage ?? 0) >= (book?.endPage ?? 0))
 			}),
 			getMemoListOfBook(id).then((memoList) => setMemo(memoList)),
 			getAllReadingSessionOfBook(id).then((readingSessionList) => setReadingSession(readingSessionList)),
@@ -76,6 +82,8 @@ const BookDetailRoute = () => {
 	const [selectedReadingSession, setSelectedReadingSession] = React.useState(null)
 	const [selectedMemo, setSelectedMemo] = React.useState(null)
 
+	const [isButtonOpen, setIsButtonOpen] = React.useState<boolean>(false)
+
 	const getTotalReadTIme = (readingSessionList) => {
 		return readingSessionList.map((r) => r.readTime).reduce((pre, cur) => pre + cur, 0)
 	}
@@ -94,7 +102,32 @@ const BookDetailRoute = () => {
 
 	return (
 		<RouteContainer width={breakpoints.xl}>
-			<RouteTitle icon={<booksitoutIcon.book />} title={'책 자세히 보기'} />
+			<RouteTitleContainer>
+				<DetailButton onClick={() => setIsButtonOpen(true)} />
+
+				<Card.Body>
+					<Flex>
+						<BookCoverContainer>
+							<BookCover book={book} />
+						</BookCoverContainer>
+
+						<BookInfoContainer>
+							<Title>{book.title}</Title>
+							<Author>{book.author == null ? '-' : book.author}</Author>
+							<PageProgressBar book={book} />
+						</BookInfoContainer>
+					</Flex>
+
+					{
+						!isBookDoneReading &&
+							<BookReadingButtonContainer>
+								<BookReadingButton href={`/reading/${book.id}`}>
+									<h4><ReadButton /> 이어서 읽기</h4>
+								</BookReadingButton>
+							</BookReadingButtonContainer>
+					}
+				</Card.Body>
+			</RouteTitleContainer>
 
 			<div className="row text-center">
 				<AddRatingModal
@@ -148,20 +181,18 @@ const BookDetailRoute = () => {
 					memoList={memo}
 					setMemoList={setMemo}
 				/>
+				<BookButtonsModal 
+					isOpen={isButtonOpen} 
+					setIsOpen={setIsButtonOpen} 
+					book={book} 
+					setBook={setBook} 
+					setIsRatingModalOpen={setRatingModalOpen} 
+					setIsReviewModalOpen={setReviewModalOpen} 
+					setIsSummaryModalOpen={setSummaryModalOpen}
+				/>
 
-				<div className="col-12 col-md-4 mb-5">
-					<BookCover book={book} />
-					<BookButtons
-						book={book}
-						setBook={setBook}
-						setIsRatingModalOpen={setRatingModalOpen}
-						setIsReviewModalOpen={setReviewModalOpen}
-						setIsSummaryModalOpen={setSummaryModalOpen}
-					/>
-				</div>
-
-				<div className="col-12 col-md-8">
-					<BookDescription book={book} />
+				<div className="col-12">
+					{/* <BookDescription book={book} /> */}
 
 					{book.summary != null && (
 						<Card className="mt-2">
@@ -183,7 +214,7 @@ const BookDetailRoute = () => {
 						</Card>
 					)}
 
-					<Card className="mt-3">
+					<Card>
 						{book.currentPage !== 0 && (
 							<>
 								<div
@@ -238,9 +269,7 @@ const BookDetailRoute = () => {
 							<AddButton
 								size={30}
 								color="book"
-								onClick={() => {
-									setAddReadingModalOpen(true)
-								}}
+								onClick={() => setAddReadingModalOpen(true)}
 							/>
 						)}
 
@@ -279,119 +308,69 @@ const BookDetailRoute = () => {
 	)
 }
 
-const BookButtons = ({ book, setBook, setIsRatingModalOpen, setIsReviewModalOpen, setIsSummaryModalOpen }) => {
+const RouteTitleContainer = styled(Card).attrs({
+	className: 'mt-4 mb-4'
+})`
+`;
+
+const Title = styled.h3``;
+
+const Author = styled.h4.attrs({
+	className: 'text-muted'
+})``;
+
+const BookCoverContainer = styled.div.attrs({
+})``;
+
+const BookInfoContainer = styled.div.attrs({
+})`
+	margin-left: 50px;
+`;
+
+const BookReadingButtonContainer = styled.div`
+	text-align: center;
+	margin-top: 20px;
+`;
+
+const BookReadingButton = styled.a.attrs({
+	className: 'btn btn-book'
+})`
+	width: 100%;
+	max-width: 300px;
+`;
+
+const Flex = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
+const BookButtonsModal = ({ isOpen, setIsOpen, book, setBook, setIsRatingModalOpen, setIsReviewModalOpen, setIsSummaryModalOpen }) => {
 	const navigate = useNavigate()
 	const BOOK_EDIT_URL = `/book/edit/${book.id}`
 
 	return (
-		<div className="row mt-3">
-			<div className="col-6">
-				<Button variant="outline-book-danger" className="w-100" onClick={() => navigate(BOOK_EDIT_URL)}>
-					수정하기
-				</Button>
-			</div>
-
-			<div className="col-6">
-				<Button
-					variant="outline-book-danger"
-					className="w-100"
-					onClick={() => {
-						const confirm = window.confirm('정말 책을 삭제할까요?')
-
-						if (confirm) {
-							deleteBook(book.id).then(success => {
-								if (success) {
-									toast.success('책을 삭제 했어요')
-									navigate('/book/not-done/all')
-								} else {
-									toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요')
-								}
-							})
-						}
-					}}
-				>
-					삭제하기
-				</Button>
-			</div>
-
-			{Number(book.currentPage) === Number(book.endPage) ? (
-				<>
-					{book.rating == null ? (
-						<div className="col-12 mt-3">
-							<Button variant="book" className="w-100" onClick={() => setIsRatingModalOpen(true)}>
-								별점 추가하기
-							</Button>
-						</div>
-					) : (
-						<div>
-							<BookRatingDetail book={book} setBook={setBook} />
-						</div>
-					)}
-
-					{book.review == null ? (
-						<div className="col-12 mt-3">
-							<Button variant="book" className="w-100" onClick={() => setIsReviewModalOpen(true)}>
-								감상 추가하기
-							</Button>
-						</div>
-					) : (
-						<></>
-					)}
-
-					{book.summary == null ? (
-						<div className="col-12 mt-3">
-							<Button variant="book" className="w-100" onClick={() => setIsSummaryModalOpen(true)}>
-								요약 추가하기
-							</Button>
-						</div>
-					) : (
-						<></>
-					)}
-				</>
-			) : book.currentPage < book.endPage && !book.isGiveUp ? (
-				<>
+		<Modal show={isOpen} onHide={() => setIsOpen(false)} centered fullscreen='md-down'>
+			<Modal.Header closeButton />
+			<Modal.Body>
+				<div className="row mt-3">
 					<div className="col-12 mt-3">
-						<Button variant="book" className="w-100" onClick={() => navigate(`/reading/${book.id}`)}>
-							이어서 읽기
+						<Button variant="outline-book-danger" className="w-100" onClick={() => navigate(BOOK_EDIT_URL)}>
+							수정하기
 						</Button>
 					</div>
 
 					<div className="col-12 mt-3">
 						<Button
-							variant="book-danger"
+							variant="outline-book-danger"
 							className="w-100"
 							onClick={() => {
-								const confirm = window.confirm('책을 포기할까요?')
+								const confirm = window.confirm('정말 책을 삭제할까요?')
 
 								if (confirm) {
-									giveUpBook(book.id).then(success => {
+									deleteBook(book.id).then(success => {
 										if (success) {
-											toast.success('책을 포기했어요. 마음이 언제든지 다시 시작하실 수 있어요!')
-											navigate('/book/give-up')
-										} else {
-											toast.error('오류가 났어요 다시 시도해 주세요')
-										}
-									})
-								}
-							}}
-						>
-							포기하기
-						</Button>
-					</div>
-				</>
-			) : (
-				<>
-					<div className="col-12 mt-3">
-						<Button
-							variant="book"
-							className="w-100"
-							onClick={() => {
-								const confirm = window.confirm('책을 다시 읽을까요?')
-
-								if (confirm) {
-									unGiveUpBook(book.id).then(success => {
-										if (success) {
-											toast.success('책을 다시 읽을 수 있어요')
+											toast.success('책을 삭제 했어요')
 											navigate('/book/not-done/all')
 										} else {
 											toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요')
@@ -400,12 +379,98 @@ const BookButtons = ({ book, setBook, setIsRatingModalOpen, setIsReviewModalOpen
 								}
 							}}
 						>
-							다시 읽기 (포기 취소)
+							삭제하기
 						</Button>
 					</div>
-				</>
-			)}
-		</div>
+
+					{Number(book.currentPage) === Number(book.endPage) ? (
+						<>
+							{book.rating == null ? (
+								<div className="col-12 mt-3">
+									<Button variant="book" className="w-100" onClick={() => setIsRatingModalOpen(true)}>
+										별점 추가하기
+									</Button>
+								</div>
+							) : (
+								<div>
+									<BookRatingDetail book={book} setBook={setBook} />
+								</div>
+							)}
+
+							{book.review == null ? (
+								<div className="col-12 mt-3">
+									<Button variant="book" className="w-100" onClick={() => setIsReviewModalOpen(true)}>
+										감상 추가하기
+									</Button>
+								</div>
+							) : (
+								<></>
+							)}
+
+							{book.summary == null ? (
+								<div className="col-12 mt-3">
+									<Button variant="book" className="w-100" onClick={() => setIsSummaryModalOpen(true)}>
+										요약 추가하기
+									</Button>
+								</div>
+							) : (
+								<></>
+							)}
+						</>
+					) : book.currentPage < book.endPage && !book.isGiveUp ? (
+						<>
+							<div className="col-12 mt-3">
+								<Button
+									variant="book-danger"
+									className="w-100"
+									onClick={() => {
+										const confirm = window.confirm('책을 포기할까요?')
+
+										if (confirm) {
+											giveUpBook(book.id).then(success => {
+												if (success) {
+													toast.success('책을 포기했어요. 마음이 언제든지 다시 시작하실 수 있어요!')
+													navigate('/book/give-up')
+												} else {
+													toast.error('오류가 났어요 다시 시도해 주세요')
+												}
+											})
+										}
+									}}
+								>
+									포기하기
+								</Button>
+							</div>
+						</>
+					) : (
+						<>
+							<div className="col-12 mt-3">
+								<Button
+									variant="book"
+									className="w-100"
+									onClick={() => {
+										const confirm = window.confirm('책을 다시 읽을까요?')
+
+										if (confirm) {
+											unGiveUpBook(book.id).then(success => {
+												if (success) {
+													toast.success('책을 다시 읽을 수 있어요')
+													navigate('/book/not-done/all')
+												} else {
+													toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요')
+												}
+											})
+										}
+									}}
+								>
+									다시 읽기 (포기 취소)
+								</Button>
+							</div>
+						</>
+					)}
+				</div>
+			</Modal.Body>
+		</Modal>
 	)
 }
 
@@ -432,17 +497,6 @@ const BookDescription = ({ book }) => {
 
 	return (
 		<>
-			<div className="row mb-4">
-				<h2>{book.title}</h2>
-				<h4 className="text-muted">{book.author == null ? '-' : book.author}</h4>
-
-				<div className="row justify-content-center">
-					<div className="col-12 col-lg-11">
-						<PageProgressBar book={book} />
-					</div>
-				</div>
-			</div>
-
 			<div className="row justify-content-center">
 				<div className={infoCardStyle}>
 					{/* <a href={`/book/all?language=${book.language}`} className='text-decoration-none text-black'> */}
@@ -518,7 +572,7 @@ const ReadingSessionList = ({ readingSessionList, book, setIsReadingSessionModal
 				.filter((r) => r.endPage != null)
 				.map((readingSession) => {
 					return (
-						<div className="col-12 col-lg-6">
+						<div className="col-12 col-md-6 col-lg-4 col-xl-3">
 							<Card
 								className="mb-2 clickable"
 								onClick={() => {

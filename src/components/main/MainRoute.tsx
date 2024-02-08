@@ -1,7 +1,6 @@
 import React from 'react'
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
-import PostPopular from '../community/post/PostPopular';
 import MainTipsCard from '../community/tips/MainTipsCard';
 import { getLastBook } from '../../functions/book'
 import placeholderData from './placeholderData';
@@ -23,6 +22,7 @@ import styled from 'styled-components';
 import './mainReadChart.css'
 import { Row } from 'react-bootstrap';
 import PreReleaseInfoSection from '../onboarding/PreReleaseInfoSection';
+import MainNearLibraryCard from './MainNearLibraryCard';
 
 const MainRoute = () => {
 	const isLogin = useSelector((state: RootState) => state.user.isLogin)
@@ -124,7 +124,7 @@ const MainRoute = () => {
 						</CommunityCardContainer>
 
 						<CommunityCardContainer>
-							<PostPopular />
+							<MainNearLibraryCard />
 						</CommunityCardContainer>
 					</Container>
 				</div>

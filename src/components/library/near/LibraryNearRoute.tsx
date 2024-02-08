@@ -6,18 +6,17 @@ import Error from '../../common/Error'
 import NoContent from '../../common/NoContent';
 import LocationError from '../LocationError'
 import location from '../locationFunction'
-import CardTitle from '../../common/CardTitle'
 import { TbLocationFilled as LocationIcon } from 'react-icons/tb'
 import LibraryCard from '../LibraryCard'
 import { useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import LibraryCardLoading from '../LibraryCardLoading'
-import styled from 'styled-components';
 import booksitoutIcon from '../../common/icons/booksitoutIcon';
+import RouteTitle from '../../common/RouteTitle'
+import { libraryRouteButtons } from '../route/libraryRouteConfig'
+import RouteContainer from '../../common/RouteContainer'
 
 const LibraryNearRoute = () => {
-	const navigate = useNavigate()
-
 	const { range } = useParams()
 	const [currentRange, setCurrentRange] = React.useState<number>(Number(range ?? 3))
 
@@ -94,42 +93,21 @@ const LibraryNearRoute = () => {
 	}
 
 	return (
-		<Container>
+		<RouteContainer>
 			<booksitoutIcon.reload
 				className="text-book clickable d-md-none"
 				onClick={refreshLocation}
 				style={{ fontSize: '40px', position: 'absolute', right: '2.5%', top: '80px' }}
 			/>
 
-			<Row>
-				<Col12>
-					<CardTitle
-						icon={<LocationIcon />}
-						title="내 주변 도서관"
-						subTitle={locationName ?? '위치 알 수 없음'}
-						textSize={1}
-					/>
-				</Col12>
-
-				<Col6>
-					<Form>
-						<Form.Select
-							onChange={e => {
-								navigate(`/library/near?range=${e.target.value}`)
-								setCurrentRange(Number(e.target.value))
-							}}
-						>
-							{[1, 2, 3, 4, 5].map(r => {
-								return (
-									<option selected={r === currentRange} value={r}>
-										{r}km 근처까지
-									</option>
-								)
-							})}
-						</Form.Select>
-					</Form>
-				</Col6>
-			</Row>
+			<RouteTitle 
+				icon={<LocationIcon />}
+				title={'내 주변 도서관'}
+				subTitle={locationName ?? '위치 알 수 없음'}
+				currentKey={'library-near'}
+				buttons={libraryRouteButtons} 
+				rightUi={<DistanceSelect currentRange={currentRange} setCurrentRange={setCurrentRange}/>}			
+			/>
 
 			{locationError || latitude === undefined || longitude === undefined ? (
 				<LocationError move={-100} />
@@ -142,24 +120,31 @@ const LibraryNearRoute = () => {
 			) : (
 				nearLibraryList.map(library => <LibraryCard library={library} />)
 			)}
-		</Container>
+		</RouteContainer>
 	)
 }
 
-const Container = styled.div.attrs({
-	className: 'container-xl pb-5',
-})``
-
-const Row = styled.div.attrs({
-	className: 'row justify-content-end mb-3',
-})``
-
-const Col12 = styled.div.attrs({
-	className: 'col-12 col-md-10',
-})``
-
-const Col6 = styled.div.attrs({
-	className: 'col-6 col-md-2 pt-md-3',
-})``
+const DistanceSelect = ({ currentRange, setCurrentRange }) => {
+	const navigate = useNavigate()
+	
+	return (
+		<Form>
+		<Form.Select
+			onChange={e => {
+				navigate(`/library/near?range=${e.target.value}`)
+				setCurrentRange(Number(e.target.value))
+			}}
+		>
+			{[1, 2, 3, 4, 5].map(r => {
+				return (
+					<option selected={r === currentRange} value={r}>
+						{r}km 근처까지
+					</option>
+				)
+			})}
+		</Form.Select>
+	</Form>
+	)
+}
 
 export default LibraryNearRoute

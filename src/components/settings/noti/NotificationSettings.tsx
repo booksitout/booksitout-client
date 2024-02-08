@@ -7,7 +7,7 @@ import NotificationMethodSettingsCard from "./NotificationMethodSettingsCard";
 const NotificationSettings = () => {
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.settings />} title={'설정 - 알림 설정'} />
+			<RouteTitle icon={<booksitoutIcon.settings />} title={'설정 - 알림 설정'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={null} />
 
 			<NotificationMethodSettingsCard />
 			<NotificationEmailSettingsCard />

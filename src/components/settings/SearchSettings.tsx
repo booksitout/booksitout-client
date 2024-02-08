@@ -30,7 +30,7 @@ const SearchSettings = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.settings />} title={'설정 - 검색 설정'} />
+			<RouteTitle icon={<booksitoutIcon.settings />} title={'설정 - 검색 설정'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={null} />
 
 			<div className="row row-eq-height h-100">
 				<div className="col-12 col-lg-6 mb-4" style={{ height: '300px' }}>

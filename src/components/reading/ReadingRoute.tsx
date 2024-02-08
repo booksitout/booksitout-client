@@ -87,85 +87,88 @@ const ReadingRoute = () => {
 
 	return (
 		<RouteContainer>
-			<Container>
-				<EndReadingSessionModal
-					isShowingModal={isEndReadingSessionModalOpen}
-					setIsShowingModal={setIsEndReadingSessionModalOpen}
-					book={book}
-				/>
-				<MemoDetailModal
-					isModalOpen={isMemoDetailModalOpen}
-					setIsModalOpen={setIsMemoDetailModalOpen}
-					memo={selectedMemo}
-					setMemo={setSelectedMemo}
-					memoList={memoList}
-					setMemoList={setMemoList}
-				/>
-				{/* <BookDetailButton onClick={() => { navigate(`/book/detail/${id}`) }}>
-					책 상세 페이지로
-				</BookDetailButton> */}
+			<Flex>
+				<Container>
+					<EndReadingSessionModal
+						isShowingModal={isEndReadingSessionModalOpen}
+						setIsShowingModal={setIsEndReadingSessionModalOpen}
+						book={book}
+					/>
+					<MemoDetailModal
+						isModalOpen={isMemoDetailModalOpen}
+						setIsModalOpen={setIsMemoDetailModalOpen}
+						memo={selectedMemo}
+						setMemo={setSelectedMemo}
+						memoList={memoList}
+						setMemoList={setMemoList}
+					/>
+					{/* <BookDetailButton onClick={() => { navigate(`/book/detail/${id}`) }}>
+						책 상세 페이지로
+					</BookDetailButton> */}
 
-				<BookContainer>
-					<div className="col-4 text-end">
-						<BookCover src={book.cover == null || book.cover === '' ? defaultBookCover : book.cover} alt="" className={`${book.cover == null || book.cover === '' ? '' : 'border'}`} />
-					</div>
+					<BookContainer>
+						<div className="col-4 text-end">
+							<BookCover src={book.cover == null || book.cover === '' ? defaultBookCover : book.cover} alt="" className={`${book.cover == null || book.cover === '' ? '' : 'border'}`} />
+						</div>
 
-					<div className="col-8 text-center align-self-center">
-						<h2>{book.title}</h2>
-						<h4 className="text-muted">{book.author}</h4>
-					</div>
+						<div className="col-8 text-center align-self-center">
+							<h2>{book.title}</h2>
+							<h4 className="text-muted">{book.author}</h4>
+						</div>
 
-					<div className="row justify-content-center mt-5">
-						<div className="col-11 col-md-9">
-							<PageProgressBar book={book} />
+						<div className="row justify-content-center mt-5">
+							<div className="col-11 col-md-9">
+								<PageProgressBar book={book} />
+							</div>
+						</div>
+					</BookContainer>
+					<Mb />
+
+					<Timer />
+
+					<div className="row justify-content-center mt-4">
+						<div className="col-6 col-lg-4">
+							<Button
+								variant="book"
+								className="w-100"
+								onClick={() => showEndReadingSessionModal()}
+							>
+								독서 끝내기
+							</Button>
+						</div>
+
+						<div className="col-6 col-lg-4">
+							<Button
+								variant={isTimerOn ? 'outline-danger' : 'outline-book'}
+								className="w-100"
+								onClick={() => dispatch(toggleTimer())}
+							>
+								{isTimerOn ? '잠시 정지' : '다시 시작'}
+							</Button>
 						</div>
 					</div>
-				</BookContainer>
-				<Mb />
+					<Mb />
 
-				<Timer />
-
-				<div className="row justify-content-center mt-4">
-					<div className="col-6 col-lg-4">
-						<Button
-							variant="book"
-							className="w-100"
-							onClick={() => showEndReadingSessionModal()}
-						>
-							독서 끝내기
-						</Button>
+					<div className="row justify-content-center">
+						<div className="col-12 col-lg-10 mt-3">
+							<MemoCard
+								book={book}
+								memoList={memoList}
+								setMemoList={setMemoList}
+								setSelectedMemo={setSelectedMemo}
+								setIsModalOpen={setIsMemoDetailModalOpen}
+							/>
+						</div>
 					</div>
-
-					<div className="col-6 col-lg-4">
-						<Button
-							variant={isTimerOn ? 'outline-danger' : 'outline-book'}
-							className="w-100"
-							onClick={() => dispatch(toggleTimer())}
-						>
-							{isTimerOn ? '잠시 정지' : '다시 시작'}
-						</Button>
-					</div>
-				</div>
-				<Mb />
-
-				<div className="row justify-content-center">
-					<div className="col-12 col-lg-10 mt-3">
-						<MemoCard
-							book={book}
-							memoList={memoList}
-							setMemoList={setMemoList}
-							setSelectedMemo={setSelectedMemo}
-							setIsModalOpen={setIsMemoDetailModalOpen}
-						/>
-					</div>
-				</div>
-				<Mb />
-			</Container>
+					<Mb />
+				</Container>
+			</Flex>
 		</RouteContainer>
 	)
 }
 
 const Container = styled.div`
+	width: 100%;
 	max-width: 1000px;
 	text-align: center;
 `;
@@ -191,5 +194,10 @@ const BookDetailButton = styled(Button).attrs({
 	className: `w-100 mt-3`,
 	variant: 'secondary'
 })``;
+
+const Flex = styled.div`
+	display: flex;
+	justify-content: center;
+`;
 
 export default ReadingRoute
