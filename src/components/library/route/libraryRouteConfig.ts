@@ -12,16 +12,11 @@ const libraryRouteButtons: RouteButtonGroupType[] = [
 		key: 'library-near',
 		label: '내 주변 도서관',
 	},
-	// {
-	// 	url: '/library/near',
-	// 	key: 'library-search',
-	// 	label: '도서관 검색',
-	// },
-	// {
-	// 	url: '/library/near',
-	// 	key: 'library-region',
-	// 	label: '지역별 도서관',
-	// },
+	{
+		url: '/library/search',
+		key: 'library-search',
+		label: '도서관 찾기',
+	},
 ]
 
 export { libraryRouteButtons, LibraryIcon }

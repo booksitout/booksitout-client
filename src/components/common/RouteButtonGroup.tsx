@@ -10,19 +10,21 @@ interface RouteButtonGroupProps {
 
 const RouteButtonGroup: React.FC<RouteButtonGroupProps> = (props) => {
     return (
-        <ButtonGroup className='w-100'>
+        <ButtonGroup className='row w-100'>
             {
                 props.buttons.map((button, index) => {
                     return (
-                        <Link href={button.url}>
-                            <Button value={index} variant={props.currentKey === button.key ? 'book' : 'light'}>
-                                {button.label}
-                            </Button>
-                        </Link>
+                        <div className={`col-4 ${(index === 0 || index === 3) ? 'pe-0' : 'p-0'}`}>
+                            <Link href={button.url}>
+                                <Button value={index} variant={props.currentKey === button.key ? 'book' : 'light'}>
+                                    {button.label}
+                                </Button>
+                            </Link>
+                        </div>
                     )
                 })
             }
-    </ButtonGroup>
+        </ButtonGroup>
 
     )
 }
