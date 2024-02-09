@@ -1,13 +1,13 @@
 import React from "react"
 import { Card, ListGroup } from "react-bootstrap"
-import { PopularBookType } from "../post/PostType"
+import { PopularBookType } from "../../../types/PostType"
 import Error from '../../common/Error'
 import booksitoutIcon from '../../common/icons/booksitoutIcon';
 import { booksitoutServer } from "../../../config/axios"
 import PopularBookListLoading from "./CommunityRoutePopularBookListLoading";
 import styled from 'styled-components';
 import CardTitle from "../../common/CardTitle";
-import { useMinLoading } from "../../common/useMinLoading";
+import { useMinLoading } from "../../../hooks/useMinLoading";
 
 const CommunityRoutePopularBookCard = () => {
 	const [popularBook, loading, error] = useMinLoading<PopularBookType[]>(() =>

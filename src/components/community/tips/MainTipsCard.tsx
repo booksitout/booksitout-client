@@ -2,7 +2,7 @@ import React from "react"
 import { Card } from "react-bootstrap"
 import Error from '../../common/Error'
 import MainTipsListGroup from "./MainTipsListGroup"
-import TipsType from "./TipsType"
+import TipsType from "../../../types/TipsType"
 import AllButton from "../../common/AllButton"
 import logo from '../../../images/logo.png'
 import { booksitoutServer } from "../../../config/axios"

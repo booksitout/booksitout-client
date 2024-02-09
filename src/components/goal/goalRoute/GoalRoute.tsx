@@ -12,7 +12,7 @@ import goalIcon from '../images/goal.png'
 import AddPastGoalModal from '../AddPastGoalModal'
 import EditPastGoalModal from '../EditPastGoalModal'
 import goalMessage from '../goalMessage'
-import { GoalType } from '../GoalType'
+import { GoalType } from '../../../types/GoalType'
 import RouteTitle from '../../common/RouteTitle'
 import booksitoutIcon from '../../common/icons/booksitoutIcon';
 import RouteContainer from '../../common/RouteContainer'

@@ -4,6 +4,7 @@ interface TipsType {
     content?: string;
     summary?: string;
     estimatedReadTime: number;
+    displayImageUrl?: string;
     
     type: TipsTypeResponse;
 

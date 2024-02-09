@@ -2,7 +2,7 @@ import { useLoaderData, useParams } from 'react-router-dom'
 import UserProfileCard from './UserProfileCard'
 import UserSharingBookCard from './UserSharingBookCard'
 import { PublicUserType } from '../../types/UserType'
-import { BookType } from '../community/post/PostType'
+import { BookType } from '../../types/PostType'
 import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import { booksitoutServer } from '../../config/axios'

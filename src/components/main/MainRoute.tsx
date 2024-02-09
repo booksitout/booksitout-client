@@ -10,7 +10,7 @@ import MainReadingTimeCard from './MainReadingTimeCard';
 import MainSummaryStatisticsCard from './MainSummaryStatisticsCard';
 import MainGoalCard from './MainGoalCard';
 import MainLibraryMembershipCard from './MainLibraryMembershipCard';
-import { GoalType } from '../goal/GoalType'
+import { GoalType } from '../../types/GoalType'
 import { StatisticsType } from '../../types/StatisticsType';
 import { booksitoutServer } from '../../config/axios';
 import { BookType } from '../../types/BookType'
@@ -71,9 +71,9 @@ const MainRoute = () => {
 	return (
 		<RouteContainer>
 			<Row>
-				<div className="mt-2" />
+				{/* <div className="mt-2" />
 				<PreReleaseInfoSection />
-				<Margin />
+				<Margin /> */}
 
 				{isLogin ? <MainAlert /> : <MainIntroductionSection />}
 				<Margin />

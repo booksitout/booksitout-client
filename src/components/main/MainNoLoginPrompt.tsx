@@ -24,7 +24,7 @@ const LoginCard = styled(Card).attrs({
 	height: 525px;
 	max-width: 800px;
 	position: absolute;
-	top: 825px;
+	top: 625px;
 
 	opacity: 1;
 	z-index: 1;

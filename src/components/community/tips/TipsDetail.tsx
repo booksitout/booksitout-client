@@ -2,7 +2,7 @@ import React from "react"
 import { Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import parse from 'html-react-parser'
-import Tip from "./TipsType"
+import Tip from "../../../types/TipsType"
 import TipsTimeIcon from "./TipsTimeIcon"
 import Loading from "../../common/Loading"
 import Error from '../../common/Error'
@@ -35,7 +35,7 @@ const TipsDetail = () => {
     return (
 		<TipsDetailContainer>
 			<Card style={{ minHeight: '200px' }} className='mb-4'>
-				<Card.Body>
+				<TitleContainer>
 					<div className='row'>
 						<div className='col-12 col-md-10'>
 							<h2>{tip?.title}</h2>
@@ -51,13 +51,13 @@ const TipsDetail = () => {
 					</div>
 
 					<p className='text-secondary'>{tip?.summary}</p>
-				</Card.Body>
+				</TitleContainer>
 			</Card>
 
 			<Card style={{ minHeight: '500px' }} className="mb-5">
-				<Card.Body>
+				<ContentContainer>
 					<p>{parse(tip?.content ?? '')}</p>
-				</Card.Body>
+				</ContentContainer>
 			</Card>
 		</TipsDetailContainer>
 	)
@@ -84,6 +84,23 @@ const TipsDetailContainer = styled.div.attrs({
 	hr {
 		margin-bottom: 50px;
 	}
+`;
+
+const TitleContainer = styled(Card.Body)`
+	padding-top: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+
+	font-family: 'Nanum Gothic', sans-serif;
+`;
+
+const ContentContainer = styled(Card.Body)`
+	padding-top: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+
+	font-size: 1.1rem;
+	font-family: 'Nanum Gothic', sans-serif;
 `;
 
 export default TipsDetail

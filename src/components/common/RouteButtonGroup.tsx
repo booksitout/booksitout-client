@@ -36,6 +36,7 @@ const Link = styled.a`
 const Button = styled(ToggleButton).attrs({
     type: 'radio',
     checked: false,
+    className: 'force-1-line'
 })`
     width: 100%;
 `;
