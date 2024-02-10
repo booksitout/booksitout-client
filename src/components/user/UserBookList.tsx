@@ -6,6 +6,8 @@ import Page from "../common/Page"
 import RouteTitle from "../common/RouteTitle"
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import { booksitoutServer } from "../../config/axios"
+import { RouteButtonGroupType } from "../common/RouteButtonGroupType"
+import RouteContainer from "../common/RouteContainer"
 
 export async function loader({params, request}) {
     const nickName = params.nickName
@@ -22,15 +24,28 @@ const UserBookList = () => {
 
     const pagedPost = useLoaderData() as PageType<SharingBook[]>
 	const { nickName } = useParams()
+
+	const buttons: RouteButtonGroupType[] = [
+		{
+			url: `/user/${nickName}`,
+			key: 'user',
+			label: '요약'
+		},
+		{
+			url: `/user/${nickName}/books`,
+			key: 'user-book',
+			label: '공개한 책'
+		}
+	]
     
     return (
-		<div className="container-xl">
+		<RouteContainer>
 			<RouteTitle 
-				icon={<booksitoutIcon.book />} 
-				title={'유저가 공개한 책'} 
+				icon={<booksitoutIcon.user />} 
+				title={'유저 정보'} 
 				subTitle={null} 
-				currentKey={undefined} 
-				buttons={[]} 
+				currentKey={'user-book'} 
+				buttons={buttons} 
 				rightUi={null} 
 			/>
 
@@ -45,7 +60,7 @@ const UserBookList = () => {
 			</div>
 
 			<Page paged={pagedPost} currentPage={page} url={`/user/${nickName}/books`} />
-		</div>
+		</RouteContainer>
 	)
 }
 

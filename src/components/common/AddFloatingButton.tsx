@@ -15,10 +15,6 @@ const AddFloatingButton = () => {
 		const path = window.location.pathname
 
 		if (path === '/add/book/search') {
-			return '/add/post'
-		}
-
-		if (path === '/add/post' || path === '/add/gathering') {
 			return '/add/membership/image'
 		}
 

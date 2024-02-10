@@ -7,6 +7,7 @@ import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import { booksitoutServer } from '../../config/axios'
 import RouteContainer from '../common/RouteContainer'
+import { RouteButtonGroupType } from '../common/RouteButtonGroupType'
 
 interface LoaderData {
 	user: PublicUserType;
@@ -31,9 +32,22 @@ const UserRoute = () => {
 	const { nickName } = useParams()
 	const { user, bookList } = useLoaderData() as LoaderData
 
+	const buttons: RouteButtonGroupType[] = [
+		{
+			url: `/user/${nickName}`,
+			key: 'user',
+			label: '요약'
+		},
+		{
+			url: `/user/${nickName}/books`,
+			key: 'user-book',
+			label: '공개한 책'
+		}
+	]
+
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.user />} title={'유저 정보'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={null} />
+			<RouteTitle icon={<booksitoutIcon.user />} title={'유저 정보'} subTitle={null} currentKey={'user'} buttons={buttons} rightUi={null} />
 
 			<UserProfileCard user={user} />
 			<div className='mb-4' />

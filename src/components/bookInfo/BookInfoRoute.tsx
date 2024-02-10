@@ -15,11 +15,9 @@ export async function loader({ params }) {
 	const isbn = params.isbn
 
 	const fetchBook = booksitoutServer.get(`/v4/book-isbn/${isbn}`).then((res) => res.data)
-	const fetchPostList = booksitoutServer.get(`/v4/forum/post/by-isbn?isbn=${isbn}`).then((res) => res.data)
+	const [book] = await Promise.all([fetchBook])
 
-	const [book, postList] = await Promise.all([fetchBook, fetchPostList])
-
-	return { book: book, postList: postList }
+	return { book: book }
 }
 
 const BookInfoRoute = () => {

@@ -12,11 +12,6 @@ const libraryRouteButtons: RouteButtonGroupType[] = [
 		key: 'library-near',
 		label: '내 주변 도서관',
 	},
-	{
-		url: '/library/search',
-		key: 'library-search',
-		label: '도서관 찾기',
-	},
 ]
 
 export { libraryRouteButtons, LibraryIcon }

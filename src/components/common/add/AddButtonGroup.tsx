@@ -27,17 +27,6 @@ const AddButtonGroup: React.FC<Props> = ({ type }) => {
 				value={'MANUAL'}
 				type="radio"
 				checked={false}
-				onClick={() => navigate('/add/post')}
-				variant={type?.toUpperCase() === 'POST' || type?.toUpperCase() === 'GATHERING' ? 'book' : 'light'}
-			>
-				게시글 추가
-			</ToggleButton>
-
-			<ToggleButton
-				className="w-100 force-1-line"
-				value={'MANUAL'}
-				type="radio"
-				checked={false}
 				onClick={() => navigate('/add/membership/image')}
 				variant={type?.toUpperCase() === 'MEMBERSHIP' ? 'book' : 'light'}
 			>

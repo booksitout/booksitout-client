@@ -47,7 +47,7 @@ const TipsRoute = () => {
 		<RouteContainer>
 			<RouteTitle 
 				icon={<img src={booksitoutLogo} alt='' style={{ width: '35px', height: '35px' }} className='me-2' />} 
-				title={'책잇아웃 꿀팁'} 
+				title={'책잇아웃의 꿀팁'} 
 				subTitle={'책에 관한 여러 꿀팁을 얻어 갈 수 있어요'} 
 				currentKey={range} 
 				buttons={buttons} 
