@@ -5,11 +5,32 @@ import { faqData } from './faqData';
 import RouteTitle from '../common/RouteTitle';
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import RouteContainer from '../common/RouteContainer';
+import { RouteButtonGroupType } from '../common/RouteButtonGroupType';
 
 const FaqRoute = () => {
+	const buttons: RouteButtonGroupType[] = [
+		{
+			url: '/faq',
+			key: 'faq',
+			label: '자주 묻는 질문',
+		},
+		{
+			url: 'https://docs.google.com/forms/d/1lW6HS7zUaxjD_0EAHE4TqnqHapG87yZqMkzLXqWcPLw',
+			key: 'suggest',
+			label: '책잇아웃에 제안하기',
+		},
+	]
+
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.faq />} title={'자주 묻는 질문'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={undefined} />
+			<RouteTitle 
+				icon={<booksitoutIcon.faq />} 
+				title={'자주 묻는 질문'} 
+				subTitle={'책잇아웃에 관해 자주 묻는 질문을 빠르게 대답해 드릴게요 '} 
+				currentKey={'faq'} 
+				buttons={buttons} 
+				rightUi={undefined} 
+			/>
 
 			{faqData.map(faq => {
 				return (
@@ -33,14 +54,6 @@ const FaqRoute = () => {
 						</a>
 					</div>
 				)}
-
-				<div className="col-12 col-lg-7 mt-3">
-					<a href="https://docs.google.com/forms/d/1lW6HS7zUaxjD_0EAHE4TqnqHapG87yZqMkzLXqWcPLw" target='_blank' rel="noreferrer">
-						<Button variant="book" className="w-100">
-							책잇아웃에 제안하기
-						</Button>
-					</a>
-				</div>
 			</div>
 		</RouteContainer>
 	)
