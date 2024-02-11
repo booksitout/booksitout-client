@@ -31,7 +31,7 @@ const TopnavBigDropdown = ({ isLogin, handleLogout }) => {
 						<booksitoutIcon.faq className="text-book me-2 mb-1 bold" /> 자주 묻는 질문
 					</NavDropdown.Item>
 
-					<NavDropdown.Item href="https://docs.google.com/forms/d/1lW6HS7zUaxjD_0EAHE4TqnqHapG87yZqMkzLXqWcPLw">
+					<NavDropdown.Item href="https://docs.google.com/forms/d/1lW6HS7zUaxjD_0EAHE4TqnqHapG87yZqMkzLXqWcPLw" target='_blank' rel="noreferrer">
 						<booksitoutIcon.faq className="text-book me-2 mb-1 bold" /> 제안 / 피드백
 					</NavDropdown.Item>
 
@@ -48,7 +48,7 @@ const TopnavBigDropdown = ({ isLogin, handleLogout }) => {
 						자주 묻는 질문
 					</NavDropdown.Item>
 
-					<NavDropdown.Item href="https://docs.google.com/forms/d/1lW6HS7zUaxjD_0EAHE4TqnqHapG87yZqMkzLXqWcPLw">
+					<NavDropdown.Item href="https://docs.google.com/forms/d/1lW6HS7zUaxjD_0EAHE4TqnqHapG87yZqMkzLXqWcPLw" target='_blank' rel="noreferrer">
 						<booksitoutIcon.suggestion className="text-book me-2 mb-1 bold" />
 						제안 / 피드백
 					</NavDropdown.Item>

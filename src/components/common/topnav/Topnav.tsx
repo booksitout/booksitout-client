@@ -71,12 +71,7 @@ const Topnav = () => {
 	}
 
 	const handleSearchClick = () => {
-		// if (isLogin) {
 		toggleSearchBar()
-		// return
-		// }
-
-		// toast.error('검색을 이용하기 위해 로그인 해 주세요')
 	}
 
 	const toggleNavbar = () => {
