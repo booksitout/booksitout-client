@@ -11,6 +11,7 @@ import RouteContainer from '../common/RouteContainer'
 import RouteTitle from '../common/RouteTitle'
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import { booksitoutServer } from '../../config/axios'
+import { settingsRouteButtons } from './settingsUi'
 
 const SearchSettings = () => {
 	React.useEffect(() => {
@@ -30,7 +31,14 @@ const SearchSettings = () => {
 
 	return (
 		<RouteContainer>
-			<RouteTitle icon={<booksitoutIcon.settings />} title={'설정 - 검색 설정'} subTitle={null} currentKey={undefined} buttons={[]} rightUi={null} />
+			<RouteTitle 
+				icon={<booksitoutIcon.settings />} 
+				title={'설정 - 검색 설정'} 
+				subTitle={null} 
+				currentKey={'search'} 
+				buttons={settingsRouteButtons} 
+				rightUi={null} 
+			/>
 
 			<div className="row row-eq-height h-100">
 				<div className="col-12 col-lg-6 mb-4" style={{ height: '300px' }}>

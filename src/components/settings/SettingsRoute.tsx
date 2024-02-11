@@ -3,6 +3,7 @@ import SettingsLinkCard from "./SettingsLinkCard"
 import booksitoutIcon from '../common/icons/booksitoutIcon';
 import styled from 'styled-components';
 import RouteContainer from "../common/RouteContainer";
+import { settingsRouteButtons } from "./settingsUi";
 
 const SettingsRoute = () => {
 	return (
@@ -12,18 +13,10 @@ const SettingsRoute = () => {
 					icon={<booksitoutIcon.settings />} 
 					title={'설정'} 
 					subTitle={null} 
-					currentKey={undefined} 
-					buttons={[]} 
+					currentKey={'all'} 
+					buttons={settingsRouteButtons} 
 					rightUi={null} 
 				/>
-
-				<SettingsCardContainer>
-					<SettingsLinkCard
-						title="개인 정보 수정"
-						contentList={['이메일 변경', '비밀번호 변경', '이름 변경']}
-						link="/settings/personal-info"
-					/>
-				</SettingsCardContainer>
 
 				<SettingsCardContainer>
 					<SettingsLinkCard
@@ -35,17 +28,9 @@ const SettingsRoute = () => {
 
 				<SettingsCardContainer>
 					<SettingsLinkCard
-						title="커뮤니티 설정"
-						contentList={['커뮤니티 프로필 설정', '알림 설정']}
-						link="/settings/community"
-					/>
-				</SettingsCardContainer>
-
-				<SettingsCardContainer>
-					<SettingsLinkCard
-						title={'알림 설정'}
-						contentList={['알림 방법 설정', '알림 메일 주소 설정']}
-						link={'/settings/notification'}
+						title={'내 공개 프로필 설정'}
+						contentList={['이름', '프로필 이미지', '책 공개 여부']}
+						link={'/settings/public-profile'}
 					/>
 				</SettingsCardContainer>
 			</div>

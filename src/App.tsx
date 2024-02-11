@@ -17,8 +17,6 @@ import OAuth from './components/user/OAuth'
 import SettingsRoute from './components/settings/SettingsRoute'
 import SearchLibrarySettings from './components/settings/SearchLibrarySettings'
 import SearchSettings from './components/settings/SearchSettings'
-import NotificationSettings from './components/settings/noti/NotificationSettings'
-import PersonalInfoSettings from './components/settings/PersonalInfoSettings'
 
 import BookRoute from './components/book/BookRoute'
 import BookDetailRoute from './components/book/book-detail/BookDetailRoute'
@@ -57,6 +55,7 @@ import PrivacyByDate from './components/privacy/PrivacyByDate'
 import UserProfileRedirectRoute from './components/user/UserProfileRedirectRoute'
 import AdminRoute from './components/admin/AdminRoute'
 import AdminTipsRoute from './components/admin/AdminTipsRoute'
+import PublicProfileSettingsRoute from './components/settings/PublicProfileSettingsRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -81,8 +80,7 @@ const router = createBrowserRouter(
 			<Route path="/settings" element={<SettingsRoute />} />
 			<Route path="/settings/search" element={<SearchSettings />} />
 			<Route path="/settings/search/library" element={<SearchLibrarySettings />} />
-			<Route path="/settings/personal-info" element={<PersonalInfoSettings />} />
-			<Route path="/settings/notification" element={<NotificationSettings />} />
+			<Route path="/settings/public-profile" element={<PublicProfileSettingsRoute />} />
 
 			<Route path="/book/:range" element={<BookRoute />} errorElement={<ErrorPage />} />
 			<Route path="/book/:range/:rangeDetail" element={<BookRoute />} errorElement={<ErrorPage />} />
