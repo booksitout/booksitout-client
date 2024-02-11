@@ -134,15 +134,15 @@ const MainRoute = () => {
 }
 
 const Container = styled.div.attrs({
-	className: 'row row-eq-height',
+	className: 'row row-eq-height pe-0',
 })``
 
 const BookCardContainer = styled.div.attrs({
-	className: 'col-12 col-md-6 col-xxl-4',
+	className: 'col-12 col-md-6 col-xxl-4 mb-4',
 })``
 
 const CommunityCardContainer = styled.div.attrs({
-	className: 'col-12 col-xxl-6 mb-3',
+	className: 'col-12 col-xxl-6 mb-3 me-0 pe-0',
 })``
 
 const Margin = styled.div.attrs({
