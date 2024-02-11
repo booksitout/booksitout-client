@@ -8,7 +8,6 @@ const urls = {
 
 		introduction: '/introduction',
 		faq: '/faq',
-		qna: '/qna',
 	},
 
 	api: {

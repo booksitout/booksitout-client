@@ -50,11 +50,7 @@ const messages = {
 					title: `FAQ`,
 					content: `자주 하시는 질문`,
 				},
-				qna: {
-					title: `QNA`,
-					content: `직접 질문`,
-				},
-				faqQna: `책잇아웃에 관한 질문 한 스푼 🥄`,
+				faqQna: `책잇아웃에 관해 자주 묻는 질문`,
 			},
 			oauth: {
 				loading: new Map([

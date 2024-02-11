@@ -7,6 +7,9 @@ import messages from '../settings/messages'
 import { RootState } from '../../redux/store'
 import MainLogin from '../main/MainLogin'
 import styled from 'styled-components';
+import parse from 'html-react-parser'
+import { faqData } from '../info/faqData';
+import AllButton from '../common/AllButton'
 
 const LoginRoute = () => {
 	const navigate = useNavigate()
@@ -84,27 +87,25 @@ const IntroductionCard = () => {
 const QuestionCard = () => {
 	return (
 		<Card className="h-100">
-			<Card.Body className="text-center">
-				<h4 className="text-center">{messages.user.login.label.faqQna}</h4>
+			<Card.Body>
+				<h4 className="text-center mt-3">{messages.user.login.label.faqQna}</h4>
 
-				<div className="row row-eq-height mt-3">
-					<div className="col-12 col-md-6">
-						<a href={urls.local.faq} className="text-decoration-none text-black">
-							<Card className="mb-3">
-								<Card.Header>{messages.user.login.label.faq.title}</Card.Header>
-								<Card.Body>{messages.user.login.label.faq.content}</Card.Body>
-							</Card>
-						</a>
-					</div>
+				<div className="text-start mt-5">
+					{faqData.map(faq => {
+						return (
+							<Card className="mt-4">
+								<Card.Header className="text-white border-0" style={{ background: '#1cb15a' }}>
+									<h5 className="mt-1">{faq.question}</h5>
+								</Card.Header>
 
-					<div className="col-12 col-md-6">
-						<a href={urls.local.qna} className="text-decoration-none text-black">
-							<Card className="mb-3">
-								<Card.Header>{messages.user.login.label.qna.title}</Card.Header>
-								<Card.Body>{messages.user.login.label.qna.content}</Card.Body>
+								<Card.Body>{parse(faq.answer)}</Card.Body>
 							</Card>
-						</a>
-					</div>
+						)
+					})}
+				</div>
+
+				<div className="mb-5">
+					<AllButton url={'/faq'}/>
 				</div>
 			</Card.Body>
 		</Card>
