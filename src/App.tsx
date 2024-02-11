@@ -55,6 +55,8 @@ import AddRoute from './components/common/add/AddRoute'
 import PrivacyRoute from './components/privacy/PrivacyRoute'
 import PrivacyByDate from './components/privacy/PrivacyByDate'
 import UserProfileRedirectRoute from './components/user/UserProfileRedirectRoute'
+import AdminRoute from './components/admin/AdminRoute'
+import AdminTipsRoute from './components/admin/AdminTipsRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -118,6 +120,9 @@ const router = createBrowserRouter(
 			<Route path="/library/membership/:id" element={<MembershipDetail />} />
 			<Route path="/library/membership/edit/:id" element={<MembershipEditRoute />} loader={membershipEditLoader} />
 
+			<Route path="/admin" element={<AdminRoute />} />
+			<Route path="/admin/tips/:id" element={<AdminTipsRoute />} />
+
 			<Route path="/add" element={<AddRoute />}>
 				<Route path="book/:method" element={<AddBookRoute />} />
 				<Route path="membership/:method" element={<AddMembershipRoute />} />
@@ -125,7 +130,7 @@ const router = createBrowserRouter(
 
 			<Route path="/privacy" element={<PrivacyRoute />} />
 			<Route path="/privacy/:date" element={<PrivacyByDate />} />
-		</Route>,
+		</Route>
 	),
 )
 

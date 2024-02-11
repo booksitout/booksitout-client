@@ -4,11 +4,12 @@ import TipsType from '../../../types/TipsType';
 
 interface Props {
     tip: TipsType
+	isAdmin: boolean
 }
 
-const TipsCard: React.FC<Props> = ({ tip }) => {
+const TipsCard: React.FC<Props> = ({ tip, isAdmin = false }) => {
     return(
-        <a href={`/tips/detail/${tip.id}`} className='mb-3 col-12 col-md-6 col-lg-4'>
+		<a href={`${isAdmin ? `/admin/tips/${tip.id}` : `/tips/detail/${tip.id}`}`} className='mb-3 col-12 col-md-6 col-lg-4'>
             <List>
                 <ImageContainer>
                     <Image src={tip.displayImageUrl} alt='' />

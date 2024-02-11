@@ -44,7 +44,7 @@ const MainTipsCard = () => {
 					) : (
 						<div className="row">
 							{
-								tipPost.map((tip) => <TipsCard tip={tip} />)
+								tipPost.map((tip) => <TipsCard tip={tip} isAdmin={false} />)
 							}
 						</div>
 					)}

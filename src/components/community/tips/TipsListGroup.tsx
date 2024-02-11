@@ -49,7 +49,7 @@ const TipsListGroup = ({ range }) => {
 		>
 			<Row>
 				{
-					tips.map((tip, _) => <TipsCard tip={tip} />)
+					tips.map((tip, _) => <TipsCard tip={tip} isAdmin={false} />)
 				}
 			</Row>
 		</InfiniteScroll>
