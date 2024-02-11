@@ -74,6 +74,7 @@ const MainRoute = () => {
 				{/* <div className="mt-2" />
 				<PreReleaseInfoSection />
 				<Margin /> */}
+				<Margin />
 
 				{isLogin ? <MainAlert /> : <MainIntroductionSection />}
 				<Margin />
@@ -117,17 +118,15 @@ const MainRoute = () => {
 				</div>
 				<Margin />
 
-				<div>
-					<Container>
-						<CommunityCardContainer>
-							<MainTipsCard />
-						</CommunityCardContainer>
+				<ContainerCommunity>
+					<CommunityCardContainer>
+						<MainTipsCard />
+					</CommunityCardContainer>
 
-						<CommunityCardContainer>
-							<MainNearLibraryCard />
-						</CommunityCardContainer>
-					</Container>
-				</div>
+					<CommunityCardContainer>
+						<MainNearLibraryCard />
+					</CommunityCardContainer>
+				</ContainerCommunity>
 			</Row>
 		</RouteContainer>
 	)
@@ -137,8 +136,12 @@ const Container = styled.div.attrs({
 	className: 'row row-eq-height',
 })``
 
+const ContainerCommunity = styled.div.attrs({
+	className: 'row row-eq-height p-1',
+})``
+
 const BookCardContainer = styled.div.attrs({
-	className: 'col-12 col-md-6 col-xxl-4 mb-3',
+	className: 'col-12 col-md-6 col-xxl-4 mb-3 pb-0',
 })``
 
 const CommunityCardContainer = styled.div.attrs({

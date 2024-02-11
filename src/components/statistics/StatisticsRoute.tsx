@@ -13,6 +13,7 @@ import StatisticsBookSummaryCard from './StatisticsBookSummaryCard'
 import RouteContainer from '../common/RouteContainer'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { RouteButtonGroupType } from '../common/RouteButtonGroupType'
 
 const StatisticsRoute = () => {
 	const navigate = useNavigate()
@@ -21,6 +22,19 @@ const StatisticsRoute = () => {
 	const [readTimeList, setReadTimeList] = React.useState(null)
 	const [languageData, setLanguageData] = React.useState(null)
 	const [categoryData, setCategoryData] = React.useState(null)
+
+	const buttons: RouteButtonGroupType[] = [
+		{
+			url: '/statistics',
+			key: 'statistics',
+			label: '요약',
+		},
+		{
+			url: '/statistics/shelf',
+			key: 'shelf',
+			label: '내 책장',
+		},
+	]
 
 	React.useEffect(() => {
 		document.title = '통계 | 책잇아웃'
@@ -45,8 +59,8 @@ const StatisticsRoute = () => {
 				icon={<StatisticsIcon />} 
 				title={'독서통계'} 
 				subTitle={'내 독서활동, 한 눈에 볼 수 있어요'} 
-				currentKey={undefined} 
-				buttons={[]} 
+				currentKey={'statistics'} 
+				buttons={buttons} 
 				rightUi={undefined} 
 			/>
 

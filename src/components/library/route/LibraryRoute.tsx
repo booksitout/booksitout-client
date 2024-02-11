@@ -19,7 +19,7 @@ const LibraryRoute = () => {
 				icon={<LibraryIcon />} 
 				title={'도서관'} 
 				subTitle={'도서관을 찾고 이용할 떄 필요한 모든 것, 편하게 누리세요'} 
-				currentKey={null} 
+				currentKey={'library'} 
 				buttons={libraryRouteButtons} 
 				rightUi={undefined} 
 			/>

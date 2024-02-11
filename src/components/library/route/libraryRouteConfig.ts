@@ -3,6 +3,11 @@ import { ImLibrary as LibraryIcon} from 'react-icons/im'
 
 const libraryRouteButtons: RouteButtonGroupType[] = [
 	{
+		url: '/library',
+		key: 'library',
+		label: '요약',
+	},
+	{
 		url: '/library/membership/all',
 		key: 'membership',
 		label: '회원증',
