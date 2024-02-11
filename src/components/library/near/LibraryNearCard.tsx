@@ -55,7 +55,7 @@ const LibraryNearCard = ({ col = 'col-12 col-md-6', moreButton=true, size=6, mt=
 				.catch(() => setNearLibraryList(undefined))
 				.finally(() => setInitialFetch(false))
 		}
-	}, [latitude, longitude])
+	}, [latitude, longitude, size])
 
 	const getLocationNoCache = async () => {
 		return location.getLatitudeAndLongitudeNoCache().then((locationResult) => {
@@ -83,7 +83,7 @@ const LibraryNearCard = ({ col = 'col-12 col-md-6', moreButton=true, size=6, mt=
 			<ReloadIcon
 				className="text-book clickable"
 				onClick={refreshLocation}
-				style={{ fontSize: '40px', position: 'absolute', right: '2.5%', top: '20px' }}
+				style={{ fontSize: '40px', position: 'absolute', right: '2.5%', top: '20px', zIndex: 20 }}
 			/>
 
 			<a href="/library/near" className="text-black h-100">
@@ -136,9 +136,7 @@ const LibraryNearCard = ({ col = 'col-12 col-md-6', moreButton=true, size=6, mt=
 
 const LibraryContainer = styled.div`
 	height: 100%;
-
 	padding-top: 25px;
-
 `
 
 export default LibraryNearCard
