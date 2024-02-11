@@ -6,6 +6,7 @@ import PageProgressBar from '../../common/PageProgressBar'
 import { giveUpBook } from '../../../functions/book'
 import styled from 'styled-components';
 import breakpoints from '../../common/breakpoints';
+import booksitoutIcon from '../../common/icons/booksitoutIcon';
 
 const MainHorizontalBookView = ({ book, link = '' }) => {
 	const navigate = useNavigate()
@@ -42,19 +43,11 @@ const MainHorizontalBookView = ({ book, link = '' }) => {
 			</MainContainer>
 
 			<ButtonContainer>
-				<div className="col-6 mt-md-2">
-					<Button variant="book-danger" className="w-100" onClick={() => handleGiveupBook(book.id)}>
-						포기하기
+				<a href={`/reading/${book.id}`} className="w-100">
+					<Button variant="book" className="w-100 clamp-1-line">
+						<booksitoutIcon.book /> 이어서 읽기
 					</Button>
-				</div>
-
-				<div className="col-6 mt-md-2">
-					<a href={`/reading/${book.id}`} className="w-100">
-						<Button variant="book" className="w-100 clamp-1-line">
-							이어서 읽기
-						</Button>
-					</a>
-				</div>
+				</a>
 			</ButtonContainer>
 		</>
 	)

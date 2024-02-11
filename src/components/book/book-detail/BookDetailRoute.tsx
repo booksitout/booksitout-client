@@ -25,7 +25,6 @@ import { BookUserType } from '../../../types/BookType'
 import { ReadingSessionType } from '../../../types/ReadingType'
 import BookDetailMemoCard from './memo/BookDetailMemoCard'
 import RouteContainer from '../../common/RouteContainer'
-import RouteTitle from '../../common/RouteTitle'
 import booksitoutIcon from '../../common/icons/booksitoutIcon';
 import categoryConfig from '../../../config/categoryConfig'
 import BookCover from './BookCover'

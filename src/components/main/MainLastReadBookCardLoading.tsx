@@ -3,6 +3,7 @@ import { Button, Card, Placeholder } from 'react-bootstrap';
 import bookCoverLoading from '../../resources/images/common/loading-default-book-cover.png'
 import styled from 'styled-components';
 import breakpoints from '../common/breakpoints';
+import booksitoutIcon from '../common/icons/booksitoutIcon';
 
 const MainLastReadBookCardLoading = () => {
 	return (
@@ -32,15 +33,9 @@ const MainLastReadBookCardLoading = () => {
 			</MainContainer>
 
 			<ButtonContainer>
-				<div className="col-6 mt-md-2">
-					<Button variant="book-danger" className="w-100">
-						포기하기
-					</Button>
-				</div>
-
-				<div className="col-6 mt-md-2">
+				<div>
 					<Button variant="book" className="w-100 clamp-1-line">
-						이어서 읽기
+						<booksitoutIcon.book /> 이어서 읽기
 					</Button>
 				</div>
 			</ButtonContainer>
