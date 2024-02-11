@@ -217,9 +217,9 @@ const BookDetailRoute = () => {
 						{book.currentPage !== 0 && (
 							<>
 								<div
-									className="bg-secondary text-white d-none d-xl-block"
+									className="bg-secondary text-white"
 									style={{
-										left: '2.5%',
+										left: '20px',
 										width: `100px`,
 										height: `30px`,
 										borderRadius: '5px',
@@ -233,35 +233,19 @@ const BookDetailRoute = () => {
 						)}
 
 						{book.currentPage !== 0 && book.currentPage !== book.endPage && (
-							<>
-								<div
-									className="bg-secondary text-white d-block d-xl-none"
-									style={{
-										left: '2.5%',
-										width: `100px`,
-										height: `30px`,
-										borderRadius: '5px',
-										position: 'absolute',
-										top: '15px',
-									}}
-								>
-									앞으로 {getRemainReadTime(book, readingSession)}분
-								</div>
-
-								<div
-									className="bg-secondary text-white d-none d-xl-block"
-									style={{
-										left: '17%',
-										width: `100px`,
-										height: `30px`,
-										borderRadius: '5px',
-										position: 'absolute',
-										top: '15px',
-									}}
-								>
-									앞으로 {getRemainReadTime(book, readingSession)}분
-								</div>
-							</>
+							<div
+								className="bg-secondary text-white d-none d-sm-block"
+								style={{
+									left: '130px',
+									width: `100px`,
+									height: `30px`,
+									borderRadius: '5px',
+									position: 'absolute',
+									top: '15px',
+								}}
+							>
+								앞으로 {getRemainReadTime(book, readingSession)}분
+							</div>
 						)}
 
 						{book.currentPage !== book.endPage && (
