@@ -115,18 +115,19 @@ const MainRoute = () => {
 							</BookCardContainer>
 						)}
 					</Container>
+					<Margin />
 				</div>
-				<Margin />
 
-				<ContainerCommunity>
-					<CommunityCardContainer>
-						<MainTipsCard />
-					</CommunityCardContainer>
-
+				<Container>
 					<CommunityCardContainer>
 						<MainNearLibraryCard />
 					</CommunityCardContainer>
-				</ContainerCommunity>
+				</Container>
+				<Margin />
+
+				<Container>
+					<MainTipsCard />
+				</Container>
 			</Row>
 		</RouteContainer>
 	)
@@ -136,12 +137,8 @@ const Container = styled.div.attrs({
 	className: 'row row-eq-height',
 })``
 
-const ContainerCommunity = styled.div.attrs({
-	className: 'row row-eq-height p-1',
-})``
-
 const BookCardContainer = styled.div.attrs({
-	className: 'col-12 col-md-6 col-xxl-4 mb-3 pb-0',
+	className: 'col-12 col-md-6 col-xxl-4',
 })``
 
 const CommunityCardContainer = styled.div.attrs({

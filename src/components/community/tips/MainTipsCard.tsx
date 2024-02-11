@@ -1,7 +1,6 @@
 import React from "react"
 import { Card } from "react-bootstrap"
 import Error from '../../common/Error'
-import MainTipsListGroup from "./MainTipsListGroup"
 import TipsType from "../../../types/TipsType"
 import AllButton from "../../common/AllButton"
 import logo from '../../../images/logo.png'
@@ -10,6 +9,7 @@ import CardTitle from "../../common/CardTitle"
 import MainTipsListGroupLoading from "./MainTipsListGroupLoading"
 import styled from 'styled-components';
 import breakpoints from "../../common/breakpoints"
+import TipsCard from "./TipsCard"
 
 const MainTipsCard = () => {
 	const [initialFetch, setInitialFetch] = React.useState(true)
@@ -28,24 +28,31 @@ const MainTipsCard = () => {
 
 	return (
 		<TipsContainer href="/tips/all">
-			<TipsCard>
+			<TipsCardContainer>
 				<Card.Body>
-					<CardTitle icon={<img src={logo} alt="" className="img-fluid rounded me-2 mt-0 mt-md-1" style={{ width: '40px', height: '40px' }}/>} title="책잇아웃의 꿀팁"/>
+					<CardTitle 
+						title="책잇아웃의 꿀팁"
+						icon={<img src={logo} alt="" className="img-fluid rounded me-2 mt-0 mt-md-1" style={{ width: '40px', height: '40px' }}/>} 
+					/>
 
 					{initialFetch ? (
 						<></>
 					) : tipPost == null ? (
 						<Error />
-					) : loading ? (
+					) : loading || tipPost === null ? (
 						<MainTipsListGroupLoading />
 					) : (
-						<MainTipsListGroup postList={tipPost} />
+						<div className="row">
+							{
+								tipPost.map((tip) => <TipsCard tip={tip} />)
+							}
+						</div>
 					)}
 					<div className="d-inline-block pb-4" />
 
 					<AllButton url="tips/all" />
 				</Card.Body>
-			</TipsCard>
+			</TipsCardContainer>
 		</TipsContainer>
 	)
 }
@@ -56,7 +63,7 @@ const TipsContainer = styled.a.attrs({
 	color: black;
 `
 
-const TipsCard = styled(Card).attrs({
+const TipsCardContainer = styled(Card).attrs({
 	className: ``,
 })`
 	height: 100%;
