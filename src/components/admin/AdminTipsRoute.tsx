@@ -17,12 +17,14 @@ const AdminTipsRoute = () => {
                 setTip(res.data)
                 setTitle(res.data.title)
                 setContent(res.data.content)
+                setSummary(res.data.summary)
                 setImageUrl(res.data.displayImageUrl)
             })
     }, [id])
 
     const [title, setTitle] = useState<string>()
     const [content, setContent] = useState<string>()
+    const [summay, setSummary] = useState<string>()
     const [imageUrl, setImageUrl] = useState<string>()
 
     const edit = () => {
@@ -44,6 +46,9 @@ const AdminTipsRoute = () => {
 
                 <Margin />
                 <Form.Control value={imageUrl} size='lg' onChange={(e) => setImageUrl(e.target.value)}/>
+
+                <Margin />
+                <Form.Control value={summay} as='textarea' rows={5} onChange={((e) => setSummary(e.target.value))}/>
 
                 <Margin />
                 <Form.Control value={content} as='textarea' rows={20} onChange={((e) => setContent(e.target.value))}/>

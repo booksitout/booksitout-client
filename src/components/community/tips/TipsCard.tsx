@@ -37,6 +37,13 @@ const Title = styled.h5.attrs({
 	className: 'clamp-1-line'
 })``;
 
+const ImageContainer = styled.div`
+	width: 100%; 
+	height: 0; 
+	padding-top: 56.25%; 
+	position: relative; 
+`;
+
 const Image = styled.img.attrs({
 	className: 'img-fluid rounded'
 })`
@@ -45,13 +52,6 @@ const Image = styled.img.attrs({
 	left: 0;
 	width: 100%;
 	height: auto;
-`;
-
-const ImageContainer = styled.div`
-	width: 100%; 
-	height: 0; 
-	padding-top: 56.25%; 
-	position: relative; 
 `;
 
 export default TipsCard

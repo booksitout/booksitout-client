@@ -21,7 +21,6 @@ import MainLoginSection from './MainLoginSection';
 import styled from 'styled-components';
 import './mainReadChart.css'
 import { Row } from 'react-bootstrap';
-import PreReleaseInfoSection from '../onboarding/PreReleaseInfoSection';
 import MainNearLibraryCard from './MainNearLibraryCard';
 
 const MainRoute = () => {

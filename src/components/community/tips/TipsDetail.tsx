@@ -37,11 +37,15 @@ const TipsDetail = () => {
 			<Card style={{ minHeight: '200px' }} className='mb-4'>
 				<TitleContainer>
 					<div className='row'>
-						<div className='col-12 col-md-10'>
-							<h2>{tip?.title}</h2>
+						<div className='col-12 col-md-10 mb-2'>
+							<ImageContainer>
+								<Image src={tip?.displayImageUrl} alt='' />
+							</ImageContainer>
+
+							<h2 className="mt-5">{tip?.title}</h2>
 						</div>
 
-						<div className='col-12 col-md-2'>
+						<div className='col-12 col-md-2 pt-2'>
 							<TipsTimeIcon time={tip?.estimatedReadTime} size='h4' />
 
 							<h6 className='text-end text-secondary'>{`
@@ -101,6 +105,23 @@ const ContentContainer = styled(Card.Body)`
 
 	font-size: 1.1rem;
 	font-family: 'Nanum Gothic', sans-serif;
+`;
+
+const ImageContainer = styled.div`
+	width: 100%; 
+	height: 0; 
+	padding-top: 56.25%; 
+	position: relative; 
+`;
+
+const Image = styled.img.attrs({
+	className: 'img-fluid rounded'
+})`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
 `;
 
 export default TipsDetail
