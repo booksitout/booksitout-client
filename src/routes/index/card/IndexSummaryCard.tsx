@@ -25,7 +25,7 @@ const IndexSummaryCard = () => {
 const NoLoggedInCase = () => {
     return (
         <NoLoginContainer>
-            <Title>3초만에 로그인하면 이용할 수 있어요</Title>
+            <Title>3초만에 로그인해 이용하기</Title>
 
             <RowSpacer />
 

@@ -5,8 +5,8 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Footer from './Footer'
 import Topnav from './topnav/Topnav'
 import ToastSettings from '../config/ToastSettings';
-import AddFloatingButton from './AddFloatingButton';
-import TimerFloatingButton from './TimerFloatingButton';
+import AddFloatingButton from './button/AddFloatingButton';
+import TimerFloatingButton from './button/TimerFloatingButton';
 import LocationSettings from '../config/LocationSettings';
 import TimerSettings from '../config/TimerSettings';
 import RowSpacer from './styles/RowSpacer';
