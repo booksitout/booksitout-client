@@ -13,7 +13,7 @@ const IndexSummaryCard = () => {
 
     return (
         <Card>
-            <CardBodyContainer height={600}>
+            <CardBodyContainer>
                 <CardTitle icon={<booksitoutIcon.user />} title={'내 독서활동 요약'} />
 
                 {isLoggedIn ? <YesLoggedInCase /> : <NoLoggedInCase />}

@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react'
 
-const useSearchQuery = (delay = 250) => {
-	const [query, setQuery] = useState<string>('')
-	const [debouncedQuery, setDebouncedQuery] = useState(query)
+const useSearchQuery = (defaultValue = '') => {
+	const [query, setQuery] = useState<string>(defaultValue)
+	const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
 
 	useEffect(() => {
 		const handler = setTimeout(() => {
 			setDebouncedQuery(query)
-		}, delay)
+		}, 250)
 
 		return () => {
 			clearTimeout(handler)
 		}
-	}, [query, delay])
+	}, [query])
 
 	return [query, setQuery, debouncedQuery]
-};
+}
 
-export default useSearchQuery;
+export default useSearchQuery

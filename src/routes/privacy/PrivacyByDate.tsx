@@ -6,6 +6,9 @@ import NoContent from '../../common/NoContent';
 import RouteTitle from '../../common/RouteTitle/RouteTitle';
 import booksitoutIcon from '../../config/booksitoutIcon'
 import RouteContainer from '../../common/styles/RouteContainer'
+import { Card } from 'react-bootstrap';
+import CardBodyContainer from '../../common/styles/CardBodyContainer';
+import RowSpacer from '../../common/styles/RowSpacer';
 
 const PrivacyByDate = () => {
     const { date } = useParams()
@@ -23,12 +26,15 @@ const PrivacyByDate = () => {
 
     return (
 		<RouteContainer>
-			<RouteTitle 
-                icon={<booksitoutIcon.privacy />} 
-                title={`${date?.split("-")[0]}년 ${date?.split("-")[1]}월 ${date?.split("-")[1]}일부터 시행되는 개인정보처리방침`} 
-            />
+            <RouteTitle icon={<booksitoutIcon.privacy />} title={`${date?.split("-")[0]}년 ${date?.split("-")[1]}월 ${date?.split("-")[1]}일부터 시행되는 개인정보처리방침`}/>
 
-			{parser(content)}
+            <Card>
+                <CardBodyContainer>
+                    {parser(content)}
+                </CardBodyContainer>
+            </Card>
+
+            <RowSpacer />
 		</RouteContainer>
 	)
 }

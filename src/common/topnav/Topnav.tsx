@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import TopnavLogo from './TopnavLogo';
 import TopnavLink from './TopnavLink';
 import RouteContainer from '../styles/RouteContainer';
-import useUrls from '../hooks/useUrls';
+import useUrl from '../hooks/useUrl';
 
 const Topnav = () => {
-    const urls = useUrls()
+    const urls = useUrl()
 
     return (
         <TopnavContainer>

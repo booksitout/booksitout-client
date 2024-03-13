@@ -12,7 +12,7 @@ import TimerSettings from '../config/TimerSettings';
 import RowSpacer from './styles/RowSpacer';
 
 const Root = () => {
-	const footerIncludeUrl = ['/', '/introduction', '/faq']
+	const footerIncludeUrl = ['/', '/introduction', '/faq', '/privacy/2023-7-1']
 
 	const location = useLocation()
 	const [currentUrl, setCurrentUrl] = React.useState('')

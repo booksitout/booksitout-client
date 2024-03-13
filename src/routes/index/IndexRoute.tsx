@@ -10,7 +10,7 @@ import RowSpacer from '../../common/styles/RowSpacer';
 const IndexRoute = () => {
     return (
         <RouteContainer>
-            <RowSpacer size={20} />
+            <RowSpacer size={10} />
             
             <IndexPreReleaseCard />
             <RowSpacer size={20} />

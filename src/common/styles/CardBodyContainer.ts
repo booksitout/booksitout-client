@@ -9,7 +9,7 @@ const CardBodyContainer = styled(Card.Body)`
 `;
 
 CardBodyContainer.defaultProps = {
-    height: 400
+    height: 600
 }
 
 export default CardBodyContainer

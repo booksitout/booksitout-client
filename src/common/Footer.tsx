@@ -36,7 +36,6 @@ const Container = styled.div.attrs({
     justify-content: left;
     text-align: left;
 
-    padding-bottom: 50px;
 	padding-left: 0px;
 	padding-right: 0px;
 `

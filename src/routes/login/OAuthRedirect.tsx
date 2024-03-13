@@ -2,33 +2,34 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { booksitoutServer } from '../../config/axios'
-import { useUrlQuery } from '../../common/hooks/useUrlQuery'
 import ApiUrls from '../../ApiUrls'
 import Loading from '../../common/Loading'
+import useUrlQuery from '../../common/hooks/useUrlQuery'
 
 const OAuthRedirect = () => {
 	const { provider } = useParams()
 
 	const navigate = useNavigate()
-	const query = useUrlQuery()
+	const code = useUrlQuery('code')
+	const state = useUrlQuery('state')
+	const scope = useUrlQuery('scope ')
 
     const getAdditional = (provider: string | undefined) => {
         switch (provider?.toUpperCase()) {
             case 'NAVER':
-                return query.get('state')
+                return state
             case 'GOOGLE':
-                return query.get('scope')
+                return scope
             default:
-                return 'none'
+                return ''
         }
     }
 
 	React.useEffect(() => {
-		const code = query.get('code')
 		const additional = getAdditional(provider)
 
 		booksitoutServer
-			.get(ApiUrls.User.Login.POST)
+			.get(ApiUrls.User.Login.POST('KAKAO', code, additional))
 			.then((res) => {
 				if (res.status !== 200) throw new Error()
 				return res.data
@@ -48,7 +49,7 @@ const OAuthRedirect = () => {
 				toast(userData.message, { icon: '✋' })
 				navigate('/')
             })
-	}, [navigate, query, provider])
+	}, [navigate, provider])
 
     return <Loading />
 }
