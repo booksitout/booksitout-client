@@ -7,7 +7,7 @@ const useUrlQuery = (query: string): string | null => {
 
 	useEffect(() => {
 		const queryParams = new URLSearchParams(location.search);
-		setValue(queryParams.get(query))
+		setValue(queryParams.get(query.trim()) ?? null)
 	}, [location.search, query]);
 
 	return value

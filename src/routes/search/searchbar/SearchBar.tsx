@@ -5,6 +5,8 @@ import useSearchQuery from '../../../common/hooks/useSearchQuery';
 import { useNavigate } from 'react-router-dom';
 import ColorConfig from '../../../config/ColorConfig';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
+import { booksitoutServer } from '../../../config/axios';
+import ApiUrls from '../../../ApiUrls';
 
 const SearchBar = () => {
     const navigate = useNavigate()
@@ -14,10 +16,11 @@ const SearchBar = () => {
     const [querySuggestions, setQuerySuggestions] = useState<string[]>([])
 
     useEffect(() => {
-        // booksitoutServer
-        //     .get(`${ApiUrls.Search.AutoComplete.GET}?q=${debouncedQuery}`)
-
-        setQuerySuggestions(['suggestion1', 'suggestion2', 'suggestion3'])
+        if (dQuery !== '') {
+            booksitoutServer
+                .get(`${ApiUrls.Search.AutoComplete.GET}?q=${dQuery}`)
+                .then((res) => setQuerySuggestions(res.data))
+        }
     }, [dQuery])
 
     useEffect(() => {

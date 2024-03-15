@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import SearchBar from '../../search/searchbar/SearchBar';
 import breakpoints from '../../../config/breakpoints';
+
 const IndexSearchBar = () => {
-
-
     return (
         <Container>
             <SearchBarContainer>
@@ -16,8 +15,7 @@ const IndexSearchBar = () => {
 const Container = styled.div`
     display: flex;
     justify-content: center;
-
-    `;
+`;
 
 const SearchBarContainer = styled.div`
     width: 50%;

@@ -5,11 +5,14 @@ import { booksitoutServer } from '../../config/axios'
 import ApiUrls from '../../ApiUrls'
 import Loading from '../../common/Loading'
 import useUrlQuery from '../../common/hooks/useUrlQuery'
+import LoginSuccessResponse from './LoginSuccessResponse'
+import useLoginStore from './useLoginStore'
 
 const OAuthRedirect = () => {
 	const { provider } = useParams()
 
 	const navigate = useNavigate()
+
 	const code = useUrlQuery('code')
 	const state = useUrlQuery('state')
 	const scope = useUrlQuery('scope ')
@@ -25,31 +28,27 @@ const OAuthRedirect = () => {
         }
     }
 
+	const login = useLoginStore(state => state.login)
+
 	React.useEffect(() => {
 		const additional = getAdditional(provider)
 
-		booksitoutServer
-			.get(ApiUrls.User.Login.POST('KAKAO', code, additional))
-			.then((res) => {
-				if (res.status !== 200) throw new Error()
-				return res.data
-			})
-			.catch((e) => {
-				toast.error(e)
-				navigate('/')
-			})
-			.then((userData) => {
-				localStorage.setItem('login-token', userData.token)
-				localStorage.setItem('user-name', userData.name)
-				localStorage.setItem('register-year', new Date().getFullYear().toString())
-				localStorage.setItem('login-date', new Date().toString())
-				localStorage.setItem('profile-image', userData.profileImage)
-
-				toast.dismiss()
-				toast(userData.message, { icon: '✋' })
-				navigate('/')
-            })
-	}, [navigate, provider])
+		if (code !== null) {
+			booksitoutServer
+				.get(ApiUrls.User.Login.POST(provider?.toUpperCase() as 'NAVER' | 'GOOGLE' | 'KAKAO' | 'FACEBOOK', code, additional))
+				.then((res) => res.data)
+				.then((userData: LoginSuccessResponse) => {
+					login(userData)
+					toast.dismiss()
+					toast(`어서오세요, ${userData.name}님!`, { icon: '✋' })
+					navigate('/')
+				})
+				.catch((e) => {
+					toast.error(e.message)
+					navigate('/')
+				})
+		}
+	}, [code, provider])
 
     return <Loading />
 }

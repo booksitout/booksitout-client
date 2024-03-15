@@ -7,9 +7,10 @@ import OAuthConfig from '../../../config/OAuthConfig';
 import RowSpacer from '../../../common/styles/RowSpacer';
 import loginImage from '../../../images/relax.svg'
 import ColorConfig from '../../../config/ColorConfig';
+import useLoginStore from '../../login/useLoginStore';
 
 const IndexSummaryCard = () => {
-    const isLoggedIn = false
+    const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
 
     return (
         <Card>
