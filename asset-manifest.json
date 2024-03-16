@@ -1,19 +1,24 @@
 {
   "files": {
     "main.css": "/static/css/main.764e2e3f.chunk.css",
-    "main.js": "/static/js/main.dbbc0a6c.chunk.js",
-    "main.js.map": "/static/js/main.dbbc0a6c.chunk.js.map",
+    "main.js": "/static/js/main.fc07403d.chunk.js",
+    "main.js.map": "/static/js/main.fc07403d.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.551e0faa.js",
     "runtime-main.js.map": "/static/js/runtime-main.551e0faa.js.map",
-    "static/js/2.23768d78.chunk.js": "/static/js/2.23768d78.chunk.js",
-    "static/js/2.23768d78.chunk.js.map": "/static/js/2.23768d78.chunk.js.map",
+    "static/js/2.570fc58c.chunk.js": "/static/js/2.570fc58c.chunk.js",
+    "static/js/2.570fc58c.chunk.js.map": "/static/js/2.570fc58c.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.764e2e3f.chunk.css.map": "/static/css/main.764e2e3f.chunk.css.map",
-    "static/js/2.23768d78.chunk.js.LICENSE.txt": "/static/js/2.23768d78.chunk.js.LICENSE.txt",
+    "static/js/2.570fc58c.chunk.js.LICENSE.txt": "/static/js/2.570fc58c.chunk.js.LICENSE.txt",
     "static/media/aladin.482888d0.png": "/static/media/aladin.482888d0.png",
+    "static/media/book-overlap.1f9650ab.png": "/static/media/book-overlap.1f9650ab.png",
+    "static/media/bookworm.18aa00d4.png": "/static/media/bookworm.18aa00d4.png",
+    "static/media/goal-complete.cdccf779.png": "/static/media/goal-complete.cdccf779.png",
+    "static/media/goal.216025c0.png": "/static/media/goal.216025c0.png",
     "static/media/kyobo.6c7cf642.jpg": "/static/media/kyobo.6c7cf642.jpg",
     "static/media/logo.89883c09.png": "/static/media/logo.89883c09.png",
     "static/media/millie.08d7978d.png": "/static/media/millie.08d7978d.png",
+    "static/media/page.ea4ccc8a.png": "/static/media/page.ea4ccc8a.png",
     "static/media/relax.b3aa4e91.svg": "/static/media/relax.b3aa4e91.svg",
     "static/media/seoul-congress-library.161cb822.png": "/static/media/seoul-congress-library.161cb822.png",
     "static/media/seoul-education-library.e5657b72.png": "/static/media/seoul-education-library.e5657b72.png",
@@ -21,12 +26,14 @@
     "static/media/small-google.cadee8cd.png": "/static/media/small-google.cadee8cd.png",
     "static/media/small-kakao.6af80cbc.png": "/static/media/small-kakao.6af80cbc.png",
     "static/media/small-naver.2e7bb2b8.png": "/static/media/small-naver.2e7bb2b8.png",
+    "static/media/star.d0cbd94e.png": "/static/media/star.d0cbd94e.png",
+    "static/media/time.025b779d.png": "/static/media/time.025b779d.png",
     "static/media/yes24.9eb85360.png": "/static/media/yes24.9eb85360.png"
   },
   "entrypoints": [
     "static/js/runtime-main.551e0faa.js",
-    "static/js/2.23768d78.chunk.js",
+    "static/js/2.570fc58c.chunk.js",
     "static/css/main.764e2e3f.chunk.css",
-    "static/js/main.dbbc0a6c.chunk.js"
+    "static/js/main.fc07403d.chunk.js"
   ]
 }
