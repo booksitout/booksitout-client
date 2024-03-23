@@ -104,7 +104,10 @@ const NoLoginCase = () => {
 
 const Row = styled.div.attrs({
     className: 'row'
-})``;
+})`
+    padding-left: 5px;
+    padding-right: 5px;
+`;
 
 const Col = styled.div.attrs({
     className: 'col-12 col-md-6 col-xl-4'

@@ -6,7 +6,7 @@ import Error from '../../../common/Error'
 import utils from '../../../common/utils'
 import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
 
-const LibraryMembershipCard = ({ membership, width=2 }) => {
+const LibraryMembershipCard = ({ membership, width = 2 }) => {
 	return (
 		<Container>
 			<CardBodyBackgroundContainer>
@@ -38,8 +38,6 @@ const LibraryMembershipCard = ({ membership, width=2 }) => {
 
 const Container = styled(Card)`
 	min-height: 200px;
-	padding-left: 20px;
-	padding-right: 20px;
 `;
 
 const Row = styled.div.attrs({

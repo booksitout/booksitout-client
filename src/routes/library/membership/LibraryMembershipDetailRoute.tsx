@@ -6,6 +6,7 @@ import RowSpacer from '../../../common/styles/RowSpacer'
 import LibraryMembershipCardLoading from './LibraryMembershipCardLoading'
 import LibraryMembershipCard from './LibraryMembershipCard'
 import useLibraryMembership from '../useLibraryMembership'
+import LibraryMembershipDetailLibraryCard from './LibraryMembershipDetailLibraryCard'
 
 const LibraryMembershipDetailRoute = () => {
 
@@ -20,26 +21,25 @@ const LibraryMembershipDetailRoute = () => {
             <RowSpacer />
 
             {isLoading ? (
-                <LibraryMembershipCardLoading />
+                <LibraryMembershipCardLoading padding={20} />
             ) : (
                 <span className='not-clickable'>
-                    <LibraryMembershipCard membership={membership} width={2} />
+                    <LibraryMembershipCard
+                        membership={membership}
+                        width={2}
+                    />
                 </span>
             )}
             <RowSpacer />
 
-            {/* {loading ? (
-                <MembershipDetailLibraryLoading />
-            ) : (
-                <MembershipDetailLibrary libraryList={membership?.usableLibrary ?? []} />
-            )}
+            <LibraryMembershipDetailLibraryCard libraryList={membership?.usableLibrary ?? []} />
             <RowSpacer />
 
-            <MembershipDetailAddCard id={id} />
+            {/* <MembershipDetailAddCard id={id} /> */}
             <RowSpacer />
 
-            <MembershipDetailRemoveEditCard id={id} deleteMembership={deleteMembership} />
-            <RowSpacer /> */}
+            {/* <MembershipDetailRemoveEditCard id={id} deleteMembership={deleteMembership} /> */}
+            <RowSpacer />
         </RouteContainer>
     )
 }

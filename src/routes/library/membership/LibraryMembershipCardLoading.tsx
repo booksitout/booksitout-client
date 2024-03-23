@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Card, Placeholder } from 'react-bootstrap'
 import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
 
-const LibraryMembershipCardLoading = () => {
+const LibraryMembershipCardLoading = ({ padding = 20 }) => {
 	return (
 		<Container>
 			<CardBodyBackgroundContainer>
@@ -33,8 +33,8 @@ const LibraryMembershipCardLoading = () => {
 
 const Container = styled(Card)`
 	min-height: 200px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: ${(props) => props.padding}px;
+	padding-right: ${(props) => props.padding}px;
 `;
 
 const Row = styled.div.attrs({
