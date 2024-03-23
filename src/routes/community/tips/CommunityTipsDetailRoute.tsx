@@ -9,7 +9,7 @@ import useTips from "./useTips"
 import CardBodyContainer from "../../../common/styles/CardBodyContainer";
 import RowSpacer from "../../../common/styles/RowSpacer";
 
-const TipsDetailRoute = () => {
+const CommunityTipsDetailRoute = () => {
     const { tipsId } = useParams()
 
     const [tip, isLoading] = useTips(Number(tipsId) ?? 0)
@@ -113,4 +113,4 @@ const Image = styled.img.attrs({
 	height: auto;
 `;
 
-export default TipsDetailRoute
+export default CommunityTipsDetailRoute

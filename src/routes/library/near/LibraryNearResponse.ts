@@ -1,4 +1,4 @@
-export default interface LibraryNearResponse {
+export default interface LibraryResponse {
     id: number;
     name: string;
     phone?: string;
@@ -6,11 +6,11 @@ export default interface LibraryNearResponse {
     bookCount?: number;
     openHour?: string;
     openDay?: string;
-    location: LibraryTypeLocation;
+    location: LibraryLocation;
 }
 
-interface LibraryTypeLocation {
-    name: LibraryTypeLocationName;
+interface LibraryLocation {
+    name: LibraryLocationName;
     address: string;
     latitude: number;
     longitude: number;
@@ -18,7 +18,7 @@ interface LibraryTypeLocation {
     distance?: number;
 }
 
-interface LibraryTypeLocationName {
+interface LibraryLocationName {
     displayName: string;
     regionEnglishName: string;
     regionDetailEnglishName: string;

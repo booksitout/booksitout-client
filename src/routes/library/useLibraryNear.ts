@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { booksitoutServer } from "../../config/axios";
 import ApiUrls from "../../ApiUrls";
-import LibraryNearResponse from "./near/LibraryNearResponse";
+import LibraryResponse from "./near/LibraryNearResponse";
 
 const useLibraryNear = (lat: number | null, long: number | null, radiusInKm: number = 3, isShowingAlert: boolean = false) => {
-	const [libraries, setLibraries] = useState<LibraryNearResponse[]>([])
+	const [libraries, setLibraries] = useState<LibraryResponse[]>([])
 	const prevLibrariesCount = useRef<number>(0);
 
 	useEffect(() => {

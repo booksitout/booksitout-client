@@ -7,7 +7,7 @@ import RouteTitle from '../../../common/RouteTitle/RouteTitle'
 import TipsList from './TipsList'
 import RowSpacer from '../../../common/styles/RowSpacer'
 
-const TipsRoute = () => {
+const CommunityTipsRoute = () => {
     const range = useUrlQuery('range')
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const TipsRoute = () => {
 			label: '책잇아웃의 꿀팁'
         },
         {
-            url: '/community/popular-book',
+            url: '/community/popular-books',
             key: 'popular',
             label: '인기 책'
         },
@@ -44,4 +44,4 @@ const TipsRoute = () => {
 	)
 }
 
-export default TipsRoute
+export default CommunityTipsRoute

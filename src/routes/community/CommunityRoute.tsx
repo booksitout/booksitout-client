@@ -22,7 +22,7 @@ const CommunityRoute = () => {
 			label: '책잇아웃의 꿀팁'
         },
         {
-            url: '/community/popular-book',
+            url: '/community/popular-books',
             key: 'popular',
             label: '인기 책'
         },
@@ -56,7 +56,7 @@ const CommunityRoute = () => {
                     <CardTitle 
                         icon={<booksitoutIcon.popular />} 
                         title='인기책' 
-                        url='/community/tips' 
+                        url='/community/popular-books' 
                     />
                 </CardBodyBackgroundContainer>
             </Card>

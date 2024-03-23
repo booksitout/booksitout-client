@@ -1,9 +1,9 @@
 import React from 'react'
-import LibraryNearResponse from './LibraryNearResponse'
+import LibraryResponse from './LibraryNearResponse'
 import { Card } from 'react-bootstrap'
 
 interface Props {
-    library: LibraryNearResponse
+    library: LibraryResponse
 }
 
 const LibraryNearCard: React.FC<Props> = ({ library }) => {

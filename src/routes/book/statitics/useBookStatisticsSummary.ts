@@ -3,7 +3,7 @@ import BookStatisticsResponse from "./BookStatisticsResponse"
 import { booksitoutServer } from "../../../config/axios"
 import ApiUrls from "../../../ApiUrls"
 
-const useBookStatistics = (year: number) => {
+const useBookStatisticsSummary = (year: number) => {
     const [isLoading, setIsLoading] = useState(true)
 	const [statistics, setStatistics] = useState<BookStatisticsResponse | null>(null)
 
@@ -23,7 +23,7 @@ const useBookStatistics = (year: number) => {
 
 	useEffect(() => {
         booksitoutServer
-            .get(ApiUrls.Book.Statistics.GET(year))
+            .get(ApiUrls.Book.Statistics.Summary(year))
             .then((res) => setStatistics(res.data))
             .finally(() => setIsLoading(false))
     }, [year])
@@ -31,4 +31,4 @@ const useBookStatistics = (year: number) => {
     return [statistics ?? DEFAULT, isLoading]
 }
 
-export default useBookStatistics
+export default useBookStatisticsSummary

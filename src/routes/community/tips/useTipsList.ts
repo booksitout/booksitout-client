@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import TipsResponse from './TipsResponse'
 import { booksitoutServer } from '../../../config/axios'
 import ApiUrls from '../../../ApiUrls'
+import Paging from '../../../common/hooks/Paging'
 
 export const useTipsList = (size: number) => {
 	const [page, setPage] = useState<number>(0)
@@ -26,10 +27,4 @@ export const useTipsList = (size: number) => {
 	const paging: Paging = { hasMore: !isLast, totalPages, fetchNext }
 
 	return [tipsList, paging] as const
-}
-
-interface Paging {
-	hasMore: boolean
-	totalPages: number
-	fetchNext: () => void
 }

@@ -17,8 +17,12 @@ import LibraryRoute from './routes/library/find/LibraryRoute'
 import BookRoute from './routes/book/BookRoute'
 import LibraryNearRoute from './routes/library/near/LibraryNearRoute'
 import LibraryMembershipRoute from './routes/library/membership/LibraryMembershipRoute'
-import TipsRoute from './routes/community/tips/TipsRoute'
-import TipsDetailRoute from './routes/community/tips/TipsDetailRoute'
+import CommunityTipsRoute from './routes/community/tips/CommunityTipsRou'
+import CommunityTipsDetailRoute from './routes/community/tips/CommunityTipsDetailRoute'
+import CommunityPopularBooksRoute from './routes/community/popular-books/CommunityPopularBooksRoute'
+import BookStatisticsRoute from './routes/book/statitics/BookStatisticsRoute'
+import BookMineRoute from './routes/book/mine/BookMineRoute'
+import LibraryMembershipDetailRoute from './routes/library/membership/LibraryMembershipDetailRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -27,10 +31,13 @@ const router = createBrowserRouter(
 			<Route path='/' element={<IndexRoute />} />
 
 			<Route path='/book' element={<BookRoute />} />
-			<Route path='/book/users/:bookId' element={<></>} />
-			<Route path='/book/users/:bookId/reading' element={<></>} />
+			<Route path='/book/users' element={<></>} />
+			<Route path='/book/users/:userId' element={<></>} />
+			<Route path='/book/mine' element={<BookMineRoute />} />af
+			<Route path='/book/:bookId' element={<></>} />
+			<Route path='/book/:bookId/reading' element={<></>} />
 			<Route path='/book/goal' element={<></>} />
-			<Route path='/book/statistics' element={<></>} />
+			<Route path='/book/statistics' element={<BookStatisticsRoute />} />
 
 			<Route path='/library' element={<LibraryRoute />} />
 			<Route path='/library/near' element={<LibraryNearRoute />} />
@@ -38,11 +45,12 @@ const router = createBrowserRouter(
 			<Route path='/library/by-region/:region' />
 			<Route path='/library/by-region/:region/:regionDetail' />
 			<Route path='/library/membership' element={<LibraryMembershipRoute />} />
-			<Route path='/library/membership/:membershipId' element={<></>} />
+			<Route path='/library/membership/:membershipId' element={<LibraryMembershipDetailRoute />} />
 
 			<Route path='/community' element={<CommunityRoute />} />
-			<Route path='/community/tips' element={<TipsRoute />} />
-			<Route path='/community/tips/:tipsId' element={<TipsDetailRoute />} />
+			<Route path='/community/tips' element={<CommunityTipsRoute />} />
+			<Route path='/community/tips/:tipsId' element={<CommunityTipsDetailRoute />} />
+			<Route path='/community/popular-books' element={<CommunityPopularBooksRoute />} />
 
 			<Route path='/search' element={<SearchBookRoute />} />
 			<Route path='/search/:isbn13' element={<SearchBookSourceRoute />} />

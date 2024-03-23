@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import RouteContainer from '../../common/styles/RouteContainer'
 import { Card } from 'react-bootstrap'
 import RowSpacer from '../../common/styles/RowSpacer'
@@ -20,7 +20,7 @@ const BookRoute = () => {
 			label: '둘러보기'
         },
         {
-            url: '/book/',
+            url: '/book/mine',
 			key: 'mine',
 			label: '내 서재'
         },
@@ -35,7 +35,7 @@ const BookRoute = () => {
         <RouteContainer>
             <RouteTitle 
 				icon={<booksitoutIcon.book />} 
-				title={'서재'} 
+				title={'서재 둘러보기'} 
 				subTitle={'나만의 서재를 만들어 가고 다른 사람의 서재를 구경해 보세요'} 
 				currentKey={'index'} 
 				buttons={buttons} 
@@ -58,37 +58,13 @@ const BookRoute = () => {
             <Card>
                 <CardBodyBackgroundContainer height={600}>
                     <CardTitle 
-                        icon={<booksitoutIcon.statistics />} 
-                        title={'내 독서활동 통계'} 
-                        subTitle={'열심히 기록한 내 독서활동을 통계로 확인하세요'}
-                        url={'/book/statistics'} 
-                    />
-                </CardBodyBackgroundContainer>
-            </Card>
-
-            <RowSpacer />
-            <Card>
-                <CardBodyBackgroundContainer height={600}>
-                    <CardTitle 
                         icon={<booksitoutIcon.book />} 
-                        title={'관심 있는 책'} 
-                        subTitle={''}
-                        url={'/book'} 
+                        title={'인생책 추천받기'} 
+                        subTitle={'다른 사람의 인생 책들을  둘러볼 수 있어요'}
+                        url={'/book/recommendation'} 
                     />
                 </CardBodyBackgroundContainer>
             </Card>
-
-            <RowSpacer />
-            <Card>
-                <CardBodyBackgroundContainer height={600}>
-                    <CardTitle 
-                        icon={<booksitoutIcon.book />} 
-                        title={'읽고 있는 책'} 
-                        url={'/book'} 
-                    />
-                </CardBodyBackgroundContainer>
-            </Card>
-
             <RowSpacer />
         </RouteContainer>
     )

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Card, Placeholder } from 'react-bootstrap'
 import utils from '../../../common/utils'
-import useBookStatistics from './useBookStatistics'
+import useBookStatisticsSummary from './useBookStatisticsSummary'
 
 import timeIcon from '../../../images/statistics/time.png'
 import averageIcon from '../../../images/statistics/simple-chart.png'
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const BookStatisticsTable: React.FC<Props> = ({ year }) => {
-	const [statistics, isLoading] = useBookStatistics(year)
+	const [statistics, isLoading] = useBookStatisticsSummary(year)
 
 	const statisticsData = [
 		{
