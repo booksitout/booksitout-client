@@ -79,11 +79,23 @@ class ApiUrls {
 		static Near = (lat: number, long: number, radius: number) => `${ApiUrls.BASE}/v1/library/available-library/by-radius?lat=${lat}&long=${long}&radius=${radius}&size=10`
 	}
 
+	static Book = class {
+		static LastRead = () => `${ApiUrls.BASE}/v1/book/last`
+
+		static Statistics = class {
+			static GET = (year: number) => `${ApiUrls.BASE}/v1/book/statistics/year/${year}`
+		}
+
+		static Goal = class {
+			static GET = (year: number) => `${ApiUrls.BASE}/v1/book/goals/${year}`
+		}
+	}
+
 	static Admin = class {
 		static Tips = class {
 			static List = () => ``
-			static Single = (id: number) => `${ApiUrls.BASE}/v1/tips/${id}`
-			static Edit = (id: number) => `${ApiUrls.BASE}/v1/tips/${id}`
+			static Single = (id: number) => `${ApiUrls.BASE}/v1/tips/admin/${id}`
+			static Edit = (id: number) => `${ApiUrls.BASE}/v1/tips/admin/${id}`
 		}
 	}
 }

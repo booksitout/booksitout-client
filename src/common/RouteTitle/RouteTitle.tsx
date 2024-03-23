@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
 import RouteButtonGroup from './RouteButtonGroup';
 import { RouteButtonGroupType } from './RouteButtonGroupType';
+import CardBodyContainer from '../styles/CardBodyContainer';
 
 interface RouteTitleProps {
 	icon: React.ReactNode
@@ -26,7 +27,7 @@ const RouteTitle: React.FC<RouteTitleProps> = (
 	return (
 		<Container>
 			<CardContainer>
-				<Card.Body>
+				<CardBodyContainer height={150}>
 					{
 						rightUi === null ?
 						<TitleContainer>
@@ -57,7 +58,7 @@ const RouteTitle: React.FC<RouteTitleProps> = (
 							<RouteButtonGroup buttons={buttons} currentKey={currentKey} />
 						</>
 					}
-				</Card.Body>
+				</CardBodyContainer>
 			</CardContainer>
 		</Container>
 	)
@@ -67,7 +68,6 @@ const Container = styled.div.attrs({
 	className: 'd-flex flex-wrap',
 })`
 	margin-top: 1rem;
-	margin-bottom: 1.2rem;
 `
 
 const CardContainer = styled(Card)`
@@ -96,11 +96,11 @@ const Row = styled.div.attrs({
 })``
 
 const Col12 = styled.div.attrs({
-	className: 'col-12 col-md-10',
+	className: 'col-12 col-md-9',
 })``
 
 const Col6 = styled.div.attrs({
-	className: 'col-6 col-md-2 pt-4 pt-md-3',
+	className: 'col-6 col-md-3 pt-4 pt-md-3',
 })``
 
 export default RouteTitle

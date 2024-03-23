@@ -11,10 +11,13 @@ import ApiUrls from '../../../ApiUrls';
 import toast from 'react-hot-toast';
 import SearchBookResponse from './SearchBookResponse';
 import SearchBookCard from './SearchBookCard';
+import NoContent from '../../../common/NoContent';
+import Loading from '../../../common/Loading';
 
 const SearchBookRoute = () => {
     const [query, setQuery, dQuery] = useSearchQuery()
     const [books, setBooks] = useState<SearchBookResponse[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 
     const defaultQuery = useUrlQuery('q')
     useEffect(() => {
@@ -28,6 +31,7 @@ const SearchBookRoute = () => {
                 .then((res) => res.data)
                 .then((data: SearchBookResponse[]) => setBooks(data))
                 .catch(() => toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요.'))
+                .finally(() => setIsLoading(false))
         }
     }, [dQuery])
 
@@ -37,13 +41,23 @@ const SearchBookRoute = () => {
 
             <SearchContainer>
                 <SearchContainerContainer>
-                    <SearchBar />
+                    <SearchBar 
+                        autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET} 
+                        searchResultUrl={'/search'} 
+                        placeholder={'여러곳에서 1번에 책 검색하기'} 
+                    />
                 </SearchContainerContainer>
             </SearchContainer>
             <RowSpacer size={20} />
 
             <Row>
                 {
+                    isLoading?
+                        <Loading size={100} message={'잠시만 기다려 주세요'} />
+                    :
+                    books.length === 0 ?
+                        <NoContent message={'찾으시는 책이 없어요'} />
+                    :
                     books.map((book) => {
                         return (
                             <Col>

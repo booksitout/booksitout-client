@@ -6,9 +6,11 @@ import booksitoutIcon from '../../../config/booksitoutIcon'
 import useLibraryNear from '../../library/useLibraryNear'
 import IndexContentContainer from '../IndexContentContainer'
 import useCurrentLocation from '../../library/useCurrentLocation';
+import NoContent from '../../../common/NoContent';
+import ReloadButton from '../../../common/styles/ReloadButton';
 
 const IndexLibraryCard = () => {
-    const { lat, long, refreshLocation } = useCurrentLocation()
+    const [lat, long, locationName, locationError, refreshLocation] = useCurrentLocation()
     const nearbyLibraries = useLibraryNear(lat, long)
 
     return (
@@ -18,10 +20,16 @@ const IndexLibraryCard = () => {
                     icon={<booksitoutIcon.library/>} 
                     title={'내 근처 도서관'} 
                     subTitle={'내 주변 도서관을 간단히 찾을 수 있어요'}
+                    url='/library/near'
                 />
+
+                <ReloadButton onClick={refreshLocation} />
 
                 <Row>
                     {
+                        nearbyLibraries.length === 0 ?
+                            <NoContent message={'위치 정보를 허용해 주세요'} />
+                        :
                         nearbyLibraries.slice(0, 10).map((library) => {
                             return (
                                 <Col>
@@ -71,7 +79,8 @@ const ImageContainer = styled.div.attrs({
 const Image = styled.img.attrs({
     className: 'img-fluid'
 })`
-    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
 `;
 
 const ContentContainer = styled.div`

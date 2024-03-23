@@ -5,11 +5,12 @@ import {  BsGeoAltFill as LocationIcon, BsBrowserChrome as HomePageIcon, BsBookH
 import { GiPhone as PhoneIcon } from 'react-icons/gi'
 import toast from 'react-hot-toast'
 import { useEffect, useRef } from 'react'
-import useLibrary from './useLibrary'
-import RouteContainer from '../../common/styles/RouteContainer'
-import utils from '../../common/utils'
-import CardBodyContainer from '../../common/styles/CardBodyContainer'
-import RowSpacer from '../../common/styles/RowSpacer'
+import useLibrary from '../useLibrary'
+import RouteContainer from '../../../common/styles/RouteContainer'
+import utils from '../../../common/utils'
+import CardBodyContainer from '../../../common/styles/CardBodyContainer'
+import RowSpacer from '../../../common/styles/RowSpacer'
+import breakpoints from '../../../config/breakpoints';
 
 const LibraryDetailRoute = () => {
         const { libraryId } = useParams()
@@ -53,7 +54,7 @@ const LibraryDetailRoute = () => {
 
 	return (
         <RouteContainer>
-            <RowSpacer />
+            <RowSpacer size={10} />
 
 			<Card>
                 <CardBodyContainer>
@@ -137,6 +138,10 @@ const LibraryTextWithIcon = ({ icon, text }) => {
 const TitleContainer = styled.div`
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: ${breakpoints.md}) {
+        flex-direction: column;
+    }
 `;
 
 const InfoContainer = styled.div.attrs({

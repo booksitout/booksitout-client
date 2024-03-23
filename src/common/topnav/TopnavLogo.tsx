@@ -17,6 +17,10 @@ const Container = styled.a.attrs(props => ({
 }))`
     display: flex;
     align-items: center;
+
+    &:hover {
+        color: black;
+    }
 `;
 
 const LogoImage = styled.img.attrs({

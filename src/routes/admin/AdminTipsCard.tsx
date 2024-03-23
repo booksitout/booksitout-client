@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BiTime as TimeIcon } from 'react-icons/bi'
-import TipsResponse from '../tips/TipsResponse';
+import TipsResponse from '../community/tips/TipsResponse';
 
 interface Props {
     tip: TipsResponse

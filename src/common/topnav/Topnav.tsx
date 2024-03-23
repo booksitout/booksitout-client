@@ -39,8 +39,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 `;
 
 const LogoSpacer = styled.div`

@@ -3,11 +3,12 @@ import { MdAddCircle as BookIcon } from 'react-icons/md'
 import { Button } from 'react-bootstrap'
 import styled from 'styled-components';
 import breakpoints from '../../config/breakpoints'
+import useLoginStore from '../../routes/login/useLoginStore';
 
 const AddFloatingButton = () => {
 	const navigate = useNavigate()
 
-	const token = ''
+	const token = useLoginStore((state) => state.isLoggedIn())
 
 	const getNavigateUrl = () => {
 		const path = window.location.pathname

@@ -4,21 +4,21 @@ import { Card } from 'react-bootstrap'
 import CardBodyContainer from '../../../common/styles/CardBodyContainer'
 import CardTitle from '../../../common/styles/CardTitle'
 import logo from '../../../images/logo.png'
-import { useTipsList } from '../../tips/useTipsList'
-import { useNavigate } from 'react-router-dom';
+import { useTipsList } from '../../community/tips/useTipsList'
 import IndexContentContainer from '../IndexContentContainer';
+import breakpoints from '../../../config/breakpoints';
 
 const IndexTipsCard = () => {
-    const navigate = useNavigate()
-    const [tips] = useTipsList()
+    const [tips] = useTipsList(6)
 
     return (
-        <Card className='clickable' onClick={() => navigate(`/community/tips`)}>
+        <Card>
             <CardBodyContainer>
                 <CardTitle 
-                    icon={<img src={logo} alt="" className="img-fluid rounded me-2 mt-0 mt-md-1" style={{ width: '40px', height: '40px' }}/>} 
-                    title={'책잇아웃의 꿀팁'} 
+                    icon={<img src={logo} alt="" className="img-fluid rounded me-2 mt-0 mt-md-1" style={{ width: '40px', height: '40px' }} />}
+                    title={'책잇아웃의 꿀팁'}
                     subTitle={'책에 관한 여러 유용한 정보를 얻어갈 수 있어요'} 
+                    url='/community/tips'
                 />
 
                 {
@@ -46,6 +46,10 @@ const TipsImage = styled.img`
     object-fit: cover;
     border-radius: 10px;
     flex-shrink: 0;
+
+    @media screen and (max-width: ${breakpoints.md}) {
+        width: 60px;
+    }
 `;
 
 const TextContainer = styled.div`
@@ -53,6 +57,10 @@ const TextContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     width: calc(100% - 120px);
+    
+    @media screen and (max-width: ${breakpoints.md}) {
+        width: calc(100% - 70px);
+    }
 `;
 
 const Title = styled.h5.attrs({

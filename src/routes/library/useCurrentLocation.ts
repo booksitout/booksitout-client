@@ -13,7 +13,18 @@ const fetchLocation = async () => {
 	return { latitude: locationResult[0], longitude: locationResult[1], address }
 }
 
-const useLocation = () => {
+const fetchLocationNoCache = async () => {
+	const locationResult = await location.getLatitudeAndLongitudeNoCache()
+
+	if (!locationResult || locationResult[0] === null || locationResult[1] === null) {
+		throw new Error('Location fetch failed')
+	}
+
+	const address = await location.getAddressByLatitudeAndLongitude(locationResult[0], locationResult[1])
+	return { latitude: locationResult[0], longitude: locationResult[1], address }
+}
+
+const useCurrentLocation = () => {
 	const [lat, setLatitude] = useState<number | null>(null)
 	const [long, setLongitude] = useState<number | null>(null)
 	const [locationName, setLocationName] = useState<string | null>(null)
@@ -39,8 +50,9 @@ const useLocation = () => {
 	const refreshLocation = async () => {
 		setLocationName(null)
 		toast.loading('위치를 가져오고 있어요')
+		
 		try {
-			const { latitude, longitude, address } = await fetchLocation()
+			const { latitude, longitude, address } = await fetchLocationNoCache()
 			setLatitude(latitude)
 			setLongitude(longitude)
 			setLocationName(address)
@@ -50,7 +62,7 @@ const useLocation = () => {
 		}
 	}
 
-	return { lat, long, locationName, locationError, refreshLocation }
+	return [lat, long, locationName, locationError, refreshLocation] as const
 }
 
-export default useLocation
+export default useCurrentLocation

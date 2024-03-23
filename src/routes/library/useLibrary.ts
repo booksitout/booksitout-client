@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import LibraryResponse from "./LibraryNearResponse"
+import LibraryResponse from "./near/LibraryNearResponse"
 import { booksitoutServer } from "../../config/axios"
 import toast from "react-hot-toast"
 

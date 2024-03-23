@@ -30,9 +30,10 @@ import { BiNetworkChart, BiSearchAlt2, BiTime, BiTransfer } from 'react-icons/bi
 import { AiFillStar, AiOutlineStar, AiFillCheckCircle, AiOutlineAppstore, AiFillLike, AiFillDislike, AiFillExperiment, AiFillPicture, AiFillNotification } from 'react-icons/ai'
 import { TbTargetArrow } from 'react-icons/tb'
 import { RiComputerFill, RiFilePaperLine, RiFunctionFill } from 'react-icons/ri'
-import { MdBrowserNotSupported, MdEmail, MdFeedback, MdHistoryEdu, MdLanguage, MdOutlineEmojiPeople, MdPrivacyTip, MdQuiz } from 'react-icons/md';
+import { MdBrowserNotSupported, MdEmail, MdFeedback, MdHistoryEdu, MdLanguage, MdOutlineEmojiPeople, MdPrivacyTip, MdQuiz, MdCancel } from 'react-icons/md';
 import { GiEvilBook, GiThink } from 'react-icons/gi';
 import { IoReloadCircle } from 'react-icons/io5';
+
 
 const booksitoutIcon: { [key: string]: IconType } = {
 	login: FiLogIn,
@@ -90,9 +91,11 @@ const booksitoutIcon: { [key: string]: IconType } = {
 	post: BsFillPostcardFill,
 	quiz: MdQuiz,
 	image: BsFillFileImageFill,
-	check: AiFillCheckCircle,
 	like: AiFillLike,
 	dislike: AiFillDislike,
+
+	check: AiFillCheckCircle,
+	xmark: MdCancel,
 
 	// gathering
 	gathering: FaPeopleArrows,

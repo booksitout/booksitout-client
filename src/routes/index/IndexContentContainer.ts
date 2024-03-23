@@ -11,6 +11,7 @@ const IndexContentContainer = styled.a.attrs({
     background-color: white;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    height: ${props => props.height}px;
 `;
 
 export default IndexContentContainer

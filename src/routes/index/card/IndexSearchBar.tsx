@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import SearchBar from '../../search/searchbar/SearchBar';
 import breakpoints from '../../../config/breakpoints';
+import ApiUrls from '../../../ApiUrls';
 
 const IndexSearchBar = () => {
     return (
         <Container>
             <SearchBarContainer>
-                <SearchBar />
+                <SearchBar 
+                    autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET}
+                    searchResultUrl={'/search'} 
+                    placeholder={'여러곳에서 1번에 책 검색하기'} 
+                />
             </SearchBarContainer>
         </Container>
     )

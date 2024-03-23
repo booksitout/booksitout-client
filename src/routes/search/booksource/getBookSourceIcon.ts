@@ -11,56 +11,60 @@ import ridi from '../../../images/search/ridi.png'
 import kyobo from '../../../images/search/kyobo.jpg'
 import interpark from '../../../images/search/interpark.png'
 
-const getBookSourceIcon = (
-	source:
-		| 'SEOUL_LIBRARY'
-		| 'SEOUL_EDUCATION_LIBRARY'
-		| 'NATIONAL_ASSEMBLY_LIBRARY'
-		| 'GYEONGGI_EDUCATION_LIBRARY'
-		| 'GWANGHWAMUN_LIBRARY'
-		| 'SEOUL_CONGRESS_LIBRARY'
-		| 'MILLIE'
-		| 'YES24'
-		| 'RIDI'
-		| 'KYOBO'
-		| 'ONLINE_ALADIN'
-		| 'ONLINE_YES24'
-		| 'ONLINE_KYOBO'
-		| 'ONLINE_INTERPARK'
-		| 'OFFLINE_ALADIN'
-		| 'OFFLINE_YES24',
-) => {
-    switch (source)  {
-        case 'SEOUL_LIBRARY':
-            return seoulLibrary
-        case 'SEOUL_EDUCATION_LIBRARY':
-            return seoulEducationLibrary
-        case 'NATIONAL_ASSEMBLY_LIBRARY':
-            return nationalAssemblyLibrary
-        case 'GYEONGGI_EDUCATION_LIBRARY':
-            return geonggiEducationLibrary
-        case 'GWANGHWAMUN_LIBRARY':
-            return gwanghwamumLibrary
-        case 'SEOUL_CONGRESS_LIBRARY':
-            return seoulCongressLibrary
-        case 'MILLIE':
-            return millie
-        case 'YES24':
-        case 'ONLINE_YES24':
-            return yes24
-        case 'RIDI':
-            return ridi
-        case 'KYOBO':
-        case 'ONLINE_KYOBO':
-            return kyobo
-        case 'ONLINE_ALADIN':
-        case 'OFFLINE_ALADIN':
-            return aladin
-        case 'ONLINE_INTERPARK':
-            return interpark
-        default:
-            return ''
-    }
+type BookSource =
+	| 'LIBRARY_ONLINE_SEOUL'
+	| 'LIBRARY_ONLINE_SEOUL_EDUCATION'
+	| 'LIBRARY_ONLINE_NATIONAL_ASSEMBLY'
+	| 'LIBRARY_ONLINE_GYEONGGI_EDUCATION'
+	| 'LIBRARY_ONLINE_GWANGHWAMUN'
+	| 'LIBRARY_ONLINE_SEOUL_CONGRESS'
+
+	| 'SUBSCRIPTION_MILLIE'
+	| 'SUBSCRIPTION_RIDI'
+	| 'SUBSCRIPTION_YES24'
+	| 'SUBSCRIPTION_KYOBO'
+
+    | 'USED_ONLINE_YES24'
+	| 'USED_ONLINE_ALADIN'
+	| 'USED_ONLINE_INTERPARK'
+	| 'USED_ONLINE_KYOBO'
+	
+	| 'USED_OFFLINE_ALADIN'
+	| 'USED_OFFLINE_YES24'
+	
+const getBookSourceIcon = (source: BookSource): string => {
+	switch (source) {
+		case 'LIBRARY_ONLINE_SEOUL':
+			return seoulLibrary
+		case 'LIBRARY_ONLINE_SEOUL_EDUCATION':
+			return seoulEducationLibrary
+		case 'LIBRARY_ONLINE_NATIONAL_ASSEMBLY':
+			return nationalAssemblyLibrary
+		case 'LIBRARY_ONLINE_GYEONGGI_EDUCATION':
+			return geonggiEducationLibrary
+		case 'LIBRARY_ONLINE_GWANGHWAMUN':
+			return gwanghwamumLibrary
+		case 'LIBRARY_ONLINE_SEOUL_CONGRESS':
+			return seoulCongressLibrary
+		case 'SUBSCRIPTION_MILLIE':
+			return millie
+		case 'USED_ONLINE_YES24':
+		case 'USED_OFFLINE_YES24':
+		case 'SUBSCRIPTION_YES24':
+			return yes24
+		case 'SUBSCRIPTION_RIDI':
+			return ridi
+		case 'SUBSCRIPTION_KYOBO':
+		case 'USED_ONLINE_KYOBO':
+			return kyobo
+		case 'USED_ONLINE_ALADIN':
+		case 'USED_OFFLINE_ALADIN':
+			return aladin
+		case 'USED_ONLINE_INTERPARK':
+			return interpark
+		default:
+			return ''
+	}
 }
 
 export default getBookSourceIcon

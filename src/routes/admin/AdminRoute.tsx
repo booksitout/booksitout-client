@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 import styled from 'styled-components';
 import { booksitoutServer } from '../../config/axios';
 import RouteContainer from '../../common/styles/RouteContainer';
-import TipsResponse from '../tips/TipsResponse';
+import TipsResponse from '../community/tips/TipsResponse';
 import CardTitle from '../../common/styles/CardTitle';
 import AdminTipsCard from './AdminTipsCard';
 
@@ -20,8 +20,9 @@ const AdminRoute = () => {
             <CardTips>
                 <Card.Body>
                     <CardTitle 
-                        icon={undefined} 
+                        icon={undefined}
                         title={'관리자용'} 
+                        url={''}                    
                     />
 
                     <div className="row">

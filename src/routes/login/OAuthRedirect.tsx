@@ -50,7 +50,7 @@ const OAuthRedirect = () => {
 		}
 	}, [code, provider])
 
-    return <Loading />
+    return <Loading size={100} message={`로그인 하고 있어요}`} />
 }
 
 export default OAuthRedirect

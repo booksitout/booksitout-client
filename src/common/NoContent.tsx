@@ -1,17 +1,47 @@
+import styled from 'styled-components';
 import { VscError as XMarkIcon } from 'react-icons/vsc'
 
-const NoContent = ({ message = '텅 비어 있어요', textSize = 4, iconSize = 6, mBetween = 3, move = 60, mt = 0 }) => {
-	return (
-		<div className='h-100 d-flex justify-content-center align-items-center' style={{ transform: `translateY(${move * -1}px)` }}>
-			<div className='text-center w-100' style={{ marginTop: `${mt}px` }}>
-				<XMarkIcon className='text-book' size={`${iconSize}em`} />
+interface Props {
+	message: string
+}
 
-				<div className={`h${textSize} mt-${mBetween} force-1-line`}>
-					{message}
-				</div>
-			</div>
-		</div>
+const NoContent: React.FC<Props> = ({ message = '텅 비어 있어요' }) => {
+	return (
+		<Container>
+			<ContentContainer>
+				<IconContainer>
+					<XMarkIcon className='text-book' size={`5em`} style={{ textAlign: 'center' }} />
+				</IconContainer>
+
+				<Text>{message}</Text>
+			</ContentContainer>
+		</Container>
 	)
 }
+
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+`;
+
+const ContentContainer = styled.div`
+	justify-content: center;
+`;
+
+const IconContainer = styled.div`
+	text-align: center;
+`;
+
+const Text = styled.h5.attrs({
+	className: 'force-1-line'
+})`
+	margin-top: 0.5em;
+	text-align: center;
+`;
 
 export default NoContent

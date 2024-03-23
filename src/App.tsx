@@ -11,7 +11,14 @@ import SearchBookRoute from './routes/search/book/SearchBookRoute'
 import SearchBookSourceRoute from './routes/search/booksource/SearchBookSourceRoute'
 import AdminTipsRoute from './routes/admin/AdminTipsRoute'
 import AdminRoute from './routes/admin/AdminRoute'
-import LibraryDetailRoute from './routes/library/LibraryDetailRoute'
+import LibraryDetailRoute from './routes/library/find/LibraryDetailRoute'
+import CommunityRoute from './routes/community/CommunityRoute'
+import LibraryRoute from './routes/library/find/LibraryRoute'
+import BookRoute from './routes/book/BookRoute'
+import LibraryNearRoute from './routes/library/near/LibraryNearRoute'
+import LibraryMembershipRoute from './routes/library/membership/LibraryMembershipRoute'
+import TipsRoute from './routes/community/tips/TipsRoute'
+import TipsDetailRoute from './routes/community/tips/TipsDetailRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -19,19 +26,23 @@ const router = createBrowserRouter(
 			<Route path='*' element={<NotFound />} />
 			<Route path='/' element={<IndexRoute />} />
 
-			<Route path='/book' element={<></>} />
+			<Route path='/book' element={<BookRoute />} />
+			<Route path='/book/users/:bookId' element={<></>} />
+			<Route path='/book/users/:bookId/reading' element={<></>} />
+			<Route path='/book/goal' element={<></>} />
+			<Route path='/book/statistics' element={<></>} />
 
-			<Route path='/community' />
-			<Route path='/community/tips' />
-			<Route path='/community/tips/:tipsId' />
-
-			<Route path='/library' element={<></>} />
-			<Route path='/library/near' element={<></>} />
+			<Route path='/library' element={<LibraryRoute />} />
+			<Route path='/library/near' element={<LibraryNearRoute />} />
 			<Route path='/library/:libraryId' element={<LibraryDetailRoute />} />
 			<Route path='/library/by-region/:region' />
 			<Route path='/library/by-region/:region/:regionDetail' />
-			<Route path='/library/membership' element={<></>} />
+			<Route path='/library/membership' element={<LibraryMembershipRoute />} />
 			<Route path='/library/membership/:membershipId' element={<></>} />
+
+			<Route path='/community' element={<CommunityRoute />} />
+			<Route path='/community/tips' element={<TipsRoute />} />
+			<Route path='/community/tips/:tipsId' element={<TipsDetailRoute />} />
 
 			<Route path='/search' element={<SearchBookRoute />} />
 			<Route path='/search/:isbn13' element={<SearchBookSourceRoute />} />
@@ -40,6 +51,7 @@ const router = createBrowserRouter(
 
 			<Route path='/admin' element={<AdminRoute />} />
 			<Route path='/admin/tips/:id' element={<AdminTipsRoute />} />
+
 			<Route path='/privacy' element={<PrivacyRoute />} />
 			<Route path='/privacy/:date' element={<PrivacyByDate />} />
 		</Route>

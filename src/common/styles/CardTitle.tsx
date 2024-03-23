@@ -9,11 +9,12 @@ interface PropsType {
 	textSize?: number
 	iconSize?: number
 	mb?: number
+	url: string
 }
 
-const CardTitle:React.FC<PropsType> = ({ icon, title, subTitle = '', textSize = 3, iconSize = 2, mb = 3 }) => {
+const CardTitle:React.FC<PropsType> = ({ icon, title, subTitle = '', textSize = 3, iconSize = 2, mb = 3, url = '' }) => {
 	return (
-		<div className={`d-flex flex-wrap mb-${mb} align-items-center`}>
+		<a href={url} className={`d-flex flex-wrap mb-${mb} align-items-center`}>
 			<TitleContainer>
 				<h1 className={`me-2 text-book h${iconSize}`}>{icon}</h1>
 				<div className={`h${textSize} m-0`}>{title}</div>
@@ -36,7 +37,7 @@ const CardTitle:React.FC<PropsType> = ({ icon, title, subTitle = '', textSize = 
 					)
 				)}
 			</TitleContainer>
-		</div>
+		</a>
 	)
 }
 

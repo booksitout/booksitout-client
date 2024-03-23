@@ -8,6 +8,10 @@ import RowSpacer from '../../../common/styles/RowSpacer';
 import loginImage from '../../../images/relax.svg'
 import ColorConfig from '../../../config/ColorConfig';
 import useLoginStore from '../../login/useLoginStore';
+import BookStatisticsTable from '../../book/statitics/BookStatisticsTable';
+import IndexContentContainer from '../IndexContentContainer';
+import BookGoalCard from '../../book/goal/BookGoalCard';
+import BookLastReadCard from '../../book/BookLastReadCard';
 
 const IndexSummaryCard = () => {
     const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
@@ -15,7 +19,11 @@ const IndexSummaryCard = () => {
     return (
         <Card>
             <CardBodyContainer>
-                <CardTitle icon={<booksitoutIcon.user />} title={'내 독서활동 요약'} />
+                <CardTitle 
+                    icon={<booksitoutIcon.user />} 
+                    title={'내 독서활동 요약'} 
+                    url='/book/summary'
+                />
 
                 {isLoggedIn ? <YesLoggedInCase /> : <NoLoggedInCase />}
             </CardBodyContainer>
@@ -50,8 +58,46 @@ const NoLoggedInCase = () => {
 }
 
 const YesLoggedInCase = () => {
-    return (<></>)
+    return (
+        <Row>
+            <Col>
+                <IndexContentContainer height={175}>
+                    <BookLastReadCard />
+                </IndexContentContainer>
+
+                <IndexContentContainer href='/book/goal'>
+                    <BookGoalCard />
+                </IndexContentContainer>
+            </Col>
+
+            <Col>
+                <IndexContentContainer href='/book/statistics'>
+                    <BookStatisticsTable year={new Date().getFullYear()} />
+                </IndexContentContainer>
+            </Col>
+
+            <Col>
+                <IndexContentContainer height={150}>
+                </IndexContentContainer>
+            </Col>
+
+            <Col>
+                <IndexContentContainer height={150}>
+                </IndexContentContainer>
+            </Col>
+        </Row>
+    )
 }
+
+const Row = styled.div.attrs({
+    className: 'row'
+})`
+`;
+
+const Col = styled.div.attrs({
+    className: 'col-12 col-md-6 col-xl-4'
+})`
+`;
 
 const NoLoginContainer = styled.div`
     display: flex;

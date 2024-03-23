@@ -6,9 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import ColorConfig from '../../../config/ColorConfig';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
 import { booksitoutServer } from '../../../config/axios';
-import ApiUrls from '../../../ApiUrls';
+import breakpoints from '../../../config/breakpoints';
 
-const SearchBar = () => {
+interface Props {
+    autoCompleteApiUrl: string
+    searchResultUrl: string
+    placeholder: string
+}
+
+const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, placeholder }) => {
     const navigate = useNavigate()
 
     const defaultQuery = useUrlQuery('q') ?? ''
@@ -18,10 +24,10 @@ const SearchBar = () => {
     useEffect(() => {
         if (dQuery !== '') {
             booksitoutServer
-                .get(`${ApiUrls.Search.AutoComplete.GET}?q=${dQuery}`)
+                .get(`${autoCompleteApiUrl}?q=${dQuery}`)
                 .then((res) => setQuerySuggestions(res.data))
         }
-    }, [dQuery])
+    }, [autoCompleteApiUrl, dQuery])
 
     useEffect(() => {
         (setQuery as Dispatch<SetStateAction<string>>)(defaultQuery)
@@ -29,7 +35,7 @@ const SearchBar = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        navigate(`/search?q=${query}`)
+        navigate(`${searchResultUrl}?q=${query}`)
     }
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +45,7 @@ const SearchBar = () => {
     return (
         <SearchContainer onSubmit={handleSubmit}>
             <Input
-                placeholder="여러곳에서 1번에 책 검색하기"
+                placeholder={placeholder}
                 value={query}
                 onChange={handleInputChange}
             />
@@ -76,7 +82,11 @@ const Input = styled.input`
     outline: none;
     padding: 10px 20px;
     font-size: 16px;
-    min-width: 350px;
+    min-width: 280px;
+    
+    @media screen and (max-width: ${breakpoints.md}px){
+        max-width: 350px;
+    }
 `;
 
 const SearchButton = styled.button`

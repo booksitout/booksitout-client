@@ -13,7 +13,7 @@ const SearchBookCard: React.FC<Props> = ({ book }) => {
     const navigate = useNavigate()
 
     return (
-        <Card className='clickable' onClick={() => navigate(`/search/${book.isbn13}`)}>
+        <Card className='clickable' onClick={() => navigate(`/search/${book.isbn13}?q=${book.title}`)}>
             <CardBodyContainer height={150}>
                 <Container>
                     <CoverContainer>

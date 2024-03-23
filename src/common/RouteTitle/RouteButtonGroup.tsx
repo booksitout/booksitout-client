@@ -39,7 +39,7 @@ const RouteButtonGroup: React.FC<RouteButtonGroupProps> = (props) => {
     }
     
     return (
-        <ButtonGroup className='row w-100'>
+        <ButtonGroup className='w-100'>
             {
                 props.buttons.map((button, index) => {
                     return (

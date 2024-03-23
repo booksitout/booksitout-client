@@ -7,7 +7,7 @@ export const booksitoutServer = axios.create({
 
 booksitoutServer.interceptors.request.use(
 	(config) => {
-		const token = '';
+		const token = localStorage.getItem('access-token')
 
 		if (token) {
 			config.headers['Authorization'] = token;

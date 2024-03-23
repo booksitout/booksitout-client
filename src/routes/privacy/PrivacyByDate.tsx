@@ -22,7 +22,7 @@ const PrivacyByDate = () => {
     }, [date])
 
 
-    if (content === '') return <NoContent move={0} mt={100} message='해당 날짜의 약관이 없어요'/>
+    if (content === '') return <NoContent message='해당 날짜의 약관이 없어요'/>
 
     return (
 		<RouteContainer>
