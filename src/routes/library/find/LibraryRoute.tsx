@@ -6,6 +6,11 @@ import breakpoints from '../../../config/breakpoints';
 import ApiUrls from '../../../ApiUrls';
 import booksitoutIcon from '../../../config/booksitoutIcon';
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
+import RouteTitleConfig from '../../../config/RouteTitleConfig';
+import { Card } from 'react-bootstrap';
+import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer';
+import CardTitle from '../../../common/styles/CardTitle';
+import LibraryByBookCountCard from './LibraryByBookCountCard';
 
 const LibraryRoute = () => {
     return (
@@ -15,25 +20,7 @@ const LibraryRoute = () => {
                 title={'도서관 찾기'}
                 subTitle={'여러 조건으로 도서관을 찾을 수 있어요'}
                 currentKey={'library'}
-                buttons={
-                    [
-                        {
-                            url: '/library',
-                            key: 'library',
-                            label: '도서관 찾기',
-                        },
-                        {
-                            url: '/library/membership',
-                            key: 'membership',
-                            label: '회원증',
-                        },
-                        {
-                            url: '/library/near',
-                            key: 'library-near',
-                            label: '내 주변 도서관',
-                        },
-                    ]
-                }
+                buttons={RouteTitleConfig.Library}
             />
 
             <RowSpacer />
@@ -46,8 +33,10 @@ const LibraryRoute = () => {
                     />
                 </SearchBarContainer>
             </SearchBarContainerContainer>
+            <RowSpacer size={60} />
 
-            <RowSpacer size={350}/>
+            <LibraryByBookCountCard />
+            <RowSpacer />
         </RouteContainer>
     )
 }

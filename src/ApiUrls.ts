@@ -76,6 +76,8 @@ class ApiUrls {
 	}
 
 	static Library = class {
+		static GET_ALL_BY_BOOK_COUNT = `/v1/library?sort=book-count`
+
 		static Near = (lat: number, long: number, radius: number) => `/v1/library/available-library/by-radius?lat=${lat}&long=${long}&radius=${radius}&size=10`
 
 		static Membership = class {

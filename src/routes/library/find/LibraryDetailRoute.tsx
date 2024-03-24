@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
-import {  BsGeoAltFill as LocationIcon, BsBrowserChrome as HomePageIcon, BsBookHalf  as BookIcon, BsAlarmFill as TimeIcon } from 'react-icons/bs'
+import { BsGeoAltFill as LocationIcon, BsBrowserChrome as HomePageIcon, BsBookHalf as BookIcon, BsAlarmFill as TimeIcon } from 'react-icons/bs'
 import { GiPhone as PhoneIcon } from 'react-icons/gi'
 import toast from 'react-hot-toast'
 import { useEffect, useRef } from 'react'
@@ -11,30 +11,33 @@ import utils from '../../../common/utils'
 import CardBodyContainer from '../../../common/styles/CardBodyContainer'
 import RowSpacer from '../../../common/styles/RowSpacer'
 import breakpoints from '../../../config/breakpoints';
+import RouteTitle from '../../../common/RouteTitle/RouteTitle';
+import booksitoutIcon from '../../../config/booksitoutIcon';
+import RouteTitleConfig from '../../../config/RouteTitleConfig';
 
 const LibraryDetailRoute = () => {
-        const { libraryId } = useParams()
-        const library = useLibrary(parseInt(libraryId ?? ''))
-        const mapElement = useRef(null)
+	const { libraryId } = useParams()
+	const library = useLibrary(parseInt(libraryId ?? ''))
+	const mapElement = useRef(null)
 
 	useEffect(() => {
 		document.title = `${library?.name ?? '도서관'} | 책잇아웃`
-		
-        if (library != null) {
-            const { naver } = window
-            if (!mapElement.current || !naver) return
-    
-            const location = new naver.maps.LatLng(library.location.latitude, library.location.longitude)
-            const mapOptions: naver.maps.MapOptions = {
-                center: location,
-                zoom: 16,
-                zoomControl: true,
-                zoomControlOptions: { position: naver.maps.Position.TOP_RIGHT },
-            }
-    
-            const map = new naver.maps.Map(mapElement.current, mapOptions)
-            new naver.maps.Marker({ position: location, map })
-        }
+
+		if (library != null) {
+			const { naver } = window
+			if (!mapElement.current || !naver) return
+
+			const location = new naver.maps.LatLng(library.location.latitude, library.location.longitude)
+			const mapOptions: naver.maps.MapOptions = {
+				center: location,
+				zoom: 16,
+				zoomControl: true,
+				zoomControlOptions: { position: naver.maps.Position.TOP_RIGHT },
+			}
+
+			const map = new naver.maps.Map(mapElement.current, mapOptions)
+			new naver.maps.Marker({ position: location, map })
+		}
 	}, [library])
 
 	const copyText = (text: string) => {
@@ -50,35 +53,43 @@ const LibraryDetailRoute = () => {
 		toast.success('주소를 복사했어요')
 	}
 
-    if (library == null) return <></>
+	if (library == null) return <></>
 
 	return (
-        <RouteContainer>
-            <RowSpacer size={10} />
+		<RouteContainer>
+			<RouteTitle
+				icon={<booksitoutIcon.library />}
+				title={'도서관 찾기'}
+				subTitle={'여러 조건으로 도서관을 찾을 수 있어요'}
+				currentKey={'library'}
+				buttons={RouteTitleConfig.Library}
+			/>
+
+			<RowSpacer />
 
 			<Card>
-                <CardBodyContainer>
+				<CardBodyContainer>
 					<TitleContainer>
-                        <h2 className='p-3'>{library.name}</h2>
+						<h2 className='p-3'>{library.name}</h2>
 
-                        <RegionContainer>
-                            <CardBodyContainer height={80}>
-                                <a
-                                    href={`/library/by-region/${library.location.name.regionEnglishName.toLowerCase()}/${library.location.name.regionDetailEnglishName.toLowerCase()}`}
-                                    className="d-flex align-items-center"
-                                >
-                                    <img
-                                        src={library.location.logo}
-                                        alt=""
-                                        style={{ height: '40px' }}
-                                        className="rounded"
-                                    />
-                                    <h5 className="ms-2 w-100 text-center mb-0">
-                                        {library.location.name.displayName}
-                                    </h5>
-                                </a>
-                            </CardBodyContainer>
-                        </RegionContainer>
+						<RegionContainer>
+							<CardBodyContainer height={80}>
+								<a
+									href={`/library/by-region/${library.location.name.regionEnglishName.toLowerCase()}/${library.location.name.regionDetailEnglishName.toLowerCase()}`}
+									className="d-flex align-items-center"
+								>
+									<img
+										src={library.location.logo}
+										alt=""
+										style={{ height: '40px' }}
+										className="rounded"
+									/>
+									<h5 className="ms-2 w-100 text-center mb-0">
+										{library.location.name.displayName}
+									</h5>
+								</a>
+							</CardBodyContainer>
+						</RegionContainer>
 					</TitleContainer>
 
 					<InfoContainer>
@@ -111,16 +122,16 @@ const LibraryDetailRoute = () => {
 
 						<LibraryTextWithIcon
 							icon={<BookIcon />}
-                            text={`${utils.insertCommas(library.bookCount)} 권` ?? '?'}
+							text={`${utils.insertCommas(library.bookCount)} 권` ?? '?'}
 						/>
 
 						<LibraryTextWithIcon icon={<TimeIcon />} text={`휴무) ${library.openDay}`} />
 					</InfoContainer>
 
-                    <RowSpacer />
+					<RowSpacer />
 
 					<Map ref={mapElement} />
-                </CardBodyContainer>
+				</CardBodyContainer>
 			</Card>
 		</RouteContainer>
 	)
@@ -145,19 +156,19 @@ const TitleContainer = styled.div`
 `;
 
 const InfoContainer = styled.div.attrs({
-    className: 'ms-md-5'
+	className: 'ms-md-5'
 })`
 `;
 
 const RegionContainer = styled(Card).attrs({
-    className: 'm-3'
+	className: 'm-3'
 })`
     width: 200px;
     height: 80px;
 `;
 
 const Map = styled.div.attrs({
-    className: 'rounded-'
+	className: 'rounded-'
 })`
     width: 100%;
     height: 400px;

@@ -7,29 +7,12 @@ import booksitoutIcon from '../../config/booksitoutIcon';
 import RouteTitle from '../../common/RouteTitle/RouteTitle'
 import { RouteButtonGroupType } from '../../common/RouteTitle/RouteButtonGroupType'
 import CardBodyBackgroundContainer from '../../common/styles/CardBodyBackgroundContainer'
+import RouteTitleConfig from '../../config/RouteTitleConfig'
 
 const BookRoute = () => {
     useEffect(() => {
         document.title = '서재 | 책잇아웃'
     }, [])
-
-    const buttons: RouteButtonGroupType[] = [
-        {
-            url: '/book',
-			key: 'index',
-			label: '둘러보기'
-        },
-        {
-            url: '/book/mine',
-			key: 'mine',
-			label: '내 서재'
-        },
-        {
-            url: '/book/statistics',
-            key: 'statistics',
-            label: '통계'
-        },
-	]
 
     return (
         <RouteContainer>
@@ -38,7 +21,7 @@ const BookRoute = () => {
 				title={'서재 둘러보기'} 
 				subTitle={'나만의 서재를 만들어 가고 다른 사람의 서재를 구경해 보세요'} 
 				currentKey={'index'} 
-				buttons={buttons} 
+				buttons={RouteTitleConfig.Book} 
 				rightUi={undefined} 
 			/>
 

@@ -6,6 +6,7 @@ import RouteContainer from '../../../common/styles/RouteContainer'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
 import TipsList from './TipsList'
 import RowSpacer from '../../../common/styles/RowSpacer'
+import RouteTitleConfig from '../../../config/RouteTitleConfig'
 
 const CommunityTipsRoute = () => {
     const range = useUrlQuery('range')
@@ -14,19 +15,6 @@ const CommunityTipsRoute = () => {
         document.title = '꿀팁 | 책잇아웃'
     }, [])
 
-	const buttons: RouteButtonGroupType[] = [
-        {
-            url: '/community/tips?range=all',
-			key: 'tips',
-			label: '책잇아웃의 꿀팁'
-        },
-        {
-            url: '/community/popular-books',
-            key: 'popular',
-            label: '인기 책'
-        },
-	]
-
 	return (
 		<RouteContainer>
             <RouteTitle 
@@ -34,7 +22,7 @@ const CommunityTipsRoute = () => {
 				title={'책잇아웃의 꿀팁'} 
 				subTitle={'책에 관한 여러 꿀팁을 얻어 갈 수 있어요'} 
 				currentKey={'tips'} 
-				buttons={buttons} 
+				buttons={RouteTitleConfig.Community} 
 				rightUi={undefined}
 			/>
 

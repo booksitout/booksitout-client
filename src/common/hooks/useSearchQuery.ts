@@ -7,7 +7,7 @@ const useSearchQuery = (defaultValue = '') => {
 	useEffect(() => {
 		const handler = setTimeout(() => {
 			setDebouncedQuery(query)
-		}, 200)
+		}, 500)
 
 		return () => {
 			clearTimeout(handler)

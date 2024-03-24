@@ -4,7 +4,6 @@ import booksitoutIcon from '../../../config/booksitoutIcon'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Form } from 'react-bootstrap'
-import Error from '../../../common/Error'
 import NoContent from '../../../common/NoContent'
 import LibraryCard from '../find/LibraryCard'
 import LibraryCardLoading from '../find/LibraryCardLoading'
@@ -13,35 +12,18 @@ import useLibraryNear from '../useLibraryNear'
 import ReloadButton from '../../../common/styles/ReloadButton'
 import { RouteButtonGroupType } from '../../../common/RouteTitle/RouteButtonGroupType'
 import RowSpacer from '../../../common/styles/RowSpacer'
+import RouteTitleConfig from '../../../config/RouteTitleConfig'
 
 const LibraryNearRoute = () => {
 	const { range } = useParams()
 	const [currentRange, setCurrentRange] = useState<number>(Number(range ?? 3))
 
 	const [lat, long, locationName, locationError, refreshLocation] = useCurrentLocation()
-	const libraries = useLibraryNear(lat, long, currentRange, true)
+	const [libraries, isLoading] = useLibraryNear(lat, long, currentRange, true)
 
 	useEffect(() => {
 		document.title = '주변 도서관 | 책잇아웃'
 	}, [])
-
-	const buttons: RouteButtonGroupType[] = [
-		{
-			url: '/library',
-			key: 'library',
-			label: '도서관 찾기',
-		},
-		{
-			url: '/library/membership',
-			key: 'membership',
-			label: '회원증',
-		},
-		{
-			url: '/library/near',
-			key: 'library-near',
-			label: '내 주변 도서관',
-		},
-	]
 
 	return (
 		<RouteContainer>
@@ -50,7 +32,7 @@ const LibraryNearRoute = () => {
 				title={'내 주변 도서관'}
 				subTitle={locationName ?? '위치 알 수 없음'}
 				currentKey={'library-near'}
-				buttons={buttons}
+				buttons={RouteTitleConfig.Library}
 				rightUi={
 					<>
 						<DistanceSelect currentRange={currentRange} setCurrentRange={setCurrentRange} />
@@ -62,9 +44,7 @@ const LibraryNearRoute = () => {
 			<RowSpacer size={10} />
 			{locationError ? (
 				<></>
-			) : libraries === undefined ? (
-				<Error />
-			) : libraries == null ? (
+			) :  isLoading ? (
 				Array.from({ length: 6 }).map(() => <LibraryCardLoading />)
 			) : libraries.length === 0 ? (
 				<NoContent message={`${currentRange}km 내에 도서관이 없어요`} />

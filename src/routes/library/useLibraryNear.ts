@@ -6,10 +6,13 @@ import LibraryResponse from "./near/LibraryNearResponse";
 
 const useLibraryNear = (lat: number | null, long: number | null, radiusInKm: number = 3, isShowingAlert: boolean = false) => {
 	const [libraries, setLibraries] = useState<LibraryResponse[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 	const prevLibrariesCount = useRef<number>(0);
 
 	useEffect(() => {
         if (lat !== null && long !== null && lat !== undefined && long !== undefined) {
+            setIsLoading(true)
+
 			booksitoutServer
 				.get(ApiUrls.Library.Near(lat, long, radiusInKm * 1000))
 				.then(res => {
@@ -29,10 +32,11 @@ const useLibraryNear = (lat: number | null, long: number | null, radiusInKm: num
                     setLibraries(res.data);
 				})
 				.catch(() => toast.error('도서관 정보를 가져오는 동안 오류가 났어요. '))
+                .finally(() => setIsLoading(false))
 		}
     }, [lat, long, radiusInKm, isShowingAlert])
 
-	return libraries
+	return [libraries, isLoading] as const
 }
 
 export default useLibraryNear

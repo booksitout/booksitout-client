@@ -4,14 +4,15 @@ import CardBodyContainer from '../../../common/styles/CardBodyContainer'
 import CardTitle from '../../../common/styles/CardTitle'
 import booksitoutIcon from '../../../config/booksitoutIcon'
 import useLibraryNear from '../../library/useLibraryNear'
-import IndexContentContainer from '../IndexContentContainer'
 import useCurrentLocation from '../../library/useCurrentLocation';
 import NoContent from '../../../common/NoContent';
 import ReloadButton from '../../../common/styles/ReloadButton';
+import LibraryCard from '../../library/find/LibraryCard';
+import LibraryCardLoading from '../../library/find/LibraryCardLoading';
 
 const IndexLibraryCard = () => {
     const [lat, long, locationName, locationError, refreshLocation] = useCurrentLocation()
-    const nearbyLibraries = useLibraryNear(lat, long)
+    const [libraries, isLoading] = useLibraryNear(lat, long)
 
     return (
         <Card>
@@ -27,31 +28,25 @@ const IndexLibraryCard = () => {
 
                 <Row>
                     {
-                        nearbyLibraries.length === 0 ?
-                            <NoContent message={'위치 정보를 허용해 주세요'} />
-                            :
-                            nearbyLibraries.slice(0, 10).map((library) => {
+                        isLoading ?
+                            Array.from({ length: 8 }).map((_) => {
                                 return (
                                     <Col>
-                                        <IndexContentContainer href={`/library/${library.id}`}>
-                                            <ImageContainer>
-                                                <Image src={library.location.logo} />
-                                            </ImageContainer>
-
-                                            <ContentContainer>
-                                                <InfoContainer>
-                                                    <Title>{library.name}</Title>
-                                                    <SubTitle>{library.location.address}</SubTitle>
-                                                </InfoContainer>
-
-                                                <DistanceContainer>
-                                                    {library.location.distance?.toPrecision(2)}km
-                                                </DistanceContainer>
-                                            </ContentContainer>
-                                        </IndexContentContainer>
+                                        <LibraryCardLoading />
                                     </Col>
                                 )
                             })
+                            :
+                            libraries.length === 0 ?
+                                <NoContent message={'위치 정보를 허용해 주세요'} />
+                                :
+                                libraries.slice(0, 8).map((library) => {
+                                    return (
+                                        <Col>
+                                            <LibraryCard library={library} />
+                                        </Col>
+                                    )
+                                })
                     }
                 </Row>
             </CardBodyContainer>
@@ -66,48 +61,6 @@ const Row = styled.div.attrs({
 
 const Col = styled.div.attrs({
     className: 'col-12 col-md-6'
-})`
-`;
-
-const ImageContainer = styled.div.attrs({
-})`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-const Image = styled.img.attrs({
-    className: 'img-fluid'
-})`
-    min-width: 80px;
-    max-width: 80px;
-`;
-
-const ContentContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-`;
-
-const InfoContainer = styled.div.attrs({
-})`
-`;
-
-const DistanceContainer = styled.div.attrs({
-})`
-    text-align: right;
-`;
-
-const Title = styled.div.attrs({
-    className: 'clamp-1-line'
-})`
-    font-size: 1.1rem;
-    font-weight: bold;
-`;
-
-const SubTitle = styled.div.attrs({
-    className: 'text-secondary'
 })`
 `;
 
