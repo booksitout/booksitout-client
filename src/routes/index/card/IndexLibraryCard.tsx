@@ -16,10 +16,10 @@ const IndexLibraryCard = () => {
     return (
         <Card>
             <CardBodyContainer>
-                <CardTitle 
-                    icon={<booksitoutIcon.library/>} 
-                    title={'내 근처 도서관'} 
-                    subTitle={'내 주변 도서관을 간단히 찾을 수 있어요'}
+                <CardTitle
+                    icon={<booksitoutIcon.library />}
+                    title={'내 근처 도서관'}
+                    subTitle={`${locationError || locationName == null ? '내 주변 도서관을 간단히 찾을 수 있어요' : locationName}`}
                     url='/library/near'
                 />
 
@@ -29,29 +29,29 @@ const IndexLibraryCard = () => {
                     {
                         nearbyLibraries.length === 0 ?
                             <NoContent message={'위치 정보를 허용해 주세요'} />
-                        :
-                        nearbyLibraries.slice(0, 10).map((library) => {
-                            return (
-                                <Col>
-                                    <IndexContentContainer href={`/library/${library.id}`}>
-                                        <ImageContainer>
-                                            <Image src={library.location.logo} />
-                                        </ImageContainer>
+                            :
+                            nearbyLibraries.slice(0, 10).map((library) => {
+                                return (
+                                    <Col>
+                                        <IndexContentContainer href={`/library/${library.id}`}>
+                                            <ImageContainer>
+                                                <Image src={library.location.logo} />
+                                            </ImageContainer>
 
-                                        <ContentContainer>
-                                            <InfoContainer>
-                                                <Title>{library.name}</Title>
-                                                <SubTitle>{library.location.address}</SubTitle>
-                                            </InfoContainer>
+                                            <ContentContainer>
+                                                <InfoContainer>
+                                                    <Title>{library.name}</Title>
+                                                    <SubTitle>{library.location.address}</SubTitle>
+                                                </InfoContainer>
 
-                                            <DistanceContainer>
-                                                {library.location.distance?.toPrecision(2)}km
-                                            </DistanceContainer>
-                                        </ContentContainer>
-                                    </IndexContentContainer>
-                                </Col>
-                            )
-                        })
+                                                <DistanceContainer>
+                                                    {library.location.distance?.toPrecision(2)}km
+                                                </DistanceContainer>
+                                            </ContentContainer>
+                                        </IndexContentContainer>
+                                    </Col>
+                                )
+                            })
                     }
                 </Row>
             </CardBodyContainer>

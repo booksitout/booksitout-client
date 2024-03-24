@@ -40,15 +40,14 @@ const LibraryRoute = () => {
             <SearchBarContainerContainer>
                 <SearchBarContainer>
                     <SearchBar
-                        autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET}
+                        autoCompleteApiUrl={ApiUrls.Library.Search.AUTO_COMPLETE}
                         searchResultUrl={'/library/search'}
                         placeholder={'이름, 지역으로 도서관 찾기'}
                     />
                 </SearchBarContainer>
             </SearchBarContainerContainer>
 
-            <RowSpacer />
-            <RowSpacer />
+            <RowSpacer size={350}/>
         </RouteContainer>
     )
 }

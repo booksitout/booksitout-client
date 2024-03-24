@@ -7,6 +7,8 @@ import ColorConfig from '../../../config/ColorConfig';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
 import { booksitoutServer } from '../../../config/axios';
 import breakpoints from '../../../config/breakpoints';
+import toast from 'react-hot-toast';
+import AutoCompleteResponse from '../../../common/response/AutoCompleteResponse';
 
 interface Props {
     autoCompleteApiUrl: string
@@ -19,7 +21,7 @@ const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, place
 
     const defaultQuery = useUrlQuery('q') ?? ''
     const [query, setQuery, dQuery] = useSearchQuery(defaultQuery);
-    const [querySuggestions, setQuerySuggestions] = useState<string[]>([])
+    const [querySuggestions, setQuerySuggestions] = useState<AutoCompleteResponse[]>([])
 
     useEffect(() => {
         if (dQuery !== '') {
@@ -35,6 +37,11 @@ const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, place
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        if (query.length <= 2) {
+            toast.error('검색어는 2글자 이상이어야 합니다.')
+            return
+        }
+
         navigate(`${searchResultUrl}?q=${query}`)
     }
 
@@ -57,7 +64,10 @@ const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, place
             {dQuery && dQuery !== defaultQuery &&
                 <AutocompleteBox>
                     {querySuggestions.map((suggestion, index) =>
-                        <Suggestion key={index} onClick={() => (setQuery as Dispatch<SetStateAction<string>>)(suggestion)}>{suggestion}</Suggestion>
+                        <Suggestion href={suggestion.url} key={index} >
+                            <SuggestionImage src={suggestion.imageUrl} />
+                            <SuggestionName>{suggestion.name}</SuggestionName>
+                        </Suggestion>
                     )}
                 </AutocompleteBox>
             }
@@ -112,12 +122,33 @@ const AutocompleteBox = styled.div`
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const Suggestion = styled.div`
+const Suggestion = styled.a`
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+
     padding: 10px;
     padding-left: 30px;
     &:hover {
         background-color: #f2f2f2;
     }
+`;
+
+const SuggestionImage = styled.img.attrs({
+    className: 'img-fluid'
+})`
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 20px;
+`;
+
+const SuggestionName = styled.div`
+    font-size: 16px;
+    color: inherit;
+    font-weight: bold;
+    padding-left: 10px;
 `;
 
 export default SearchBar

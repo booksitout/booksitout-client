@@ -8,6 +8,7 @@ import RouteTitle from "../../common/RouteTitle/RouteTitle"
 import { useEffect } from "react"
 import { RouteButtonGroupType } from "../../common/RouteTitle/RouteButtonGroupType"
 import CardBodyBackgroundContainer from "../../common/styles/CardBodyBackgroundContainer"
+import CommunityRouteTipsCard from "./CommunityRouteTipsCard"
 
 const CommunityRoute = () => {
 
@@ -40,15 +41,7 @@ const CommunityRoute = () => {
 			/>
 
             <RowSpacer />
-            <Card>
-                <CardBodyBackgroundContainer height={600}>
-                    <CardTitle 
-                        icon={<img src={logo} alt="" className="img-fluid rounded" style={{ width: '35px', height: '35px' }} />} 
-                        title='책잇아웃의 꿀팁' 
-                        url='/community/tips' 
-                    />
-                </CardBodyBackgroundContainer>
-            </Card>
+            <CommunityRouteTipsCard />
 
             <RowSpacer />
             <Card>

@@ -75,16 +75,6 @@ const YesLoggedInCase = () => {
                     <BookStatisticsTable year={new Date().getFullYear()} />
                 </IndexContentContainer>
             </Col>
-
-            <Col>
-                <IndexContentContainer height={150}>
-                </IndexContentContainer>
-            </Col>
-
-            <Col>
-                <IndexContentContainer height={150}>
-                </IndexContentContainer>
-            </Col>
         </Row>
     )
 }

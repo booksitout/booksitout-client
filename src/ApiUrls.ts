@@ -77,12 +77,17 @@ class ApiUrls {
 
 	static Library = class {
 		static Near = (lat: number, long: number, radius: number) => `/v1/library/available-library/by-radius?lat=${lat}&long=${long}&radius=${radius}&size=10`
+
 		static Membership = class {
 			static GET_LIST = (page: number) => `/v1/library/membership?page=${page}`
 			static GET= (libraryId: number) => `/v1/library/membership/${libraryId}`
 			static POST = ``
 			static PATCH = ``
 			static DELETE = ``
+		}
+
+		static Search = class {
+			static AUTO_COMPLETE = `/v1/library/search/auto-complete`
 		}
 	}
 
