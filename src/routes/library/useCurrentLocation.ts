@@ -28,41 +28,46 @@ const useCurrentLocation = () => {
 	const [lat, setLatitude] = useState<number | null>(null)
 	const [long, setLongitude] = useState<number | null>(null)
 	const [locationName, setLocationName] = useState<string | null>(null)
-	const [locationError, setLocationError] = useState<boolean>(false)
+	const [isLocationError, setIsLocationError] = useState<boolean>(false)
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	useEffect(() => {
-		const getLocation = async () => {
-			try {
-				const { latitude, longitude, address } = await fetchLocation()
-				setLatitude(latitude)
-				setLongitude(longitude)
-				setLocationName(address)
-				setLocationError(false)
-			} catch (error) {
-				setLocationError(true)
-				toast.error('위치를 가져올 수 없었어요. 잠시 후 다시 시도해 주세요')
-			}
-		}
-
 		getLocation()
 	}, [])
 
+	const getLocation = async () => {
+		try {
+			const { latitude, longitude, address } = await fetchLocation()
+			setLatitude(latitude)
+			setLongitude(longitude)
+			setLocationName(address)
+			setIsLocationError(false)
+			setIsLoading(false)
+		} catch (error) {
+			setIsLocationError(true)
+			toast.error('위치를 가져올 수 없었어요. 잠시 후 다시 시도해 주세요')
+		}
+	}
+
 	const refreshLocation = async () => {
-		setLocationName(null)
+		setIsLoading(true)
 		toast.loading('위치를 가져오고 있어요')
-		
+
 		try {
 			const { latitude, longitude, address } = await fetchLocationNoCache()
 			setLatitude(latitude)
 			setLongitude(longitude)
 			setLocationName(address)
+			setIsLocationError(false)
+			setIsLoading(false)
 			toast.success('위치를 업데이트 했어요')
 		} catch (error) {
+			setIsLocationError(true)
 			toast.error('위치를 가져올 수 없었어요. 잠시 후 다시 시도해 주세요')
 		}
 	}
 
-	return [lat, long, locationName, locationError, refreshLocation] as const
+	return [lat, long, isLoading, locationName, isLocationError, refreshLocation] as const
 }
 
 export default useCurrentLocation

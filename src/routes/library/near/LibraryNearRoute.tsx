@@ -10,16 +10,16 @@ import LibraryCardLoading from '../find/LibraryCardLoading'
 import useCurrentLocation from '../useCurrentLocation'
 import useLibraryNear from '../useLibraryNear'
 import ReloadButton from '../../../common/styles/ReloadButton'
-import { RouteButtonGroupType } from '../../../common/RouteTitle/RouteButtonGroupType'
 import RowSpacer from '../../../common/styles/RowSpacer'
 import RouteTitleConfig from '../../../config/RouteTitleConfig'
+import LoadingBar from '../../../common/LoadingBar'
 
 const LibraryNearRoute = () => {
 	const { range } = useParams()
 	const [currentRange, setCurrentRange] = useState<number>(Number(range ?? 3))
 
-	const [lat, long, locationName, locationError, refreshLocation] = useCurrentLocation()
-	const [libraries, isLoading] = useLibraryNear(lat, long, currentRange, true)
+	const [lat, long, isLocationLoading, locationName, locationError, refreshLocation] = useCurrentLocation()
+	const [libraries, isLibraryLoading] = useLibraryNear(lat, long, currentRange, true)
 
 	useEffect(() => {
 		document.title = '주변 도서관 | 책잇아웃'
@@ -30,7 +30,12 @@ const LibraryNearRoute = () => {
 			<RouteTitle
 				icon={<booksitoutIcon.location />}
 				title={'내 주변 도서관'}
-				subTitle={locationName ?? '위치 알 수 없음'}
+				subTitle={
+					isLocationLoading ?
+						<LoadingBar size={5} />
+						:
+						locationName
+				}
 				currentKey={'library-near'}
 				buttons={RouteTitleConfig.Library}
 				rightUi={
@@ -41,10 +46,10 @@ const LibraryNearRoute = () => {
 				}
 			/>
 
-			<RowSpacer size={10} />
+			<RowSpacer />
 			{locationError ? (
 				<></>
-			) :  isLoading ? (
+			) : isLibraryLoading ? (
 				Array.from({ length: 6 }).map(() => <LibraryCardLoading />)
 			) : libraries.length === 0 ? (
 				<NoContent message={`${currentRange}km 내에 도서관이 없어요`} />

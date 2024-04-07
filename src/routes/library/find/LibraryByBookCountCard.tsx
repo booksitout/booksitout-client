@@ -19,7 +19,17 @@ const LibraryByBookCountCard = () => {
                 {
                     isLoading
                         ?
-                        <LibraryCardLoading />
+                        <Row>
+                            {
+                                Array.from({length: 8}).map(() => {
+                                    return (
+                                        <Col>
+                                            <LibraryCardLoading />
+                                        </Col>
+                                    )
+                                })
+                            }
+                        </Row>
                         :
                         <Row>
                             {

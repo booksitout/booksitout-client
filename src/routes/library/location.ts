@@ -47,6 +47,7 @@ const location = {
 
 						localStorage.setItem('location', latitude + ',' + longitude)
 						localStorage.setItem('location-time', new Date().toString())
+						localStorage.removeItem('location-name')
 
 						resolve([latitude, longitude])
 					},
@@ -64,7 +65,7 @@ const location = {
 		if (localStorage.getItem('location-name') !== null) return localStorage.getItem('location-name')
 
 		return booksitoutServer
-			.get(`/v1/library/location/convert-address?lat=${latitude}&long=${longitude}`)
+			.get(`/v1/location/display-name?lat=${latitude}&long=${longitude}`)
 			.then((res) => {
 				const address = res.data.shortAddress
 				localStorage.setItem('location-name', address)

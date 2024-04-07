@@ -8,7 +8,7 @@ import CardBodyContainer from '../styles/CardBodyContainer';
 interface RouteTitleProps {
 	icon: React.ReactNode
 	title: string
-	subTitle?: string | null
+	subTitle?: any
 	currentKey?: string | null | undefined
 	buttons?: RouteButtonGroupType[]
 	rightUi?: React.ReactNode | null

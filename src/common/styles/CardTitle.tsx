@@ -5,7 +5,7 @@ import styled from 'styled-components';
 interface PropsType {
 	icon: ReactNode
 	title: any
-	subTitle?: string | null
+	subTitle?: string | null | any
 	textSize?: number
 	iconSize?: number
 	mb?: number

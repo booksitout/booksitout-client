@@ -91,6 +91,10 @@ class ApiUrls {
 		static Search = class {
 			static AUTO_COMPLETE = `/v1/library/search/auto-complete`
 		}
+
+		static Region = class {
+			static GET = (regionEnglishName: string) => `/v1/library/by-region?english-name=${regionEnglishName}`
+		}
 	}
 
 	static Book = class {

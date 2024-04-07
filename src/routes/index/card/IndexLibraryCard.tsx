@@ -9,10 +9,11 @@ import NoContent from '../../../common/NoContent';
 import ReloadButton from '../../../common/styles/ReloadButton';
 import LibraryCard from '../../library/find/LibraryCard';
 import LibraryCardLoading from '../../library/find/LibraryCardLoading';
+import LoadingBar from '../../../common/LoadingBar';
 
 const IndexLibraryCard = () => {
-    const [lat, long, locationName, locationError, refreshLocation] = useCurrentLocation()
-    const [libraries, isLoading] = useLibraryNear(lat, long)
+    const [lat, long, isLocationLoading, locationName, locationError, refreshLocation] = useCurrentLocation()
+    const [libraries, isLibraryLoading] = useLibraryNear(lat, long)
 
     return (
         <Card>
@@ -20,7 +21,12 @@ const IndexLibraryCard = () => {
                 <CardTitle
                     icon={<booksitoutIcon.library />}
                     title={'내 근처 도서관'}
-                    subTitle={`${locationError || locationName == null ? '내 주변 도서관을 간단히 찾을 수 있어요' : locationName}`}
+                    subTitle={
+                        isLocationLoading ?
+                            <LoadingBar size={3} />
+                            :
+                            locationName
+                    }
                     url='/library/near'
                 />
 
@@ -28,7 +34,7 @@ const IndexLibraryCard = () => {
 
                 <Row>
                     {
-                        isLoading ?
+                        isLibraryLoading ?
                             Array.from({ length: 8 }).map((_) => {
                                 return (
                                     <Col>
