@@ -7,7 +7,6 @@ import CardBodyContainer from "../../../common/styles/CardBodyContainer"
 import RowSpacer from "../../../common/styles/RowSpacer"
 import useBookSubscription from './useBookSubscription';
 import useBookLibraryOnline from './useBookLibraryOnline';
-import ColSpacer from '../../../common/styles/ColSpacer';
 import useBookUsedOnline from './useBookUsedOnline';
 import useBookUsedOffline from './useBookUsedOffline';
 import getBookSourceIcon from './getBookSourceIcon';
@@ -19,6 +18,12 @@ import useBookLibraryOffline from './useBookLibraryOffline';
 import SearchBookLoading from './SearchBookLoading';
 import booksitoutIcon from '../../../config/booksitoutIcon';
 import useCurrentLocation from '../../library/useCurrentLocation';
+import breakpoints from '../../../config/breakpoints';
+import { useEffect } from 'react';
+import { booksitoutServer } from '../../../config/booksitoutServer';
+import ApiUrls from '../../../ApiUrls';
+import useLoginStore from '../../login/useLoginStore';
+import searchCache from '../searchbar/searchCache';
 
 const SearchBookSourceRoute = () => {
     const { isbn13 } = useParams()
@@ -33,6 +38,28 @@ const SearchBookSourceRoute = () => {
 
     const [lat, long, locationName] = useCurrentLocation()
     const [librariesOffline, isLibraryOfflineLoading] = useBookLibraryOffline(isbn13 ?? '', lat, long)
+
+    useEffect(() => {
+        if (isbn13 != null && query != null) {
+            const body = {
+                isbn: isbn13,
+                query: query
+            }
+    
+            booksitoutServer.post(ApiUrls.Search.BookHistory.POST, body)
+        }
+    }, [isbn13, query])
+
+    const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
+    useEffect(() => {
+        if (!isLoggedIn) {
+            searchCache.updateCache(
+                'search-book-histories',
+                query?.toString() ?? '',
+                `/search/${isbn13}?q=${query}`
+            )
+        }
+    }, [isLoggedIn, isbn13, query])
 
     return (
         <RouteContainer>
@@ -242,6 +269,9 @@ const Cover = styled.img.attrs({
 const BookContentContainer = styled.div.attrs({
     className: 'col-12 col-md-8 pt-4 pt-md-0'
 })`
+    @media screen and (max-width: ${breakpoints.md}) {
+        text-align: center;
+    }
 `;
 
 const Title = styled.h2`

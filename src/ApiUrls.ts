@@ -35,6 +35,15 @@ class ApiUrls {
 			static GET = `/v1/book/search/auto-complete`
 		}
 
+		static BookHistory = class {
+			static GET = `/v1/book/search/histories`
+			static POST = `/v1/book/search/histories`
+			
+			static Sync = class {
+				static POST = `/v1/book/search/histories/sync`
+			}
+		}
+
 		static Book = class {
 			static GET = (q: string) => `/v1/book/search/by-query?q=${q}`
 		}

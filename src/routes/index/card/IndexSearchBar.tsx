@@ -9,7 +9,9 @@ const IndexSearchBar = () => {
             <SearchBarContainer>
                 <SearchBar 
                     autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET}
-                    searchResultUrl={'/search'} 
+                    searchHistoryApiUrl={ApiUrls.Search.BookHistory.GET}
+                    searchResultUrl={'/search'}
+                    searchHistoryCacheKey={'search-book-histories'}
                     placeholder={'여러곳에서 1번에 책 검색하기'} 
                 />
             </SearchBarContainer>

@@ -42,9 +42,11 @@ const SearchBookRoute = () => {
             <SearchContainer>
                 <SearchContainerContainer>
                     <SearchBar 
-                        autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET} 
-                        searchResultUrl={'/search'} 
+                        autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET}
+                        searchResultUrl={'/search'}
                         placeholder={'여러곳에서 1번에 책 검색하기'} 
+                        searchHistoryApiUrl={null} 
+                        searchHistoryCacheKey={null}                    
                     />
                 </SearchContainerContainer>
             </SearchContainer>

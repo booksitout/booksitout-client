@@ -9,19 +9,28 @@ import { booksitoutServer } from '../../../config/booksitoutServer';
 import breakpoints from '../../../config/breakpoints';
 import toast from 'react-hot-toast';
 import AutoCompleteResponse from '../../../common/response/AutoCompleteResponse';
+import SearchHistoryResponse from '../../../common/response/SearchHistoryResponse';
+import ApiUrls from '../../../ApiUrls';
+import useLoginStore from '../../login/useLoginStore';
+import searchCache from './searchCache';
 
 interface Props {
     autoCompleteApiUrl: string
+    searchHistoryApiUrl: string | null
     searchResultUrl: string
+    searchHistoryCacheKey: string | null
     placeholder: string
 }
 
-const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, placeholder }) => {
+const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchHistoryApiUrl, searchResultUrl, searchHistoryCacheKey, placeholder }) => {
     const navigate = useNavigate()
+    const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
 
     const defaultQuery = useUrlQuery('q') ?? ''
     const [query, setQuery, dQuery] = useSearchQuery(defaultQuery);
     const [querySuggestions, setQuerySuggestions] = useState<AutoCompleteResponse[]>([])
+    const [queryHistories, setQueryHistories] = useState<SearchHistoryResponse[]>([])
+    const [isShowingQueryHistory, setIsShowingQueryHistory] = useState<boolean>(false)
 
     useEffect(() => {
         if (dQuery !== '') {
@@ -30,6 +39,24 @@ const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, place
                 .then((res) => setQuerySuggestions(res.data))
         }
     }, [autoCompleteApiUrl, dQuery])
+
+    useEffect(() => {
+        if (searchHistoryApiUrl != null && searchHistoryCacheKey != null && dQuery === '') {
+            if (isLoggedIn) {
+                booksitoutServer
+                    .get(ApiUrls.Search.BookHistory.GET)
+                    .then((res) => {
+                        setQueryHistories(res.data)
+                        localStorage.setItem(searchHistoryCacheKey, JSON.stringify(res.data))
+                    })
+            } else {
+                const storedHistories = localStorage.getItem(searchHistoryCacheKey);
+                if (storedHistories) {
+                    setQueryHistories(JSON.parse(storedHistories))
+                }
+            }
+        }
+    }, [searchHistoryApiUrl, dQuery, isLoggedIn, searchHistoryCacheKey])
 
     useEffect(() => {
         (setQuery as Dispatch<SetStateAction<string>>)(defaultQuery)
@@ -42,6 +69,12 @@ const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, place
             return
         }
 
+        searchCache.updateCache(
+            searchHistoryCacheKey,
+            dQuery.toString(),
+            `${searchResultUrl}?q=${query}`
+        )
+
         navigate(`${searchResultUrl}?q=${query}`)
     }
 
@@ -49,17 +82,41 @@ const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, place
         (setQuery as Dispatch<SetStateAction<string>>)(event.target.value ?? '');
     };
 
+    const handleOnFocus = () => {
+        setIsShowingQueryHistory(true)
+    }
+
+    const handleOnBlur = () => {
+        setTimeout(() => {
+            setIsShowingQueryHistory(false)
+        }, 200)
+    }
+
     return (
         <SearchContainer onSubmit={handleSubmit}>
             <Input
                 placeholder={placeholder}
                 value={query}
                 onChange={handleInputChange}
+                onFocus={handleOnFocus}
+                onBlur={handleOnBlur}
             />
 
             <SearchButton type="submit">
                 <span><booksitoutIcon.search /></span>
             </SearchButton>
+
+            {dQuery === '' && isShowingQueryHistory &&
+                <AutocompleteBox>
+                    {queryHistories.map((queryHistory, index) =>
+                        <Suggestion href={queryHistory.url} key={index}>
+                            {queryHistory.imageUrl && <SuggestionImage src={queryHistory.imageUrl} />}
+                            <SuggestionName>{queryHistory.query}</SuggestionName>
+                        </Suggestion>
+                    )
+                    }
+                </AutocompleteBox>
+            }
 
             {dQuery && dQuery !== defaultQuery &&
                 <AutocompleteBox>

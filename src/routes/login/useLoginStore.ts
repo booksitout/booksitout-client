@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import LoginSuccessResponse from './LoginSuccessResponse'
 import toast from 'react-hot-toast'
+import searchCache from '../search/searchbar/searchCache'
 
 interface LoginState {
 	accessToken: string | null
@@ -26,6 +27,8 @@ const useLoginStore = create<LoginState>(set => ({
 		localStorage.setItem('name', response.name)
 		localStorage.setItem('profile-image', response.profileImage)
 		localStorage.setItem('ttl', response.ttl.toString())
+
+		searchCache.syncCacheWithServer('')
 
 		set({
 			accessToken: response.accessToken,
