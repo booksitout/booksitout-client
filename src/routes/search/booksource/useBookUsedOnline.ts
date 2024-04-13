@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { SearchBookSourceUsedOnlineResponse } from "./SearchBookSourceUsedResponse"
-import { booksitoutServer } from "../../../config/axios"
+import { booksitoutServer } from "../../../config/booksitoutServer"
 
 const useBookUsedOnline = (isbn13: string, query: string) => {
     const [books, setBooks] = useState<SearchBookSourceUsedOnlineResponse[]>([])

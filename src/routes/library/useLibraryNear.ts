@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { booksitoutServer } from "../../config/axios";
+import { booksitoutServer } from "../../config/booksitoutServer";
 import ApiUrls from "../../ApiUrls";
 import LibraryResponse from "./near/LibraryNearResponse";
 

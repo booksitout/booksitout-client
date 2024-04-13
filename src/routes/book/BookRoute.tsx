@@ -5,7 +5,6 @@ import RowSpacer from '../../common/styles/RowSpacer'
 import CardTitle from '../../common/styles/CardTitle'
 import booksitoutIcon from '../../config/booksitoutIcon';
 import RouteTitle from '../../common/RouteTitle/RouteTitle'
-import { RouteButtonGroupType } from '../../common/RouteTitle/RouteButtonGroupType'
 import CardBodyBackgroundContainer from '../../common/styles/CardBodyBackgroundContainer'
 import RouteTitleConfig from '../../config/RouteTitleConfig'
 
@@ -37,7 +36,7 @@ const BookRoute = () => {
                 </CardBodyBackgroundContainer>
             </Card>
 
-            <RowSpacer />
+            {/* <RowSpacer />
             <Card>
                 <CardBodyBackgroundContainer height={600}>
                     <CardTitle 
@@ -47,7 +46,7 @@ const BookRoute = () => {
                         url={'/book/recommendation'} 
                     />
                 </CardBodyBackgroundContainer>
-            </Card>
+            </Card> */}
             <RowSpacer />
         </RouteContainer>
     )

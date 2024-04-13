@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap'
-import { booksitoutServer } from '../../config/axios'
+import { booksitoutServer } from '../../config/booksitoutServer'
 import styled from 'styled-components';
 import RouteContainer from '../../common/styles/RouteContainer';
 import TipsResponse from '../community/tips/TipsResponse';

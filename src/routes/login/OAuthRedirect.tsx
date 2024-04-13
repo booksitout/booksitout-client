@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { booksitoutServer } from '../../config/axios'
+import { booksitoutServer } from '../../config/booksitoutServer'
 import ApiUrls from '../../ApiUrls'
 import Loading from '../../common/Loading'
 import useUrlQuery from '../../common/hooks/useUrlQuery'

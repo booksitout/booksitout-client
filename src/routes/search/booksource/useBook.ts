@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { booksitoutServer } from "../../../config/axios"
+import { booksitoutServer } from "../../../config/booksitoutServer"
 import SearchBookResponse from "../book/SearchBookResponse"
 
 const useBook = (isbn13: string) => {

@@ -7,9 +7,6 @@ import ApiUrls from '../../../ApiUrls';
 import booksitoutIcon from '../../../config/booksitoutIcon';
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
-import { Card } from 'react-bootstrap';
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer';
-import CardTitle from '../../../common/styles/CardTitle';
 import LibraryByBookCountCard from './LibraryByBookCountCard';
 
 const LibraryRoute = () => {

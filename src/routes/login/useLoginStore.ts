@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import LoginSuccessResponse from './LoginSuccessResponse'
+import toast from 'react-hot-toast'
 
 interface LoginState {
 	accessToken: string | null
@@ -41,6 +42,7 @@ const useLoginStore = create<LoginState>(set => ({
 	},
 
 	logout: () => {
+		toast.success('로그아웃 했어요')
 		localStorage.removeItem('access-token')
 		localStorage.removeItem('refresh-token')
 		set({ accessToken: null, refreshToken: null })

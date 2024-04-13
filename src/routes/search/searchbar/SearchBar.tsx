@@ -5,7 +5,7 @@ import useSearchQuery from '../../../common/hooks/useSearchQuery';
 import { useNavigate } from 'react-router-dom';
 import ColorConfig from '../../../config/ColorConfig';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
-import { booksitoutServer } from '../../../config/axios';
+import { booksitoutServer } from '../../../config/booksitoutServer';
 import breakpoints from '../../../config/breakpoints';
 import toast from 'react-hot-toast';
 import AutoCompleteResponse from '../../../common/response/AutoCompleteResponse';
@@ -38,7 +38,7 @@ const SearchBar: React.FC<Props> = ({ autoCompleteApiUrl, searchResultUrl, place
     const handleSubmit = (event) => {
         event.preventDefault()
         if (query.length <= 2) {
-            toast.error('검색어는 2글자 이상이어야 합니다.')
+            toast.error('검색어는 2글자 이상이어야 해요')
             return
         }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import LibraryMembershipResponse from "./membership/LibraryMembershipResponse"
-import { booksitoutServer } from "../../config/axios"
+import { booksitoutServer } from "../../config/booksitoutServer"
 import ApiUrls from "../../ApiUrls"
 import { useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"

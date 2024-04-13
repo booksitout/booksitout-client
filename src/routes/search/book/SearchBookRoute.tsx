@@ -6,7 +6,7 @@ import breakpoints from '../../../config/breakpoints';
 import useSearchQuery from '../../../common/hooks/useSearchQuery';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { booksitoutServer } from '../../../config/axios';
+import { booksitoutServer } from '../../../config/booksitoutServer';
 import ApiUrls from '../../../ApiUrls';
 import toast from 'react-hot-toast';
 import SearchBookResponse from './SearchBookResponse';

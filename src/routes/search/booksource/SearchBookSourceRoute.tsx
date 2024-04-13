@@ -40,9 +40,9 @@ const SearchBookSourceRoute = () => {
             <Card>
                 <CardBodyContainer height={400}>
                     <BookContainer>
-                        <Cover src={book?.cover} alt="" />
-
-                        <ColSpacer />
+                        <CoverContainer>
+                            <Cover src={book?.cover} alt="" />
+                        </CoverContainer>
 
                         <BookContentContainer>
                             <Title>{book?.title}</Title>
@@ -221,9 +221,16 @@ const CardContainer = styled(CardBodyContainer).attrs({
 const BookSourceContainer = styled.div`
 `;
 
-const BookContainer = styled.div`
-    display: flex;
+const BookContainer = styled.div.attrs({
+    className: 'row'
+})`
     padding: 25px;
+`;
+
+const CoverContainer = styled.div.attrs({
+    className: 'col-12 col-md-4'
+})`
+    text-align: center;
 `;
 
 const Cover = styled.img.attrs({
@@ -232,7 +239,9 @@ const Cover = styled.img.attrs({
     max-height: 300px;
 `;
 
-const BookContentContainer = styled.div`
+const BookContentContainer = styled.div.attrs({
+    className: 'col-12 col-md-8 pt-4 pt-md-0'
+})`
 `;
 
 const Title = styled.h2`

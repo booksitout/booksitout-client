@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import TipsResponse from './TipsResponse'
-import { booksitoutServer } from '../../../config/axios'
+import { booksitoutServer } from '../../../config/booksitoutServer'
 import ApiUrls from '../../../ApiUrls'
 import Paging from '../../../common/hooks/Paging'
 

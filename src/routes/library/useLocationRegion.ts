@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import LocationFullResponse from "./LocationFullResponse"
-import { booksitoutServer } from "../../config/axios"
+import { booksitoutServer } from "../../config/booksitoutServer"
 
 const useLocationRegion = (q: string) => {
     const [location, setLocation] = useState<LocationFullResponse | null>(null)

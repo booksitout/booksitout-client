@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Card } from 'react-bootstrap'
 import styled from 'styled-components';
-import { booksitoutServer } from '../../config/axios';
+import { booksitoutServer } from '../../config/booksitoutServer';
 import RouteContainer from '../../common/styles/RouteContainer';
 import TipsResponse from '../community/tips/TipsResponse';
 import CardTitle from '../../common/styles/CardTitle';

@@ -27,7 +27,8 @@ const PrivacyByDate = () => {
     return (
 		<RouteContainer>
             <RouteTitle icon={<booksitoutIcon.privacy />} title={`${date?.split("-")[0]}년 ${date?.split("-")[1]}월 ${date?.split("-")[1]}일부터 시행되는 개인정보처리방침`}/>
-
+            <RowSpacer />
+            
             <Card>
                 <CardBodyContainer>
                     {parser(content)}

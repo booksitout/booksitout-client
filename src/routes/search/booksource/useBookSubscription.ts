@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { booksitoutServer } from "../../../config/axios"
+import { booksitoutServer } from "../../../config/booksitoutServer"
 
 const useBookSubscription = (isbn13: string, query: string) => {
     const [books, setBooks] = useState<BookSubscriptionResponse[] | null>(null)

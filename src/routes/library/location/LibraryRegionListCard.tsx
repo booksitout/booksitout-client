@@ -9,7 +9,7 @@ interface Props {
     libraries: LibraryResponse[]
 }
 
-const LibraryLocationListCard: React.FC<Props> = ({ libraries }) => {
+const LibraryRegionListCard: React.FC<Props> = ({ libraries }) => {
     return (
         <Card>
             <CardBodyContainer>
@@ -43,4 +43,4 @@ const Col = styled.div.attrs({
 })`
 `;
 
-export default LibraryLocationListCard
+export default LibraryRegionListCard

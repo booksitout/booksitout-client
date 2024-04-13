@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import BookGoalResponse from "./BookGoalResponse"
-import { booksitoutServer } from "../../../config/axios"
+import { booksitoutServer } from "../../../config/booksitoutServer"
 import ApiUrls from "../../../ApiUrls"
 
 const useBookGoal = (year: number) => {

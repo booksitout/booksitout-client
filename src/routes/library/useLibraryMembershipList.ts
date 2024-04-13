@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import LibraryMembershipResponse from "./membership/LibraryMembershipResponse"
-import { booksitoutServer } from "../../config/axios"
+import { booksitoutServer } from "../../config/booksitoutServer"
 import ApiUrls from "../../ApiUrls"
 import PagedResponse from "../../common/response/PagedResponse"
 import Paging from '../../common/hooks/Paging';

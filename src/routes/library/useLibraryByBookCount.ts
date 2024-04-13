@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import LibraryResponse from './near/LibraryNearResponse'
-import { booksitoutServer } from '../../config/axios'
+import { booksitoutServer } from '../../config/booksitoutServer'
 import ApiUrls from '../../ApiUrls'
 
 const useLibraryByBookCount = () => {

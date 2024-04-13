@@ -1,5 +1,5 @@
 import utils from "../../common/utils"
-import { booksitoutServer } from "../../config/axios"
+import { booksitoutServer } from "../../config/booksitoutServer"
 
 const location = {
 	getLatitudeAndLongitude: async () => {
