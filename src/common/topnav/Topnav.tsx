@@ -3,6 +3,8 @@ import TopnavLogo from './TopnavLogo';
 import TopnavLink from './TopnavLink';
 import RouteContainer from '../styles/RouteContainer';
 import useUrl from '../hooks/useUrl';
+import { Nav } from 'react-bootstrap';
+import TopnavUserIcon from './TopnavUserIcon';
 
 const Topnav = () => {
     const urls = useUrl()
@@ -20,6 +22,10 @@ const Topnav = () => {
                     <TopnavLink label={'커뮤니티'} url={'/community'} isActive={urls.startsWith('/community')} />
 
                     <LinkSpacer />
+
+                    <TopnavUserIconContainer>
+                        <TopnavUserIcon />
+                    </TopnavUserIconContainer>
                 </Container>
             </RouteContainer>
         </TopnavContainer>
@@ -39,8 +45,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 `;
 
 const LogoSpacer = styled.div`
@@ -48,6 +54,11 @@ const LogoSpacer = styled.div`
 `;
 
 const LinkSpacer = styled.div`
+`;
+
+const TopnavUserIconContainer = styled(Nav)`
+    margin-left: auto;
+    padding: 0px;
 `;
 
 export default Topnav

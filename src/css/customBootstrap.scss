@@ -101,8 +101,6 @@
     --bs-btn-hover-bg: #c52f48;
     --bs-btn-hover-border-color:#cd304a;
 
-    /* --bs-btn-focus-shadow-rgb: 60,153,110; */
-
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: var(--danger-active);
     --bs-btn-active-border-color:var(--danger-active);
@@ -151,13 +149,19 @@
 
 @media (min-width: 1400px) {
     .col-xxl-4 {
-        width: 33.33333%; /* As 4 out of 12 columns is 1/3 of the container width */
+        width: 33.33333%;
         float: left;
-        padding: 0.5rem; /* Optional: For some spacing around the column */
-        box-sizing: border-box; /* To include padding in the width */
+        padding: 0.5rem;
+        box-sizing: border-box;
     }
 }
 
 .card {
     border: none;
+}
+
+div.dropdown-menu {
+    position: fixed !important; 
+    transform: translate3d(0px, 42px, 0px) !important;
+    top: 20px !important;
 }

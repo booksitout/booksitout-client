@@ -12,6 +12,7 @@ interface LoginState {
 	login: (tokens: { accessToken: string | null; refreshToken: string | null }) => void
 	logout(): void
 	isLoggedIn: () => boolean
+	setAccessToken: (accessToken: string) => void
 }
 
 const useLoginStore = create<LoginState>(set => ({
@@ -48,8 +49,15 @@ const useLoginStore = create<LoginState>(set => ({
 		toast.success('로그아웃 했어요')
 		localStorage.removeItem('access-token')
 		localStorage.removeItem('refresh-token')
+		localStorage.removeItem('name')
+		localStorage.removeItem('profile-image')
+		localStorage.removeItem('ttl')
 		set({ accessToken: null, refreshToken: null })
-	}
+	},
+
+	setAccessToken: (refreshToken: string) => {
+		localStorage.setItem('refresh-token', refreshToken)
+	} 
 }))
 
 export default useLoginStore

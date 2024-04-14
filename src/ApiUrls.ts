@@ -26,6 +26,10 @@ class ApiUrls {
 					return ''
 				}
 			}
+
+			static Refresh = class {
+				static GET = (refreshToken: string) => `/v1/login/token/refresh?refresh-token=${refreshToken}`
+			}
 		}
 	}
 
