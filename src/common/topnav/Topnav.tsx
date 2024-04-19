@@ -60,6 +60,10 @@ const LinkSpacer = styled.div`
 const TopnavUserIconContainer = styled(Nav)`
     margin-left: auto;
     padding: 0px;
+    
+    a.dropdown-toggle.nav-link::after {
+        color: ${ColorConfig.Primary};
+    }
 `;
 
 export default Topnav
