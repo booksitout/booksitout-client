@@ -24,6 +24,7 @@ import BookStatisticsRoute from './routes/book/statitics/BookStatisticsRoute'
 import BookMineRoute from './routes/book/mine/BookMineRoute'
 import LibraryMembershipDetailRoute from './routes/library/membership/LibraryMembershipDetailRoute'
 import LibraryRegionRoute from './routes/library/location/LibraryRegionRoute'
+import PopularBooksProviderRoute from './routes/community/popular-books/PopularBooksProviderRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -43,7 +44,7 @@ const router = createBrowserRouter(
 			<Route path='/library' element={<LibraryRoute />} />
 			<Route path='/library/near' element={<LibraryNearRoute />} />
 			<Route path='/library/:libraryId' element={<LibraryDetailRoute />} />
-			<Route path='/library/by-region/:region' element={<LibraryRegionRoute/>}/>
+			<Route path='/library/by-region/:region' element={<LibraryRegionRoute />} />
 			<Route path='/library/by-region/:region/:regionDetail' element={<LibraryRegionRoute />} />
 			<Route path='/library/membership' element={<LibraryMembershipRoute />} />
 			<Route path='/library/membership/:membershipId' element={<LibraryMembershipDetailRoute />} />
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
 			<Route path='/community/tips' element={<CommunityTipsRoute />} />
 			<Route path='/community/tips/:tipsId' element={<CommunityTipsDetailRoute />} />
 			<Route path='/community/popular-books' element={<CommunityPopularBooksRoute />} />
+			<Route path='/community/popular-books/:provider' element={<PopularBooksProviderRoute />} />
 
 			<Route path='/search' element={<SearchBookRoute />} />
 			<Route path='/search/:isbn13' element={<SearchBookSourceRoute />} />
