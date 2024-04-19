@@ -26,7 +26,7 @@ const TipsList = () => {
 			loader={<InfiniteScrollLoading />}
 			next={paging.fetchNext}
 			hasMore={paging.hasMore}
-			dataLength={paging.totalPages}
+			dataLength={tipsList.length}
 			className='overflow-hidden'
 		>
 			<Row>

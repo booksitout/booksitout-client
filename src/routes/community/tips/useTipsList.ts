@@ -28,7 +28,11 @@ export const useTipsList = (size: number) => {
 		setPage(page + 1)
 	}
 
-	const paging: Paging = { hasMore: !isLast, totalPages, fetchNext }
+	const paging: Paging = {
+		hasMore: !isLast,
+		totalPages: totalPages,
+		fetchNext: fetchNext,
+	}
 
 	return [isLoading, tipsList, paging] as const
 }
