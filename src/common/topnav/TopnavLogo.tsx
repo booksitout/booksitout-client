@@ -5,8 +5,14 @@ const TopnavLogo = () => {
     return (
         <Container href='/'>
 			<LogoImage src={logo} alt='booksitout-logo' />
-            <Space />
-			<LogoText>책잇아웃</LogoText>
+
+            <div className="d-none d-md-block">
+                <Space />
+            </div>
+
+            <div className="d-none d-md-block">
+                <LogoText>책잇아웃</LogoText>
+            </div>
 		</Container>
 	)
 }

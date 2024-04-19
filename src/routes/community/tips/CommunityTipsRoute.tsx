@@ -1,7 +1,5 @@
 import booksitoutLogo from '../../../images/logo.png'
-import { RouteButtonGroupType } from '../../../common/RouteTitle/RouteButtonGroupType'
 import { useEffect } from 'react'
-import useUrlQuery from '../../../common/hooks/useUrlQuery'
 import RouteContainer from '../../../common/styles/RouteContainer'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
 import TipsList from './TipsList'
@@ -9,8 +7,6 @@ import RowSpacer from '../../../common/styles/RowSpacer'
 import RouteTitleConfig from '../../../config/RouteTitleConfig'
 
 const CommunityTipsRoute = () => {
-    const range = useUrlQuery('range')
-
     useEffect(() => {
         document.title = '꿀팁 | 책잇아웃'
     }, [])

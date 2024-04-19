@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import styled from 'styled-components';
 import NoContent from '../../../common/NoContent';
@@ -8,25 +7,19 @@ import TipsCardLoading from './TipsCardLoading';
 import { useTipsList } from './useTipsList';
 
 const TipsList = () => {
-	const [loading, setLoading] = React.useState(true)
-	const [tipsList, paging] = useTipsList(12)
+	const [isLoading, tipsList, paging] = useTipsList(12)
 
-	useEffect(() => {
-		if (tipsList.length !== 0) {
-			setLoading(false)
-		}
-	}, [tipsList])
-
-	if (loading) {
+	if (isLoading) {
 		return (
 			<Row>
-				{
-					[1, 2, 3, 4, 5, 6].map((tip, _) => <TipsCardLoading />)
-				}
+				{[1, 2, 3, 4, 5, 6].map((tip, _) => <TipsCardLoading />)}
 			</Row>
 		)
 	}
-	if (tipsList.length === 0) return <NoContent message={'책잇아웃의 꿀팁이 없어요'} />
+
+	if (tipsList.length === 0) {
+		return <NoContent message={'책잇아웃의 꿀팁이 없어요'} />
+	}
 
 	return (
 		<InfiniteScroll
@@ -37,9 +30,7 @@ const TipsList = () => {
 			className='overflow-hidden'
 		>
 			<Row>
-				{
-					tipsList.map((tip, _) => <TipsCard tip={tip} isAdmin={false} />)
-				}
+				{tipsList.map((tip, _) => <TipsCard tip={tip} isAdmin={false} />)}
 			</Row>
 		</InfiniteScroll>
 	)

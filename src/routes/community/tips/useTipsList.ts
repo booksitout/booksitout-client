@@ -5,6 +5,7 @@ import ApiUrls from '../../../ApiUrls'
 import Paging from '../../../common/hooks/Paging'
 
 export const useTipsList = (size: number) => {
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [page, setPage] = useState<number>(0)
 	const [isLast, setIsLast] = useState<boolean>(false)
 	const [tipsList, setTipsList] = useState<TipsResponse[]>([])
@@ -12,11 +13,14 @@ export const useTipsList = (size: number) => {
 
 	useEffect(() => {
 		if (isLast !== true) {
-			booksitoutServer.get(ApiUrls.Tips.List(page, size)).then(res => {
-				setTipsList(prevTips => [...prevTips, ...res.data.contents])
-				setIsLast(res.data.isLast)
-				setTotalPages(res.data.totalPages)
-			})
+			booksitoutServer
+				.get(ApiUrls.Tips.List(page, size))
+				.then(res => {
+					setTipsList(prevTips => [...prevTips, ...res.data.contents])
+					setIsLast(res.data.isLast)
+					setTotalPages(res.data.totalPages)
+				})
+				.finally(() => setIsLoading(false))
 		}
 	}, [page, isLast, size])
 
@@ -26,5 +30,5 @@ export const useTipsList = (size: number) => {
 
 	const paging: Paging = { hasMore: !isLast, totalPages, fetchNext }
 
-	return [tipsList, paging] as const
+	return [isLoading, tipsList, paging] as const
 }

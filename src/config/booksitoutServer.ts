@@ -21,23 +21,21 @@ booksitoutServer.interceptors.request.use(
 
 booksitoutServer.interceptors.response.use(
 	response => response,
-	error => {
+	async error => {
 		const originalRequest = error.config;
 
 		if (error.response && error.response.status === 401 && !originalRequest._retry) {
 			originalRequest._retry = true;
 
-			const refreshToken = useLoginStore((state) => state.refreshToken)
+			const refreshToken = localStorage.getItem('refresh-token')
+
 			if (refreshToken) {
 				try {
-					return booksitoutServer
-						.get(ApiUrls.User.Login.Refresh.GET(refreshToken))
-						.then((res) => {
-							const newAccessToken = res.data.accessToken
-							useLoginStore.getState().setAccessToken(newAccessToken)
-							originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
-						})
-						.then(() => booksitoutServer(originalRequest))
+					const res = await booksitoutServer.get(ApiUrls.User.Login.Refresh.GET(refreshToken))
+					const newAccessToken = res.data.accessToken
+					useLoginStore.getState().setAccessToken(newAccessToken)
+					originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
+					return booksitoutServer(originalRequest)
                 } catch (refreshError) {
                     useLoginStore.getState().logout()
                     return Promise.reject(refreshError)
