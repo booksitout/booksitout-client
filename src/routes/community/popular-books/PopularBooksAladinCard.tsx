@@ -5,6 +5,7 @@ import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgrou
 import PopularBookListRow from './PopularBookListRow'
 import CardTitleImageIcon from '../../../common/CardTitleImageIcon'
 import ImageConfig from '../../../config/ImageConfig'
+import PopularBookListRowLoading from './PopularBookListRowLoading'
 
 const PopularBooksAladinCard = () => {
     const [isLoading, popularBooks] = usePopularBooks('ALADIN', 20)
@@ -14,7 +15,12 @@ const PopularBooksAladinCard = () => {
             <CardBodyBackgroundContainer height={3000}>
                 <CardTitle icon={<CardTitleImageIcon logo={ImageConfig.Logo.ALADIN} />} title={'알라딘 베스트셀러'} url={'/community/popular-books/aladin'} />
 
-                {popularBooks.map((book) => <PopularBookListRow popularBook={book} />)}
+                {isLoading ?
+                    Array(100)
+                        .fill(0)
+                        .map((_, index) => <PopularBookListRowLoading index={index + 1} />)
+                    :
+                    popularBooks.map((book) => <PopularBookListRow popularBook={book} />)}
             </CardBodyBackgroundContainer>
         </Card>
     )

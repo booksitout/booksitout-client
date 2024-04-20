@@ -1,6 +1,6 @@
-import { Card, Placeholder } from 'react-bootstrap';
 import styled from 'styled-components';
 import breakpoints from '../../../config/breakpoints';
+import LoadingBar from '../../../common/LoadingBar';
 
 const TipsLIstRowLoading = () => {
     return (
@@ -9,16 +9,11 @@ const TipsLIstRowLoading = () => {
 
             <TextContainer>
                 <Title>
-                    <Placeholder as={Card.Text} animation='glow' className='mb-0'>
-                        <Placeholder xs={5} />
-                    </Placeholder>
-
+                    <LoadingBar size={4}/>
                 </Title>
 
                 <Summary>
-                    <Placeholder as={Card.Text} animation='glow' className='mb-0'>
-                        <Placeholder xs={8} />
-                    </Placeholder>
+                    <LoadingBar size={7}/>
                 </Summary>
             </TextContainer>
         </>

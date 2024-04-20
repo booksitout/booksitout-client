@@ -5,6 +5,7 @@ import CardTitle from '../../common/styles/CardTitle'
 import booksitoutIcon from '../../config/booksitoutIcon'
 import { usePopularBooks } from './popular-books/usePopularBooks'
 import PopularBookListRow from './popular-books/PopularBookListRow'
+import PopularBookListRowLoading from './popular-books/PopularBookListRowLoading';
 
 const CommunityRoutePopularBooksCard = () => {
     const [isLoading, popularBooks] = usePopularBooks('BOOKSITOUT', 12)
@@ -19,13 +20,22 @@ const CommunityRoutePopularBooksCard = () => {
                 />
 
                 <Row>
-                    {popularBooks.map((book) => {
-                        return (
+                    {isLoading ?
+                        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) => 
                             <Col>
-                                <PopularBookListRow popularBook={book} />
+                                <PopularBookListRowLoading index={index} />
                             </Col>
                         )
-                    })}
+                        :
+                        popularBooks.map((book) => {
+                            return (
+                                <Col>
+                                    <PopularBookListRow popularBook={book} />
+                                </Col>
+                            )
+                        }
+                        )
+                    }
                 </Row>
             </CardBodyBackgroundContainer>
         </Card>
