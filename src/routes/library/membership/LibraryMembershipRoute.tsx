@@ -9,8 +9,8 @@ import useLibraryMembershipList from '../useLibraryMembershipList';
 import LibraryMembershipCard from './LibraryMembershipCard';
 import LibraryMembershipCardLoading from './LibraryMembershipCardLoading';
 import RowSpacer from '../../../common/styles/RowSpacer';
-import NoContent from '../../../common/NoContent';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
+import Login from '../../../common/Login';
 
 const LibraryMembershipRoute = () => {
     useEffect(() => {
@@ -80,7 +80,10 @@ const YesLoginCase = () => {
 
 const NoLoginCase = () => {
     return (
-        <NoContent message={'도서관 회원증을 관리하기 위해서는 로그인 해 주세요'} />
+        <>
+            <RowSpacer size={40} />
+            <Login message={'로그인해 도서관 회원증 관리하기'}  />
+        </>
     )
 }
 

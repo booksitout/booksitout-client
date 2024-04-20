@@ -44,13 +44,20 @@ const PopularBooksProviderRoute = () => {
             </Container>
 
             <RowSpacer />
-            {isLoading ?
-                Array(100)
-                    .fill(0)
-                    .map((_, index) => index + 1)
-                    .map((index) => <PopularBookListRowLoading index={index} />)
-                :
-                popularBooks.map((book) => <PopularBookListRow popularBook={book} />)}
+            <Row>
+                {isLoading ?
+                    Array(100)
+                        .fill(0)
+                        .map((_, index) => index + 1)
+                        .map((index) => <Col><PopularBookListRowLoading index={index} /></Col>)
+                    :
+                    popularBooks.map((book) => 
+                        <Col>
+                            <PopularBookListRow popularBook={book} />
+                        </Col>
+                    )
+                }
+            </Row>
         </RouteContainer>
     )
 }
@@ -59,6 +66,16 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+
+const Row = styled.div.attrs({
+    className: 'row'
+})`
+`;
+
+const Col = styled.div.attrs({
+    className: 'col-12 col-md-6 col-xl-4'
+})`
 `;
 
 export default PopularBooksProviderRoute
