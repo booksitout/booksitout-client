@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { booksitoutServer } from "../../../config/booksitoutServer"
 import PopularBookResponse from "./PopularBookResponse"
 
-export const usePopularBooks = (source: 'YES24' | 'ALADIN' | 'KYOBO', size: number) => {
+export const usePopularBooks = (source: 'YES24' | 'ALADIN' | 'KYOBO' | 'BOOKSITOUT', size: number) => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [popularBooks, setPopularBooks] = useState<PopularBookResponse[]>([])
 

@@ -1,13 +1,11 @@
-import { Card } from "react-bootstrap"
 import RouteContainer from "../../common/styles/RouteContainer"
-import CardTitle from "../../common/styles/CardTitle"
 import RowSpacer from "../../common/styles/RowSpacer"
 import booksitoutIcon from '../../config/booksitoutIcon';
 import RouteTitle from "../../common/RouteTitle/RouteTitle"
 import { useEffect } from "react"
-import CardBodyBackgroundContainer from "../../common/styles/CardBodyBackgroundContainer"
 import CommunityRouteTipsCard from "./CommunityRouteTipsCard"
 import RouteTitleConfig from "../../config/RouteTitleConfig";
+import CommunityRoutePopularBooksCard from "./CommunityRoutePopularBooksCard";
 
 const CommunityRoute = () => {
 
@@ -25,21 +23,12 @@ const CommunityRoute = () => {
 				buttons={RouteTitleConfig.Community} 
 				rightUi={undefined} 
 			/>
-
             <RowSpacer />
+
             <CommunityRouteTipsCard />
-
             <RowSpacer />
-            <Card>
-                <CardBodyBackgroundContainer height={600}>
-                    <CardTitle 
-                        icon={<booksitoutIcon.popular />} 
-                        title='인기책' 
-                        url='/community/popular-books' 
-                    />
-                </CardBodyBackgroundContainer>
-            </Card>
 
+            <CommunityRoutePopularBooksCard/>
             <RowSpacer />
         </RouteContainer>
     )
