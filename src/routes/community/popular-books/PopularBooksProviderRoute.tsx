@@ -39,7 +39,7 @@ const PopularBooksProviderRoute = () => {
                             provider?.toUpperCase() === 'KYOBO' ?
                                 <CardTitle icon={<CardTitleImageIcon logo={ImageConfig.Logo.KYOBO} />} title={'교보문고 베스트셀러'} url={''} />
                                 :
-                                <CardTitle icon={<CardTitleImageIcon logo={ImageConfig.Logo.KYOBO} />} title={'책잇아웃 베스트셀러'} url={''} />
+                                <CardTitle icon={<CardTitleImageIcon logo={ImageConfig.Logo.BOOKSITOUT} />} title={'책잇아웃 베스트셀러'} url={''} />
                 }
             </Container>
 

@@ -16,7 +16,7 @@ const CommunityRoutePopularBooksCard = () => {
                 <CardTitle
                     icon={<booksitoutIcon.popular />}
                     title='책잇아웃이 고른 인기책'
-                    url='/community/popular-books'
+                    url='/community/popular-books/booksitout'
                 />
 
                 <Row>
