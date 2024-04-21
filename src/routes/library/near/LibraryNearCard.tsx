@@ -9,7 +9,7 @@ interface Props {
 const LibraryNearCard: React.FC<Props> = ({ library }) => {
 	return (
 		<Card style={{ minHeight: '80px' }} className='mb-2'>
-			<a href={`/library/detail/${library.id}`}>
+			<a href={`/library/${library.id}`}>
 				<Card.Body>
 					<div className='row'>
 						<div className={library.location.distance !== 0 ? 'col-7' : 'col-12'}>

@@ -30,7 +30,7 @@ const IndexSummaryCard = () => {
 
 const NoLoggedInCase = () => {
     return (
-        <Login />
+        <Login message={null} />
     )
 }
 

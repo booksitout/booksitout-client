@@ -39,7 +39,7 @@ const LibraryMembershipDetailLibraryCard = ({ libraryList }) => {
 					<div className='row'>
 						{libraryList.slice(0, 12).map((library) => {
 							return (
-								<div className='col-12 col-sm-6 col-md-4 col-xl-3'>
+								<div className='col-12 col-sm-6 col-md-4'>
 									<LibraryMembershipDetailLibraryCardCard library={library} />
 								</div>
 							)
@@ -55,7 +55,7 @@ const LibraryMembershipDetailLibraryCard = ({ libraryList }) => {
 
 const LibraryMembershipDetailLibraryCardCard = ({ library }) => {
 	return (
-		<a href={`/library/detail/${library.id}`}>
+		<a href={`/library/${library.id}`}>
 			<Card className='mb-3' style={{ minHeight: '125px' }}>
 				<CardBodyBackgroundContainer>
 					<div className='row'>
@@ -82,7 +82,7 @@ const LibraryMembershipDetailLibraryCardCard = ({ library }) => {
 
 const LibraryMembershipDetailModal = ({ modalOpen, setModalOpen, libraryList }) => {
 	return (
-		<Modal show={modalOpen} onHide={() => setModalOpen(false)} fullscreen='md-down' size='xl' centered>
+		<Modal show={modalOpen} onHide={() => setModalOpen(false)} fullscreen='md-down' size='xl' centered className='pt-5'>
 			<Modal.Header closeButton>
 				<div className='d-flex flex-wrap align-items-center'>
 					<h1 className='me-2 text-book h2'>
@@ -97,7 +97,7 @@ const LibraryMembershipDetailModal = ({ modalOpen, setModalOpen, libraryList }) 
 				<div className='row'>
 					{libraryList.map((library) => {
 						return (
-							<div className='col-12 col-sm-6 col-xl-4'>
+							<div className='col-12 col-sm-6'>
 								<LibraryCard library={library} />
 							</div>
 						)

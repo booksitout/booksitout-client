@@ -27,10 +27,10 @@ const useLibraryMembership = (id: number) => {
     const deleteMembership = () => {
         if (window.confirm('정말 도서관 회원증을 삭제할까요?')) {
             booksitoutServer
-                .delete(`v5/library/membership/${id}`)
+                .delete(`v1/library/membership/${id}`)
                 .then(() => {
                     toast.success('회원증을 삭제했어요')
-                    navigate('/library/membership/all')
+                    navigate('/library/membership')
                 })
                 .catch(() => toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요'))
         }

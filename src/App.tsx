@@ -25,6 +25,8 @@ import BookMineRoute from './routes/book/mine/BookMineRoute'
 import LibraryMembershipDetailRoute from './routes/library/membership/LibraryMembershipDetailRoute'
 import LibraryRegionRoute from './routes/library/location/LibraryRegionRoute'
 import PopularBooksProviderRoute from './routes/community/popular-books/PopularBooksProviderRoute'
+import LibraryMembershipAddImageRoute from './routes/library/membership/add/LibraryMembershipAddImageRoute'
+import LibraryMembershipAddManualRoute from './routes/library/membership/add/LibraryMembershipAddManualRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -65,6 +67,11 @@ const router = createBrowserRouter(
 
 			<Route path='/privacy' element={<PrivacyRoute />} />
 			<Route path='/privacy/:date' element={<PrivacyByDate />} />
+
+			<Route path='/add/book/search' element={<NotFound />} />
+			<Route path='/add/book/manual' element={<NotFound />} />
+			<Route path='/add/membership/image' element={<LibraryMembershipAddImageRoute />} />
+			<Route path='/add/membership/manual' element={<LibraryMembershipAddManualRoute />} />
 		</Route>
 	),
 )

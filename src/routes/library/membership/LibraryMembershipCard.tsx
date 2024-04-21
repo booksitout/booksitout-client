@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components';
 import Barcode from 'react-barcode'
 import { Card } from 'react-bootstrap'

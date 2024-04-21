@@ -50,6 +50,19 @@ const RouteTitleConfig = {
             label: '인기 책'
         },
     ],
+
+	AddMembership: [
+		{
+            url: '/add/membership/image',
+            key: 'image',
+            label: '사진으로 추가'
+        },
+		{
+            url: '/add/membership/manual',
+            key: 'manual',
+            label: '직접 추가'
+        },
+	]
 }
 
 export default RouteTitleConfig

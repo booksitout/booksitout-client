@@ -1,4 +1,4 @@
-import React from 'react'
+import styled from 'styled-components';
 import { useParams } from 'react-router-dom'
 import RouteContainer from '../../../common/styles/RouteContainer'
 import NoContent from '../../../common/NoContent'
@@ -7,6 +7,8 @@ import LibraryMembershipCardLoading from './LibraryMembershipCardLoading'
 import LibraryMembershipCard from './LibraryMembershipCard'
 import useLibraryMembership from '../useLibraryMembership'
 import LibraryMembershipDetailLibraryCard from './LibraryMembershipDetailLibraryCard'
+import { Button } from 'react-bootstrap';
+import ColorConfig from '../../../config/ColorConfig';
 
 const LibraryMembershipDetailRoute = () => {
 
@@ -23,12 +25,16 @@ const LibraryMembershipDetailRoute = () => {
             {isLoading ? (
                 <LibraryMembershipCardLoading padding={20} />
             ) : (
-                <span className='not-clickable'>
-                    <LibraryMembershipCard
-                        membership={membership}
-                        width={2}
-                    />
-                </span>
+                <MembershipContainer>
+                    <span className='not-clickable'>
+                        <LibraryMembershipCard
+                            membership={membership}
+                            width={2}
+                        />
+                    </span>
+
+                    <DeleteButton onClick={() => deleteMembership()}>삭제</DeleteButton>
+                </MembershipContainer>
             )}
             <RowSpacer />
 
@@ -43,5 +49,24 @@ const LibraryMembershipDetailRoute = () => {
         </RouteContainer>
     )
 }
+
+const MembershipContainer = styled.div`
+    position: relative;
+`;
+
+const DeleteButton = styled(Button)`
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    color: white;
+    background-color: ${ColorConfig.Danger};
+
+    border: none;
+
+    &:hover {
+        background-color: ${ColorConfig.DangerHover};
+    }
+`;
 
 export default LibraryMembershipDetailRoute
