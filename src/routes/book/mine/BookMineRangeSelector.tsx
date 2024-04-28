@@ -37,13 +37,13 @@ const BookMineRangeSelector = () => {
 
     return (
         <Container>
-            <IndexContentContainer>
+            <IndexContentContainer style={{ color: 'black' }}>
                 <Label>책 범위</Label>
 
                 <FormContainer>
                     <Form.Group>
-                        <Form.Select 
-                            value={buttons.find((b) => b.key === range)?.key.toString() ?? BookMineListRange.READING} 
+                        <Form.Select
+                            value={buttons.find((b) => b.key === range)?.key.toString() ?? BookMineListRange.READING}
                             onChange={(e) => setCurrentRange(e.target.value as BookMineListRange)}
                         >
                             {buttons.map((button) => <option value={button.key}>{button.label}</option>)}
@@ -59,14 +59,21 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: right;
+
+    &:hover {
+        color: black;
+    }
 `;
 
 const Label = styled.h5`
     padding: 0px;
     padding-top: 7px;
     margin: 0px;
-
     font-size: 20px;
+
+    &:hover {
+        color: black;
+    }
 `;
 
 const FormContainer = styled(Form)`

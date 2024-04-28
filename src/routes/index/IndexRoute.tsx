@@ -6,12 +6,13 @@ import IndexTipsCard from './card/IndexTipsCard';
 import IndexLibraryCard from './card/IndexLibraryCard';
 import IndexSummaryCard from './card/IndexSummaryCard';
 import RowSpacer from '../../common/styles/RowSpacer';
+import IndexPopularBookCard from './card/IndexPopularBookCard';
 
 const IndexRoute = () => {
     return (
         <RouteContainer>
             <RowSpacer size={10} />
-            
+
             <IndexPreReleaseCard />
             <RowSpacer size={20} />
 
@@ -19,7 +20,10 @@ const IndexRoute = () => {
             <RowSpacer size={60} />
 
             <IndexSummaryCard />
-            <RowSpacer size={20}/>
+            <RowSpacer size={20} />
+
+            <IndexPopularBookCard />
+            <RowSpacer size={20} />
 
             <IndexBookCard />
             <RowSpacer size={20} />

@@ -8,6 +8,7 @@ import RowSpacer from '../../../common/styles/RowSpacer';
 import PopularBooksAladinCard from './PopularBooksAladinCard';
 import PopularBooksKyoboCard from './PopularBooksKyoboCard';
 import PopularBooksYes24Card from './PopularBooksYes24Card';
+import CommunityRoutePopularBooksCard from '../CommunityRoutePopularBooksCard';
 
 const CommunityPopularBooksRoute = () => {
     useEffect(() => {
@@ -25,6 +26,9 @@ const CommunityPopularBooksRoute = () => {
                 rightUi={undefined}
             />
 
+            <RowSpacer />
+
+            <CommunityRoutePopularBooksCard />
             <RowSpacer />
 
             <Row>

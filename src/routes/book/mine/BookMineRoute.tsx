@@ -10,7 +10,6 @@ import RowSpacer from '../../../common/styles/RowSpacer';
 import useMineBookList from './useMineBookList';
 import BookMineListRange from './BookMineListRange';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import InfiniteScrollLoading from '../../../common/InfiniteScrollLoading';
 import BookMineCard from './BookMineCard';
 import BookMineRangeSelector from './BookMineRangeSelector';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';

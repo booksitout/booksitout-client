@@ -8,6 +8,10 @@ import TipsTimeIcon from "./TipsTimeIcon"
 import useTips from "./useTips"
 import CardBodyContainer from "../../../common/styles/CardBodyContainer";
 import RowSpacer from "../../../common/styles/RowSpacer";
+import RouteTitle from "../../../common/RouteTitle/RouteTitle";
+import booksitoutIcon from "../../../config/booksitoutIcon";
+import RouteTitleConfig from "../../../config/RouteTitleConfig";
+import RouteContainer from "../../../common/styles/RouteContainer";
 
 const CommunityTipsDetailRoute = () => {
     const { tipsId } = useParams()
@@ -18,6 +22,15 @@ const CommunityTipsDetailRoute = () => {
 
     return (
         <TipsDetailContainer>
+            <RouteTitle
+                icon={<booksitoutIcon.community />}
+                title={'커뮤니티'}
+                subTitle={'책에 관한 다양한 소식과 사람들을 알아갈 수 있어요'}
+                currentKey={'tips'}
+                buttons={RouteTitleConfig.Community}
+                rightUi={undefined}
+            />
+
             <RowSpacer />
             <CardBodyContainer>
                 <Card style={{ minHeight: '200px' }} className='mb-4'>
@@ -56,8 +69,7 @@ const CommunityTipsDetailRoute = () => {
     )
 }
 
-const TipsDetailContainer = styled.div.attrs({
-    className: 'container-xl'
+const TipsDetailContainer = styled(RouteContainer).attrs({
 })`
 	b {
 		background-color: #ECECEA;
@@ -71,7 +83,6 @@ const TipsDetailContainer = styled.div.attrs({
 	}
 
 	.content {
-		
 	}
 
 	hr {

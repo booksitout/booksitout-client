@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import { Card } from 'react-bootstrap'
-import CardBodyBackgroundContainer from '../../common/styles/CardBodyBackgroundContainer'
-import CardTitle from '../../common/styles/CardTitle'
-import { usePopularBooks } from './popular-books/usePopularBooks'
-import PopularBookListRow from './popular-books/PopularBookListRow'
-import PopularBookListRowLoading from './popular-books/PopularBookListRowLoading';
-import BooksitoutLogo from '../../common/BooksitoutLogo';
+import { Card } from "react-bootstrap"
+import CardBodyContainer from "../../../common/styles/CardBodyContainer"
+import { usePopularBooks } from "../../community/popular-books/usePopularBooks"
+import PopularBookListRowLoading from '../../community/popular-books/PopularBookListRowLoading';
+import PopularBookListRow from '../../community/popular-books/PopularBookListRow';
+import CardTitle from '../../../common/styles/CardTitle';
+import BooksitoutLogo from '../../../common/BooksitoutLogo';
 
-const CommunityRoutePopularBooksCard = () => {
+const IndexPopularBookCard = () => {
     const [isLoading, popularBooks] = usePopularBooks('BOOKSITOUT', 12)
 
     return (
         <Card>
-            <CardBodyBackgroundContainer height={600}>
+            <CardBodyContainer>
                 <CardTitle
                     icon={<BooksitoutLogo />}
                     title='책잇아웃 베스트셀러'
@@ -21,7 +21,7 @@ const CommunityRoutePopularBooksCard = () => {
 
                 <Row>
                     {isLoading ?
-                        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) => 
+                        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) =>
                             <Col>
                                 <PopularBookListRowLoading index={index} />
                             </Col>
@@ -37,7 +37,8 @@ const CommunityRoutePopularBooksCard = () => {
                         )
                     }
                 </Row>
-            </CardBodyBackgroundContainer>
+
+            </CardBodyContainer>
         </Card>
     )
 }
@@ -52,4 +53,5 @@ const Col = styled.div.attrs({
 })`
 `;
 
-export default CommunityRoutePopularBooksCard
+
+export default IndexPopularBookCard
