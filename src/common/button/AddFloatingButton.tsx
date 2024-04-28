@@ -9,15 +9,23 @@ const AddFloatingButton = () => {
 	const navigate = useNavigate()
 
 	const token = useLoginStore((state) => state.isLoggedIn())
+	const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
 
 	const getNavigateUrl = () => {
 		const path = window.location.pathname
 
-		if (path === '/add/book/search') {
-			return '/add/membership/image'
+		const URL_MEMBERSHIP =  '/add/membership/image'
+		const URL_BOOK = '/add/book/search'
+
+		if (path.startsWith('/library/membership')) {
+			return URL_MEMBERSHIP
 		}
 
-		return '/add/book/search'
+		if (path === '/add/book/search') {
+			return URL_MEMBERSHIP
+		}
+
+		return URL_BOOK
 	}
 
 	const getIsActive = () => {
@@ -27,7 +35,7 @@ const AddFloatingButton = () => {
 
 	return (
 		<>
-			{token !== '' && token !== null && (
+			{isLoggedIn && token !== '' && token !== null && (
 				<ButtonContainer variant="book" active={getIsActive()} onClick={() => navigate(getNavigateUrl())}>
 					<BookIcon className="h2 p-0 m-0" />
 				</ButtonContainer>

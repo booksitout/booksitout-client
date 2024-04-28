@@ -38,8 +38,8 @@ const router = createBrowserRouter(
 			<Route path='/book/users' element={<></>} />
 			<Route path='/book/users/:userId' element={<></>} />
 			<Route path='/book/mine' element={<BookMineRoute />} />af
-			<Route path='/book/:bookId' element={<></>} />
-			<Route path='/book/:bookId/reading' element={<></>} />
+			<Route path='/book/mine/:bookId' element={<></>} />
+			<Route path='/book/mine/:bookId/reading' element={<></>} />
 			<Route path='/book/goal' element={<></>} />
 			<Route path='/book/statistics' element={<BookStatisticsRoute />} />
 

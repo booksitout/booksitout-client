@@ -55,8 +55,8 @@ const useLoginStore = create<LoginState>(set => ({
 		set({ accessToken: null, refreshToken: null })
 	},
 
-	setAccessToken: (refreshToken: string) => {
-		localStorage.setItem('refresh-token', refreshToken)
+	setAccessToken: (accessToken: string) => {
+		localStorage.setItem('access-token', accessToken)
 	} 
 }))
 

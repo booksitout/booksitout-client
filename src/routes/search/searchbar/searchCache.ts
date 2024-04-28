@@ -10,7 +10,7 @@ class searchCache {
 
         const historiesCache = localStorage.getItem(key)
         if (historiesCache != null)  {
-            const historiesCacheParsed = JSON.parse(key)
+            const historiesCacheParsed = JSON.parse(historiesCache)
     
             const currentQuery: SearchHistoryResponse = {
                 id: 0,

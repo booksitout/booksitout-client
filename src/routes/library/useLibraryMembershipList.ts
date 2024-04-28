@@ -32,7 +32,7 @@ const useLibraryMembershipList = () => {
 
     const paging: Paging = { hasMore: !isLast, totalPages: totalPages, fetchNext }
 
-    return [libraryMemberships, isLoading, paging] as const
+    return [isLoading, libraryMemberships, paging] as const
 }
 
 export default useLibraryMembershipList

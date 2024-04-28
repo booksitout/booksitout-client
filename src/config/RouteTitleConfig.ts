@@ -6,7 +6,7 @@ const RouteTitleConfig = {
 			label: '둘러보기'
         },
         {
-            url: '/book/mine',
+            url: '/book/mine?range=READING',
 			key: 'mine',
 			label: '내 서재'
         },

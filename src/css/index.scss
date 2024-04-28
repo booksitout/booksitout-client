@@ -128,9 +128,11 @@ input::-webkit-inner-spin-button {
 }
 
 .clamp-1-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	display: block;       /* Ensures the element is treated as a block-level element */
+    max-width: 100%;      /* Limits the width to the parent container's width */
+    white-space: nowrap;  /* Keeps text on a single line */
+    overflow: hidden;     /* Hides text that overflows the element's box */
+    text-overflow: ellipsis; /* Adds an ellipsis to indicate hidden overflow text */
 }
 
 .clamp-two-lines {

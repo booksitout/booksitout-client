@@ -36,7 +36,7 @@ const BookRoute = () => {
                 </CardBodyBackgroundContainer>
             </Card>
 
-            {/* <RowSpacer />
+            <RowSpacer />
             <Card>
                 <CardBodyBackgroundContainer height={600}>
                     <CardTitle 
@@ -46,7 +46,7 @@ const BookRoute = () => {
                         url={'/book/recommendation'} 
                     />
                 </CardBodyBackgroundContainer>
-            </Card> */}
+            </Card>
             <RowSpacer />
         </RouteContainer>
     )

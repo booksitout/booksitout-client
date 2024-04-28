@@ -1,6 +1,6 @@
-import axios from "axios";
-import ApiUrls from "../ApiUrls";
-import useLoginStore from "../routes/login/useLoginStore";
+import axios from 'axios'
+import ApiUrls from '../ApiUrls'
+import useLoginStore from '../routes/login/useLoginStore'
 
 export const booksitoutServer = axios.create({
 	baseURL: ApiUrls.BASE,
@@ -19,32 +19,50 @@ booksitoutServer.interceptors.request.use(
 	error => Promise.reject(error),
 )
 
+let isRefreshing: boolean = false
+let refreshSubscribers: (() => void)[] = []
+
 booksitoutServer.interceptors.response.use(
 	response => response,
 	async error => {
-		const originalRequest = error.config;
+		const originalRequest = error.config
 
 		if (error.response && error.response.status === 401 && !originalRequest._retry) {
-			originalRequest._retry = true;
+			if (!isRefreshing) {
+				isRefreshing = true
+				originalRequest._retry = true // to prevent infinite loop in case of constant 401 responses
+				const refreshToken = localStorage.getItem('refresh-token')
 
-			const refreshToken = localStorage.getItem('refresh-token')
-
-			if (refreshToken) {
-				try {
-					const res = await booksitoutServer.get(ApiUrls.User.Login.Refresh.GET(refreshToken))
-					const newAccessToken = res.data.accessToken
-					useLoginStore.getState().setAccessToken(newAccessToken)
-					originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
-					return booksitoutServer(originalRequest)
-                } catch (refreshError) {
-                    useLoginStore.getState().logout()
-                    return Promise.reject(refreshError)
-                }
+				if (refreshToken) {
+					try {
+						const res = await booksitoutServer.get(ApiUrls.User.Login.Refresh.GET(refreshToken))
+						const newAccessToken = res.data.accessToken
+						useLoginStore.getState().setAccessToken(newAccessToken)
+						originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
+						isRefreshing = false
+						refreshSubscribers.forEach(callback => callback())
+						refreshSubscribers = []
+						return booksitoutServer(originalRequest)
+					} catch (refreshError) {
+						isRefreshing = false
+						refreshSubscribers = []
+						useLoginStore.getState().logout()
+						return Promise.reject(refreshError)
+					}
+				} else {
+					useLoginStore.getState().logout()
+				}
 			} else {
-				useLoginStore.getState().logout()
+				return new Promise(resolve => {
+					refreshSubscribers.push(() => {
+						const newAccessToken = useLoginStore.getState().accessToken
+						originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
+						resolve(booksitoutServer(originalRequest))
+					})
+				})
 			}
 		}
 
 		return Promise.reject(error)
-	}
+	},
 )

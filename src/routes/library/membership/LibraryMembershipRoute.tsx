@@ -37,7 +37,7 @@ const LibraryMembershipRoute = () => {
 }
 
 const YesLoginCase = () => {
-    const [libraryMemberships, isLoading, paging] = useLibraryMembershipList()
+    const [isLoading, libraryMemberships, paging] = useLibraryMembershipList()
 
     return (
         <InfiniteScroll

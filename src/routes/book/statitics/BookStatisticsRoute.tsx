@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import styled from 'styled-components';
 import RouteContainer from '../../../common/styles/RouteContainer'
-import { RouteButtonGroupType } from '../../../common/RouteTitle/RouteButtonGroupType'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
 import booksitoutIcon from '../../../config/booksitoutIcon'
 import { Card } from 'react-bootstrap'
@@ -10,11 +9,15 @@ import BookStatisticsByYearTable from './BookStatisticsByYearTable'
 import RowSpacer from '../../../common/styles/RowSpacer'
 import BookStatisticsReadTimeCard from './BookStatisticsReadTimeCard';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
+import useLoginStore from '../../login/useLoginStore';
+import Login from '../../../common/Login';
 
 const BookStatisticsRoute = () => {
     useEffect(() => {
         document.title = '내 서재 | 책잇아웃'
     }, [])
+
+    const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
 
     return (
         <RouteContainer>
@@ -27,6 +30,30 @@ const BookStatisticsRoute = () => {
                 rightUi={undefined}
             />
 
+            {isLoggedIn ? <YesLoggedInCase /> : <NoLoggedInCase />}
+            <RowSpacer />
+        </RouteContainer>
+    )
+}
+
+const Row = styled.div.attrs({
+    className: 'row'
+})`
+`;
+
+const ColChart = styled.div.attrs({
+    className: 'col-12 col-md-6 col-xl-8'
+})`
+`;
+
+const ColSummary = styled.div.attrs({
+    className: 'col-12 col-md-6 col-xl-4'
+})`
+`;
+
+const YesLoggedInCase = () => {
+    return (
+        <>
             <RowSpacer />
             <Row>
                 <ColChart>
@@ -47,25 +74,17 @@ const BookStatisticsRoute = () => {
                     <RowSpacer />
                 </ColSummary>
             </Row>
-
-            <RowSpacer />
-        </RouteContainer>
+        </>
     )
 }
 
-const Row = styled.div.attrs({
-    className: 'row'
-})`
-`;
-
-const ColChart = styled.div.attrs({
-    className: 'col-12 col-md-6 col-xl-8'
-})`
-`;
-
-const ColSummary = styled.div.attrs({
-    className: 'col-12 col-md-6 col-xl-4'
-})`
-`;
+const NoLoggedInCase = () => {
+    return (
+        <>
+            <RowSpacer size={40} />
+            <Login message={'로그인해 내 독서활동 통계 보기'} />
+        </>
+    )
+}
 
 export default BookStatisticsRoute
