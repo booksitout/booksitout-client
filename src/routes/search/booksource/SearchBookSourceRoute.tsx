@@ -24,6 +24,8 @@ import { booksitoutServer } from '../../../config/booksitoutServer';
 import ApiUrls from '../../../ApiUrls';
 import useLoginStore from '../../login/useLoginStore';
 import searchCache from '../searchbar/searchCache';
+import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer';
+import IndexSearchBar from '../../index/card/IndexSearchBar';
 
 const SearchBookSourceRoute = () => {
     const { isbn13 } = useParams()
@@ -62,7 +64,10 @@ const SearchBookSourceRoute = () => {
     }, [isLoggedIn, isbn13, query])
 
     return (
-        <RouteContainer>
+        <RouteContainer className='pb-5'>
+            <RowSpacer />
+            <IndexSearchBar />
+
             <RowSpacer />
             <Card>
                 <CardBodyContainer height={400}>
@@ -96,11 +101,11 @@ const SearchBookSourceRoute = () => {
                         :
                             librariesOffline?.map((library) => {
                                 return (
-                                    <ColLibrary>
+                                    <Col>
                                             <Provider href={library.link}>
                                                 <div>{library.library.name}</div>
                                             </Provider>
-                                    </ColLibrary>
+                                    </Col>
                                 )
                             })
                         }
@@ -239,7 +244,7 @@ const SearchBookSourceRoute = () => {
     )
 }
 
-const CardContainer = styled(CardBodyContainer).attrs({
+const CardContainer = styled(CardBodyBackgroundContainer).attrs({
     height: 425
 })`
     padding: 25px;
@@ -311,12 +316,6 @@ const ProviderIcon = styled.img.attrs({
 const Col = styled.div.attrs({
     className: 'col-4 col-md-2'
 })`
-`;
-
-const ColLibrary = styled.div.attrs({
-    className: 'col-6 col-md-4'
-})`
-  
 `;
 
 const ColUsed = styled.div.attrs({

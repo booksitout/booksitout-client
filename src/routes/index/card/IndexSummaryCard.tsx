@@ -19,7 +19,7 @@ const IndexSummaryCard = () => {
                 <CardTitle 
                     icon={<booksitoutIcon.user />} 
                     title={'내 독서활동 요약'} 
-                    url='/book/summary'
+                    url='/book/mine?range=READING'
                 />
 
                 {isLoggedIn ? <YesLoggedInCase /> : <NoLoggedInCase />}

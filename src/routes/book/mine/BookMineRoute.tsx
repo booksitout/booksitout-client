@@ -14,6 +14,7 @@ import BookMineCard from './BookMineCard';
 import BookMineRangeSelector from './BookMineRangeSelector';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
 import BookMineLoadingCard from './BookMineLoadingCard';
+import BooksByYear from './BooksByYear';
 
 const BookMineRoute = () => {
     useEffect(() => {
@@ -40,7 +41,7 @@ const BookMineRoute = () => {
 
 const YesLoggedInCase = () => {
     const range = useUrlQuery('range') as BookMineListRange
-    const [isLoading, bookList, paging] = useMineBookList(range)
+    const [isLoading, bookList, bookListByYear, paging] = useMineBookList(range)
 
     return (
         <>
@@ -61,16 +62,51 @@ const YesLoggedInCase = () => {
                     >
                         <RowSpacer size={10} />
                         <Row>
-                            {bookList.map((book, _) => {
-                                return (
-                                    <Col key={book.id}>
-                                        <BookMineCard book={book} />
-                                    </Col>
-                                )
-                            })}
+                            {
+                                range === BookMineListRange.DONE ?
+                                <BookDoneList bookListByYear={bookListByYear}  />
+                                :
+                                bookList.map((book, _) => {
+                                    return (
+                                        <Col key={book.id}>
+                                            <BookMineCard book={book} />
+                                        </Col>
+                                    )
+                                })
+                            }
                         </Row>
                     </InfiniteScroll>
             }
+        </>
+    )
+}
+
+interface Props {
+    bookListByYear: BooksByYear
+}
+
+const BookDoneList: React.FC<Props> = ({ bookListByYear }) => {
+    const sortedYears = Object.keys(bookListByYear)
+        .map(Number)
+        .sort((a, b) => b - a)
+
+    return (
+        <>
+            {sortedYears.map(year => {
+                const books = bookListByYear[year];
+
+                return (
+                    <>
+                        <h3 className={`text-start pb-3 ms-2 ${sortedYears[0] !== year && 'pt-5'}`}>{year}년</h3>
+
+                        {books.map(book => (
+                            <Col key={book.id}>
+                                <BookMineCard book={book} />
+                            </Col>
+                        ))}
+                    </>
+                );
+            })}
         </>
     )
 }
