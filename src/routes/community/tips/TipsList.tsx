@@ -1,7 +1,6 @@
 import InfiniteScroll from 'react-infinite-scroll-component'
 import styled from 'styled-components';
 import NoContent from '../../../common/NoContent';
-import InfiniteScrollLoading from '../../../common/InfiniteScrollLoading';
 import TipsCard from './TipsCard';
 import TipsCardLoading from './TipsCardLoading';
 import { useTipsList } from './useTipsList';
@@ -11,9 +10,7 @@ const TipsList = () => {
 
 	if (isLoading) {
 		return (
-			<Row>
-				{[1, 2, 3, 4, 5, 6].map((tip, _) => <TipsCardLoading />)}
-			</Row>
+			<Loading />
 		)
 	}
 
@@ -23,7 +20,7 @@ const TipsList = () => {
 
 	return (
 		<InfiniteScroll
-			loader={<InfiniteScrollLoading />}
+			loader={<Loading />}
 			next={paging.fetchNext}
 			hasMore={paging.hasMore}
 			dataLength={tipsList.length}
@@ -39,5 +36,13 @@ const TipsList = () => {
 const Row = styled.div.attrs({
 	className: 'row'
 })``;
+
+const Loading = () => {
+	return (
+		<Row>
+			{[1, 2, 3, 4, 5, 6].map((tip, _) => <TipsCardLoading />)}
+		</Row>
+	)
+}
 
 export default TipsList

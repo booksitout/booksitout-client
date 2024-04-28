@@ -7,6 +7,7 @@ const TipsCardLoading = () => {
 		<div className='mb-3 col-12 col-md-6 col-lg-4'>
 			<List>
 				<ImageContainer>
+					<Image />
 				</ImageContainer>
 
 				<div className='text-book mt-3'>
@@ -44,5 +45,14 @@ const ImageContainer = styled.div`
 	position: relative; 
 `;
 
+const Image = styled.img.attrs({
+	className: 'img-fluid rounded'
+})`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+`;
 
 export default TipsCardLoading
