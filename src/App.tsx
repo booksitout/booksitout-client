@@ -27,6 +27,7 @@ import LibraryRegionRoute from './routes/library/location/LibraryRegionRoute'
 import PopularBooksProviderRoute from './routes/community/popular-books/PopularBooksProviderRoute'
 import LibraryMembershipAddImageRoute from './routes/library/membership/add/LibraryMembershipAddImageRoute'
 import LibraryMembershipAddManualRoute from './routes/library/membership/add/LibraryMembershipAddManualRoute'
+import LoginRoute from './routes/login/LoginRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -60,6 +61,7 @@ const router = createBrowserRouter(
 			<Route path='/search' element={<SearchBookRoute />} />
 			<Route path='/search/:isbn13' element={<SearchBookSourceRoute />} />
 
+			<Route path='/login' element={<LoginRoute />} />
 			<Route path='/login/oauth/:provider' element={<OAuthRedirect />} />
 
 			<Route path='/admin' element={<AdminRoute />} />
