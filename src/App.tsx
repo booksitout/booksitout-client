@@ -28,6 +28,7 @@ import PopularBooksProviderRoute from './routes/community/popular-books/PopularB
 import LibraryMembershipAddImageRoute from './routes/library/membership/add/LibraryMembershipAddImageRoute'
 import LibraryMembershipAddManualRoute from './routes/library/membership/add/LibraryMembershipAddManualRoute'
 import LoginRoute from './routes/login/LoginRoute'
+import BookDetailRoute from './routes/book/detail/BookDetailRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -39,7 +40,7 @@ const router = createBrowserRouter(
 			<Route path='/book/users' element={<></>} />
 			<Route path='/book/users/:userId' element={<></>} />
 			<Route path='/book/mine' element={<BookMineRoute />} />af
-			<Route path='/book/mine/:bookId' element={<></>} />
+			<Route path='/book/mine/:bookId' element={<BookDetailRoute />} />
 			<Route path='/book/mine/:bookId/reading' element={<></>} />
 			<Route path='/book/goal' element={<></>} />
 			<Route path='/book/statistics' element={<BookStatisticsRoute />} />

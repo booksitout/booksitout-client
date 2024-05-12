@@ -3,6 +3,7 @@ import IndexContentContainer from "../../index/IndexContentContainer"
 import BookResponse from "../BookResponse"
 import RowSpacer from '../../../common/styles/RowSpacer';
 import { useNavigate } from 'react-router-dom';
+import BookPageBar from '../../../common/BookPageBar';
 
 interface Props {
     book: BookResponse
@@ -21,6 +22,8 @@ const BookMineCard: React.FC<Props> = ({ book }) => {
                     <Title>{book.title}</Title>
                     <RowSpacer size={2.5} />
                     <Author>{book.author}</Author>
+                    <RowSpacer size={2.5} />
+                    <BookPageBar book={book} />
                 </ContentContainer>
             </IndexContentContainer>
         </Container>
@@ -31,7 +34,7 @@ const Container = styled.div`
     padding-left: 2.5px;
     padding-right: 2.5px;
 
-    height: 300px;
+    height: 350px;
 `;
 
 const ContentContainer = styled.div`

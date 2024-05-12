@@ -12,7 +12,7 @@ const BookLastReadCard = () => {
                 <Image src={book.cover} />
             </ImageContainer>
 
-            <InfoContainer href={`/book/users/${book.id}`}>
+            <InfoContainer href={`/book/mine/${book.id}`}>
                 <Title>{book.title}</Title>
                 <Author>{book.author}</Author>
                 <Button href={`/book/users/${book.id}/reading`}>이어서 읽기</Button>
