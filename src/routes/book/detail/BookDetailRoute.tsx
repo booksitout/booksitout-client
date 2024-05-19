@@ -4,8 +4,8 @@ import useBookDetail from "../useBookDetail"
 import NoContent from "../../../common/NoContent"
 import RowSpacer from '../../../common/styles/RowSpacer';
 import BookDetailInfoCard from './BookDetailInfoCard';
-import BookDetailMemoCard from './BookDetailMemoCard';
-import BookDetailReadingSessionCard from './BookDetailReadingSessionCard';
+import BookDetailMemoCard from './memo/BookDetailMemoCard';
+import BookDetailReadingSessionCard from './reading-session/BookDetailReadingSessionCard';
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
 import booksitoutIcon from '../../../config/booksitoutIcon';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
