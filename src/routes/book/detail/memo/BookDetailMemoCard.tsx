@@ -5,6 +5,7 @@ import CardAddButton from '../../../../common/button/CardAddButton';
 import BookDetailMemoAddModal from './BookDetailMemoAddModal';
 import { useState } from 'react';
 import BookDetailMemoDetailModal from './BookDetailMemoDetailModal';
+import ColorConfig from '../../../../config/ColorConfig';
 
 interface Props {
     memos: BookMemoResponse[]
@@ -29,11 +30,13 @@ const BookDetailMemoCard: React.FC<Props> = ({ memos }) => {
     return (
         <IndexContentContainer>
             <BookDetailMemoAddModal isOpen={isAddOpen} close={closeAdd} />
-            {detailMemo != null && <BookDetailMemoDetailModal
-                isOpen={isDetailOpen}
-                close={closeDetail}
-                memo={detailMemo}
-            />}
+            {detailMemo != null && 
+                <BookDetailMemoDetailModal
+                    isOpen={isDetailOpen}
+                    close={closeDetail}
+                    memo={detailMemo}
+                />
+            }
 
             <CardAddButton onClick={openAdd} />
 
@@ -43,7 +46,7 @@ const BookDetailMemoCard: React.FC<Props> = ({ memos }) => {
                     :
                     memos.map(memo => (
                         <Memo key={memo.id} onClick={() => openDetail(memo)}>
-                            <PageNumber>{memo.page}</PageNumber>
+                            <PageNumber>{memo.page ?? '-'}</PageNumber>
                             <MemoContent>{memo.content}</MemoContent>
                         </Memo>
                     ))}
@@ -99,7 +102,7 @@ const PageNumber = styled.div`
     font-size: 0.85em;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #333;
+    color: ${ColorConfig.Primary};
 `;
 
 const MemoContent = styled.div.attrs({
