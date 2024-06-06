@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { Form, Modal } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import RowSpacer from '../../../../common/styles/RowSpacer';
 import AddButton from '../../../../common/button/AddButton';
 import { booksitoutServer } from '../../../../config/booksitoutServer';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import Modal from '../../../../common/Modal';
 
 interface Props {
     isOpen: boolean
@@ -40,12 +40,11 @@ const BookDetailMemoAddModal: React.FC<Props> = ({ isOpen, close }) => {
     }
 
     return (
-        <Modal show={isOpen} onHide={close} centered fullscreen='md-down' backdrop='static'>
-            <Modal.Header closeButton>
-                <Title>✏️ 메모 추가하기</Title>
-            </Modal.Header>
-
-            <Modal.Body>
+        <Modal 
+            isShowing={isOpen} 
+            onClose={close} 
+            titleText={'✏️ 메모 추가하기'} 
+            body={
                 <Form>
                     <Form.Group>
                         <Form.Control 
@@ -70,13 +69,9 @@ const BookDetailMemoAddModal: React.FC<Props> = ({ isOpen, close }) => {
 
                     <AddButton label={'추가하기'} onClick={addMemo} />
                 </Form>
-            </Modal.Body>
-        </Modal>
+        } />
     )
 }
 
-const Title = styled.h2`
-    text-align: center;
-`;
 
 export default BookDetailMemoAddModal

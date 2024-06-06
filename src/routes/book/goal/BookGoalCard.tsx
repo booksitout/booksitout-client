@@ -3,9 +3,15 @@ import { Card, Placeholder } from 'react-bootstrap';
 import goalIcon from '../../../images/statistics/goal.png'
 import goalCompleteIcon from '../../../images/statistics/goal-complete.png'
 import useBookGoal from './useBookGoal';
+import ColSpacer from '../../../common/styles/ColSpacer';
 
-const BookGoalCard = () => {
-    const [goal, isDone, isLoading] = useBookGoal(new Date().getFullYear())
+interface Props {
+    size?: number
+    year?: number
+}
+
+const BookGoalCard: React.FC<Props> = ({ size = 75, year =  new Date().getFullYear()}) => {
+    const [goal, isDone, isLoading] = useBookGoal(year)
 
     return (
         <Container>
@@ -18,11 +24,13 @@ const BookGoalCard = () => {
 
             <GoalContainer>
                 <GoalImageContainer isDone={isDone}>
-                    <Image src={goalIcon} alt='' />
+                    <Image src={goalIcon} alt='' size={size} />
                 </GoalImageContainer>
 
+                <ColSpacer size={10} />
+
                 <GoalTextContainer isDone={isDone}>
-                    <h1 className='force-1-line p-2'>
+                    <GoalText>
                         {isLoading ? (
                             <Placeholder as={Card.Text} animation='wave'>
                                 <Placeholder xs='2' /> 권
@@ -37,7 +45,7 @@ const BookGoalCard = () => {
                                 권 / {goal.total}권
                             </>
                         )}
-                    </h1>
+                    </GoalText>
                 </GoalTextContainer>
             </GoalContainer>
         </Container>
@@ -47,11 +55,13 @@ const BookGoalCard = () => {
 const Container = styled.div`
     display: flex;
     width: 100%;
+    margin: 0px;
 `;
 
 const GoalContainer = styled.div`
     display: flex;
     justify-content: space-between;    
+    align-items: center;
     flex-direction: row;
     text-align: end;
     width: 100%;
@@ -61,7 +71,7 @@ const GoalCompleteContainer = styled.div`
 	position: absolute;
 	z-index: 1;
 	opacity: 100;
-    transform: translate(250%, 0%);
+    transform: translate(200%, 0%);
     text-align: center;
 `;
 
@@ -89,7 +99,14 @@ const GoalTextContainer = styled.div`
 const Image = styled.img.attrs({
     className: 'img-fluid'
 })`
-    height: 100px;
+    height: ${props => props.size}px;
+`;
+
+const GoalText = styled.h1.attrs({
+    className: 'force-1-line'
+})`
+    font-size: ${props => props.size / 2}px;
+    margin: 0px;
 `;
 
 export default BookGoalCard

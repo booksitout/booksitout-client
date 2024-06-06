@@ -9,6 +9,7 @@ import IndexContentContainer from '../IndexContentContainer';
 import BookGoalCard from '../../book/goal/BookGoalCard';
 import BookLastReadCard from '../../book/BookLastReadCard';
 import Login from '../../../common/Login';
+import ContentContainer from '../../../common/styles/ContentContainer';
 
 const IndexSummaryCard = () => {
     const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
@@ -38,19 +39,21 @@ const YesLoggedInCase = () => {
     return (
         <Row>
             <Col>
-                <IndexContentContainer height={175}>
-                    <BookLastReadCard />
-                </IndexContentContainer>
+                <LeftRow>
+                    <IndexContentContainer height={200}>
+                        <BookLastReadCard />
+                    </IndexContentContainer>
 
-                <IndexContentContainer href='/book/goal'>
-                    <BookGoalCard />
-                </IndexContentContainer>
+                    <ContentContainer href='/book/goal'>
+                        <BookGoalCard />
+                    </ContentContainer>
+                </LeftRow>
             </Col>
 
             <Col>
-                <IndexContentContainer href='/book/statistics'>
+                <ContentContainer href='/book/statistics'>
                     <BookStatisticsTable year={new Date().getFullYear()} />
-                </IndexContentContainer>
+                </ContentContainer>
             </Col>
         </Row>
     )
@@ -64,6 +67,14 @@ const Row = styled.div.attrs({
 const Col = styled.div.attrs({
     className: 'col-12 col-md-6 col-xl-4'
 })`
+    margin-bottom: 20px;
+`;
+
+const LeftRow = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 `;
 
 export default IndexSummaryCard

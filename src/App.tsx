@@ -29,6 +29,7 @@ import LibraryMembershipAddImageRoute from './routes/library/membership/add/Libr
 import LibraryMembershipAddManualRoute from './routes/library/membership/add/LibraryMembershipAddManualRoute'
 import LoginRoute from './routes/login/LoginRoute'
 import BookDetailRoute from './routes/book/detail/BookDetailRoute'
+import BookGoalRoute from './routes/book/goal/BookGoalRoute'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -42,7 +43,7 @@ const router = createBrowserRouter(
 			<Route path='/book/mine' element={<BookMineRoute />} />af
 			<Route path='/book/mine/:bookId' element={<BookDetailRoute />} />
 			<Route path='/book/mine/:bookId/reading' element={<></>} />
-			<Route path='/book/goal' element={<></>} />
+			<Route path='/book/goal' element={<BookGoalRoute />} />
 			<Route path='/book/statistics' element={<BookStatisticsRoute />} />
 
 			<Route path='/library' element={<LibraryRoute />} />

@@ -15,6 +15,7 @@ import BookMineRangeSelector from './BookMineRangeSelector';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
 import BookMineLoadingCard from './BookMineLoadingCard';
 import BooksByYear from './BooksByYear';
+import BookMineGoalCard from './BookMineGoalCard';
 
 const BookMineRoute = () => {
     useEffect(() => {
@@ -46,7 +47,16 @@ const YesLoggedInCase = () => {
     return (
         <>
             <RowSpacer />
-            <BookMineRangeSelector />
+
+            <div className="row">
+                <div className="col-12 col-md-6">
+                    <BookMineRangeSelector />
+                </div>
+
+                <div className="col-12 col-md-6">
+                    <BookMineGoalCard />
+                </div>
+            </div>
 
             {
                 isLoading
@@ -64,15 +74,15 @@ const YesLoggedInCase = () => {
                         <Row>
                             {
                                 range === BookMineListRange.DONE ?
-                                <BookDoneList bookListByYear={bookListByYear}  />
-                                :
-                                bookList.map((book, _) => {
-                                    return (
-                                        <Col key={book.id}>
-                                            <BookMineCard book={book} />
-                                        </Col>
-                                    )
-                                })
+                                    <BookDoneList bookListByYear={bookListByYear} />
+                                    :
+                                    bookList.map((book, _) => {
+                                        return (
+                                            <Col key={book.id}>
+                                                <BookMineCard book={book} />
+                                            </Col>
+                                        )
+                                    })
                             }
                         </Row>
                     </InfiniteScroll>

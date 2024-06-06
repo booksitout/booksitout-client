@@ -36,7 +36,7 @@ const AddFloatingButton = () => {
 	return (
 		<>
 			{isLoggedIn && token !== '' && token !== null && (
-				<ButtonContainer variant="book" active={getIsActive()} onClick={() => navigate(getNavigateUrl())}>
+				<ButtonContainer active={getIsActive()} onClick={() => navigate(getNavigateUrl())}>
 					<BookIcon className="h2 p-0 m-0" />
 				</ButtonContainer>
 			)}
@@ -44,7 +44,9 @@ const AddFloatingButton = () => {
 	)
 }
 
-const ButtonContainer = styled(Button).attrs({})`
+const ButtonContainer = styled(Button).attrs({
+	variant: "book"
+})`
 	position: fixed;
 
 	border-radius: 50px;

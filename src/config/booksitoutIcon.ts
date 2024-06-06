@@ -30,9 +30,10 @@ import { BiNetworkChart, BiSearchAlt2, BiTime, BiTransfer } from 'react-icons/bi
 import { AiFillStar, AiOutlineStar, AiFillCheckCircle, AiOutlineAppstore, AiFillLike, AiFillDislike, AiFillExperiment, AiFillPicture, AiFillNotification } from 'react-icons/ai'
 import { TbTargetArrow } from 'react-icons/tb'
 import { RiComputerFill, RiFilePaperLine, RiFunctionFill } from 'react-icons/ri'
-import { MdBrowserNotSupported, MdEmail, MdFeedback, MdHistoryEdu, MdLanguage, MdOutlineEmojiPeople, MdPrivacyTip, MdQuiz, MdCancel } from 'react-icons/md';
+import { MdBrowserNotSupported, MdEmail, MdFeedback, MdHistoryEdu, MdLanguage, MdOutlineEmojiPeople, MdPrivacyTip, MdQuiz, MdCancel, MdAddCircle } from 'react-icons/md';
 import { GiEvilBook, GiThink } from 'react-icons/gi';
 import { IoReloadCircle } from 'react-icons/io5';
+import { FaMinusCircle } from "react-icons/fa";
 
 
 const booksitoutIcon: { [key: string]: IconType } = {
@@ -117,13 +118,16 @@ const booksitoutIcon: { [key: string]: IconType } = {
 	convert: BiTransfer,
 
 	feature: RiFunctionFill,
-	
+
 	privacy: MdPrivacyTip,
 
 	notification: AiFillNotification,
 	email: MdEmail,
 
 	reload: IoReloadCircle,
+
+	add: MdAddCircle,
+	delete: FaMinusCircle,
 }
 
 export default booksitoutIcon
