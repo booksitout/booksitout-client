@@ -22,7 +22,7 @@ import {
 } from 'react-icons/bs'
 import { FaCross, FaPeopleArrows, FaSearch, FaTheaterMasks, FaUserAlt } from 'react-icons/fa'
 import { TbLocationFilled } from 'react-icons/tb'
-import { FiLogIn, FiSettings } from 'react-icons/fi'
+import { FiLogIn } from 'react-icons/fi'
 import { GrCircleQuestion} from 'react-icons/gr'
 import { HiDotsCircleHorizontal, HiOutlineUserAdd } from 'react-icons/hi'
 import { ImLibrary } from 'react-icons/im'
