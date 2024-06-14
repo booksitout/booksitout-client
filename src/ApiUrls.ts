@@ -120,6 +120,7 @@ class ApiUrls {
 
 		static Goal = class {
 			static GET = (year: number) => `/v1/book/goals/${year}`
+			static GET_ALL = () => `/v1/book/goals`
 		}
 	}
 

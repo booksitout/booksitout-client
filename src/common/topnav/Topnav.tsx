@@ -6,9 +6,11 @@ import useUrl from '../hooks/useUrl';
 import { Nav } from 'react-bootstrap';
 import TopnavUserIcon from './TopnavUserIcon';
 import ColorConfig from '../../config/ColorConfig';
+import useLoginStore from '../../routes/login/useLoginStore';
 
 const Topnav = () => {
     const urls = useUrl()
+	const isLoggedIn = useLoginStore((state) => state.isLoggedIn())
 
     return (
         <TopnavContainer>
@@ -18,7 +20,7 @@ const Topnav = () => {
 
                     <LogoSpacer />
 
-                    <TopnavLink label={'서재'} url={'/book'} isActive={urls.startsWith('/book')} />
+                    <TopnavLink label={'서재'} url={isLoggedIn ? '/book/mine?range=READING' : '/book'} isActive={urls.startsWith('/book')} />
                     <TopnavLink label={'도서관'} url={'/library'} isActive={urls.startsWith('/library')} />
                     <TopnavLink label={'커뮤니티'} url={'/community'} isActive={urls.startsWith('/community')} />
 
