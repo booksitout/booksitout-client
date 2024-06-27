@@ -14,12 +14,14 @@ const PopularBookListRow: React.FC<Props> = ({ popularBook }) => {
             <Row>
                 <RankingBadge>{popularBook.ranking}</RankingBadge>
 
-                <Cover src={popularBook.coverUrl} />
+                <CoverContainer>
+                    <Cover src={popularBook.coverUrl} />
+                </CoverContainer>
 
                 <ColSpacer size={5} />
 
                 <Col>
-                    <Title>{popularBook.title.substring(0, 15)}</Title>
+                    <Title>{popularBook.title}</Title>
                     <Author>{popularBook.author.substring(0, 20)}</Author>
                 </Col>
             </Row>
@@ -33,10 +35,16 @@ const Row = styled.div`
     width: 100%;
 `;
 
+const CoverContainer = styled.div`
+    width: 100px;
+    justify-content: center;
+    text-align: center;
+`;
+
 const Cover = styled.img.attrs({
     className: 'img-fluid rounded',
 })`
-    height: 100px;
+    height: 80px;
 `;
 
 const Title = styled.h5.attrs({

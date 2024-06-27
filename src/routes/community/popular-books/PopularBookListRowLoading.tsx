@@ -15,7 +15,9 @@ const PopularBookListRowLoading: React.FC<Props> = ({ index }) => {
             <Row>
                 <RankingBadge>{index}</RankingBadge>
 
-                <Cover src={ImageConfig.Placeholder.BookCover} />
+                <CoverContainer>
+                    <Cover src={ImageConfig.Placeholder.BookCover} />
+                </CoverContainer>
 
                 <ColSpacer size={5} />
 
@@ -40,10 +42,16 @@ const Row = styled.div`
     width: 100%;
 `;
 
+const CoverContainer = styled.div`
+    width: 100px;
+    justify-content: center;
+    text-align: center;
+`;
+
 const Cover = styled.img.attrs({
     className: 'img-fluid rounded',
 })`
-    height: 100px;
+    height: 80px;
 `;
 
 const Title = styled.h5.attrs({

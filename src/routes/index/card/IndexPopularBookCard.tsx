@@ -8,7 +8,7 @@ import CardTitle from '../../../common/styles/CardTitle';
 import BooksitoutLogo from '../../../common/BooksitoutLogo';
 
 const IndexPopularBookCard = () => {
-    const [isLoading, popularBooks] = usePopularBooks('BOOKSITOUT', 12)
+    const [isLoading, popularBooks] = usePopularBooks('BOOKSITOUT', 10)
 
     return (
         <Card>
@@ -21,7 +21,7 @@ const IndexPopularBookCard = () => {
 
                 <Row>
                     {isLoading ?
-                        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) =>
+                        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) =>
                             <Col>
                                 <PopularBookListRowLoading index={index} />
                             </Col>
@@ -49,7 +49,7 @@ const Row = styled.div.attrs({
 `;
 
 const Col = styled.div.attrs({
-    className: 'col-12 col-md-6 col-xl-4'
+    className: 'col-12'
 })`
 `;
 
