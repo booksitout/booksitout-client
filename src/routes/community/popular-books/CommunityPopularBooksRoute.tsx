@@ -8,7 +8,7 @@ import RowSpacer from '../../../common/styles/RowSpacer';
 import PopularBooksAladinCard from './PopularBooksAladinCard';
 import PopularBooksKyoboCard from './PopularBooksKyoboCard';
 import PopularBooksYes24Card from './PopularBooksYes24Card';
-import CommunityRoutePopularBooksCard from '../CommunityRoutePopularBooksCard';
+import PopularBooksBooksitoutCard from '../PopularBooksBooksitoutCard';
 
 const CommunityPopularBooksRoute = () => {
     useEffect(() => {
@@ -25,13 +25,13 @@ const CommunityPopularBooksRoute = () => {
                 buttons={RouteTitleConfig.Community}
                 rightUi={undefined}
             />
-
-            <RowSpacer />
-
-            <CommunityRoutePopularBooksCard />
             <RowSpacer />
 
             <Row>
+            <Col>
+                    <PopularBooksBooksitoutCard />
+                </Col>
+
                 <Col>
                     <PopularBooksAladinCard />
                 </Col>
@@ -54,7 +54,7 @@ const Row = styled.div.attrs({
 `;
 
 const Col = styled.div.attrs({
-    className: 'col-12 col-md-6 col-xl-4 mb-4'
+    className: 'col-12 col-md-6 mb-4'
 })`
 `;
 

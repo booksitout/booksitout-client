@@ -5,7 +5,7 @@ import RouteTitle from "../../common/RouteTitle/RouteTitle"
 import { useEffect } from "react"
 import CommunityRouteTipsCard from "./CommunityRouteTipsCard"
 import RouteTitleConfig from "../../config/RouteTitleConfig";
-import CommunityRoutePopularBooksCard from "./CommunityRoutePopularBooksCard";
+import PopularBooksBooksitoutCard from "./PopularBooksBooksitoutCard";
 
 const CommunityRoute = () => {
 
@@ -28,7 +28,7 @@ const CommunityRoute = () => {
             <CommunityRouteTipsCard />
             <RowSpacer />
 
-            <CommunityRoutePopularBooksCard/>
+            <PopularBooksBooksitoutCard/>
             <RowSpacer />
         </RouteContainer>
     )

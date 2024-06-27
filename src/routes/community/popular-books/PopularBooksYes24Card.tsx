@@ -8,11 +8,11 @@ import ImageConfig from '../../../config/ImageConfig'
 import PopularBookListRowLoading from './PopularBookListRowLoading'
 
 const PopularBooksYes24Card = () => {
-    const [isLoading, popularBooks] = usePopularBooks('YES24', 20)
+    const [isLoading, popularBooks] = usePopularBooks('YES24', 10)
 
     return (
         <Card>
-            <CardBodyBackgroundContainer height={3000}>
+            <CardBodyBackgroundContainer height={1500}>
                 <CardTitle icon={<CardTitleImageIcon logo={ImageConfig.Logo.YES24} />} title={'YES24 베스트셀러'} url={'/community/popular-books/yes24'} />
 
                 {isLoading ?

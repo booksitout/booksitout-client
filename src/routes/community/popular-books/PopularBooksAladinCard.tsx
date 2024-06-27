@@ -8,11 +8,11 @@ import ImageConfig from '../../../config/ImageConfig'
 import PopularBookListRowLoading from './PopularBookListRowLoading'
 
 const PopularBooksAladinCard = () => {
-    const [isLoading, popularBooks] = usePopularBooks('ALADIN', 20)
+    const [isLoading, popularBooks] = usePopularBooks('ALADIN', 10)
 
     return (
         <Card>
-            <CardBodyBackgroundContainer height={3000}>
+            <CardBodyBackgroundContainer height={1500}>
                 <CardTitle icon={<CardTitleImageIcon logo={ImageConfig.Logo.ALADIN} />} title={'알라딘 베스트셀러'} url={'/community/popular-books/aladin'} />
 
                 {isLoading ?
