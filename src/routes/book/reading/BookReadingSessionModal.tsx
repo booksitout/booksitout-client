@@ -27,7 +27,7 @@ const Body = () => {
     const {
         bookId, setReadingSessionId,
         timerInSeconds, isTimerOn,
-        startTimer, pauseTimer
+        startTimer, resumeTimer, pauseTimer
     } = useReadingSessionStore()
     const {currentReadingSession} = useCurrentReadingSession()
 
@@ -77,8 +77,8 @@ const Body = () => {
 
             <TimerButtonContainer>
                 <Button
-                    variant={isTimerOn ? 'danger' : 'warning'}
-                    onClick={isTimerOn ? pauseTimer : startTimer}
+                    variant={isTimerOn ? 'pause' : 'resume'}
+                    onClick={isTimerOn ? pauseTimer : resumeTimer}
                 >
                     {isTimerOn ? '일시정지' : '재시작'}
                 </Button>

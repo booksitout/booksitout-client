@@ -111,6 +111,48 @@
     --bs-btn-disabled-border-color: var(--danger-disabled);
 }
 
+.btn-resume {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--resume);
+    --bs-btn-border-color: --resume;
+
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: var(--resume-hover);
+    --bs-btn-hover-border-color:--resume;
+
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--resume-active);
+    --bs-btn-active-border-color: var(--resume-active);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--resume);
+    --bs-btn-disabled-border-color: var(--resume);
+}
+
+.btn-pause {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--pause);
+    --bs-btn-border-color: var(--pause);
+
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: var(--pause-hover);
+    --bs-btn-hover-border-color: var(--pause);
+
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--pause-active);
+    --bs-btn-active-border-color: var(--pause-active);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--pause);
+    --bs-btn-disabled-border-color: var(--pause);
+}
+
 .table-dark {
     --bs-table-color: #fff;
     --bs-table-bg: var(--primary-color);

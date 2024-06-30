@@ -6,6 +6,7 @@ interface ReadingSessionState {
     lastRecordedTime: string | null
 
     startTimer: () => void
+    resumeTimer: () => void
     pauseTimer: () => void
     resetTimer: () => void
     incrementTimer: () => void
@@ -40,6 +41,13 @@ const useReadingSessionStore = create<ReadingSessionState>((set, get) => ({
 
         localStorage.setItem('isTimerOn', 'true');
         localStorage.setItem('lastRecordedTime', now.toISOString());
+    },
+
+    resumeTimer: () => {
+        set({isTimerOn: true})
+
+        localStorage.setItem('isTimerOn', 'true')
+        localStorage.setItem('lastRecordedTime', new Date().toISOString());
     },
 
     pauseTimer: () => {
