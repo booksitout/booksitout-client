@@ -7,7 +7,6 @@ import BookGoalCard from "./BookGoalCard"
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
 import booksitoutIcon from '../../../config/booksitoutIcon';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
-import breakpoints from '../../../config/breakpoints';
 import AddDeleteButton from '../../../common/button/AddDeleteButton';
 import BookGoalAddModal from './BookGoalAddModal';
 import { useState } from 'react';
@@ -36,8 +35,10 @@ const BookGoalRoute = () => {
             .delete(`/v1/book/goals/${year}`)
             .then(() => toast.success('목표가 삭제되었습니다.'))
             .catch(() => toast.error('오류가 발생했어요. 잠시 후 다시 시도해 주세요.'))
-    }
 
+        window.location.reload()
+    }
+        
     const onHide = (goal: BookGoalResponse | null = null) => {
         setIsAddModalOpen(false)
     }
@@ -58,15 +59,15 @@ const BookGoalRoute = () => {
                 onHide={() => setIsAddModalOpen(false)}
                 year={selectedYear}
             />
-
             <RowSpacer />
+
             <Row>
                 {
                     Array
-                        .from({ length: 5 })
+                        .from({ length: 6 })
                         .map((_, index) => new Date().getFullYear() - index)
                         .map(year => (
-                            <Col key={year}>
+                            <Col>
                                 <TitleContainer>
                                     <YearText>{year}년</YearText>
                                     <AddDeleteButton
@@ -81,28 +82,21 @@ const BookGoalRoute = () => {
                                 </ContentContainer>
                             </Col>
                         ))
-                }
-            </Row>
+                    }
+                </Row>
         </RouteContainer>
     )
 }
 
-const Row = styled.div`
-    width: 100%;
+const Row = styled.div.attrs({
+    className: 'row'
+})`
 `;
 
 const Col = styled.div.attrs({
-    className: 'col-12 col-xl-4'
+    className: 'col-12 col-md-6 col-xl-4'
 })`
     margin-bottom: 50px;
-    
-    @media screen and (min-width: ${breakpoints.md}){
-        max-width: 350px;
-    }
-
-    @media screen and (min-width: ${breakpoints.xl}) {
-        max-width: 400px;
-    }
 `;
 
 const TitleContainer = styled.div`

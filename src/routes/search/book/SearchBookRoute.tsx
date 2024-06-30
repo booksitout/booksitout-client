@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import RouteContainer from "../../../common/styles/RouteContainer"
 import RowSpacer from "../../../common/styles/RowSpacer"
-import SearchBar from "../searchbar/SearchBar"
+import SearchBarWithHistoryAndSuggestion from "../searchbar/SearchBarWithHistoryAndSuggestion"
 import breakpoints from '../../../config/breakpoints';
 import useSearchQuery from '../../../common/hooks/useSearchQuery';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
@@ -15,7 +15,7 @@ import NoContent from '../../../common/NoContent';
 import Loading from '../../../common/Loading';
 
 const SearchBookRoute = () => {
-    const [query, setQuery, dQuery] = useSearchQuery()
+    const {query, setQuery, dQuery} = useSearchQuery()
     const [books, setBooks] = useState<SearchBookResponse[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
@@ -41,7 +41,7 @@ const SearchBookRoute = () => {
 
             <SearchContainer>
                 <SearchContainerContainer>
-                    <SearchBar 
+                    <SearchBarWithHistoryAndSuggestion
                         autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET}
                         searchResultUrl={'/search'}
                         placeholder={'여러곳에서 1번에 책 검색하기'} 

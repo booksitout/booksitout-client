@@ -1,33 +1,37 @@
 import styled from 'styled-components';
 import SearchBookResponse from './SearchBookResponse'
-import { Card } from 'react-bootstrap'
+import {Card} from 'react-bootstrap'
 import CardBodyContainer from '../../../common/styles/CardBodyContainer'
 import RowSpacer from '../../../common/styles/RowSpacer';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import CardBodyContentContainer from "../../../common/styles/CardBodyContentContainer";
 
 interface Props {
     book: SearchBookResponse
+    onClick?: () => void
 }
 
-const SearchBookCard: React.FC<Props> = ({ book }) => {
+const SearchBookCard: React.FC<Props> = ({book, onClick}) => {
     const navigate = useNavigate()
 
+    const defaultOnClick = () => {navigate(`/search/${book.isbn13}?q=${book.title}`)}
+
     return (
-        <Card className='clickable' onClick={() => navigate(`/search/${book.isbn13}?q=${book.title}`)}>
-            <CardBodyContainer height={150}>
+        <Card className='clickable' onClick={onClick || defaultOnClick}>
+            <CardBodyContentContainer height={150}>
                 <Container>
                     <CoverContainer>
-                        <Cover src={book.cover} alt={book.title} />
+                        <Cover src={book.cover} alt={book.title}/>
                     </CoverContainer>
 
-                    <RowSpacer size={10} />
+                    <RowSpacer size={10}/>
 
                     <InfoContainer>
                         <Title>{book.title}</Title>
                         <Authors>{book.authors}</Authors>
                     </InfoContainer>
                 </Container>
-            </CardBodyContainer>
+            </CardBodyContentContainer>
         </Card>
     )
 }
@@ -37,7 +41,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    
+
     padding-left: 20px;
     padding-right: 20px;
 `;

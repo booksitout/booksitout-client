@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SearchBar from '../../search/searchbar/SearchBar';
+import SearchBarWithHistoryAndSuggestion from '../../search/searchbar/SearchBarWithHistoryAndSuggestion';
 import breakpoints from '../../../config/breakpoints';
 import ApiUrls from '../../../ApiUrls';
 
@@ -7,7 +7,7 @@ const IndexSearchBar = () => {
     return (
         <Container>
             <SearchBarContainer>
-                <SearchBar 
+                <SearchBarWithHistoryAndSuggestion
                     autoCompleteApiUrl={ApiUrls.Search.AutoComplete.GET}
                     searchHistoryApiUrl={ApiUrls.Search.BookHistory.GET}
                     searchResultUrl={'/search'}

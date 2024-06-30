@@ -3,32 +3,38 @@ import IndexContentContainer from "../../index/IndexContentContainer"
 import BookResponse from "../BookResponse"
 import BookPageBar from '../../../common/BookPageBar';
 import RowSpacer from '../../../common/styles/RowSpacer';
+import BookReadingSessionButton from "../reading/BookReadingSessionButton";
 
 interface Props {
     book: BookResponse
 }
 
-const BookDetailInfoCard: React.FC<Props> = ({ book }) => {
+const BookDetailInfoCard: React.FC<Props> = ({book}) => {
     return (
         <IndexContentContainer isNotHover={true}>
             <Container>
                 <CoverContainer>
-                    <Cover src={book.cover} alt={book.title} />
+                    <Cover src={book.cover} alt={book.title}/>
                 </CoverContainer>
 
                 <InfoContainer>
                     <div className="d-block d-md-none">
-                        <RowSpacer />
+                        <RowSpacer/>
                     </div>
 
                     <Title>{book.title}</Title>
                     <Author>{book.author}</Author>
 
-                    <RowSpacer />
+                    <RowSpacer/>
 
                     <BookPageContainer>
-                        <BookPageBar book={book} />
+                        <BookPageBar book={book}/>
                     </BookPageContainer>
+
+                    <RowSpacer/>
+                    <Center>
+                        <BookReadingSessionButton book={book}/>
+                    </Center>
                 </InfoContainer>
             </Container>
         </IndexContentContainer>
@@ -81,5 +87,10 @@ const BookPageContainer = styled.div`
     display: flex;
     justify-content: center;
 `;
+
+const Center = styled.div `
+    display: flex;
+    justify-content: center;
+`
 
 export default BookDetailInfoCard

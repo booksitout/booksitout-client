@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import RouteContainer from "../../../common/styles/RouteContainer"
 import RowSpacer from "../../../common/styles/RowSpacer"
-import SearchBar from "../../search/searchbar/SearchBar"
+import SearchBarWithHistoryAndSuggestion from "../../search/searchbar/SearchBarWithHistoryAndSuggestion"
 import breakpoints from '../../../config/breakpoints';
 import ApiUrls from '../../../ApiUrls';
 import booksitoutIcon from '../../../config/booksitoutIcon';
@@ -23,7 +23,7 @@ const LibraryRoute = () => {
             <RowSpacer />
             <SearchBarContainerContainer>
                 <SearchBarContainer>
-                    <SearchBar
+                    <SearchBarWithHistoryAndSuggestion
                         autoCompleteApiUrl={ApiUrls.Library.Search.AUTO_COMPLETE}
                         searchHistoryApiUrl={null}
                         searchHistoryCacheKey={null}

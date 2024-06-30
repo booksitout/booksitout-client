@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap'
 import CardTitle from '../../../common/styles/CardTitle'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import PopularBookListRow from './PopularBookListRow'
 import { usePopularBooks } from './usePopularBooks'
 import CardTitleImageIcon from '../../../common/CardTitleImageIcon'
@@ -12,7 +12,7 @@ const PopularBooksKyoboCard = () => {
 
     return (
         <Card>
-            <CardBodyBackgroundContainer height={1500}>
+            <CardBodyContentContainer height={1500}>
                 <CardTitle icon={<CardTitleImageIcon logo={ImageConfig.Logo.KYOBO} />} title={'교보문고 베스트셀러'} url={'/community/popular-books/kyobo'} />
 
                 {isLoading ?
@@ -21,7 +21,7 @@ const PopularBooksKyoboCard = () => {
                         .map((_, index) => <PopularBookListRowLoading index={index + 1} />)
                     :
                     popularBooks.map((book) => <PopularBookListRow popularBook={book} />)}
-            </CardBodyBackgroundContainer>
+            </CardBodyContentContainer>
         </Card>
     )
 }

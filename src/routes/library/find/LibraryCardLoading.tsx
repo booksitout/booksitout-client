@@ -3,13 +3,13 @@ import { Card, Placeholder } from 'react-bootstrap'
 import LibraryTextWithIcon from './LibraryTextWithIcon'
 import { TbLocationFilled as LocationIcon } from 'react-icons/tb'
 import { BsBookHalf as BookIcon } from 'react-icons/bs'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import breakpoints from '../../../config/breakpoints';
 
 const LibraryCardLoading = () => {
 	return (
 		<Container>
-			<CardBodyBackgroundContainer>
+			<CardBodyContentContainer>
 				<Row>
 					<LibraryNameContainer className='col-8'>
 						<LibraryName>
@@ -39,7 +39,7 @@ const LibraryCardLoading = () => {
 						<Placeholder xs={2} className='h-50' />
 					</Placeholder>
 				</LibraryInfoContianer>
-			</CardBodyBackgroundContainer>
+			</CardBodyContentContainer>
 		</Container>
 	)
 }

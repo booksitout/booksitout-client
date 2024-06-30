@@ -24,7 +24,7 @@ import { booksitoutServer } from '../../../config/booksitoutServer';
 import ApiUrls from '../../../ApiUrls';
 import useLoginStore from '../../login/useLoginStore';
 import searchCache from '../searchbar/searchCache';
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer';
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer';
 import IndexSearchBar from '../../index/card/IndexSearchBar';
 
 const SearchBookSourceRoute = () => {
@@ -244,7 +244,7 @@ const SearchBookSourceRoute = () => {
     )
 }
 
-const CardContainer = styled(CardBodyBackgroundContainer).attrs({
+const CardContainer = styled(CardBodyContentContainer).attrs({
     height: 425
 })`
     padding: 25px;

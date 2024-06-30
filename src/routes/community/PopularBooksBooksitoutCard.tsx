@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap'
-import CardBodyBackgroundContainer from '../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../common/styles/CardBodyContentContainer'
 import CardTitle from '../../common/styles/CardTitle'
 import { usePopularBooks } from './popular-books/usePopularBooks'
 import PopularBookListRow from './popular-books/PopularBookListRow'
@@ -12,7 +12,7 @@ const PopularBooksBooksitoutCard = () => {
 
     return (
         <Card>
-            <CardBodyBackgroundContainer height={600}>
+            <CardBodyContentContainer height={600}>
                 <CardTitle
                     icon={<BooksitoutLogo />}
                     title='책잇아웃 베스트셀러'
@@ -37,7 +37,7 @@ const PopularBooksBooksitoutCard = () => {
                         )
                     }
                 </Row>
-            </CardBodyBackgroundContainer>
+            </CardBodyContentContainer>
         </Card>
     )
 }

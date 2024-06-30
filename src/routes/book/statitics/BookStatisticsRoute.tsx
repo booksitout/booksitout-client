@@ -4,7 +4,7 @@ import RouteContainer from '../../../common/styles/RouteContainer'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
 import booksitoutIcon from '../../../config/booksitoutIcon'
 import { Card } from 'react-bootstrap'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import BookStatisticsByYearTable from './BookStatisticsByYearTable'
 import RowSpacer from '../../../common/styles/RowSpacer'
 import BookStatisticsReadTimeCard from './BookStatisticsReadTimeCard';
@@ -58,18 +58,18 @@ const YesLoggedInCase = () => {
             <Row>
                 <ColChart>
                     <Card>
-                        <CardBodyBackgroundContainer>
+                        <CardBodyContentContainer>
                             <BookStatisticsReadTimeCard />
-                        </CardBodyBackgroundContainer>
+                        </CardBodyContentContainer>
                     </Card>
                     <RowSpacer />
                 </ColChart>
 
                 <ColSummary>
                     <Card>
-                        <CardBodyBackgroundContainer>
+                        <CardBodyContentContainer>
                             <BookStatisticsByYearTable />
-                        </CardBodyBackgroundContainer>
+                        </CardBodyContentContainer>
                     </Card>
                     <RowSpacer />
                 </ColSummary>

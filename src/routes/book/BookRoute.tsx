@@ -5,7 +5,7 @@ import RowSpacer from '../../common/styles/RowSpacer'
 import CardTitle from '../../common/styles/CardTitle'
 import booksitoutIcon from '../../config/booksitoutIcon';
 import RouteTitle from '../../common/RouteTitle/RouteTitle'
-import CardBodyBackgroundContainer from '../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../common/styles/CardBodyContentContainer'
 import RouteTitleConfig from '../../config/RouteTitleConfig'
 
 const BookRoute = () => {
@@ -26,26 +26,26 @@ const BookRoute = () => {
 
             <RowSpacer />
             <Card>
-                <CardBodyBackgroundContainer height={600}>
+                <CardBodyContentContainer height={600}>
                     <CardTitle 
                         icon={<booksitoutIcon.book />} 
                         title={'서재 구경하기'} 
                         subTitle={'다른 사람의 서재를 구경할 수 있어요'}
                         url={'/book/users'} 
                     />
-                </CardBodyBackgroundContainer>
+                </CardBodyContentContainer>
             </Card>
 
             <RowSpacer />
             <Card>
-                <CardBodyBackgroundContainer height={600}>
+                <CardBodyContentContainer height={600}>
                     <CardTitle 
                         icon={<booksitoutIcon.book />} 
                         title={'인생책 추천받기'} 
                         subTitle={'다른 사람의 인생 책들을  둘러볼 수 있어요'}
                         url={'/book/recommendation'} 
                     />
-                </CardBodyBackgroundContainer>
+                </CardBodyContentContainer>
             </Card>
             <RowSpacer />
         </RouteContainer>

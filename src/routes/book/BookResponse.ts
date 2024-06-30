@@ -1,6 +1,7 @@
 interface BookResponse {
     id: number
-    isbn: string | null
+    isbn: string
+        | null
     title: string
     author: string
     cover: string | null

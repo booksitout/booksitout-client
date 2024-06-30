@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import Modal from '../../../common/Modal';
 import { Form } from 'react-bootstrap';
 import { useState } from 'react';
@@ -35,6 +34,8 @@ const BookGoalAddModal: React.FC<Props> = ({ isOpen, onHide, year }) => {
             .catch(() => {
                 toast.error('오류가 발생했어요. 잠시 후 다시 시도해 주세요.')
             })
+
+            window.location.reload()
     }
 
     return (

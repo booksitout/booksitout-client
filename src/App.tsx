@@ -1,4 +1,4 @@
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
+import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
 
 import Root from './common/Root'
 import NotFound from './common/NotFound'
@@ -30,62 +30,67 @@ import LibraryMembershipAddManualRoute from './routes/library/membership/add/Lib
 import LoginRoute from './routes/login/LoginRoute'
 import BookDetailRoute from './routes/book/detail/BookDetailRoute'
 import BookGoalRoute from './routes/book/goal/BookGoalRoute'
+import AddBookSearchRoute from './routes/book/add/search/AddBookSearchRoute'
+import AddBookManualRoute from './routes/book/add/manual/AddBookManualRoute'
+import AddRoute from "./routes/AddRoute";
 
 const router = createBrowserRouter(
-	createRoutesFromElements(
-		<Route path='/' element={<Root />} errorElement={<Error />}>
-			<Route path='*' element={<NotFound />} />
-			<Route path='/' element={<IndexRoute />} />
+    createRoutesFromElements(
+        <Route path='/' element={<Root/>} errorElement={<Error/>}>
+            <Route path='*' element={<NotFound/>}/>
+            <Route path='/' element={<IndexRoute/>}/>
 
-			<Route path='/book' element={<BookRoute />} />
-			<Route path='/book/users' element={<></>} />
-			<Route path='/book/users/:userId' element={<></>} />
-			<Route path='/book/mine' element={<BookMineRoute />} />af
-			<Route path='/book/mine/:bookId' element={<BookDetailRoute />} />
-			<Route path='/book/mine/:bookId/reading' element={<></>} />
-			<Route path='/book/goal' element={<BookGoalRoute />} />
-			<Route path='/book/statistics' element={<BookStatisticsRoute />} />
+            <Route path='/book' element={<BookRoute/>}/>
+            <Route path='/book/users' element={<></>}/>
+            <Route path='/book/users/:userId' element={<></>}/>
+            <Route path='/book/mine' element={<BookMineRoute/>}/>af
+            <Route path='/book/mine/:bookId' element={<BookDetailRoute/>}/>
+            <Route path='/book/mine/:bookId/reading' element={<></>}/>
+            <Route path='/book/goal' element={<BookGoalRoute/>}/>
+            <Route path='/book/statistics' element={<BookStatisticsRoute/>}/>
 
-			<Route path='/library' element={<LibraryRoute />} />
-			<Route path='/library/near' element={<LibraryNearRoute />} />
-			<Route path='/library/:libraryId' element={<LibraryDetailRoute />} />
-			<Route path='/library/by-region/:region' element={<LibraryRegionRoute />} />
-			<Route path='/library/by-region/:region/:regionDetail' element={<LibraryRegionRoute />} />
-			<Route path='/library/membership' element={<LibraryMembershipRoute />} />
-			<Route path='/library/membership/:membershipId' element={<LibraryMembershipDetailRoute />} />
+            <Route path='/library' element={<LibraryRoute/>}/>
+            <Route path='/library/near' element={<LibraryNearRoute/>}/>
+            <Route path='/library/:libraryId' element={<LibraryDetailRoute/>}/>
+            <Route path='/library/by-region/:region' element={<LibraryRegionRoute/>}/>
+            <Route path='/library/by-region/:region/:regionDetail' element={<LibraryRegionRoute/>}/>
+            <Route path='/library/membership' element={<LibraryMembershipRoute/>}/>
+            <Route path='/library/membership/:membershipId' element={<LibraryMembershipDetailRoute/>}/>
 
-			<Route path='/community' element={<CommunityRoute />} />
-			<Route path='/community/tips' element={<CommunityTipsRoute />} />
-			<Route path='/community/tips/:tipsId' element={<CommunityTipsDetailRoute />} />
-			<Route path='/community/popular-books' element={<CommunityPopularBooksRoute />} />
-			<Route path='/community/popular-books/:provider' element={<PopularBooksProviderRoute />} />
+            <Route path='/community' element={<CommunityRoute/>}/>
+            <Route path='/community/tips' element={<CommunityTipsRoute/>}/>
+            <Route path='/community/tips/:tipsId' element={<CommunityTipsDetailRoute/>}/>
+            <Route path='/community/popular-books' element={<CommunityPopularBooksRoute/>}/>
+            <Route path='/community/popular-books/:provider' element={<PopularBooksProviderRoute/>}/>
 
-			<Route path='/search' element={<SearchBookRoute />} />
-			<Route path='/search/:isbn13' element={<SearchBookSourceRoute />} />
+            <Route path='/search' element={<SearchBookRoute/>}/>
+            <Route path='/search/:isbn13' element={<SearchBookSourceRoute/>}/>
 
-			<Route path='/login' element={<LoginRoute />} />
-			<Route path='/login/oauth/:provider' element={<OAuthRedirect />} />
+            <Route path='/login' element={<LoginRoute/>}/>
+            <Route path='/login/oauth/:provider' element={<OAuthRedirect/>}/>
 
-			<Route path='/admin' element={<AdminRoute />} />
-			<Route path='/admin/tips/:id' element={<AdminTipsRoute />} />
+            <Route path='/admin' element={<AdminRoute/>}/>
+            <Route path='/admin/tips/:id' element={<AdminTipsRoute/>}/>
 
-			<Route path='/privacy' element={<PrivacyRoute />} />
-			<Route path='/privacy/:date' element={<PrivacyByDate />} />
+            <Route path='/privacy' element={<PrivacyRoute/>}/>
+            <Route path='/privacy/:date' element={<PrivacyByDate/>}/>
 
-			<Route path='/add/book/search' element={<NotFound />} />
-			<Route path='/add/book/manual' element={<NotFound />} />
-			<Route path='/add/membership/image' element={<LibraryMembershipAddImageRoute />} />
-			<Route path='/add/membership/manual' element={<LibraryMembershipAddManualRoute />} />
-		</Route>
-	),
+            <Route path='/add' element={<AddRoute/>}>
+                <Route path='book/search' element={<AddBookSearchRoute/>}/>
+                <Route path='book/manual' element={<AddBookManualRoute/>}/>
+                <Route path='membership/image' element={<LibraryMembershipAddImageRoute/>}/>
+                <Route path='membership/manual' element={<LibraryMembershipAddManualRoute/>}/>
+            </Route>
+        </Route>
+    ),
 )
 
 function App() {
-	return (
-		<div className='App'>
-			<RouterProvider router={router} />
-		</div>
-	)
+    return (
+        <div className='App'>
+            <RouterProvider router={router}/>
+        </div>
+    )
 }
 
 export default App

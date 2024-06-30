@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import useBookLastRead from './useBookLastRead'
+import BookReadingSessionButton from "./reading/BookReadingSessionButton";
 
 const BookLastReadCard = () => {
     const book = useBookLastRead()
@@ -15,7 +16,7 @@ const BookLastReadCard = () => {
             <InfoContainer href={`/book/mine/${book.id}`}>
                 <Title>{book.title}</Title>
                 <Author>{book.author}</Author>
-                <Button href={`/book/users/${book.id}/reading`}>이어서 읽기</Button>
+                <BookReadingSessionButton book={book}/>
             </InfoContainer>
         </Row>
     )
@@ -66,13 +67,6 @@ const Title = styled.h5.attrs({
 const Author = styled.h6.attrs({
     className: 'text-secondary'
 })`
-`;
-
-const Button = styled.a.attrs({
-    className: 'btn btn-book'
-})`
-    margin-top: 10px;
-    width: 100%;
 `;
 
 export default BookLastReadCard

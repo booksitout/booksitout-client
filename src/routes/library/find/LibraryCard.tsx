@@ -4,7 +4,7 @@ import { TbLocationFilled as LocationIcon } from 'react-icons/tb'
 import { BsBookHalf as BookIcon } from 'react-icons/bs'
 import LibraryTextWithIcon from './LibraryTextWithIcon'
 import utils from '../../../common/utils'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import ColSpacer from '../../../common/styles/ColSpacer';
 import LibraryResponse from '../near/LibraryNearResponse';
 import breakpoints from '../../../config/breakpoints';
@@ -19,7 +19,7 @@ const LibraryCard: React.FC<Props> = ({ library }) => {
     return (
         <a href={`/library/${library.id}`}>
             <Container>
-                <CardBodyBackgroundContainer>
+                <CardBodyContentContainer>
                     <Row>
                         <LibraryNameContainer className={library.location.distance !== 0 ? 'col-8' : 'col-12'}>
                             <LibraryImage src={library.location.logo}/>
@@ -43,7 +43,7 @@ const LibraryCard: React.FC<Props> = ({ library }) => {
                             text={`${library.bookCount === 0 ? '?' : utils.insertCommas(library.bookCount)} 권` ?? '?'}
                         />
                     </LibraryInfoContianer>
-                </CardBodyBackgroundContainer>
+                </CardBodyContentContainer>
             </Container>
         </a>
     )

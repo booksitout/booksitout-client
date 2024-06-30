@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Modal } from 'react-bootstrap'
 import { ImLibrary as LibraryIcon } from 'react-icons/im'
 import NoContent from '../../../common/NoContent'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import CardTitle from '../../../common/styles/CardTitle'
 import booksitoutIcon from '../../../config/booksitoutIcon';
 import LibraryTextWithIcon from '../find/LibraryTextWithIcon'
@@ -24,7 +24,7 @@ const LibraryMembershipDetailLibraryCard = ({ libraryList }) => {
 				libraryList={libraryList}
 			/>
 
-			<CardBodyBackgroundContainer>
+			<CardBodyContentContainer>
 				<CardTitle 
 					icon={<LibraryIcon />} 
 					title={`사용할 수 있는 도서관 (${libraryList.length}곳)`} 
@@ -48,7 +48,7 @@ const LibraryMembershipDetailLibraryCard = ({ libraryList }) => {
 				)}
 
 				{libraryList.length > 6 && <AllButton url='' onClick={openModal} />}
-			</CardBodyBackgroundContainer>
+			</CardBodyContentContainer>
 		</Card>
 	)
 }
@@ -57,7 +57,7 @@ const LibraryMembershipDetailLibraryCardCard = ({ library }) => {
 	return (
 		<a href={`/library/${library.id}`}>
 			<Card className='mb-3' style={{ minHeight: '125px' }}>
-				<CardBodyBackgroundContainer>
+				<CardBodyContentContainer>
 					<div className='row'>
 						<div className={library.location.distance !== 0 ? 'col-8' : 'col-12'}>
 							<h4 className='clamp-1-line'>{library.name}</h4>
@@ -74,7 +74,7 @@ const LibraryMembershipDetailLibraryCardCard = ({ library }) => {
 						<LibraryTextWithIcon icon={<booksitoutIcon.location />} text={library.location.address} />
 						<LibraryTextWithIcon icon={<booksitoutIcon.book />} text={`${library.bookCount === 0 ? '?' : utils.insertCommas(library.bookCount)} 권` ?? '?'} />
 					</div>
-				</CardBodyBackgroundContainer>
+				</CardBodyContentContainer>
 			</Card>
 		</a>
 	)

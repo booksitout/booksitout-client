@@ -55,7 +55,7 @@ const LibraryMembershipAddImageRoute = () => {
     }
 
     return (
-        <RouteContainer>
+        <>
             <LibraryMembershipAddImageModal
                 image={image}
                 membership={recognizedData}
@@ -64,14 +64,6 @@ const LibraryMembershipAddImageRoute = () => {
                 onHide={() => setShow(false)}
             />
 
-            <RouteTitle
-                icon={<booksitoutIcon.membership />}
-                title={'도서관 회원증 추가하기'}
-                buttons={RouteTitleConfig.AddMembership}
-                currentKey={'image'}
-            />
-
-            <RowSpacer />
             <Card>
                 <CardBodyContainer height={100}>
                     <CardTitle
@@ -96,7 +88,7 @@ const LibraryMembershipAddImageRoute = () => {
                     </DragContainer>
                 </CardBodyContainer>
             </Card>
-        </RouteContainer>
+        </>
     )
 }
 

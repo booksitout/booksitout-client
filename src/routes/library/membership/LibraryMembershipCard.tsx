@@ -3,12 +3,12 @@ import Barcode from 'react-barcode'
 import { Card } from 'react-bootstrap'
 import Error from '../../../common/Error'
 import utils from '../../../common/utils'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 
 const LibraryMembershipCard = ({ membership, width = 2 }) => {
 	return (
 		<Container>
-			<CardBodyBackgroundContainer>
+			<CardBodyContentContainer>
 				{membership == null ? (
                     <Error />
 				) : (
@@ -30,7 +30,7 @@ const LibraryMembershipCard = ({ membership, width = 2 }) => {
 						</div>
 					</a>
 				)}
-			</CardBodyBackgroundContainer>
+			</CardBodyContentContainer>
 		</Container>
 	)
 }

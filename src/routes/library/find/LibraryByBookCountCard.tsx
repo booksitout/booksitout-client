@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Card } from 'react-bootstrap'
 import CardTitle from '../../../common/styles/CardTitle'
 import booksitoutIcon from '../../../config/booksitoutIcon'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import useLibraryByBookCount from '../useLibraryByBookCount'
 import LibraryCardLoading from './LibraryCardLoading'
 import LibraryCard from './LibraryCard'
@@ -13,7 +13,7 @@ const LibraryByBookCountCard = () => {
 
     return (
         <Card>
-            <CardBodyBackgroundContainer height={600}>
+            <CardBodyContentContainer height={600}>
                 <CardTitle icon={<booksitoutIcon.popular />} title={'책 많은 도서관 순위'} url={''} />
 
                 {
@@ -44,7 +44,7 @@ const LibraryByBookCountCard = () => {
                             }
                         </Row>
                 }
-            </CardBodyBackgroundContainer>
+            </CardBodyContentContainer>
         </Card>
     )
 }

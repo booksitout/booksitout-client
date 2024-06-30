@@ -4,6 +4,7 @@ interface SearchBookResponse {
     subTitle: string | null
     authors: string
     cover: string
+    page: number | null
 }
 
 export default SearchBookResponse

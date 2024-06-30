@@ -1,5 +1,5 @@
 import { Card } from 'react-bootstrap'
-import CardBodyBackgroundContainer from '../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../common/styles/CardBodyContentContainer'
 import CardTitle from '../../common/styles/CardTitle'
 import IndexContentContainer from '../index/IndexContentContainer';
 import { useTipsList } from './tips/useTipsList';
@@ -12,7 +12,7 @@ const CommunityRouteTipsCard = () => {
 
     return (
         <Card>
-            <CardBodyBackgroundContainer height={600}>
+            <CardBodyContentContainer height={600}>
                 <CardTitle
                     icon={<BooksitoutLogo />}
                     title='책잇아웃의 꿀팁'
@@ -41,7 +41,7 @@ const CommunityRouteTipsCard = () => {
                             )
                         })
                 }
-            </CardBodyBackgroundContainer>
+            </CardBodyContentContainer>
         </Card>
     )
 }

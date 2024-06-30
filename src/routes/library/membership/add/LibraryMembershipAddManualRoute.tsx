@@ -47,15 +47,7 @@ const LibraryMembershipAddManualRoute = () => {
     }
 
     return (
-        <RouteContainer>
-            <RouteTitle
-                icon={<booksitoutIcon.membership />}
-                title={'도서관 회원증 추가하기'}
-                buttons={RouteTitleConfig.AddMembership}
-                currentKey={'manual'}
-            />
-
-            <RowSpacer />
+        <>
             <Card style={{ minHeight: '725px' }} >
                 <CardBodyContainer>
                     <CardTitle icon={<booksitoutIcon.membership />} title={'회원증 직접 추가하기'} url={""} />
@@ -99,7 +91,7 @@ const LibraryMembershipAddManualRoute = () => {
                     </Form>
                 </CardBodyContainer>
             </Card>
-        </RouteContainer>
+        </>
     )
 }
 

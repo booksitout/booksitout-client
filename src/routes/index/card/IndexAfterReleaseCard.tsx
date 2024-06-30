@@ -2,17 +2,17 @@ import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import breakpoints from '../../../config/breakpoints';
 
-const IndexPreReleaseCard = () => {
+const IndexAfterReleaseCard = () => {
     return (
         <Container>
-            <Title>책잇아웃은 아직 정식 출시전이에요</Title>
+            <Title>책잇아웃에 대한 생각을 들려 주세요</Title>
 
             <Content>
-                2024년 내에 출시 예정이니 잠시만 기다려 주세요!
+                사용하면서 불편했던 점이나 개선해야 할 부분을 알려주세요
             </Content>
 
-            <a href="https://docs.google.com/forms/d/1Lzt2Uf_jlajP2wN0isL7TPSAOuadbOgpNQfBLy_IRbc/viewform" target='_blank' rel="noreferrer">
-                <InputButton>출시되면 알림 받기</InputButton>
+            <a href="https://docs.google.com/forms/d/1lW6HS7zUaxjD_0EAHE4TqnqHapG87yZqMkzLXqWcPLw/viewform" target='_blank' rel="noreferrer">
+                <InputButton>피드백 남기기</InputButton>
             </a>
         </Container>
     )
@@ -56,4 +56,4 @@ const InputButton = styled(Button).attrs({
     }
 `;
 
-export default IndexPreReleaseCard
+export default IndexAfterReleaseCard

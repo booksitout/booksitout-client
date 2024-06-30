@@ -1,7 +1,7 @@
 import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
 
-const CardBodyBackgroundContainer = styled(Card.Body)`
+const CardBodyContentContainer = styled(Card.Body)`
     gap: 20px;
     padding: 20px;
     border-radius: 5px;
@@ -10,8 +10,8 @@ const CardBodyBackgroundContainer = styled(Card.Body)`
     min-height: ${props => props.height}px;
 `;
 
-CardBodyBackgroundContainer.defaultProps = {
+CardBodyContentContainer.defaultProps = {
     height: 0
 }
 
-export default CardBodyBackgroundContainer
+export default CardBodyContentContainer

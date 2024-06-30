@@ -7,6 +7,7 @@ import IndexLibraryCard from './card/IndexLibraryCard';
 import IndexSummaryCard from './card/IndexSummaryCard';
 import RowSpacer from '../../common/styles/RowSpacer';
 import IndexPopularBookCard from './card/IndexPopularBookCard';
+import IndexAfterReleaseCard from './card/IndexAfterReleaseCard';
 
 const IndexRoute = () => {
     return (
@@ -14,6 +15,7 @@ const IndexRoute = () => {
             <RowSpacer size={10} />
 
             <IndexPreReleaseCard />
+            {/* <IndexAfterReleaseCard /> */}
             <RowSpacer size={20} />
 
             <IndexSearchBar />

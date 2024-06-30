@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { Card, Placeholder } from 'react-bootstrap'
-import CardBodyBackgroundContainer from '../../../common/styles/CardBodyBackgroundContainer'
+import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 
 const LibraryMembershipCardLoading = ({ padding = 20 }) => {
 	return (
 		<Container>
-			<CardBodyBackgroundContainer>
+			<CardBodyContentContainer>
 				<Row>
 					<div className="col-4">
 						<Placeholder as={Card.Text} animation="glow">
@@ -26,7 +26,7 @@ const LibraryMembershipCardLoading = ({ padding = 20 }) => {
 						<Placeholder xs={8} />
 					</Placeholder>
 				</div>
-			</CardBodyBackgroundContainer>
+			</CardBodyContentContainer>
 		</Container>
 	)
 }

@@ -20,5 +20,4 @@ const useInput = <T>(initialValue: T): InputProps<T> => {
     }
 };
 
-
 export default useInput
