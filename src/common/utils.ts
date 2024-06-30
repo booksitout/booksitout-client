@@ -78,6 +78,16 @@ const utils = {
 
     isNumber(value: string): boolean {
         return !isNaN(parseFloat(value)) && isFinite(parseFloat(value));
+    },
+
+    formatTime(time: string | null): string {
+        if (time == null) {
+            return '?'
+        }
+
+        const date = time.split('T')[0];
+        const [year, month, day] = date.split('-');
+        return `${year}년 ${month}월 ${day}일`
     }
 }
 
