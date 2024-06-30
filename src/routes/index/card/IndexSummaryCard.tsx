@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Card } from 'react-bootstrap'
 import CardBodyContainer from '../../../common/styles/CardBodyContainer'
 import CardTitle from '../../../common/styles/CardTitle'
-import booksitoutIcon from '../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../config/BooksitoutIcon'
 import useLoginStore from '../../login/useLoginStore';
 import BookStatisticsTable from '../../book/statitics/BookStatisticsTable';
 import IndexContentContainer from '../IndexContentContainer';

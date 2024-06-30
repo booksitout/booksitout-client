@@ -3,10 +3,10 @@ import RouteTitle from "../../../../common/RouteTitle/RouteTitle"
 import CardBodyContainer from "../../../../common/styles/CardBodyContainer"
 import RouteContainer from "../../../../common/styles/RouteContainer"
 import RouteTitleConfig from "../../../../config/RouteTitleConfig"
-import booksitoutIcon from "../../../../config/booksitoutIcon"
+import booksitoutIcon from "../../../../config/BooksitoutIcon"
 import CardTitle from "../../../../common/styles/CardTitle"
 import toast from 'react-hot-toast'
-import { booksitoutServer } from "../../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../../config/BooksitoutServer"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import RowSpacer from "../../../../common/styles/RowSpacer"
@@ -35,7 +35,7 @@ const LibraryMembershipAddManualRoute = () => {
             memo: memo,
         }
 
-        booksitoutServer
+        BooksitoutServer
             .post('/v1/library/membership', membership)
             .then(() => {
                 toast.success('회원증을 추가했어요')

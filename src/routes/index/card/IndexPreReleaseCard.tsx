@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 
 const IndexPreReleaseCard = () => {
     return (

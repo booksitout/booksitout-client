@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SearchBarWithHistoryAndSuggestion from '../../search/searchbar/SearchBarWithHistoryAndSuggestion';
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 import ApiUrls from '../../../ApiUrls';
 
 const IndexSearchBar = () => {

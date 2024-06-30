@@ -7,7 +7,7 @@ import utils from '../../../common/utils'
 import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import ColSpacer from '../../../common/styles/ColSpacer';
 import LibraryResponse from '../near/LibraryNearResponse';
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 
 interface Props {
     library: LibraryResponse

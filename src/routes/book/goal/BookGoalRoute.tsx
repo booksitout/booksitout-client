@@ -5,14 +5,14 @@ import RouteContainer from "../../../common/styles/RouteContainer"
 import RowSpacer from "../../../common/styles/RowSpacer"
 import BookGoalCard from "./BookGoalCard"
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
-import booksitoutIcon from '../../../config/booksitoutIcon';
+import booksitoutIcon from '../../../config/BooksitoutIcon';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
 import AddDeleteButton from '../../../common/button/AddDeleteButton';
 import BookGoalAddModal from './BookGoalAddModal';
 import { useState } from 'react';
 import BookGoalResponse from './BookGoalResponse';
 import useBookGoalsAll from './useBookGoals';
-import { booksitoutServer } from '../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../config/BooksitoutServer';
 import toast from 'react-hot-toast';
 
 const BookGoalRoute = () => {
@@ -31,7 +31,7 @@ const BookGoalRoute = () => {
             return
         }
 
-        booksitoutServer
+        BooksitoutServer
             .delete(`/v1/book/goals/${year}`)
             .then(() => toast.success('목표가 삭제되었습니다.'))
             .catch(() => toast.error('오류가 발생했어요. 잠시 후 다시 시도해 주세요.'))

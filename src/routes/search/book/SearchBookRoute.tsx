@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import RouteContainer from "../../../common/styles/RouteContainer"
 import RowSpacer from "../../../common/styles/RowSpacer"
 import SearchBarWithHistoryAndSuggestion from "../searchbar/SearchBarWithHistoryAndSuggestion"
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 import useSearchQuery from '../../../common/hooks/useSearchQuery';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { booksitoutServer } from '../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../config/BooksitoutServer';
 import ApiUrls from '../../../ApiUrls';
 import toast from 'react-hot-toast';
 import SearchBookResponse from './SearchBookResponse';
@@ -26,7 +26,7 @@ const SearchBookRoute = () => {
 
     useEffect(() => {
         if (dQuery !== '') {
-            booksitoutServer
+            BooksitoutServer
                 .get(ApiUrls.Search.Book.GET(dQuery.toString()))
                 .then((res) => res.data)
                 .then((data: SearchBookResponse[]) => setBooks(data))

@@ -2,7 +2,7 @@ import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import useSearchQuery from '../../../common/hooks/useSearchQuery';
 import {useNavigate} from 'react-router-dom';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
-import {booksitoutServer} from '../../../config/booksitoutServer';
+import {BooksitoutServer} from '../../../config/BooksitoutServer';
 import toast from 'react-hot-toast';
 import AutoCompleteResponse from '../../../common/response/AutoCompleteResponse';
 import SearchHistoryResponse from '../../../common/response/SearchHistoryResponse';
@@ -37,7 +37,7 @@ const SearchBarWithHistoryAndSuggestion: React.FC<Props> = ({
 
     useEffect(() => {
         if (dQuery !== '' && autoCompleteApiUrl != null) {
-            booksitoutServer
+            BooksitoutServer
                 .get(`${autoCompleteApiUrl}?q=${dQuery}`)
                 .then((res) => setQuerySuggestions(res.data))
         }
@@ -46,7 +46,7 @@ const SearchBarWithHistoryAndSuggestion: React.FC<Props> = ({
     useEffect(() => {
         if (searchHistoryApiUrl != null && searchHistoryCacheKey != null && dQuery === '') {
             if (isLoggedIn) {
-                booksitoutServer
+                BooksitoutServer
                     .get(ApiUrls.Search.BookHistory.GET)
                     .then((res) => {
                         setQueryHistories(res.data)

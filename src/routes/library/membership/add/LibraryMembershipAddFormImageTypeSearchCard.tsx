@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Card, ListGroup, Form } from 'react-bootstrap'
 import NoContent from '../../../../common/NoContent'
 import Error from '../../../../common/Error';
-import { booksitoutServer } from '../../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../../config/BooksitoutServer';
 import { useDebounce } from '../../../../common/hooks/useDebounce';
 import LibraryMembershipTypeSearchResult from '../LibraryMembershipTypeSearchResult';
 import LibraryMembershipTypeResponse from '../LibraryMembershipTypeResponse';
@@ -30,7 +30,7 @@ const LibraryMembershipAddFormImageTypeSearchCard = ({ recognizedMembership, sel
         if (debouncedQuery === '') {
             cancelDebounce()
         } else {
-            booksitoutServer
+            BooksitoutServer
                 .get(`/v1/library/membership/type?q=${query}&size=6`)
                 .then(res => setSearchResult(res.data))
                 .finally(() => setLoading(false))

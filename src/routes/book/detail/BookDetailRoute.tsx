@@ -7,7 +7,7 @@ import BookDetailInfoCard from './BookDetailInfoCard';
 import BookDetailMemoCard from './memo/BookDetailMemoCard';
 import BookDetailReadingSessionCard from './reading-session/BookDetailReadingSessionCard';
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
-import booksitoutIcon from '../../../config/booksitoutIcon';
+import booksitoutIcon from '../../../config/BooksitoutIcon';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
 
 const BookDetailRoute = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { SearchBookSourceUsedOfflineResponse } from "./SearchBookSourceUsedResponse"
-import { booksitoutServer } from "../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../config/BooksitoutServer"
 
 const useBookUsedOffline = (isbn13: string, query: string) => {
     const [books, setBooks] = useState<SearchBookSourceUsedOfflineResponse[]>([])
@@ -8,7 +8,7 @@ const useBookUsedOffline = (isbn13: string, query: string) => {
 
     useEffect(() => {
         if (isbn13 !== '' && query !=='')  {
-            booksitoutServer
+            BooksitoutServer
                 .get(`/v1/book/search/sources/used/offline?isbn13=${isbn13}&query=${query}&sources=OFFLINE_ALADIN,OFFLINE_YES24`)
                 .then((res) => setBooks(res.data))
                 .finally(() => setIsLoading(false))

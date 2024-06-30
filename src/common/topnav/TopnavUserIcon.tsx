@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavDropdown } from 'react-bootstrap'
 import userIcon from './user.png'
-import booksitoutIcon from '../../config/booksitoutIcon'
+import booksitoutIcon from '../../config/BooksitoutIcon'
 import useLoginStore from '../../routes/login/useLoginStore'
 
 const TopnavUserIcon = () => {

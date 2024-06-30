@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useEffect } from "react"
 import RouteContainer from "../../../common/styles/RouteContainer"
 import RouteTitle from "../../../common/RouteTitle/RouteTitle"
-import booksitoutIcon from "../../../config/booksitoutIcon"
+import booksitoutIcon from "../../../config/BooksitoutIcon"
 import RouteTitleConfig from "../../../config/RouteTitleConfig"
 import RowSpacer from '../../../common/styles/RowSpacer';
 import PopularBooksAladinCard from './PopularBooksAladinCard';

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { booksitoutServer } from "../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../config/BooksitoutServer"
 import PopularBookResponse from "./PopularBookResponse"
 
 export const usePopularBooks = (source: 'YES24' | 'ALADIN' | 'KYOBO' | 'BOOKSITOUT', size: number) => {
@@ -7,7 +7,7 @@ export const usePopularBooks = (source: 'YES24' | 'ALADIN' | 'KYOBO' | 'BOOKSITO
     const [popularBooks, setPopularBooks] = useState<PopularBookResponse[]>([])
 
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(`/v1/book/best-seller/${source.toUpperCase()}?size=${size}` )
             .then((res) => setPopularBooks(res.data))
             .finally(() => setIsLoading(false))

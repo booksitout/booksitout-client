@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import styled from 'styled-components';
 import RouteContainer from '../../../common/styles/RouteContainer'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
-import booksitoutIcon from '../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../config/BooksitoutIcon'
 import useLoginStore from '../../login/useLoginStore'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useLibraryMembershipList from '../useLibraryMembershipList';

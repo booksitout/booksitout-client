@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import BookGoalResponse from "./BookGoalResponse"
-import { booksitoutServer } from "../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../config/BooksitoutServer"
 import ApiUrls from "../../../ApiUrls"
 
 const useBookGoalsAll = () => {
@@ -8,7 +8,7 @@ const useBookGoalsAll = () => {
     const [goals, setGoals] = useState<BookGoalResponse[]>([])
 
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Book.Goal.GET_ALL())
             .then((res) => {
                 setGoals(res.data)

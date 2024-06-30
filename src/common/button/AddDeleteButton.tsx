@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button as BootstrapButton } from 'react-bootstrap'
-import booksitoutIcon from '../../config/booksitoutIcon';
+import booksitoutIcon from '../../config/BooksitoutIcon';
 
 interface Props {
     state: 'ADD' | 'DELETE'

@@ -1,5 +1,5 @@
 import utils from "../../common/utils"
-import { booksitoutServer } from "../../config/booksitoutServer"
+import { BooksitoutServer } from "../../config/BooksitoutServer"
 
 const location = {
 	getLatitudeAndLongitude: async () => {
@@ -64,7 +64,7 @@ const location = {
 	getAddressByLatitudeAndLongitude: async (latitude: number, longitude: number) => {
 		if (localStorage.getItem('location-name') !== null) return localStorage.getItem('location-name')
 
-		return booksitoutServer
+		return BooksitoutServer
 			.get(`/v1/location/display-name?lat=${latitude}&long=${longitude}`)
 			.then((res) => {
 				const address = res.data.shortAddress

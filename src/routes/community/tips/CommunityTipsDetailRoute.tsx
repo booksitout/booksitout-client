@@ -9,7 +9,7 @@ import useTips from "./useTips"
 import CardBodyContainer from "../../../common/styles/CardBodyContainer";
 import RowSpacer from "../../../common/styles/RowSpacer";
 import RouteTitle from "../../../common/RouteTitle/RouteTitle";
-import booksitoutIcon from "../../../config/booksitoutIcon";
+import booksitoutIcon from "../../../config/BooksitoutIcon";
 import RouteTitleConfig from "../../../config/RouteTitleConfig";
 import RouteContainer from "../../../common/styles/RouteContainer";
 

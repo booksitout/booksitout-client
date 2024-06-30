@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { booksitoutServer } from '../../config/booksitoutServer'
+import { BooksitoutServer } from '../../config/BooksitoutServer'
 import ApiUrls from '../../ApiUrls'
 import Loading from '../../common/Loading'
 import useUrlQuery from '../../common/hooks/useUrlQuery'
@@ -34,7 +34,7 @@ const OAuthRedirect = () => {
 		const additional = getAdditional(provider)
 
 		if (code !== null) {
-			booksitoutServer
+			BooksitoutServer
 				.get(ApiUrls.User.Login.POST(provider?.toUpperCase() as 'NAVER' | 'GOOGLE' | 'KAKAO' | 'FACEBOOK', code, additional))
 				.then((res) => res.data)
 				.then((userData: LoginSuccessResponse) => {

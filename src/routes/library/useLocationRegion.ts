@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import LocationFullResponse from "./LocationFullResponse"
-import { booksitoutServer } from "../../config/booksitoutServer"
+import { BooksitoutServer } from "../../config/BooksitoutServer"
 
 const useLocationRegion = (q: string) => {
     const [location, setLocation] = useState<LocationFullResponse | null>(null)
 
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(`/v1/location/by-english-name?english-name=${q}`)
             .then((res) => setLocation(res.data))
     }, [q])

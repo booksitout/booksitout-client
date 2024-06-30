@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import LibraryMembershipResponse from "./membership/LibraryMembershipResponse"
-import { booksitoutServer } from "../../config/booksitoutServer"
+import { BooksitoutServer } from "../../config/BooksitoutServer"
 import ApiUrls from "../../ApiUrls"
 import { useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
@@ -13,7 +13,7 @@ const useLibraryMembership = (id: number) => {
     const [isNotFound, setIsNotFound] = useState<boolean>(false)
     
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Library.Membership.GET(id))
             .then((res) => {
                 if (res.status === 204) throw new Error('Not Found')
@@ -26,7 +26,7 @@ const useLibraryMembership = (id: number) => {
 
     const deleteMembership = () => {
         if (window.confirm('정말 도서관 회원증을 삭제할까요?')) {
-            booksitoutServer
+            BooksitoutServer
                 .delete(`v1/library/membership/${id}`)
                 .then(() => {
                     toast.success('회원증을 삭제했어요')

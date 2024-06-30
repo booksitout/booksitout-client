@@ -2,7 +2,7 @@ import ApiUrls from "../../../../ApiUrls";
 import styled from 'styled-components';
 import SearchBar from "../../../search/searchbar/SearchBar";
 import {useEffect, useState} from "react";
-import {booksitoutServer} from "../../../../config/booksitoutServer";
+import {BooksitoutServer} from "../../../../config/BooksitoutServer";
 import SearchBookResponse from "../../../search/book/SearchBookResponse";
 import toast from "react-hot-toast";
 import SearchBookCard from "../../../search/book/SearchBookCard";
@@ -18,7 +18,7 @@ const AddBookSearchRoute = () => {
 
     useEffect(() => {
         if (query !== '') {
-            booksitoutServer
+            BooksitoutServer
                 .get(ApiUrls.Search.Book.GET(query))
                 .then((res) => res.data)
                 .then((data: SearchBookResponse[]) => setBooks(data))

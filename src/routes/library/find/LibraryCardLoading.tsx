@@ -4,7 +4,7 @@ import LibraryTextWithIcon from './LibraryTextWithIcon'
 import { TbLocationFilled as LocationIcon } from 'react-icons/tb'
 import { BsBookHalf as BookIcon } from 'react-icons/bs'
 import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 
 const LibraryCardLoading = () => {
 	return (

@@ -3,7 +3,7 @@ import { Button, Card, Form, Modal } from 'react-bootstrap'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
-import { booksitoutServer } from '../../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../../config/BooksitoutServer';
 import LibraryMembershipCardLoading from '../LibraryMembershipCardLoading';
 import LibraryMembershipCard from '../LibraryMembershipCard';
 import LibraryMembershipAddFormImageTypeSearchCard from './LibraryMembershipAddFormImageTypeSearchCard';
@@ -22,7 +22,7 @@ const LibraryMembershipAddImageModal = ({ image, membership, setMembership, show
             memo: '',
         }
 
-        booksitoutServer
+        BooksitoutServer
             .post('/v1/library/membership', membershipToAdd)
             .then(() => {
                 toast.success('회원증을 추가했어요')

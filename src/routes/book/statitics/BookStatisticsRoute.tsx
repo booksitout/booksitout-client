@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import styled from 'styled-components';
 import RouteContainer from '../../../common/styles/RouteContainer'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
-import booksitoutIcon from '../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../config/BooksitoutIcon'
 import { Card } from 'react-bootstrap'
 import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import BookStatisticsByYearTable from './BookStatisticsByYearTable'

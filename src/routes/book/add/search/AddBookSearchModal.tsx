@@ -4,7 +4,7 @@ import Modal from "../../../../common/Modal";
 import SearchBookResponse from '../../../search/book/SearchBookResponse';
 import {Button, Form} from "react-bootstrap";
 import {BookForm, BookLanguage, BookSource} from '../../BookType';
-import {booksitoutServer} from "../../../../config/booksitoutServer";
+import {BooksitoutServer} from "../../../../config/BooksitoutServer";
 import toast from "react-hot-toast";
 import {useNavigate} from 'react-router-dom';
 import RowSpacer from "../../../../common/styles/RowSpacer";
@@ -79,7 +79,7 @@ const AddBookSearchModalBody: React.FC<PropsBody> = ({book}) => {
             language: language,
         };
 
-        booksitoutServer
+        BooksitoutServer
             .post(`/v1/book`, request)
             .then((res) => {
                 toast.success('책을 추가했어요.')

@@ -1,7 +1,7 @@
 import { Form } from 'react-bootstrap'
 import RowSpacer from '../../../../common/styles/RowSpacer';
 import AddButton from '../../../../common/button/AddButton';
-import { booksitoutServer } from '../../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../../config/BooksitoutServer';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -29,7 +29,7 @@ const BookDetailMemoAddModal: React.FC<Props> = ({ isOpen, close }) => {
             content: content
         }
 
-        booksitoutServer
+        BooksitoutServer
             .post(`/v1/book/${bookId}/memo`, data)
             .then(() => {
                 toast.success('메모를 추가했어요.')

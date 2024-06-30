@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import LibraryMembershipResponse from "./membership/LibraryMembershipResponse"
-import { booksitoutServer } from "../../config/booksitoutServer"
+import { BooksitoutServer } from "../../config/BooksitoutServer"
 import ApiUrls from "../../ApiUrls"
 import PagedResponse from "../../common/response/PagedResponse"
 import Paging from '../../common/hooks/Paging';
@@ -15,7 +15,7 @@ const useLibraryMembershipList = () => {
     const [libraryMemberships, setLibraryMemberships] = useState<LibraryMembershipResponse[]>([])
 
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Library.Membership.GET_LIST(page))
             .then((res) => {
                 const pagedResponse: PagedResponse<LibraryMembershipResponse> = res.data

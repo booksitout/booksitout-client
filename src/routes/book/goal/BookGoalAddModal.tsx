@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import { useState } from 'react';
 import AddButton from '../../../common/button/AddButton';
 import RowSpacer from '../../../common/styles/RowSpacer';
-import { booksitoutServer } from '../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../config/BooksitoutServer';
 import toast from 'react-hot-toast';
 
 interface Props {
@@ -25,7 +25,7 @@ const BookGoalAddModal: React.FC<Props> = ({ isOpen, onHide, year }) => {
             return
         }
 
-        booksitoutServer
+        BooksitoutServer
             .post(`/v1/book/goals/${year}`, {goal: goalCount})
             .then(() => {
                 toast.success('목표가 추가되었습니다.')

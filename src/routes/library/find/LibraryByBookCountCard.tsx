@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap'
 import CardTitle from '../../../common/styles/CardTitle'
-import booksitoutIcon from '../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../config/BooksitoutIcon'
 import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import useLibraryByBookCount from '../useLibraryByBookCount'
 import LibraryCardLoading from './LibraryCardLoading'

@@ -10,9 +10,9 @@ import RouteContainer from '../../../common/styles/RouteContainer'
 import utils from '../../../common/utils'
 import CardBodyContainer from '../../../common/styles/CardBodyContainer'
 import RowSpacer from '../../../common/styles/RowSpacer'
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
-import booksitoutIcon from '../../../config/booksitoutIcon';
+import booksitoutIcon from '../../../config/BooksitoutIcon';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
 
 const LibraryDetailRoute = () => {

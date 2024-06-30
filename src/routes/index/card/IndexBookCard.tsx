@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap'
 import CardTitle from '../../../common/styles/CardTitle';
-import booksitoutIcon from '../../../config/booksitoutIcon';
+import booksitoutIcon from '../../../config/BooksitoutIcon';
 import CardBodyContainer from '../../../common/styles/CardBodyContainer';
 import NoContent from '../../../common/NoContent';
 

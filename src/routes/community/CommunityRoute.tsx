@@ -1,6 +1,6 @@
 import RouteContainer from "../../common/styles/RouteContainer"
 import RowSpacer from "../../common/styles/RowSpacer"
-import booksitoutIcon from '../../config/booksitoutIcon';
+import booksitoutIcon from '../../config/BooksitoutIcon';
 import RouteTitle from "../../common/RouteTitle/RouteTitle"
 import { useEffect } from "react"
 import CommunityRouteTipsCard from "./CommunityRouteTipsCard"

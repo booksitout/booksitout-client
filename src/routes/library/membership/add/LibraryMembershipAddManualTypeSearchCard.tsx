@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDebounce } from '../../../../common/hooks/useDebounce'
 import LibraryMembershipTypeResponse from '../LibraryMembershipTypeResponse'
-import { booksitoutServer } from '../../../../config/booksitoutServer'
+import { BooksitoutServer } from '../../../../config/BooksitoutServer'
 import { Card, Form, ListGroup } from 'react-bootstrap'
 import NoContent from '../../../../common/NoContent'
 import Error from '../../../../common/Error';
@@ -19,7 +19,7 @@ const LibraryMembershipAddManualTypeSearchCard = ({ typeId, setTypeId }) => {
             setSearchResult([])
             cancelDebounce()
         } else {
-            booksitoutServer
+            BooksitoutServer
                 .get(`/v1/library/membership/type?q=${query}&size=6`)
                 .then((res) => setSearchResult(res.data))
                 .finally(() => setLoading(false))

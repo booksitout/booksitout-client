@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { booksitoutServer } from "../../config/booksitoutServer"
+import { BooksitoutServer } from "../../config/BooksitoutServer"
 import ApiUrls from "../../ApiUrls"
 import BookResponse from "./BookResponse"
 
@@ -7,7 +7,7 @@ const useBookLastRead = () => {
     const [book, setBook] = useState<BookResponse | null>(null)
     
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Book.LastRead())
             .then((res) => setBook(res.data))
     }, [])

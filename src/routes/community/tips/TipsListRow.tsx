@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import parse from 'html-react-parser'
 import TipsResponse from './TipsResponse';
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 
 interface Props {
     tip: TipsResponse

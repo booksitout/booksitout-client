@@ -4,11 +4,11 @@ import RouteContainer from '../../../../common/styles/RouteContainer'
 import { useDropzone } from 'react-dropzone'
 import LibraryMembershipImageRecognitionResponse from './LibraryMembershipImageRecognitionResponse'
 import toast from 'react-hot-toast'
-import { booksitoutServer } from '../../../../config/booksitoutServer'
+import { BooksitoutServer } from '../../../../config/BooksitoutServer'
 import { Card } from 'react-bootstrap'
 import LibraryMembershipAddImageModal from './LibraryMembershipAddImageModal'
 import CardTitle from '../../../../common/styles/CardTitle'
-import booksitoutIcon from '../../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../../config/BooksitoutIcon'
 import CardBodyContainer from '../../../../common/styles/CardBodyContainer'
 import RowSpacer from '../../../../common/styles/RowSpacer'
 import IndexContentContainer from '../../../index/IndexContentContainer';
@@ -47,7 +47,7 @@ const LibraryMembershipAddImageRoute = () => {
         const formData = new FormData()
         formData.append('file', imageData ?? '')
 
-        booksitoutServer
+        BooksitoutServer
             .post('/v1/library/membership/image', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
             .then(res => setRecognizedData(res.data))
             .then(() => toast.success('회원증을 인식했어요! 잘못된 정보가 있다면 수정하고 회원증을 추가해 주세요'))

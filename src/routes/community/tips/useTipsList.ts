@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import TipsResponse from './TipsResponse'
-import { booksitoutServer } from '../../../config/booksitoutServer'
+import { BooksitoutServer } from '../../../config/BooksitoutServer'
 import ApiUrls from '../../../ApiUrls'
 import Paging from '../../../common/hooks/Paging'
 
@@ -13,7 +13,7 @@ export const useTipsList = (size: number) => {
 
 	useEffect(() => {
 		if (isLast !== true) {
-			booksitoutServer
+			BooksitoutServer
 				.get(ApiUrls.Tips.List(page, size))
 				.then(res => {
 					setTipsList(prevTips => [...prevTips, ...res.data.contents])

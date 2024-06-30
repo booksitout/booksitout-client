@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap'
-import { booksitoutServer } from '../../config/booksitoutServer'
+import { BooksitoutServer } from '../../config/BooksitoutServer'
 import styled from 'styled-components';
 import RouteContainer from '../../common/styles/RouteContainer';
 import TipsResponse from '../community/tips/TipsResponse';
@@ -12,7 +12,7 @@ const AdminTipsRoute = () => {
 
     const [tip, setTip] = useState<TipsResponse | null>(null) 
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Admin.Tips.Single(id as unknown as number))
             .then((res) => {
                 setTip(res.data)
@@ -29,7 +29,7 @@ const AdminTipsRoute = () => {
     const [imageUrl, setImageUrl] = useState<string>()
 
     const edit = () => {
-        booksitoutServer
+        BooksitoutServer
             .put(ApiUrls.Admin.Tips.Edit(id as unknown as number), {
                 title: title,
                 content: content,

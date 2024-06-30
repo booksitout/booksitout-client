@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { booksitoutServer } from '../../../config/booksitoutServer'
+import { BooksitoutServer } from '../../../config/BooksitoutServer'
 import ApiUrls from '../../../ApiUrls'
 
 const useBookStatisticsReadTime = (duration: number) => {
@@ -7,7 +7,7 @@ const useBookStatisticsReadTime = (duration: number) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	useEffect(() => {
-		booksitoutServer
+		BooksitoutServer
 			.get(ApiUrls.Book.Statistics.ReadTime(duration))
 			.then(res => setReadTime(res.data))
 			.finally(() => setIsLoading(false))

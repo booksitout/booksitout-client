@@ -2,7 +2,7 @@ import React from 'react'
 import RouteContainer from '../common/styles/RouteContainer'
 import {Outlet} from "react-router-dom";
 import RouteTitle from "../common/RouteTitle/RouteTitle";
-import booksitoutIcon from "../config/booksitoutIcon";
+import booksitoutIcon from "../config/BooksitoutIcon";
 import RowSpacer from "../common/styles/RowSpacer";
 import RouteTitleConfig from "../config/RouteTitleConfig";
 import useUrl from "../common/hooks/useUrl";

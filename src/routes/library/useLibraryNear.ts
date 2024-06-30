@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { booksitoutServer } from "../../config/booksitoutServer";
+import { BooksitoutServer } from "../../config/BooksitoutServer";
 import ApiUrls from "../../ApiUrls";
 import LibraryResponse from "./near/LibraryNearResponse";
 
@@ -13,7 +13,7 @@ const useLibraryNear = (lat: number | null, long: number | null, radiusInKm: num
         if (lat !== null && long !== null && lat !== undefined && long !== undefined) {
             setIsLoading(true)
 
-			booksitoutServer
+			BooksitoutServer
 				.get(ApiUrls.Library.Near(lat, long, radiusInKm * 1000))
 				.then(res => {
                     const newlyFoundLibrariesCount = res.data.length - prevLibrariesCount.current;

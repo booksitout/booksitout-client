@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { booksitoutServer } from "../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../config/BooksitoutServer"
 
 const useBookSubscription = (isbn13: string, query: string) => {
     const [books, setBooks] = useState<BookSubscriptionResponse[] | null>(null)
@@ -7,7 +7,7 @@ const useBookSubscription = (isbn13: string, query: string) => {
 
     useEffect(() => {
         if (isbn13 !== '' && query !=='') {
-            booksitoutServer
+            BooksitoutServer
                 .get(`/v1/book/search/sources/subscription?isbn13=${isbn13}&query=${query}&sources=MILLIE,KYOBO,RIDI,YES24`)
                 .then((res) => setBooks(res.data))
                 .finally(() => setIsLoading(false))

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import LibraryResponse from './near/LibraryNearResponse'
-import { booksitoutServer } from '../../config/booksitoutServer'
+import { BooksitoutServer } from '../../config/BooksitoutServer'
 import ApiUrls from '../../ApiUrls'
 
 const useLibraryByBookCount = () => {
@@ -8,7 +8,7 @@ const useLibraryByBookCount = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	useEffect(() => {
-		booksitoutServer
+		BooksitoutServer
 			.get(ApiUrls.Library.GET_ALL_BY_BOOK_COUNT)
 			.then(res => setLibraries(res.data))
 			.finally(() => setIsLoading(false))

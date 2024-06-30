@@ -4,7 +4,7 @@ import { ImLibrary as LibraryIcon } from 'react-icons/im'
 import NoContent from '../../../common/NoContent'
 import CardBodyContentContainer from '../../../common/styles/CardBodyContentContainer'
 import CardTitle from '../../../common/styles/CardTitle'
-import booksitoutIcon from '../../../config/booksitoutIcon';
+import booksitoutIcon from '../../../config/BooksitoutIcon';
 import LibraryTextWithIcon from '../find/LibraryTextWithIcon'
 import utils from '../../../common/utils'
 import LibraryCard from '../find/LibraryCard'

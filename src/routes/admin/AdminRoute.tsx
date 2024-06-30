@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Card } from 'react-bootstrap'
 import styled from 'styled-components';
-import { booksitoutServer } from '../../config/booksitoutServer';
+import { BooksitoutServer } from '../../config/BooksitoutServer';
 import RouteContainer from '../../common/styles/RouteContainer';
 import TipsResponse from '../community/tips/TipsResponse';
 import CardTitle from '../../common/styles/CardTitle';
@@ -10,7 +10,7 @@ import AdminTipsCard from './AdminTipsCard';
 const AdminRoute = () => {
     const [tipPost, setTipPost] = useState<TipsResponse[]>([])
 	useEffect(() => {
-		booksitoutServer
+		BooksitoutServer
 			.get(`/v1/tips?page=0&size=100`)
 			.then(res => setTipPost(res.data.contents))
     }, [])

@@ -5,7 +5,7 @@ import LibraryRegionListCard from './LibraryRegionListCard'
 import { useParams } from 'react-router-dom'
 import useLibraryByRegion from '../useLibraryByRegion'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
-import booksitoutIcon from '../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../config/BooksitoutIcon'
 import RouteTitleConfig from '../../../config/RouteTitleConfig'
 
 const LibraryRegionRoute = () => {

@@ -2,11 +2,11 @@ import axios from 'axios'
 import ApiUrls from '../ApiUrls'
 import useLoginStore from '../routes/login/useLoginStore'
 
-export const booksitoutServer = axios.create({
+export const BooksitoutServer = axios.create({
 	baseURL: ApiUrls.BASE,
 })
 
-booksitoutServer.interceptors.request.use(
+BooksitoutServer.interceptors.request.use(
 	config => {
 		const token = localStorage.getItem('access-token')
 
@@ -22,7 +22,7 @@ booksitoutServer.interceptors.request.use(
 let isRefreshing: boolean = false
 let refreshSubscribers: (() => void)[] = []
 
-booksitoutServer.interceptors.response.use(
+BooksitoutServer.interceptors.response.use(
 	response => response,
 	async error => {
 		const originalRequest = error.config
@@ -35,14 +35,14 @@ booksitoutServer.interceptors.response.use(
 
 				if (refreshToken) {
 					try {
-						const res = await booksitoutServer.get(ApiUrls.User.Login.Refresh.GET(refreshToken))
+						const res = await BooksitoutServer.get(ApiUrls.User.Login.Refresh.GET(refreshToken))
 						const newAccessToken = res.data.accessToken
 						useLoginStore.getState().setAccessToken(newAccessToken)
 						originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
 						isRefreshing = false
 						refreshSubscribers.forEach(callback => callback())
 						refreshSubscribers = []
-						return booksitoutServer(originalRequest)
+						return BooksitoutServer(originalRequest)
 					} catch (refreshError) {
 						isRefreshing = false
 						refreshSubscribers = []
@@ -57,7 +57,7 @@ booksitoutServer.interceptors.response.use(
 					refreshSubscribers.push(() => {
 						const newAccessToken = useLoginStore.getState().accessToken
 						originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
-						resolve(booksitoutServer(originalRequest))
+						resolve(BooksitoutServer(originalRequest))
 					})
 				})
 			}

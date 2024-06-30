@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import BookStatisticsResponse from "./BookStatisticsResponse"
-import { booksitoutServer } from "../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../config/BooksitoutServer"
 import ApiUrls from "../../../ApiUrls"
 
 const useBookStatisticsSummary = (year: number) => {
@@ -22,7 +22,7 @@ const useBookStatisticsSummary = (year: number) => {
     }
 
 	useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Book.Statistics.Summary(year))
             .then((res) => setStatistics(res.data))
             .finally(() => setIsLoading(false))

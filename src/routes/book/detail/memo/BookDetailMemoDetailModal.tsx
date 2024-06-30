@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react'
 import BookMemoResponse from '../../BookMemoResponse'
 import { Button, Modal } from 'react-bootstrap'
-import { booksitoutServer } from '../../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../../config/BooksitoutServer';
 import toast from 'react-hot-toast';
 
 interface Props {
@@ -34,7 +34,7 @@ const DeleteButton = ({ memo }) => {
     const deleteMemo = () => {
         if (window.confirm('정말로 메모를 삭제할까요?') === false) return
 
-        booksitoutServer
+        BooksitoutServer
             .delete(`/v1/book/memo/${memo.id}`)
             .then(() => {
                 toast.success('메모를 삭제했어요.')

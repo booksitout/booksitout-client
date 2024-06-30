@@ -1,6 +1,6 @@
 import ApiUrls from '../../../ApiUrls'
 import SearchHistoryResponse from '../../../common/response/SearchHistoryResponse'
-import { booksitoutServer } from '../../../config/booksitoutServer'
+import { BooksitoutServer } from '../../../config/BooksitoutServer'
 
 class searchCache {
 	static updateCache(key: string | null, query: string, url: string): void {
@@ -29,7 +29,7 @@ class searchCache {
         if (historiesCache != null)  {
             const historiesCacheParsed = JSON.parse(key).filter(history => history.id === 0)
             if (historiesCacheParsed.length !== 0) {
-                booksitoutServer.post(ApiUrls.Search.BookHistory.Sync.POST, historiesCacheParsed)
+                BooksitoutServer.post(ApiUrls.Search.BookHistory.Sync.POST, historiesCacheParsed)
             }
         }
     }

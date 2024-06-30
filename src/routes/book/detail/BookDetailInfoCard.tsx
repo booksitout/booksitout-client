@@ -5,9 +5,10 @@ import BookPageBar from '../../../common/BookPageBar';
 import RowSpacer from '../../../common/styles/RowSpacer';
 import BookReadingSessionButton from "../reading/BookReadingSessionButton";
 import AddDeleteButton from "../../../common/button/AddDeleteButton";
-import {booksitoutServer} from "../../../config/booksitoutServer";
+import {BooksitoutServer} from "../../../config/BooksitoutServer";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
+import React from "react";
 
 interface Props {
     book: BookResponse
@@ -21,7 +22,7 @@ const BookDetailInfoCard: React.FC<Props> = ({book}) => {
             return
         }
 
-        booksitoutServer
+        BooksitoutServer
             .delete(`/v1/book/${book.id}`)
             .then(() => {
                 toast.success('책이 삭제됐어요')

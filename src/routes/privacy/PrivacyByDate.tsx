@@ -4,7 +4,7 @@ import privacyData from './privacyData'
 import parser from 'html-react-parser'
 import NoContent from '../../common/NoContent';
 import RouteTitle from '../../common/RouteTitle/RouteTitle';
-import booksitoutIcon from '../../config/booksitoutIcon'
+import booksitoutIcon from '../../config/BooksitoutIcon'
 import RouteContainer from '../../common/styles/RouteContainer'
 import { Card } from 'react-bootstrap';
 import CardBodyContainer from '../../common/styles/CardBodyContainer';

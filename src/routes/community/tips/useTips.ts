@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import TipsResponse from "./TipsResponse"
-import { booksitoutServer } from "../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../config/BooksitoutServer"
 import ApiUrls from "../../../ApiUrls"
 
 const useTips = (tipsId: number) => {
@@ -8,7 +8,7 @@ const useTips = (tipsId: number) => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Tips.Single(tipsId))
             .then((res) => setTips(res.data))
             .finally(() => setIsLoading(false))

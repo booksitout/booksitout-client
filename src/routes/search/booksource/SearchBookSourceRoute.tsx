@@ -16,11 +16,11 @@ import SearchBookSourceEmpty from './SearchBookSourceEmpty';
 import useUrlQuery from '../../../common/hooks/useUrlQuery';
 import useBookLibraryOffline from './useBookLibraryOffline';
 import SearchBookLoading from './SearchBookLoading';
-import booksitoutIcon from '../../../config/booksitoutIcon';
+import booksitoutIcon from '../../../config/BooksitoutIcon';
 import useCurrentLocation from '../../library/useCurrentLocation';
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 import { useEffect } from 'react';
-import { booksitoutServer } from '../../../config/booksitoutServer';
+import { BooksitoutServer } from '../../../config/BooksitoutServer';
 import ApiUrls from '../../../ApiUrls';
 import useLoginStore from '../../login/useLoginStore';
 import searchCache from '../searchbar/searchCache';
@@ -48,7 +48,7 @@ const SearchBookSourceRoute = () => {
                 query: query
             }
     
-            booksitoutServer.post(ApiUrls.Search.BookHistory.POST, body)
+            BooksitoutServer.post(ApiUrls.Search.BookHistory.POST, body)
         }
     }, [isbn13, query])
 

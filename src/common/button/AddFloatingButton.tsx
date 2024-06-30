@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { MdAddCircle as BookIcon } from 'react-icons/md'
 import { Button } from 'react-bootstrap'
 import styled from 'styled-components';
-import breakpoints from '../../config/breakpoints'
+import breakpoints from '../../config/Breakpoints'
 import useLoginStore from '../../routes/login/useLoginStore';
 
 const AddFloatingButton = () => {

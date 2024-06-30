@@ -45,7 +45,6 @@ const router = createBrowserRouter(
             <Route path='/book/users/:userId' element={<></>}/>
             <Route path='/book/mine' element={<BookMineRoute/>}/>af
             <Route path='/book/mine/:bookId' element={<BookDetailRoute/>}/>
-            <Route path='/book/mine/:bookId/reading' element={<></>}/>
             <Route path='/book/goal' element={<BookGoalRoute/>}/>
             <Route path='/book/statistics' element={<BookStatisticsRoute/>}/>
 

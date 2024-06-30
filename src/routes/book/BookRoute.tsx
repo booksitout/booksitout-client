@@ -3,7 +3,7 @@ import RouteContainer from '../../common/styles/RouteContainer'
 import { Card } from 'react-bootstrap'
 import RowSpacer from '../../common/styles/RowSpacer'
 import CardTitle from '../../common/styles/CardTitle'
-import booksitoutIcon from '../../config/booksitoutIcon';
+import booksitoutIcon from '../../config/BooksitoutIcon';
 import RouteTitle from '../../common/RouteTitle/RouteTitle'
 import CardBodyContentContainer from '../../common/styles/CardBodyContentContainer'
 import RouteTitleConfig from '../../config/RouteTitleConfig'

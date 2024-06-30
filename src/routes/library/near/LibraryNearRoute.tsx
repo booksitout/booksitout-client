@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import RouteContainer from '../../../common/styles/RouteContainer'
-import booksitoutIcon from '../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../config/BooksitoutIcon'
 import RouteTitle from '../../../common/RouteTitle/RouteTitle'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Form } from 'react-bootstrap'

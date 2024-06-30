@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import RouteContainer from "../../../common/styles/RouteContainer"
 import RowSpacer from "../../../common/styles/RowSpacer"
 import SearchBarWithHistoryAndSuggestion from "../../search/searchbar/SearchBarWithHistoryAndSuggestion"
-import breakpoints from '../../../config/breakpoints';
+import breakpoints from '../../../config/Breakpoints';
 import ApiUrls from '../../../ApiUrls';
-import booksitoutIcon from '../../../config/booksitoutIcon';
+import booksitoutIcon from '../../../config/BooksitoutIcon';
 import RouteTitle from '../../../common/RouteTitle/RouteTitle';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
 import LibraryByBookCountCard from './LibraryByBookCountCard';

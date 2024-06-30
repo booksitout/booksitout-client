@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import BookGoalResponse from "./BookGoalResponse"
-import { booksitoutServer } from "../../../config/booksitoutServer"
+import { BooksitoutServer } from "../../../config/BooksitoutServer"
 import ApiUrls from "../../../ApiUrls"
 
 const useBookGoal = (year: number) => {
@@ -9,7 +9,7 @@ const useBookGoal = (year: number) => {
     const [isDone, setIsDone] = useState<boolean>(false)
 
     useEffect(() => {
-        booksitoutServer
+        BooksitoutServer
             .get(ApiUrls.Book.Goal.GET(year))
             .then((res) => {
                 setGoal(res.data)

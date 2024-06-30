@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Card } from 'react-bootstrap'
 import CardBodyContainer from '../../../common/styles/CardBodyContainer'
 import CardTitle from '../../../common/styles/CardTitle'
-import booksitoutIcon from '../../../config/booksitoutIcon'
+import booksitoutIcon from '../../../config/BooksitoutIcon'
 import useLibraryNear from '../../library/useLibraryNear'
 import useCurrentLocation from '../../library/useCurrentLocation';
 import NoContent from '../../../common/NoContent';

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import BookMineListRange from './BookMineListRange'
 import BookResponse from '../BookResponse'
-import { booksitoutServer } from '../../../config/booksitoutServer'
+import { BooksitoutServer } from '../../../config/BooksitoutServer'
 import Paging from '../../../common/hooks/Paging'
 import BooksByYear from './BooksByYear'
 
@@ -18,7 +18,7 @@ const useMineBookList = (range: BookMineListRange | null) => {
 
 	useEffect(() => {
 		if (isLast !== true && range != null) {
-			booksitoutServer
+			BooksitoutServer
 				.get(`/v1/book/my-book?range=${range}&page=${page}&size=${size}`)
 				.then(res => {
 					setBooks(prevBook => [...prevBook, ...res.data.content])
