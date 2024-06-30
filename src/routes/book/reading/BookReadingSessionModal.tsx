@@ -27,7 +27,8 @@ const Body = () => {
     const {
         bookId, setReadingSessionId,
         timerInSeconds, isTimerOn,
-        startTimer, resumeTimer, pauseTimer
+        startTimer, resumeTimer, pauseTimer,
+        openEndModal
     } = useReadingSessionStore()
     const {currentReadingSession} = useCurrentReadingSession()
 
@@ -83,7 +84,7 @@ const Body = () => {
                     {isTimerOn ? '일시정지' : '재시작'}
                 </Button>
 
-                <Button variant={'book'}>
+                <Button variant={'book'} onClick={openEndModal}>
                     독서활동 끝내기
                 </Button>
             </TimerButtonContainer>

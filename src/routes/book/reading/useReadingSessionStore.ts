@@ -16,6 +16,10 @@ interface ReadingSessionState {
     openModal: (bookId: number) => void
     closeModal: () => void
 
+    isEndModalOpen: boolean
+    openEndModal: () => void
+    closeEndModal: () => void
+
     bookId: number | null
     readingSessionId: number | null
     setBookId: (bookId: number) => void
@@ -60,10 +64,17 @@ const useReadingSessionStore = create<ReadingSessionState>((set, get) => ({
     resetTimer: () => {
         set({timerInSeconds: 0})
         set({isTimerOn: false})
+        set({bookId: null})
+        set({readingSessionId: null})
+        set({lastRecordedTime: null})
+        set({isModalOpen: false})
+        set({isEndModalOpen: false})
 
         localStorage.removeItem('timerSeconds')
         localStorage.removeItem('isTimerOn')
         localStorage.removeItem('lastRecordedTime')
+        localStorage.removeItem('bookId')
+        localStorage.removeItem('readingSessionId')
     },
 
     incrementTimer: () => {
@@ -104,7 +115,15 @@ const useReadingSessionStore = create<ReadingSessionState>((set, get) => ({
     setReadingSessionId: (readingSessionId: number) => {
         localStorage.setItem('readingSessionId', readingSessionId.toString())
         set({readingSessionId})
-    }
+    },
+
+    isEndModalOpen: false,
+    openEndModal: () => {
+        set({isEndModalOpen: true})
+    },
+    closeEndModal: () => {
+        set({isEndModalOpen: false})
+    },
 }))
 
 export default useReadingSessionStore

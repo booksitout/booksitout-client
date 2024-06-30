@@ -1,21 +1,28 @@
 import React from "react";
 import styled from 'styled-components';
-import { Modal as BootstrapModal } from 'react-bootstrap'
+import {Modal as BootstrapModal} from 'react-bootstrap'
 
 interface Props {
     titleText: string | null
 
     isShowing: boolean
     isPreventClose?: boolean
-    size?: 'sm' | 'lg' | 'xl'
+    size?: 'sm' | 'md' | 'lg' | 'xl'
 
     onClose: () => void
     body: React.ReactNode
 }
 
-const Modal: React.FC<Props> = ({ isShowing, onClose, titleText, body, isPreventClose , size}) => {
+const Modal: React.FC<Props> = ({isShowing, onClose, titleText, body, isPreventClose, size}) => {
     return (
-        <BootstrapModal show={isShowing} onHide={onClose} centered fullscreen='md-down' size={size}>
+        <BootstrapModal
+            show={isShowing}
+            onHide={onClose}
+            centered
+            fullscreen='md-down'
+            // @ts-ignore
+            size={size}
+        >
             {
                 titleText !== null && (
                     <BootstrapModal.Header closeButton>

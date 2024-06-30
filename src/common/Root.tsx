@@ -11,6 +11,7 @@ import LocationSettings from '../config/LocationSettings';
 import RowSpacer from './styles/RowSpacer';
 import BookReadingSessionModal from '../routes/book/reading/BookReadingSessionModal'
 import ReadingSessionSettings from '../routes/book/reading/ReadingSessionSettings'
+import BookReadingSessionEndModal from "../routes/book/reading/BookReadingSessionEndModal";
 
 const Root = () => {
     const footerIncludeUrl = ['/', '/introduction', '/faq', '/privacy/2023-7-1']
@@ -24,6 +25,7 @@ const Root = () => {
     return (
         <>
             <BookReadingSessionModal/>
+            <BookReadingSessionEndModal/>
 
             <Toaster/>
             <ToastSettings/>
