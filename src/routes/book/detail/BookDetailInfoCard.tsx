@@ -4,14 +4,38 @@ import BookResponse from "../BookResponse"
 import BookPageBar from '../../../common/BookPageBar';
 import RowSpacer from '../../../common/styles/RowSpacer';
 import BookReadingSessionButton from "../reading/BookReadingSessionButton";
+import AddDeleteButton from "../../../common/button/AddDeleteButton";
+import {booksitoutServer} from "../../../config/booksitoutServer";
+import toast from "react-hot-toast";
+import {useNavigate} from "react-router-dom";
 
 interface Props {
     book: BookResponse
 }
 
 const BookDetailInfoCard: React.FC<Props> = ({book}) => {
+    const navigate = useNavigate()
+
+    const onDelete = () => {
+        if (!window.confirm('책을 삭제할까요?')) {
+            return
+        }
+
+        booksitoutServer
+            .delete(`/v1/book/${book.id}`)
+            .then(() => {
+                toast.success('책이 삭제됐어요')
+                navigate(`/book/mine?range=READING`)
+            })
+            .catch((e) => toast.error(`책을 삭제할 수 없었어요. 잠시 후 다시 시도해 주세요 (${e})`))
+    };
+
     return (
         <IndexContentContainer isNotHover={true}>
+            <DeleteButtonContainer>
+                <AddDeleteButton state={'DELETE'} onAdd={() => {}} onDelete={onDelete}/>
+            </DeleteButtonContainer>
+
             <Container>
                 <CoverContainer>
                     <Cover src={book.cover} alt={book.title}/>
@@ -56,7 +80,6 @@ const CoverContainer = styled.div.attrs({
     display: flex;
     align-items: center;
     justify-content: center;
-    align-items: center;
 `;
 
 const Cover = styled.img.attrs({
@@ -88,9 +111,15 @@ const BookPageContainer = styled.div`
     justify-content: center;
 `;
 
-const Center = styled.div `
+const Center = styled.div`
     display: flex;
     justify-content: center;
+`
+
+const DeleteButtonContainer = styled.div`
+    position: absolute;
+    right: 10px;
+    top: 10px;
 `
 
 export default BookDetailInfoCard
