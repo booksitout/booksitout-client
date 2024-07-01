@@ -10,7 +10,7 @@ interface LoginState {
 	profileImage: string | null
 	ttl: string | null
 	login: (tokens: { accessToken: string | null; refreshToken: string | null }) => void
-	logout(): void
+	logout(isShowMessage: boolean): void
 	isLoggedIn: () => boolean
 	setAccessToken: (accessToken: string) => void
 }
@@ -45,8 +45,11 @@ const useLoginStore = create<LoginState>(set => ({
 		return state.accessToken !== null && state.accessToken !== ''
 	},
 
-	logout: () => {
-		toast.success('로그아웃 했어요')
+	logout: (isShowMessage: boolean) => {
+		if (isShowMessage) {
+			toast.success('로그아웃 했어요')
+		}
+
 		localStorage.removeItem('access-token')
 		localStorage.removeItem('refresh-token')
 		localStorage.removeItem('name')
