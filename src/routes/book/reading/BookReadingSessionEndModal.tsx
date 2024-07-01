@@ -50,10 +50,21 @@ const Body = () => {
             .post(`/v1/book/reading-session/${readingSessionId}/end`, body)
             .then((res) => {
                 toast.success('독서활동을 저장했어요')
-                resetTimer()
                 navigate(`/book/mine/${bookId}`)
+                resetTimer()
             })
-            .catch((err) => toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요'))
+            .catch(() => toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요'))
+    }
+
+    const handleDelete = () => {
+        BooksitoutServer
+            .delete(`/v1/book/reading-session/end`)
+            .then(() => {
+                toast.success('독서활동을 삭제했어요.')
+                navigate(`/book/mine/${bookId}`)
+                resetTimer()
+            })
+            .catch(() => toast.error('오류가 났어요. 잠시 후 다시 시도해 주세요'))
     }
 
     return (
@@ -62,13 +73,15 @@ const Body = () => {
             <Form.Control type="number" placeholder={'읽은 페이지'} onChange={(e) => setPage(e.target.value)}/>
             <RowSpacer/>
 
+            {/*<Button variant={'book'} className={'w-100'}>읽은 시간으로 추측하기</Button>*/}
+
             <ButtonsContainer>
-                <ButtonContainer>
-                    <Button variant={'book'} className={'w-100'}>읽은 시간으로 추측하기</Button>
+                <ButtonContainer onClick={handleDelete}>
+                    <Button variant={'book'} className={'w-100'}>저장하지 않기</Button>
                 </ButtonContainer>
 
                 <ButtonContainer>
-                    <Button variant={'book'} className={'w-100'} type={'submit'}>{page == null || page == '' ? '입력하지 않고 저장하기' : '저장하기'}</Button>
+                    <Button variant={'book'} className={'w-100'} type={'submit'}>{page == null || page == '' ? '페이지 없이 저장하기' : '저장하기'}</Button>
                 </ButtonContainer>
             </ButtonsContainer>
 
@@ -94,7 +107,7 @@ const ButtonsContainer = styled.div.attrs({
 `
 
 const ButtonContainer = styled.div.attrs({
-    className: 'col-6'
+    className: 'col-12 col-md-6'
 })`
 `
 

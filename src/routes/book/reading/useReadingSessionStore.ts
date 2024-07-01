@@ -80,16 +80,14 @@ const useReadingSessionStore = create<ReadingSessionState>((set, get) => ({
     incrementTimer: () => {
         if (!get().isTimerOn) return
 
-        const now = new Date()
-        set((state) => {
-            const newTimerInSeconds = state.timerInSeconds + 1;
-            localStorage.setItem('timerSeconds', newTimerInSeconds.toString());
-            localStorage.setItem('lastRecordedTime', now.toISOString());
-            return {
-                timerInSeconds: newTimerInSeconds,
-                lastRecordedTime: now.toISOString(),
-            };
-        });
+        const now = new Date();
+        const lastRecordedTime = get().lastRecordedTime ? new Date(get().lastRecordedTime!) : new Date();
+        const differenceInSeconds = Math.floor((now.getTime() - lastRecordedTime.getTime()) / 1000);
+
+        set((state) => ({
+            timerInSeconds: state.timerInSeconds + differenceInSeconds,
+            lastRecordedTime: now.toISOString(),
+        }));
     },
 
     isShowingTimer: () => {
