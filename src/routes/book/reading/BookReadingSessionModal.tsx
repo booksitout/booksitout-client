@@ -137,7 +137,7 @@ const TimerButtonContainer = styled.div.attrs({
 `
 
 const Button = styled(BootstrapButton).attrs({
-    className: 'col-6 col-md-4'
+    className: 'col-12 col-md-4 mt-2 mt-md-0'
 })`
     margin-left: 10px;
     margin-right: 10px;

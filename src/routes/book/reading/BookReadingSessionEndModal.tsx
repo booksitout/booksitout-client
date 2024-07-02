@@ -2,17 +2,14 @@ import styled from 'styled-components';
 import React, {useState} from 'react'
 import Modal from '../../../common/Modal';
 import useReadingSessionStore from "./useReadingSessionStore";
-import {Button, Form} from "react-bootstrap";
+import {Button as BootstrapButton, Form} from "react-bootstrap";
 import RowSpacer from "../../../common/styles/RowSpacer";
 import {BooksitoutServer} from "../../../config/BooksitoutServer";
 import toast from 'react-hot-toast';
 import {useNavigate} from "react-router-dom";
 
 const BookReadingSessionEndModal = () => {
-    const {
-        isEndModalOpen, closeEndModal,
-        timerInSeconds,
-    } = useReadingSessionStore()
+    const {isEndModalOpen, closeEndModal,} = useReadingSessionStore()
 
     return (
         <Modal
@@ -48,7 +45,7 @@ const Body = () => {
 
         BooksitoutServer
             .post(`/v1/book/reading-session/${readingSessionId}/end`, body)
-            .then((res) => {
+            .then(() => {
                 toast.success('독서활동을 저장했어요')
                 navigate(`/book/mine/${bookId}`)
                 resetTimer()
@@ -75,21 +72,23 @@ const Body = () => {
 
             {/*<Button variant={'book'} className={'w-100'}>읽은 시간으로 추측하기</Button>*/}
 
-            <ButtonsContainer>
-                <ButtonContainer onClick={handleDelete}>
-                    <Button variant={'book'} className={'w-100'}>저장하지 않기</Button>
-                </ButtonContainer>
+            <Row>
+                <Col>
+                    <Button variant={'book'} onClick={handleDelete}>
+                        저장하지 않기
+                    </Button>
+                </Col>
 
-                <ButtonContainer>
-                    <Button variant={'book'} className={'w-100'} type={'submit'}>{page == null || page == '' ? '페이지 없이 저장하기' : '저장하기'}</Button>
-                </ButtonContainer>
-            </ButtonsContainer>
+                <Col>
+                    <Button variant={'book'} type={'submit'}>
+                        {page == null || page == '' ? '페이지 없이 저장하기' : '저장하기'}
+                    </Button>
+                </Col>
 
-            <RowSpacer size={10}/>
-
-            <CancelButtonContainer>
-                <CancelButton onClick={closeEndModal}>취소</CancelButton>
-            </CancelButtonContainer>
+                <Col>
+                    <CancelButton onClick={closeEndModal}>취소</CancelButton>
+                </Col>
+            </Row>
         </Form>
     )
 }
@@ -101,25 +100,25 @@ const Title = styled.h1`
     text-align: center;
 `
 
-const ButtonsContainer = styled.div.attrs({
+const Row = styled.div.attrs({
     className: 'row'
 })`
-`
-
-const ButtonContainer = styled.div.attrs({
-    className: 'col-12 col-md-6'
-})`
-`
-
-const CancelButtonContainer = styled.div`
-    display: flex;
     justify-content: center;
 `
 
-const CancelButton = styled(Button).attrs({
-    variant: 'book-danger'
+const Col = styled.div.attrs({
+    className: 'col-12 col-md-6 mt-2'
 })`
-    width: 75%;
+`
+
+const Button = styled(BootstrapButton).attrs({
+})`
+    width: 100%;
+`
+
+const CancelButton = styled(Button).attrs({
+    variant: 'book-danger',
+})`
 `
 
 export default BookReadingSessionEndModal
