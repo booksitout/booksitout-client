@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import {useNavigate} from 'react-router-dom';
 import RowSpacer from "../../../../common/styles/RowSpacer";
 import utils from '../../../../common/utils';
+import NumberInput from "../../../../common/form/NumberInput";
 
 interface Props {
     isAddModalOpen: boolean
@@ -146,8 +147,7 @@ const AddBookSearchModalBody: React.FC<PropsBody> = ({book}) => {
                 <RowSpacer/>
 
                 <Col4>
-                    <Form.Control
-                        type="number"
+                    <NumberInput
                         placeholder="페이지 수"
                         value={page?.toString()}
                         onChange={(e) => setPage(e.target.value)}

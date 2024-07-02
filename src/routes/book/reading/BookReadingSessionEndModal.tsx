@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Modal from '../../../common/Modal';
 import useReadingSessionStore from "./useReadingSessionStore";
 import {Button as BootstrapButton, Form} from "react-bootstrap";
@@ -7,6 +7,7 @@ import RowSpacer from "../../../common/styles/RowSpacer";
 import {BooksitoutServer} from "../../../config/BooksitoutServer";
 import toast from 'react-hot-toast';
 import {useNavigate} from "react-router-dom";
+import NumberInput from "../../../common/form/NumberInput";
 
 const BookReadingSessionEndModal = () => {
     const {isEndModalOpen, closeEndModal,} = useReadingSessionStore()
@@ -67,7 +68,11 @@ const Body = () => {
     return (
         <Form onSubmit={handleSave}>
             <Title>읽은 페이지를 입력해 주세요</Title>
-            <Form.Control type="number" placeholder={'읽은 페이지'} onChange={(e) => setPage(e.target.value)}/>
+            <NumberInput
+                placeholder={'읽은 페이지'}
+                onChange={(e) => setPage(e.target.value)}
+                isFocusOnAppear={true}
+            />
             <RowSpacer/>
 
             {/*<Button variant={'book'} className={'w-100'}>읽은 시간으로 추측하기</Button>*/}
@@ -111,8 +116,7 @@ const Col = styled.div.attrs({
 })`
 `
 
-const Button = styled(BootstrapButton).attrs({
-})`
+const Button = styled(BootstrapButton).attrs({})`
     width: 100%;
 `
 
