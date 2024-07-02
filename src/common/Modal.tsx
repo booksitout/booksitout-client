@@ -15,7 +15,7 @@ interface Props {
 
 const Modal: React.FC<Props> = ({isShowing, onClose, titleText, body, isPreventClose, size}) => {
     return (
-        <BootstrapModal
+        <BootstrapModalWrapper
             show={isShowing}
             onHide={onClose}
             centered
@@ -34,9 +34,13 @@ const Modal: React.FC<Props> = ({isShowing, onClose, titleText, body, isPreventC
             <BootstrapModal.Body>
                 {body}
             </BootstrapModal.Body>
-        </BootstrapModal>
+        </BootstrapModalWrapper>
     )
 }
+
+const BootstrapModalWrapper = styled(BootstrapModal)`
+    padding-top: 60px;
+`
 
 const Title = styled.h3`
     display: flex;
