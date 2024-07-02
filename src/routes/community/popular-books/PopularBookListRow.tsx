@@ -1,3 +1,4 @@
+import React from "react";
 import styled from 'styled-components';
 import PopularBookResponse from './PopularBookResponse'
 import IndexContentContainer from '../../index/IndexContentContainer';
@@ -20,10 +21,10 @@ const PopularBookListRow: React.FC<Props> = ({ popularBook }) => {
 
                 <ColSpacer size={5} />
 
-                <Col>
+                <InfoContainer>
                     <Title>{popularBook.title}</Title>
                     <Author>{popularBook.author.substring(0, 20)}</Author>
-                </Col>
+                </InfoContainer>
             </Row>
         </IndexContentContainer>
     )
@@ -36,7 +37,8 @@ const Row = styled.div`
 `;
 
 const CoverContainer = styled.div`
-    width: 100px;
+    min-width: 75px;
+    max-width: 75px;
     justify-content: center;
     text-align: center;
 `;
@@ -45,6 +47,13 @@ const Cover = styled.img.attrs({
     className: 'img-fluid rounded',
 })`
     height: 80px;
+`;
+
+const InfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    max-width: calc(100% - 75px);
 `;
 
 const Title = styled.h5.attrs({
@@ -57,17 +66,12 @@ const Author = styled.h6.attrs({
 })`
 `;
 
-const Col = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
 const RankingBadge = styled.div`
     position: absolute;
     bottom: 0;     
     right: 0;   
     width: 25px;
-    height: 25xpx;
+    height: 25px;
     background-color: ${ColorConfig.Primary};
     color: white;
     display: flex;
