@@ -71,7 +71,9 @@ const GoalCompleteContainer = styled.div`
 	position: absolute;
 	z-index: 1;
 	opacity: 100;
-    transform: translate(200%, 0%);
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 `;
 

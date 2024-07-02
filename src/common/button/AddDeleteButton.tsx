@@ -17,7 +17,7 @@ const AddDeleteButton: React.FC<Props> = ({ state, onAdd, onDelete }) => {
         )
     } else {
         return (
-            <ButtonContainer onClick={onDelete} variant="danger">
+            <ButtonContainer onClick={onDelete} variant="book-danger">
                 <DeleteButton />
             </ButtonContainer>
         )

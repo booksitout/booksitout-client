@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import ContentContainer from "../../../common/styles/ContentContainer"
 import RouteContainer from "../../../common/styles/RouteContainer"
 import RowSpacer from "../../../common/styles/RowSpacer"
@@ -9,10 +8,9 @@ import booksitoutIcon from '../../../config/BooksitoutIcon';
 import RouteTitleConfig from '../../../config/RouteTitleConfig';
 import AddDeleteButton from '../../../common/button/AddDeleteButton';
 import BookGoalAddModal from './BookGoalAddModal';
-import { useState } from 'react';
-import BookGoalResponse from './BookGoalResponse';
+import {useState} from 'react';
 import useBookGoalsAll from './useBookGoals';
-import { BooksitoutServer } from '../../../config/BooksitoutServer';
+import {BooksitoutServer} from '../../../config/BooksitoutServer';
 import toast from 'react-hot-toast';
 
 const BookGoalRoute = () => {
@@ -38,15 +36,15 @@ const BookGoalRoute = () => {
 
         window.location.reload()
     }
-        
-    const onHide = (goal: BookGoalResponse | null = null) => {
+
+    const onHide = () => {
         setIsAddModalOpen(false)
     }
 
     return (
         <RouteContainer>
             <RouteTitle
-                icon={<booksitoutIcon.book />}
+                icon={<booksitoutIcon.book/>}
                 title={'내 서재'}
                 subTitle={'내가 등록한 책을 확인하고 관리할 수 있어요'}
                 currentKey={'mine'}
@@ -56,34 +54,37 @@ const BookGoalRoute = () => {
 
             <BookGoalAddModal
                 isOpen={isAddModalOpen}
-                onHide={() => setIsAddModalOpen(false)}
+                onHide={onHide}
                 year={selectedYear}
             />
-            <RowSpacer />
+            <RowSpacer/>
 
             <Row>
                 {
                     Array
-                        .from({ length: 6 })
+                        .from({length: 6})
                         .map((_, index) => new Date().getFullYear() - index)
                         .map(year => (
                             <Col>
                                 <TitleContainer>
                                     <YearText>{year}년</YearText>
-                                    <AddDeleteButton
-                                        state={goals.find(g => g.year === year) === undefined ? 'ADD' : 'DELETE'}
-                                        onAdd={() => onAdd(year)}
-                                        onDelete={() => onDelete(year)}
-                                    />
+                                    {
+                                        isLoading ? <></> :
+                                            <AddDeleteButton
+                                                state={goals.find(g => g.year === year) === undefined ? 'ADD' : 'DELETE'}
+                                                onAdd={() => onAdd(year)}
+                                                onDelete={() => onDelete(year)}
+                                            />
+                                    }
                                 </TitleContainer>
 
                                 <ContentContainer>
-                                    <BookGoalCard year={year} />
+                                    <BookGoalCard year={year}/>
                                 </ContentContainer>
                             </Col>
                         ))
-                    }
-                </Row>
+                }
+            </Row>
         </RouteContainer>
     )
 }
