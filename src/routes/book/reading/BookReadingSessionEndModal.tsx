@@ -74,8 +74,8 @@ const Body = () => {
 
             <Row>
                 <Col>
-                    <Button variant={'book'} onClick={handleDelete}>
-                        저장하지 않기
+                    <Button variant={'book-danger'} onClick={handleDelete}>
+                        삭제하기
                     </Button>
                 </Col>
 
