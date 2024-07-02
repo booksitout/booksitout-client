@@ -1,3 +1,4 @@
+import React from "react";
 import styled from 'styled-components';
 import { VscError as XMarkIcon } from 'react-icons/vsc'
 
@@ -5,32 +6,32 @@ interface Props {
 	message: string
 }
 
-const NoContent: React.FC<Props> = ({ message = '텅 비어 있어요' }) => {
+const NoContent: React.FC<Props> = ({ message = '3km 내에 도서관이 없어요' }) => {
 	return (
 		<Container>
 			<ContentContainer>
 				<IconContainer>
-					<XMarkIcon className='text-book' size={`5em`} style={{ textAlign: 'center' }} />
+					<XMarkIcon className="text-book" size="5em" />
 				</IconContainer>
-
 				<Text>{message}</Text>
 			</ContentContainer>
 		</Container>
-	)
-}
+	);
+};
 
 const Container = styled.div`
 	display: flex;
-	flex-direction: column;
-	
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
 `;
 
 const ContentContainer = styled.div`
-	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 `;
 
 const IconContainer = styled.div`
