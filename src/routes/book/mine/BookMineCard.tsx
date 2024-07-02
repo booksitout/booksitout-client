@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from "react";
 import IndexContentContainer from "../../index/IndexContentContainer"
 import BookResponse from "../BookResponse"
 import RowSpacer from '../../../common/styles/RowSpacer';
@@ -46,10 +47,10 @@ const ContentContainer = styled.div`
 `;
 
 const Cover = styled.img.attrs({
-    className: 'img-fluid rounded'
+    className: 'img-fluid'
 })`
     max-height: 150px;
-    height: auto;
+    min-height: 150px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
