@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import styled from 'styled-components';
 import booksitoutIcon from "../../../config/BooksitoutIcon";
 import breakpoints from "../../../config/Breakpoints";
@@ -15,27 +15,39 @@ interface Props {
 
     isShowingQueryHistory: boolean
     isShowingAutoComplete: boolean
+    isFocusOnAppear?: boolean
 
     setQuery: (query: string) => void
     setIsShowingQueryHistory: (isShowingQueryHistory: boolean) => void
     handleSubmit: ((event: React.FormEvent<HTMLFormElement>) => void) | null
 }
 
-let defaultHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {e.preventDefault()};
+let defaultHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+};
 
 const SearchBar: React.FC<Props> = ({
                                         placeholder,
-                                        query,
-                                        isShowingQueryHistory,
-                                        isShowingAutoComplete,
 
+                                        query,
                                         queryHistories,
                                         querySuggestions,
+
+                                        isShowingQueryHistory,
+                                        isShowingAutoComplete,
+                                        isFocusOnAppear,
 
                                         setQuery,
                                         setIsShowingQueryHistory,
                                         handleSubmit = defaultHandleSubmit,
                                     }) => {
+    const htmlInputRef = useRef<HTMLDivElement>(null)
+    useEffect(() => {
+        if (htmlInputRef.current && isFocusOnAppear == true) {
+            htmlInputRef.current.focus()
+        }
+    }, []);
+
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value ?? '');
     };
@@ -53,6 +65,7 @@ const SearchBar: React.FC<Props> = ({
     return (
         <SearchContainer onSubmit={handleSubmit}>
             <Input
+                ref={htmlInputRef}
                 placeholder={placeholder}
                 value={query}
                 onChange={handleInputChange}

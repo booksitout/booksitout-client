@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import SearchBookCard from "../../../search/book/SearchBookCard";
 import RowSpacer from "../../../../common/styles/RowSpacer";
 import AddBookSearchModal from "./AddBookSearchModal";
+import breakpoints from "../../../../config/Breakpoints";
 
 const AddBookSearchRoute = () => {
     const [query, setQuery] = useState<string>("")
@@ -43,9 +44,9 @@ const AddBookSearchRoute = () => {
                         querySuggestions={[]}
                         isShowingQueryHistory={false}
                         isShowingAutoComplete={false}
+                        isFocusOnAppear={true}
                         setQuery={(q) => setQuery(q)}
-                        setIsShowingQueryHistory={(b) => {
-                        }}
+                        setIsShowingQueryHistory={(b) => {}}
                         handleSubmit={(e) => e.preventDefault()}
                     />
                 </SearchBarContainer>
@@ -83,6 +84,10 @@ const Center = styled.div`
 
 const SearchBarContainer = styled.div`
     width: 50%;
+
+    @media screen and (max-width: ${breakpoints.md}) {
+        width: 100%;
+    }
 `;
 
 const Row = styled.div.attrs({
